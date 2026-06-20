@@ -75,7 +75,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col justify-between gap-6 border-t border-premium-gold/15 pt-6 text-xs text-soft-gray sm:flex-row sm:items-center">
-          <p>© 2026 PAWEN Awards & Summit. All rights reserved.</p>
+          <p>&copy; 2026 PAWEN Awards & Summit. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             {socialLinks.map((item) => (
               <Link
