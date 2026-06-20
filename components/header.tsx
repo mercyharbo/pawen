@@ -4,6 +4,7 @@ import { externalLinks } from "@/lib/external-links";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Nominations", href: externalLinks.nominations },
+  { label: "Community", href: "#community" },
   { label: "Summit", href: "#summit" },
   { label: "Exhibition", href: "#exhibition" },
   { label: "Awards Gala", href: "#awards-gala" },

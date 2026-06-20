@@ -34,6 +34,25 @@ body {
   font-family: var(--font-body), Arial, Helvetica, sans-serif;
 }
 
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  content: "";
+  opacity: 0.045;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1px),
+    radial-gradient(circle at 76% 64%, rgba(255, 255, 255, 0.24) 0 1px, transparent 1px);
+  background-position:
+    0 0,
+    7px 9px;
+  background-size:
+    13px 13px,
+    17px 17px;
+}
+
 ::selection {
   background: var(--premium-gold);
   color: var(--background);

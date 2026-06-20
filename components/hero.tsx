@@ -24,7 +24,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
   });
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.8], [0.5, 0]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.8], [0.34, 0]);
 
   return (
     <section
@@ -32,7 +32,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
       className="relative isolate flex min-h-[calc(100svh-5rem)] overflow-hidden bg-background text-foreground"
     >
       <motion.div
-        className="absolute inset-0"
+        className="absolute inset-0 scale-[1.02]"
         style={{ y: reduceMotion ? 0 : imageY }}
       >
         <Image
@@ -45,13 +45,14 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--background)_0%,rgba(5,5,5,0.94)_28%,rgba(5,5,5,0.58)_58%,rgba(5,5,5,0.28)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_34%,rgba(212,175,55,0.22),transparent_32%),radial-gradient(circle_at_18%_72%,rgba(184,138,68,0.16),transparent_30%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--background)_0%,rgba(5,5,5,0.95)_24%,rgba(5,5,5,0.66)_56%,rgba(5,5,5,0.34)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_24%,rgba(232,200,114,0.16),transparent_30%),radial-gradient(circle_at_16%_74%,rgba(184,138,68,0.12),transparent_32%)]" />
+      <div className="absolute inset-0 shadow-[inset_0_0_14rem_rgba(0,0,0,0.88)]" />
+      <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-background via-background/80 to-transparent" />
 
       <motion.div
         aria-hidden="true"
-        className="absolute right-[8%] top-[18%] hidden h-72 w-72 rounded-full border border-premium-gold/20 lg:block"
+        className="absolute right-[8%] top-[18%] hidden h-72 w-72 rounded-full border border-premium-gold/15 lg:block"
         animate={
           reduceMotion
             ? undefined
@@ -68,27 +69,27 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
 
       <motion.div
         aria-hidden="true"
-        className="absolute right-[18%] top-[30%] hidden h-44 w-px bg-gradient-to-b from-transparent via-champagne-gold/70 to-transparent lg:block"
-        animate={reduceMotion ? undefined : { opacity: [0.2, 0.85, 0.2] }}
+        className="absolute right-[18%] top-[30%] hidden h-44 w-px bg-gradient-to-b from-transparent via-champagne-gold/50 to-transparent lg:block"
+        animate={reduceMotion ? undefined : { opacity: [0.16, 0.56, 0.16] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <motion.div
-        className="absolute left-0 top-24 h-px w-full bg-gradient-to-r from-transparent via-premium-gold/35 to-transparent"
+        className="absolute left-0 top-24 h-px w-full bg-gradient-to-r from-transparent via-premium-gold/28 to-transparent"
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      <div className="relative z-10 flex w-full justify-center px-5 py-16 sm:px-8 lg:px-10">
+      <div className="relative z-10 flex w-full justify-center px-5 py-20 sm:px-8 lg:px-10">
         <motion.div
-          className="flex w-full max-w-7xl flex-col justify-center gap-10"
+          className="flex w-full max-w-7xl flex-col justify-center gap-12"
           style={{ y: reduceMotion ? 0 : textY }}
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.16, delayChildren: 0.12 }}
         >
-          <div className="flex max-w-4xl flex-col gap-8">
+          <div className="flex max-w-4xl flex-col gap-9">
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -123,14 +124,14 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
             >
               <Link
                 href={nominationsUrl}
-                className="group relative overflow-hidden bg-premium-gold px-6 py-3 text-sm font-semibold text-background transition-colors duration-300 hover:bg-champagne-gold"
+                className="group relative overflow-hidden border border-champagne-gold/60 bg-premium-gold px-7 py-3.5 text-sm font-semibold text-background shadow-[0_1.25rem_3rem_rgba(212,175,55,0.16)] transition-all duration-300 hover:border-champagne-gold hover:bg-champagne-gold hover:shadow-[0_1.5rem_3.5rem_rgba(212,175,55,0.24)]"
               >
                 <span className="relative z-10">Nominations</span>
-                <span className="absolute inset-y-0 left-0 w-8 -translate-x-10 bg-white/35 blur-md transition-transform duration-700 group-hover:translate-x-40" />
+                <span className="absolute inset-y-0 left-0 w-8 -translate-x-10 bg-white/30 blur-md transition-transform duration-700 group-hover:translate-x-44" />
               </Link>
               <Link
                 href={ticketsUrl}
-                className="border border-premium-gold/55 px-6 py-3 text-sm font-semibold text-champagne-gold transition-colors duration-300 hover:border-champagne-gold hover:bg-premium-gold hover:text-background"
+                className="border border-premium-gold/45 bg-background/24 px-7 py-3.5 text-sm font-semibold text-champagne-gold backdrop-blur-sm transition-all duration-300 hover:border-champagne-gold hover:bg-premium-gold hover:text-background hover:shadow-[0_1.25rem_3rem_rgba(212,175,55,0.12)]"
               >
                 Tickets
               </Link>
@@ -140,16 +141,23 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="grid max-w-3xl grid-cols-3 gap-px border border-premium-gold/20 bg-premium-gold/20 text-sm"
+            className="grid max-w-3xl grid-cols-3 gap-px border border-premium-gold/18 bg-premium-gold/18 text-sm shadow-[0_2rem_4rem_rgba(0,0,0,0.28)] backdrop-blur-sm"
           >
             {[
               ["01", "Leadership Summit"],
               ["02", "Trade Exhibition"],
               ["03", "Awards Gala"],
             ].map(([number, label]) => (
-              <div key={label} className="flex flex-col gap-3 bg-background/78 p-4 backdrop-blur">
-                <span className="font-serif text-2xl text-premium-gold">{number}</span>
-                <span className="text-muted-beige">{label}</span>
+              <div
+                key={label}
+                className="group flex min-h-28 flex-col justify-between gap-4 bg-background/76 p-5 transition-colors duration-300 hover:bg-charcoal/90"
+              >
+                <span className="font-serif text-2xl text-premium-gold transition-colors duration-300 group-hover:text-champagne-gold">
+                  {number}
+                </span>
+                <span className="text-muted-beige transition-colors duration-300 group-hover:text-foreground">
+                  {label}
+                </span>
               </div>
             ))}
           </motion.div>
@@ -158,7 +166,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
 
       <motion.div
         aria-hidden="true"
-        className="absolute bottom-16 right-10 hidden h-32 w-32 rounded-full bg-premium-gold/20 blur-3xl lg:block"
+        className="absolute bottom-16 right-10 hidden h-32 w-32 rounded-full bg-premium-gold/16 blur-3xl lg:block"
         style={{ opacity: glowOpacity }}
       />
     </section>
