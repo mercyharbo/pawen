@@ -1,146 +1,118 @@
-"use client";
-
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-
-const pillars = [
-  {
-    number: "01",
-    title: "Competence",
-    copy: "Equipping women with the knowledge and capacity to lead with substance.",
-  },
-  {
-    number: "02",
-    title: "Confidence",
-    copy: "Helping African women recognise their power and maximise their potential.",
-  },
-  {
-    number: "03",
-    title: "Connections",
-    copy: "Building the relationships that open rooms, markets and opportunities.",
-  },
-];
 
 type StorySectionProps = {
   supportUrl: string;
 };
 
-const reveal = {
-  hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
+const experiences = [
+  {
+    title: "PAWEN Leadership Summit",
+    copy: "Where Africa's women leaders gather for strategic conversations and purposeful growth.",
+    image: "/images/IMG (1).jpg",
+  },
+  {
+    title: "PAWEN Trade Exhibition",
+    copy: "Where women-led businesses meet buyers, investors, partners and new markets.",
+    image: "/images/IMG (3).jpg",
+  },
+  {
+    title: "The PAWEN Award Gala",
+    copy: "A night honouring the women shaping the continent through vision, leadership and enterprise.",
+    image: "/images/IMG (2).jpg",
+  },
+] as const;
 
 export function StorySection({ supportUrl }: StorySectionProps) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const atmosphereY = useTransform(scrollYProgress, [0, 1], ["-5%", "8%"]);
-  const ruleScale = useTransform(scrollYProgress, [0.16, 0.52], [0, 1]);
-
   return (
     <section
-      className="relative isolate overflow-hidden bg-background px-5 py-28 text-foreground sm:px-8 lg:px-10 lg:py-40"
-      id="our-story"
-      ref={sectionRef}
+      className='relative isolate overflow-hidden bg-background px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
+      id='our-story'
     >
-      <motion.div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,175,55,0.13),transparent_28%),radial-gradient(circle_at_86%_56%,rgba(184,138,68,0.1),transparent_30%),linear-gradient(180deg,var(--background)_0%,var(--soft-black)_54%,var(--background)_100%)]"
-        style={{ y: reduceMotion ? 0 : atmosphereY }}
-      />
-      <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-background to-transparent" />
-      <motion.div
-        aria-hidden="true"
-        className="absolute left-0 top-24 h-px w-full origin-left bg-gradient-to-r from-transparent via-premium-gold/40 to-transparent"
-        style={{ scaleX: reduceMotion ? 1 : ruleScale }}
-      />
+      <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-68'>
+        <div className='grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-28 xl:gap-36 2xl:gap-50'>
+          <div className='flex justify-center lg:justify-end'>
+            <Image
+              src='/images/award.png'
+              alt='The PAWEN Awards trophy'
+              width={1373}
+              height={4096}
+              className='h-auto w-36 sm:w-44 lg:w-52'
+              priority
+            />
+          </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-16">
-        <motion.div
-          className="grid gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:gap-20"
-          initial="hidden"
-          transition={{ staggerChildren: 0.14 }}
-          viewport={{ once: true, amount: 0.35 }}
-          whileInView="visible"
-        >
-          <motion.div className="grid content-start gap-8" variants={reveal}>
-            <div className="flex items-center gap-4 text-sm uppercase tracking-[0.32em] text-champagne-gold">
-              <span>Our story</span>
-              <span className="h-px w-14 bg-premium-gold/55" />
-            </div>
-            <h2 className="max-w-4xl font-serif text-3xl leading-[1.08] text-foreground sm:text-3xl lg:text-4xl xl:text-[3.5rem]">
-              Empowering African women to lead, succeed and transform the
-              systems around them.
+          <div className='flex max-w-xl flex-col gap-5'>
+            <h2 className='font-brand text-4xl font-bold leading-tight text-primary sm:text-5xl'>
+              History Is Shaped by{' '}
+              <span className='text-accent'>Those Who Lead</span>
             </h2>
-          </motion.div>
-
-          <motion.div
-            className="grid content-end gap-8 border-l border-premium-gold/18 pl-6 sm:pl-8 lg:pt-24"
-            variants={reveal}
-          >
-            <p className="text-lg leading-8 text-muted-beige sm:text-xl sm:leading-9">
-              Pan African Women Empowerment Network is a social enterprise
-              equipping African women with the competence, confidence and
-              connections they need to become successful business and career
-              leaders.
-            </p>
-            <div className="grid gap-5">
-              <p className="font-serif text-3xl leading-tight text-foreground sm:text-4xl">
-                The awards are one expression of a bigger movement.
+            <div className='flex max-w-lg flex-col gap-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8'>
+              <p>
+                The PAWEN Awards is Africa&apos;s premier platform celebrating
+                and recognising women whose leadership, innovation and influence
+                are shaping the continent&apos;s future.
               </p>
-              <p className="text-base leading-8 text-muted-beige sm:text-lg">
-                PAWEN exists for a future where African women do not just
-                succeed within existing systems, they transform them.
+              <p>
+                This is where achievement is recognised. Influence is amplified.
+                Legacy is established.
               </p>
             </div>
-            <Link
-              href={supportUrl}
-              className="w-fit border border-premium-gold/45 px-6 py-3 text-sm font-semibold text-champagne-gold transition-all duration-300 hover:border-champagne-gold hover:bg-premium-gold hover:text-background"
-            >
-              Support Our Work
-            </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div
-          className="grid border-y border-premium-gold/18 lg:grid-cols-3"
-          initial="hidden"
-          transition={{ staggerChildren: 0.1, delayChildren: 0.18 }}
-          viewport={{ once: true, amount: 0.25 }}
-          whileInView="visible"
-        >
-          {pillars.map((pillar, index) => (
-            <motion.div
-              className={`group grid min-h-56 content-between gap-10 py-8 sm:min-h-60 sm:py-10 lg:px-8 ${
-                index === 0
-                  ? ""
-                  : "border-t border-premium-gold/18 lg:border-l lg:border-t-0"
-              }`}
-              key={pillar.title}
-              variants={reveal}
+        <div className='flex flex-col gap-10'>
+          <div className='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
+            <h2 className='max-w-2xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl'>
+              Three experiences,
+              <br />
+              Two days, <span className='text-primary'>One Platform:</span>
+            </h2>
+            <Button
+              render={<Link href={supportUrl} />}
+              className='h-11 w-fit rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90'
             >
-              <div className="grid gap-5">
-                <span className="font-serif text-4xl leading-none text-premium-gold transition-colors duration-300 group-hover:text-champagne-gold">
-                  {pillar.number}
-                </span>
-                <h3 className="font-serif text-4xl leading-none text-foreground sm:text-5xl">
-                  {pillar.title}
-                </h3>
-              </div>
-              <div className="grid gap-5">
-                <span className="h-px w-16 bg-premium-gold/55 transition-all duration-300 group-hover:w-24 group-hover:bg-champagne-gold" />
-                <p className="max-w-sm text-sm leading-7 text-muted-beige sm:text-base">
-                  {pillar.copy}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              View More
+            </Button>
+          </div>
+
+          <div className='grid gap-5 md:grid-cols-3'>
+            {experiences.map((experience) => (
+              <article
+                className='group flex flex-col gap-4'
+                key={experience.title}
+              >
+                <div className='relative aspect-square overflow-hidden rounded-md bg-card'>
+                  <Image
+                    src={experience.image}
+                    alt={experience.title}
+                    fill
+                    sizes='(min-width: 768px) 33vw, 100vw'
+                    className='object-cover transition-transform duration-500 group-hover:scale-105'
+                  />
+                  <div
+                    className='absolute inset-0 bg-accent/80 mix-blend-color'
+                    aria-hidden='true'
+                  />
+                  <div
+                    className='absolute inset-0 bg-background/10'
+                    aria-hidden='true'
+                  />
+                </div>
+                <div className='flex flex-col gap-2'>
+                  <h3 className='font-brand text-lg font-bold leading-6 text-accent'>
+                    {experience.title}
+                  </h3>
+                  <p className='text-sm leading-6 text-primary'>
+                    {experience.copy}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
-  );
+  )
 }
