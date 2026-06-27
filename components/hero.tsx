@@ -1,43 +1,51 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
 
 type HeroProps = {
   nominationsUrl: string;
   ticketsUrl: string;
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 34, filter: "blur(10px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
-
 export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
-  const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "24%"]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.8], [0.34, 0]);
+  const revealTransition = {
+    duration: 1.15,
+    ease: [0.22, 1, 0.36, 1],
+  } as const;
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative isolate flex min-h-[calc(100svh-5rem)] overflow-hidden bg-background text-foreground"
-    >
+    <section className="relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden bg-background text-foreground">
       <motion.div
-        className="absolute inset-0 scale-[1.02]"
-        style={{ y: reduceMotion ? 0 : imageY }}
+        className="absolute inset-0"
+        initial={reduceMotion ? false : { opacity: 0.68, scale: 1.04 }}
+        animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
+        transition={revealTransition}
+        aria-hidden="true"
       >
         <Image
-          src="/images/pawen-hero.png"
-          alt="Elegant PAWEN Awards and Summit atmosphere"
+          src="/images/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-top"
+        />
+      </motion.div>
+
+      <motion.div
+        className="absolute inset-0"
+        initial={reduceMotion ? false : { opacity: 0, scale: 1.02 }}
+        animate={reduceMotion ? undefined : { opacity: 0.95, scale: 1 }}
+        transition={revealTransition}
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/hero-overlay.png"
+          alt=""
           fill
           priority
           sizes="100vw"
@@ -45,130 +53,61 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--background)_0%,rgba(5,5,5,0.95)_24%,rgba(5,5,5,0.66)_56%,rgba(5,5,5,0.34)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_24%,rgba(232,200,114,0.16),transparent_30%),radial-gradient(circle_at_16%_74%,rgba(184,138,68,0.12),transparent_32%)]" />
-      <div className="absolute inset-0 shadow-[inset_0_0_14rem_rgba(0,0,0,0.88)]" />
-      <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-background via-background/80 to-transparent" />
-
       <motion.div
+        className="absolute inset-0 bg-background/30"
+        initial={reduceMotion ? false : { opacity: 0.78 }}
+        animate={reduceMotion ? undefined : { opacity: 1 }}
+        transition={revealTransition}
         aria-hidden="true"
-        className="absolute right-[8%] top-[18%] hidden h-72 w-72 rounded-full border border-premium-gold/15 lg:block"
-        animate={
-          reduceMotion
-            ? undefined
-            : {
-                rotate: 360,
-                scale: [1, 1.04, 1],
-              }
-        }
-        transition={{
-          rotate: { duration: 34, repeat: Infinity, ease: "linear" },
-          scale: { duration: 7, repeat: Infinity, ease: "easeInOut" },
-        }}
       />
-
       <motion.div
+        className="absolute inset-0 shadow-[inset_0_0_10rem_var(--color-background)] opacity-80"
+        initial={reduceMotion ? false : { opacity: 0.3 }}
+        animate={reduceMotion ? undefined : { opacity: 0.8 }}
+        transition={revealTransition}
         aria-hidden="true"
-        className="absolute right-[18%] top-[30%] hidden h-44 w-px bg-gradient-to-b from-transparent via-champagne-gold/50 to-transparent lg:block"
-        animate={reduceMotion ? undefined : { opacity: [0.16, 0.56, 0.16] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <motion.div
-        className="absolute left-0 top-24 h-px w-full bg-gradient-to-r from-transparent via-premium-gold/28 to-transparent"
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-      />
-
-      <div className="relative z-10 flex w-full justify-center px-5 py-20 sm:px-8 lg:px-10">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1905px] items-center justify-center px-5 py-20 text-center sm:px-8 lg:px-10">
         <motion.div
-          className="flex w-full max-w-7xl flex-col justify-center gap-12"
-          style={{ y: reduceMotion ? 0 : textY }}
-          initial="hidden"
-          animate="visible"
-          transition={{ staggerChildren: 0.16, delayChildren: 0.12 }}
+          className="flex max-w-4xl flex-col items-center gap-8"
+          initial={
+            reduceMotion
+              ? false
+              : { opacity: 0, y: 18, scale: 0.985, filter: "blur(12px)" }
+          }
+          animate={
+            reduceMotion
+              ? undefined
+              : { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }
+          }
+          transition={revealTransition}
         >
-          <div className="flex max-w-4xl flex-col gap-9">
-            <motion.div
-              variants={fadeUp}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap items-center gap-3 text-sm text-champagne-gold"
-            >
-              <span>Lusaka, Zambia</span>
-              <span className="h-px w-10 bg-premium-gold/60" />
-              <span>13-14 November 2026</span>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeUp}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-5xl font-serif text-[4.25rem] leading-[0.88] text-foreground sm:text-[5.25rem] md:text-[6rem] lg:text-[5.75rem] xl:text-[6.5rem] 2xl:text-[7rem] min-[1920px]:text-[7.5rem]"
-            >
-              The PAWEN Awards & Summit 2026
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-2xl text-lg leading-8 text-muted-beige sm:text-xl"
-            >
-              Africa&apos;s largest awards and leadership summit for women in
-              business, leadership and impact.
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-4"
-            >
-              <Link
-                href={nominationsUrl}
-                className="group relative overflow-hidden border border-champagne-gold/60 bg-premium-gold px-7 py-3.5 text-sm font-semibold text-background shadow-[0_1.25rem_3rem_rgba(212,175,55,0.16)] transition-all duration-300 hover:border-champagne-gold hover:bg-champagne-gold hover:shadow-[0_1.5rem_3.5rem_rgba(212,175,55,0.24)]"
-              >
-                <span className="relative z-10">Nominations</span>
-                <span className="absolute inset-y-0 left-0 w-8 -translate-x-10 bg-white/30 blur-md transition-transform duration-700 group-hover:translate-x-44" />
-              </Link>
-              <Link
-                href={ticketsUrl}
-                className="border border-premium-gold/45 bg-background/24 px-7 py-3.5 text-sm font-semibold text-champagne-gold backdrop-blur-sm transition-all duration-300 hover:border-champagne-gold hover:bg-premium-gold hover:text-background hover:shadow-[0_1.25rem_3rem_rgba(212,175,55,0.12)]"
-              >
-                Tickets
-              </Link>
-            </motion.div>
+          <div className="flex flex-col items-center gap-5">
+            <p className="font-sans text-lg font-normal leading-8 text-muted-foreground">
+              The PAWEN Awards &amp; Summit 2026
+            </p>
+            <h1 className="max-w-3xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-6xl">
+              Africa&apos;s Stage for the Women Shaping Its Future
+            </h1>
           </div>
 
-          <motion.div
-            variants={fadeUp}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="grid max-w-3xl grid-cols-3 gap-px border border-premium-gold/18 bg-premium-gold/18 text-sm shadow-[0_2rem_4rem_rgba(0,0,0,0.28)] backdrop-blur-sm"
-          >
-            {[
-              ["01", "Leadership Summit"],
-              ["02", "Trade Exhibition"],
-              ["03", "Awards Gala"],
-            ].map(([number, label]) => (
-              <div
-                key={label}
-                className="group flex min-h-28 flex-col justify-between gap-4 bg-background/76 p-5 transition-colors duration-300 hover:bg-charcoal/90"
-              >
-                <span className="font-serif text-2xl text-premium-gold transition-colors duration-300 group-hover:text-champagne-gold">
-                  {number}
-                </span>
-                <span className="text-muted-beige transition-colors duration-300 group-hover:text-foreground">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </motion.div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Button
+              render={<Link href={nominationsUrl} />}
+              className="h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90"
+            >
+              Nomination
+            </Button>
+            <Button
+              render={<Link href={ticketsUrl} />}
+              className="h-12 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+            >
+              Get Tickets
+            </Button>
+          </div>
         </motion.div>
       </div>
-
-      <motion.div
-        aria-hidden="true"
-        className="absolute bottom-16 right-10 hidden h-32 w-32 rounded-full bg-premium-gold/16 blur-3xl lg:block"
-        style={{ opacity: glowOpacity }}
-      />
     </section>
   );
 }
