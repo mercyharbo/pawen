@@ -52,7 +52,7 @@ export function Footer() {
             className='flex flex-col gap-5'
             aria-labelledby='footer-newsletter'
           >
-            <Link
+            {/* <Link
               href='/'
               className='group flex w-fit items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
               aria-label='PAWEN home'
@@ -65,7 +65,7 @@ export function Footer() {
                 className='h-14 w-auto'
                 aria-hidden='true'
               />
-            </Link>
+            </Link> */}
 
             <p id='footer-newsletter' className='max-w-xs text-sm leading-7'>
               Subscribe to our newsletter and bring get updated with The PAWEN

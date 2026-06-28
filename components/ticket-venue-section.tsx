@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { MotionReveal } from "@/components/motion-reveal";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,21 +14,26 @@ export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
       aria-labelledby="ticket-venue-heading"
     >
       <div className="relative mx-auto flex min-h-96 w-full max-w-7xl overflow-hidden rounded-md bg-card px-5 py-16 sm:px-8 lg:min-h-128 lg:px-10">
-        <Image
-          src="/images/ticket-image.jpg"
-          alt=""
-          fill
-          sizes="(min-width: 1280px) 80rem, 100vw"
-          className="object-cover object-center"
-          aria-hidden="true"
-        />
+        <MotionReveal
+          ariaHidden
+          className="absolute inset-0"
+          variant="image-reveal"
+        >
+          <Image
+            src="/images/ticket-image.jpg"
+            alt=""
+            fill
+            sizes="(min-width: 1280px) 80rem, 100vw"
+            className="object-cover object-center"
+          />
+        </MotionReveal>
         <div className="absolute inset-0 bg-background/78" aria-hidden="true" />
         <div
           className="absolute inset-0 shadow-[inset_0_0_9rem_var(--color-background)]"
           aria-hidden="true"
         />
 
-        <div className="relative z-10 m-auto flex max-w-4xl flex-col items-center gap-6 text-center">
+        <MotionReveal className="relative z-10 m-auto flex max-w-4xl flex-col items-center gap-6 text-center">
           <p className="font-brand text-xs font-medium leading-5 text-accent">
             13-14 November 2026.
           </p>
@@ -43,7 +49,7 @@ export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
           >
             Get Tickets
           </Button>
-        </div>
+        </MotionReveal>
       </div>
     </section>
   );

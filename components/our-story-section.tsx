@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionReveal } from "@/components/motion-reveal";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
@@ -37,7 +38,7 @@ export function OurStorySection() {
       id="our-story-details"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-14">
-        <div className="flex max-w-4xl flex-col items-center gap-8 text-center">
+        <MotionReveal className="flex max-w-4xl flex-col items-center gap-8 text-center">
           <h2 className="font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl">
             Our Story
           </h2>
@@ -60,9 +61,12 @@ export function OurStorySection() {
             </p>
             <p>This is the legacy the PAWEN Awards was built to protect.</p>
           </div>
-        </div>
+        </MotionReveal>
 
-        <div className="relative w-full max-w-5xl overflow-hidden rounded-md bg-card">
+        <MotionReveal
+          className="relative w-full max-w-5xl overflow-hidden rounded-md bg-card"
+          variant="image-reveal"
+        >
           <Image
             src="/images/our-story.jpg"
             alt="PAWEN speaker presenting at the awards and summit"
@@ -78,9 +82,9 @@ export function OurStorySection() {
             className="absolute inset-0 bg-background/10"
             aria-hidden="true"
           />
-        </div>
+        </MotionReveal>
 
-        <div className="w-full max-w-5xl overflow-hidden">
+        <MotionReveal className="w-full max-w-5xl overflow-hidden">
           <Marquee
             autoFill
             gradient={false}
@@ -103,7 +107,7 @@ export function OurStorySection() {
               </div>
             ))}
           </Marquee>
-        </div>
+        </MotionReveal>
       </div>
     </section>
   );

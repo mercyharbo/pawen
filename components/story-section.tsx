@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { MotionReveal } from "@/components/motion-reveal";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,7 +33,10 @@ export function StorySection({ supportUrl }: StorySectionProps) {
     >
       <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-68'>
         <div className='grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-28 xl:gap-36 2xl:gap-50'>
-          <div className='flex justify-center lg:justify-end'>
+          <MotionReveal
+            className='flex justify-center lg:justify-end'
+            variant='scale-in'
+          >
             <Image
               src='/images/award.png'
               alt='The PAWEN Awards trophy'
@@ -41,9 +45,9 @@ export function StorySection({ supportUrl }: StorySectionProps) {
               className='h-auto w-36 sm:w-44 lg:w-52'
               priority
             />
-          </div>
+          </MotionReveal>
 
-          <div className='flex max-w-xl flex-col gap-5'>
+          <MotionReveal className='flex max-w-xl flex-col gap-5'>
             <h2 className='font-brand text-4xl font-bold leading-tight text-primary sm:text-5xl'>
               History Is Shaped by{' '}
               <span className='text-accent'>Those Who Lead</span>
@@ -59,11 +63,11 @@ export function StorySection({ supportUrl }: StorySectionProps) {
                 Legacy is established.
               </p>
             </div>
-          </div>
+          </MotionReveal>
         </div>
 
         <div className='flex flex-col gap-10'>
-          <div className='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
+          <MotionReveal className='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
             <h2 className='max-w-2xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl'>
               Three experiences,
               <br />
@@ -75,13 +79,16 @@ export function StorySection({ supportUrl }: StorySectionProps) {
             >
               View More
             </Button>
-          </div>
+          </MotionReveal>
 
           <div className='grid gap-5 md:grid-cols-3'>
-            {experiences.map((experience) => (
-              <article
+            {experiences.map((experience, index) => (
+              <MotionReveal
+                as='article'
                 className='group flex flex-col gap-4'
+                delay={index * 0.08}
                 key={experience.title}
+                variant='image-reveal'
               >
                 <div className='relative aspect-square overflow-hidden rounded-md bg-card'>
                   <Image
@@ -108,7 +115,7 @@ export function StorySection({ supportUrl }: StorySectionProps) {
                     {experience.copy}
                   </p>
                 </div>
-              </article>
+              </MotionReveal>
             ))}
           </div>
         </div>
