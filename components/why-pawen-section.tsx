@@ -52,7 +52,7 @@ export function WhyPawenSection() {
 
       <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-16 text-center'>
         <MotionReveal className='flex max-w-4xl flex-col items-center gap-5'>
-          <h2 className='font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-6xl'>
+          <h2 className='font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'>
             Why the PAWEN Awards Matter
           </h2>
           <div className='flex max-w-3xl flex-col gap-2 text-sm leading-6 text-primary'>

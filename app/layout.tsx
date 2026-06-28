@@ -40,6 +40,12 @@ export default function RootLayout({
       lang="en"
       className={`${bodyFont.variable} ${displayFont.variable} ${brandFont.variable} h-full antialiased`}
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=melodrama@400,500,600,700&display=swap"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <SmoothScroll>
           <Header />

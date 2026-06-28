@@ -5,9 +5,9 @@ import { externalLinks } from "@/lib/external-links";
 const navItems = [
   { label: "PAWEN Hall", href: "/" },
   { label: "Nominations", href: externalLinks.nominations },
-  { label: "Summit", href: "#summit" },
+  { label: "SUMMIT", href: "/summit" },
   { label: "Exhibition", href: "#exhibition" },
-  { label: "Award Gala", href: "#awards-gala" },
+  { label: "Award GALA", href: "#awards-gala" },
 ] as const;
 
 export function Header() {

@@ -4,6 +4,7 @@
   --color-background: #050505;
   --color-foreground: #f5f1e8;
   --color-soft-black: #0b0b0b;
+  --color-summit-dark: #0a0a0a;
   --color-charcoal: #111111;
   --color-premium-gold: #d4af37;
   --color-champagne-gold: #e8c872;
@@ -32,13 +33,16 @@
   --radius-lg: 1rem;
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
+  --font-melodrama: "Melodrama", var(--font-display);
   --font-brand: var(--font-urbanist);
+  --breakpoint-3xl: 120rem;
 }
 
 :root {
   --background: var(--color-background);
   --foreground: var(--color-foreground);
   --soft-black: var(--color-soft-black);
+  --summit-dark: var(--color-summit-dark);
   --charcoal: var(--color-charcoal);
   --premium-gold: var(--color-premium-gold);
   --champagne-gold: var(--color-champagne-gold);

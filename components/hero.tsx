@@ -87,7 +87,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
             <p className="font-sans text-lg font-normal leading-8 text-muted-foreground">
               The PAWEN Awards &amp; Summit 2026
             </p>
-            <h1 className="max-w-3xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-3xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl">
               Africa&apos;s Stage for the Women Shaping Its Future
             </h1>
           </div>

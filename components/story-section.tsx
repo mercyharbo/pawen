@@ -54,9 +54,10 @@ export function StorySection({ supportUrl }: StorySectionProps) {
             </h2>
             <div className='flex max-w-lg flex-col gap-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8'>
               <p>
-                The PAWEN Awards is Africa&apos;s premier platform celebrating
-                and recognising women whose leadership, innovation and influence
-                are shaping the continent&apos;s future.
+                Great achievements deserve more than applause. They deserve a
+                place in history. The PAWEN Awards recognises visionary women
+                across Africa and the diaspora, celebrating their impact while
+                preserving their legacy for generations to come.
               </p>
               <p>
                 This is where achievement is recognised. Influence is amplified.

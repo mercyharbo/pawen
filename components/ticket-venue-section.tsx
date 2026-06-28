@@ -39,7 +39,7 @@ export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
           </p>
           <h2
             id="ticket-venue-heading"
-            className="font-brand text-4xl font-normal leading-tight text-primary sm:text-5xl lg:text-6xl"
+            className="font-brand text-4xl font-normal leading-tight text-primary sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl"
           >
             INTERCONTINENTAL HOTEL, LUSAKA, ZAMBIA.
           </h2>

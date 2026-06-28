@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { externalLinks } from '@/lib/external-links'
 import { ArrowUpRight } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 const sitemapLinks = [
@@ -24,6 +23,103 @@ const contactLinks = [
   { label: "FAQ's", href: '#faq' },
 ] as const
 
+const socialLinks = [
+  { label: 'Instagram', href: '#', icon: InstagramIcon },
+  { label: 'X', href: '#', icon: XIcon },
+  { label: 'TikTok', href: '#', icon: TikTokIcon },
+  { label: 'YouTube', href: '#', icon: YouTubeIcon },
+] as const
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox='0 0 24 24'
+      fill='none'
+      aria-hidden='true'
+    >
+      <rect
+        x='4'
+        y='4'
+        width='16'
+        height='16'
+        rx='5'
+        stroke='currentColor'
+        strokeWidth='2'
+      />
+      <circle cx='12' cy='12' r='3.4' stroke='currentColor' strokeWidth='2' />
+      <circle cx='16.8' cy='7.2' r='1' fill='currentColor' />
+    </svg>
+  )
+}
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox='0 0 24 24'
+      fill='none'
+      aria-hidden='true'
+    >
+      <path
+        d='M4 4L20 20M20 4L4 20'
+        stroke='currentColor'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2.2'
+      />
+    </svg>
+  )
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox='0 0 24 24'
+      fill='none'
+      aria-hidden='true'
+    >
+      <path
+        d='M14.5 4v10.1a4.1 4.1 0 1 1-3.6-4.07'
+        stroke='currentColor'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2'
+      />
+      <path
+        d='M14.5 4c.7 2.9 2.5 4.6 5.1 5'
+        stroke='currentColor'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2'
+      />
+    </svg>
+  )
+}
+
+function YouTubeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox='0 0 24 24'
+      fill='none'
+      aria-hidden='true'
+    >
+      <rect
+        x='3'
+        y='6.5'
+        width='18'
+        height='11'
+        rx='3'
+        stroke='currentColor'
+        strokeWidth='2'
+      />
+      <path d='M10.5 9.5L15 12l-4.5 2.5z' fill='currentColor' />
+    </svg>
+  )
+}
+
 export function Footer() {
   return (
     <footer className='relative isolate overflow-hidden bg-background text-primary'>
@@ -34,7 +130,7 @@ export function Footer() {
               The PAWEN Awards &amp; Summit 2026
             </p>
             <div className='flex flex-col items-center gap-6'>
-              <p className='max-w-xs font-sans text-2xl font-medium leading-9'>
+              <p className='max-w-xs font-sans text-xl font-medium leading-8 lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-9 3xl:text-2xl 3xl:leading-9'>
                 InterContinental Hotel, Lusaka, Zambia.
               </p>
               <Button
@@ -100,7 +196,7 @@ export function Footer() {
           <nav className='flex flex-col gap-4' aria-labelledby='footer-sitemap'>
             <p
               id='footer-sitemap'
-              className='text-sm font-normal uppercase opacity-90 leading-5'
+              className='text-sm font-normal opacity-90 leading-5'
             >
               Sitemap
             </p>
@@ -109,7 +205,7 @@ export function Footer() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className='w-fit py-1 text-2xl font-medium leading-10 transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
                 >
                   {item.label}
                 </Link>
@@ -129,7 +225,7 @@ export function Footer() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className='w-fit py-1 text-2xl font-medium leading-10 transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
                 >
                   {item.label}
                 </Link>
@@ -143,7 +239,7 @@ export function Footer() {
           >
             <p
               id='footer-contact'
-              className='text-sm opacity-90 uppercase font-normal leading-5'
+              className='text-sm opacity-90 font-normal leading-5'
             >
               Contact
             </p>
@@ -188,15 +284,26 @@ export function Footer() {
         </div>
       </div>
 
-      <div className='pointer-events-none relative z-0 px-5 pb-8 sm:px-8 lg:px-10'>
-        <Image
-          src='/footer-logo.png'
-          alt=''
-          width={1902}
-          height={326}
-          className='h-auto w-full'
-          aria-hidden='true'
-        />
+      <div className='relative z-0 px-5 pb-8 sm:px-8 lg:px-10'>
+        <nav
+          className='mx-auto flex w-full max-w-[1905px] flex-wrap items-center justify-center gap-3'
+          aria-label='Social media links'
+        >
+          {socialLinks.map((item) => {
+            const Icon = item.icon
+
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                aria-label={item.label}
+                className='flex size-12 items-center justify-center rounded-full border border-border bg-primary/8 text-primary transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+              >
+                <Icon className='size-5' />
+              </Link>
+            )
+          })}
+        </nav>
       </div>
     </footer>
   )
