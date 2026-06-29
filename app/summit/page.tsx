@@ -1,7 +1,9 @@
+import { SummitFinalCtaSection } from "@/components/summit/summit-final-cta-section";
 import { SummitHero } from "@/components/summit/summit-hero";
 import { SummitPillarsSection } from "@/components/summit/summit-pillars-section";
 import { SummitWhyAttendSection } from "@/components/summit/summit-why-attend-section";
 import { SummitWhyZambiaSection } from "@/components/summit/summit-why-zambia-section";
+import { SummitWhoShouldAttendSection } from "@/components/summit/summit-who-should-attend-section";
 import { externalLinks } from "@/lib/external-links";
 import type { Metadata } from "next";
 
@@ -20,8 +22,14 @@ export default function SummitPage() {
         speakUrl="#speakers"
       />
       <SummitPillarsSection />
-      <SummitWhyAttendSection />
       <SummitWhyZambiaSection />
+      <SummitWhyAttendSection />
+      <SummitWhoShouldAttendSection />
+      <SummitFinalCtaSection
+        registerUrl={externalLinks.tickets}
+        exhibitUrl="#exhibition"
+        speakUrl="#speakers"
+      />
     </>
   );
 }

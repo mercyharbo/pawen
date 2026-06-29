@@ -1,3 +1,4 @@
+import { MotionReveal } from "@/components/motion-reveal";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
@@ -18,15 +19,21 @@ export function SummitWhyZambiaSection() {
       aria-labelledby="summit-why-zambia-heading"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10 lg:gap-12">
-        <h2
-          id="summit-why-zambia-heading"
-          className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold lg:text-5xl xl:text-4xl 2xl:text-6xl 3xl:text-6xl"
-        >
-          Why Zambia? Why Now?
-        </h2>
+        <MotionReveal>
+          <h2
+            id="summit-why-zambia-heading"
+            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold lg:text-5xl xl:text-4xl 2xl:text-6xl 3xl:text-6xl"
+          >
+            Why Zambia? Why Now?
+          </h2>
+        </MotionReveal>
 
         <div className="grid w-full gap-3 lg:grid-cols-3 lg:gap-4">
-          <article className="relative aspect-square overflow-hidden rounded-3xl bg-card">
+          <MotionReveal
+            as="article"
+            className="relative aspect-square overflow-hidden rounded-3xl bg-card"
+            variant="image-reveal"
+          >
             <Image
               src="/images/city.jpg"
               alt="Lusaka city skyline at night"
@@ -45,9 +52,13 @@ export function SummitWhyZambiaSection() {
                 mining, energy, and regional connectivity.
               </p>
             </div>
-          </article>
+          </MotionReveal>
 
-          <article className="flex aspect-square flex-col justify-center gap-7 rounded-3xl bg-champagne-gold px-6 py-8 text-background sm:px-10">
+          <MotionReveal
+            as="article"
+            className="flex aspect-square flex-col justify-center gap-7 rounded-3xl bg-champagne-gold px-6 py-8 text-background sm:px-10"
+            delay={0.08}
+          >
             <p className="2xl:text-lg leading-tight">
               For African women leaders, this is a chance to gather exactly
               where new conversations, investments, and collaborations are
@@ -58,9 +69,13 @@ export function SummitWhyZambiaSection() {
               perfect setting for meaningful connection and strategic dialogue,
               on stage and off it.
             </p>
-          </article>
+          </MotionReveal>
 
-          <article className="relative aspect-square overflow-hidden bg-transparent text-background">
+          <MotionReveal
+            as="article"
+            className="relative aspect-square overflow-hidden bg-transparent text-background"
+            delay={0.16}
+          >
             <div className="relative z-10 flex h-[52%] flex-col gap-6 rounded-3xl bg-primary px-6 py-7 sm:px-10">
               <div className="flex items-center gap-4">
                 <span className="flex size-12 items-center justify-center rounded-full bg-background/6 text-background">
@@ -98,7 +113,7 @@ export function SummitWhyZambiaSection() {
                 </div>
               </div>
             </div>
-          </article>
+          </MotionReveal>
         </div>
       </div>
     </section>

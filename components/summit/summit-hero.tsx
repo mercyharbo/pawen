@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { MotionReveal } from "@/components/motion-reveal";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -38,7 +39,7 @@ export function SummitHero({
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-32 text-center sm:gap-36 lg:gap-44">
-        <div className="flex flex-col items-center gap-8">
+        <MotionReveal className="flex flex-col items-center gap-8">
           <div className="flex max-w-4xl flex-col items-center gap-5">
             <h1
               id="summit-hero-heading"
@@ -75,14 +76,17 @@ export function SummitHero({
             </Button>
             <Button
               render={<Link href={speakUrl} />}
-              className="h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-accent hover:text-accent"
+              className="h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-champagne-gold hover:bg-champagne-gold hover:text-background"
             >
               Apply to Speak
             </Button>
           </div>
-        </div>
+        </MotionReveal>
 
-        <div className="max-w-4xl font-brand text-2xl font-normal leading-tight text-muted-beige sm:text-2xl lg:text-2xl xl:text-2xl 2xl:text-3xl 3xl:text-3xl">
+        <MotionReveal
+          className="max-w-4xl font-brand text-2xl font-normal leading-tight text-muted-beige sm:text-2xl lg:text-2xl xl:text-2xl 2xl:text-3xl 3xl:text-3xl"
+          delay={0.1}
+        >
           <p>
             Africa is entering a new era of transformation, powered by
             technology, capital, innovation, and shifting global influence. The
@@ -100,7 +104,7 @@ export function SummitHero({
             markets, and position themselves for Africa&apos;s next chapter of
             growth.
           </p>
-        </div>
+        </MotionReveal>
       </div>
     </section>
   );

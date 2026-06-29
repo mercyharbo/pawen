@@ -1,10 +1,9 @@
+import { MotionReveal } from "@/components/motion-reveal";
 import {
   ArrowUpRight,
   BadgeDollarSign,
   Bell,
   BellRingIcon,
-  Cpu,
-  Landmark,
   Laptop,
   Leaf,
   type LucideIcon,
@@ -59,8 +58,10 @@ function PillarCard({
 
   if (featured) {
     return (
-      <article
+      <MotionReveal
+        as="article"
         className={`flex min-h-64 flex-col justify-between gap-10 rounded-2xl bg-champagne-gold p-5 text-background sm:p-7 ${spanClass}`}
+        delay={0.02}
       >
         <div className="flex flex-col gap-5">
           <span className="flex size-8 items-center justify-center rounded-full border border-background/35 bg-background/8 text-background">
@@ -72,13 +73,15 @@ function PillarCard({
         <p className="max-w-md text-sm leading-5 text-background">
           {description}
         </p>
-      </article>
+      </MotionReveal>
     );
   }
 
   return (
-    <article
+    <MotionReveal
+      as="article"
       className={`group flex min-h-64 flex-col justify-between gap-10 rounded-2xl border border-champagne-gold/12 bg-background p-5 text-primary transition-colors hover:border-champagne-gold/35 sm:p-7 xl:min-h-72 ${spanClass}`}
+      delay={0.04}
     >
       <div className="flex flex-col gap-5">
         <span className="flex size-8 items-center justify-center rounded-full border border-primary/15 bg-primary/3 text-primary">
@@ -93,7 +96,7 @@ function PillarCard({
         className="size-5 text-primary/45 transition-colors group-hover:text-champagne-gold"
         aria-hidden="true"
       />
-    </article>
+    </MotionReveal>
   );
 }
 
@@ -104,12 +107,14 @@ export function SummitPillarsSection() {
       aria-labelledby="summit-pillars-heading"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-9">
-        <h2
-          id="summit-pillars-heading"
-          className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
-        >
-          Six Pillars. One Future.
-        </h2>
+        <MotionReveal>
+          <h2
+            id="summit-pillars-heading"
+            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
+          >
+            Six Pillars. One Future.
+          </h2>
+        </MotionReveal>
 
         <div className="grid w-full gap-3 md:grid-cols-2 lg:grid-cols-12 lg:gap-4">
           {pillars.map((pillar, index) => (

@@ -1,3 +1,4 @@
+import { MotionReveal } from '@/components/motion-reveal'
 import { Star } from 'lucide-react'
 import Image from 'next/image'
 
@@ -30,14 +31,19 @@ export function SummitWhyAttendSection() {
       aria-labelledby='summit-why-attend-heading'
     >
       <div className='mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6'>
-        <h2
-          id='summit-why-attend-heading'
-          className='font-melodrama text-5xl font-semibold leading-[0.95] text-champagne-gold sm:text-6xl lg:text-6xl 2xl:text-7xl'
-        >
-          Why Attend?
-        </h2>
+        <MotionReveal>
+          <h2
+            id='summit-why-attend-heading'
+            className='font-melodrama text-5xl font-semibold leading-[0.95] text-champagne-gold sm:text-6xl lg:text-6xl 2xl:text-7xl'
+          >
+            Why Attend?
+          </h2>
+        </MotionReveal>
 
-        <div className='flex flex-col gap-5 text-sm leading-5 text-primary sm:text-base sm:leading-6 lg:max-w-3xl'>
+        <MotionReveal
+          className='flex flex-col gap-5 text-sm leading-5 text-primary sm:text-base sm:leading-6 lg:max-w-3xl'
+          delay={0.08}
+        >
           <p>
             There is a different kind of power in being in a room full of women
             who understand the weight of leadership, the pressure to perform,
@@ -49,9 +55,12 @@ export function SummitWhyAttendSection() {
             Exhibitors, Entrepreneurs, Women in leadership and Board executives
             from across 35 countries in Africa, you will leave with:
           </p>
-        </div>
+        </MotionReveal>
 
-        <div className='relative aspect-[1.22] overflow-hidden rounded-3xl bg-card lg:aspect-[1.28]'>
+        <MotionReveal
+          className='relative aspect-[1.22] overflow-hidden rounded-3xl bg-card lg:aspect-[1.28]'
+          variant='image-reveal'
+        >
           <Image
             src='/images/submit-img.jpg'
             alt='PAWEN speaker presenting at a summit event'
@@ -59,20 +68,22 @@ export function SummitWhyAttendSection() {
             sizes='(min-width: 1024px) 48vw, 100vw'
             className='object-cover object-center'
           />
-        </div>
+        </MotionReveal>
 
         <div className='grid content-start gap-4 md:grid-cols-2 lg:grid-cols-12'>
           {attendBenefits.map((benefit, index) => (
-            <article
+            <MotionReveal
+              as='article'
               className={`flex min-h-28 items-start justify-center gap-3 rounded-lg bg-[#1d1c14] px-5 py-5 text-primary md:min-h-32 lg:min-h-28 ${benefitSpanClasses[index]}`}
               key={benefit}
+              delay={index * 0.03}
             >
               <Star
                 className='size-4 shrink-0 fill-champagne-gold text-champagne-gold'
                 aria-hidden='true'
               />
               <p className='text-sm leading-5 text-primary/86'>{benefit}</p>
-            </article>
+            </MotionReveal>
           ))}
         </div>
       </div>
