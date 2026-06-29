@@ -94,16 +94,16 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Button
-              render={<Link href={nominationsUrl} />}
+              asChild
               className="h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90"
             >
-              Nomination
+              <Link href={nominationsUrl}>Nomination</Link>
             </Button>
             <Button
-              render={<Link href={ticketsUrl} />}
+              asChild
               className="h-12 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90"
             >
-              Get Tickets
+              <Link href={ticketsUrl}>Get Tickets</Link>
             </Button>
           </div>
         </motion.div>

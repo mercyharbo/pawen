@@ -63,22 +63,22 @@ export function SummitHero({
 
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
-              render={<Link href={registerUrl} />}
+              asChild
               className="h-11 min-w-32 rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90"
             >
-              Register
+              <Link href={registerUrl}>Register</Link>
             </Button>
             <Button
-              render={<Link href={exhibitUrl} />}
+              asChild
               className="h-11 min-w-36 rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90"
             >
-              Apply to Exhibit
+              <Link href={exhibitUrl}>Apply to Exhibit</Link>
             </Button>
             <Button
-              render={<Link href={speakUrl} />}
+              asChild
               className="h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-champagne-gold hover:bg-champagne-gold hover:text-background"
             >
-              Apply to Speak
+              <Link href={speakUrl}>Apply to Speak</Link>
             </Button>
           </div>
         </MotionReveal>

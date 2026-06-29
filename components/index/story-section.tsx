@@ -75,10 +75,10 @@ export function StorySection({ supportUrl }: StorySectionProps) {
               Two days, <span className='text-primary'>One Platform:</span>
             </h2>
             <Button
-              render={<Link href={supportUrl} />}
+              asChild
               className='h-11 w-fit rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90'
             >
-              View More
+              <Link href={supportUrl}>View More</Link>
             </Button>
           </MotionReveal>
 

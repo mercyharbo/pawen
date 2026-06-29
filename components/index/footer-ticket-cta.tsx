@@ -18,10 +18,10 @@ export function FooterTicketCta({ ticketsUrl }: FooterTicketCtaProps) {
               InterContinental Hotel, Lusaka, Zambia.
             </p>
             <Button
-              render={<Link href={ticketsUrl} />}
+              asChild
               className="min-h-14 rounded-full bg-accent px-10 font-sans text-lg font-medium text-primary-foreground"
             >
-              Get Tickets
+              <Link href={ticketsUrl}>Get Tickets</Link>
             </Button>
           </div>
         </div>

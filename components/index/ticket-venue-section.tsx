@@ -44,10 +44,10 @@ export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
             INTERCONTINENTAL HOTEL, LUSAKA, ZAMBIA.
           </h2>
           <Button
-            render={<Link href={ticketsUrl} />}
+            asChild
             className="h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90"
           >
-            Get Tickets
+            <Link href={ticketsUrl}>Get Tickets</Link>
           </Button>
         </MotionReveal>
       </div>
