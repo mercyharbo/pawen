@@ -38,12 +38,13 @@ export function StorySection({ supportUrl }: StorySectionProps) {
             variant='scale-in'
           >
             <Image
-              src='/images/award.png'
-              alt='The PAWEN Awards trophy'
+              src='/Plaques.gif'
+              alt='PAWEN Awards plaques'
               width={1373}
               height={4096}
               className='h-auto w-36 sm:w-44 lg:w-52'
               priority
+              unoptimized
             />
           </MotionReveal>
 

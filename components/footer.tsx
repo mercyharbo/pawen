@@ -23,6 +23,34 @@ const contactLinks = [
   { label: "FAQ's", href: '#faq' },
 ] as const
 
+const policyLinks = [
+  {
+    label: 'Eligibility and integrity',
+    href: '/policies/eligibility-and-integrity',
+  },
+  {
+    label: 'Data privacy and safety',
+    href: '/policies/data-privacy-and-safety',
+  },
+  { label: 'Anti-harassment', href: '/policies/anti-harassment' },
+  {
+    label: 'Judging process and conflict of interest',
+    href: '/policies/judging-process-and-conflict-of-interest',
+  },
+  {
+    label: 'Nomination transparency and appeals',
+    href: '/policies/nomination-transparency-and-appeals',
+  },
+  {
+    label: 'Intellectual property and publicity rights',
+    href: '/policies/intellectual-property-and-publicity-rights',
+  },
+  {
+    label: 'Gender and inclusion',
+    href: '/policies/gender-and-inclusion',
+  },
+] as const
+
 const socialLinks = [
   { label: 'Instagram', href: '#', icon: InstagramIcon },
   { label: 'X', href: '#', icon: XIcon },
@@ -124,7 +152,7 @@ export function Footer() {
   return (
     <footer className='relative isolate overflow-hidden bg-background text-primary'>
       <div className='relative z-10 mx-auto flex w-full max-w-[1905px] flex-col gap-12 px-5 py-14 sm:px-8 lg:px-10 lg:py-20'>
-        <div className='grid gap-10 border-y border-border py-10 lg:grid-cols-[1.1fr_1fr_1fr_0.7fr] lg:gap-14'>
+        <div className='grid gap-10 border-y border-border py-10 lg:grid-cols-[1.1fr_0.8fr_0.8fr_1fr_1.2fr] lg:gap-10 xl:gap-14'>
           <section
             className='flex flex-col gap-5'
             aria-labelledby='footer-newsletter'
@@ -186,7 +214,7 @@ export function Footer() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
+                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
                 >
                   {item.label}
                 </Link>
@@ -206,7 +234,7 @@ export function Footer() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
+                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
                 >
                   {item.label}
                 </Link>
@@ -229,13 +257,36 @@ export function Footer() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className='w-fit text-sm font-medium leading-5 transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+                  className='w-fit text-sm font-medium leading-5 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent 2xl:text-base 2xl:leading-6'
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
           </address>
+
+          <nav
+            className='flex flex-col gap-4'
+            aria-labelledby='footer-policies'
+          >
+            <p
+              id='footer-policies'
+              className='text-sm font-normal opacity-90 leading-5'
+            >
+              Policies
+            </p>
+            <div className='flex flex-col gap-4'>
+              {policyLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className='w-fit text-sm font-medium leading-5 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent 2xl:text-base 2xl:leading-6'
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </nav>
         </div>
 
         <div className='flex flex-col justify-between gap-5 text-sm font-medium leading-5 md:flex-row md:items-center'>

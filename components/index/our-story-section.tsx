@@ -42,24 +42,13 @@ export function OurStorySection() {
           <h2 className="font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl">
             Our Story
           </h2>
-          <div className="flex max-w-3xl flex-col gap-1 text-sm leading-5 text-primary">
+          <div className="flex max-w-3xl flex-col gap-1 text-base text-primary">
             <p>
-              History is shaped by people whose vision, leadership and
-              determination move society forward.
+              Great achievements deserve more than applause. They deserve a
+              place in history. The PAWEN Awards recognises visionary women
+              across Africa and the diaspora, celebrating their impact while
+              preserving their legacy for generations to come.
             </p>
-            <p>
-              Across Africa and the diaspora, women are building businesses,
-              transforming industries, strengthening institutions and creating
-              opportunities that will influence generations to come.
-            </p>
-            <p>
-              The PAWEN Awards was established to honour those achievements and
-              ensure they receive the recognition they deserve. Because
-              exceptional achievement should not simply be celebrated in the
-              moment. It should be recorded, remembered and held up as part of
-              the continent&apos;s story.
-            </p>
-            <p>This is the legacy the PAWEN Awards was built to protect.</p>
           </div>
         </MotionReveal>
 
