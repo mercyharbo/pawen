@@ -50,7 +50,7 @@ export function WhyPawenSection() {
         aria-hidden='true'
       />
 
-      <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-16 text-center'>
+      <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-20 text-center'>
         <MotionReveal className='flex max-w-4xl flex-col items-center gap-5'>
           <h2 className='font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'>
             Why the PAWEN Awards Matter
@@ -80,20 +80,18 @@ export function WhyPawenSection() {
             Our Impact in Numbers
           </h3>
 
-          <div className='grid w-full gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0'>
-            {impactStats.map((stat, index) => (
+          <div className='grid w-full gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12 xl:gap-16'>
+            {impactStats.map((stat) => (
               <div
-                className={`flex min-h-28 flex-col items-center justify-center gap-3 ${
-                  index === 0 ? '' : 'lg:border-l lg:border-border'
-                }`}
+                className='flex min-h-28 flex-col items-center justify-center gap-3'
                 key={stat.label}
               >
                 <CountUpNumber
-                  className='font-brand text-5xl font-bold leading-none text-accent sm:text-6xl'
+                  className='font-brand text-5xl font-semibold leading-none text-accent sm:text-6xl'
                   suffix={stat.suffix}
                   target={stat.target}
                 />
-                <p className='text-xs font-bold leading-5 text-primary'>
+                <p className='text-xs uppercase leading-5 text-primary'>
                   {stat.label}
                 </p>
               </div>

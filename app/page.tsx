@@ -1,8 +1,8 @@
-import { Hero } from "@/components/hero";
-import { OurStorySection } from "@/components/our-story-section";
-import { StorySection } from "@/components/story-section";
-import { TicketVenueSection } from "@/components/ticket-venue-section";
-import { WhyPawenSection } from "@/components/why-pawen-section";
+import { Hero } from "@/components/index/hero";
+import { OurStorySection } from "@/components/index/our-story-section";
+import { StorySection } from "@/components/index/story-section";
+import { TicketVenueSection } from "@/components/index/ticket-venue-section";
+import { WhyPawenSection } from "@/components/index/why-pawen-section";
 import { externalLinks } from "@/lib/external-links";
 
 export default function Home() {

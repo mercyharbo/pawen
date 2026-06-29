@@ -1,5 +1,7 @@
-import { SummitHero } from "@/components/summit-hero";
-import { SummitWhyZambiaSection } from "@/components/summit-why-zambia-section";
+import { SummitHero } from "@/components/summit/summit-hero";
+import { SummitPillarsSection } from "@/components/summit/summit-pillars-section";
+import { SummitWhyAttendSection } from "@/components/summit/summit-why-attend-section";
+import { SummitWhyZambiaSection } from "@/components/summit/summit-why-zambia-section";
 import { externalLinks } from "@/lib/external-links";
 import type { Metadata } from "next";
 
@@ -17,6 +19,8 @@ export default function SummitPage() {
         exhibitUrl="#exhibition"
         speakUrl="#speakers"
       />
+      <SummitPillarsSection />
+      <SummitWhyAttendSection />
       <SummitWhyZambiaSection />
     </>
   );
