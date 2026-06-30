@@ -216,16 +216,16 @@ export function NominationForm() {
         />
       </section>
 
-      <section className="grid gap-5 border border-premium-gold/20 bg-background/80 p-5 sm:p-8">
+      <section className="flex flex-col gap-3 border border-premium-gold/20 bg-background/80 p-5 sm:p-8">
         <fieldset
           aria-describedby={
             fieldError(state, "confirmations")
               ? errorId("confirmations")
               : undefined
           }
-          className="grid gap-3"
+          className="flex flex-col gap-3"
         >
-          <legend>
+          <legend className="pb-3">
             <RequiredLabel>Confirmations</RequiredLabel>
           </legend>
           {confirmations.map((confirmation, index) => {
