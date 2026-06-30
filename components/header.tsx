@@ -7,7 +7,7 @@ const navItems = [
   { label: "Nominations", href: externalLinks.nominations },
   { label: "SUMMIT", href: "/summit" },
   { label: "Exhibition", href: "/exhibition" },
-  { label: "Award GALA", href: "#awards-gala" },
+  { label: "Award GALA", href: "/gala" },
 ] as const;
 
 export function Header() {
