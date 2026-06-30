@@ -58,6 +58,52 @@ const socialLinks = [
   { label: 'YouTube', href: '#', icon: YouTubeIcon },
 ] as const
 
+function FooterLargeLink({
+  href,
+  label,
+}: {
+  href: string
+  label: string
+}) {
+  return (
+    <Link
+      href={href}
+      className='group/footer-large relative flex w-fit items-center gap-3 py-1 text-xl font-medium leading-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
+    >
+      <span
+        className='size-2.5 origin-center rounded-full bg-accent opacity-0 transition-all duration-500 ease-out group-hover/footer-large:opacity-100 group-focus-visible/footer-large:opacity-100'
+        aria-hidden='true'
+      />
+      <span className='-translate-x-5 transition-transform duration-500 ease-out group-hover/footer-large:translate-x-0 group-focus-visible/footer-large:translate-x-0'>
+        {label}
+      </span>
+    </Link>
+  )
+}
+
+function FooterTextLink({
+  href,
+  label,
+  className = '',
+}: {
+  href: string
+  label: string
+  className?: string
+}) {
+  return (
+    <Link
+      href={href}
+      className={`group/footer-text relative w-fit overflow-hidden pb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${className}`}
+    >
+      <span>{label}</span>
+      <span
+        className='absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover/footer-text:scale-x-100 group-focus-visible/footer-text:scale-x-100'
+        aria-hidden='true'
+      />
+    </Link>
+  )
+}
+
 function InstagramIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -194,10 +240,17 @@ export function Footer() {
               <Button
                 type='button'
                 size='icon-lg'
-                className='size-16 rounded-full bg-primary text-2xl text-primary-foreground hover:bg-accent'
+                className='group/newsletter relative size-16 overflow-hidden rounded-full bg-primary text-2xl text-primary-foreground hover:bg-primary'
                 aria-label='Newsletter signup is coming soon'
               >
-                <ArrowUpRight className='size-8' aria-hidden='true' />
+                <span
+                  className='absolute inset-0 origin-bottom-left scale-0 rounded-full bg-accent transition-transform duration-500 ease-out group-hover/newsletter:scale-100 group-focus-visible/newsletter:scale-100'
+                  aria-hidden='true'
+                />
+                <ArrowUpRight
+                  className='relative z-10 size-8 transition-transform duration-500 ease-out group-hover/newsletter:-translate-y-0.5 group-hover/newsletter:translate-x-0.5 group-focus-visible/newsletter:-translate-y-0.5 group-focus-visible/newsletter:translate-x-0.5'
+                  aria-hidden='true'
+                />
               </Button>
             </div>
           </section>
@@ -211,13 +264,11 @@ export function Footer() {
             </p>
             <div className='flex flex-col gap-0'>
               {sitemapLinks.map((item) => (
-                <Link
+                <FooterLargeLink
                   key={item.label}
                   href={item.href}
-                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
-                >
-                  {item.label}
-                </Link>
+                  label={item.label}
+                />
               ))}
             </div>
           </nav>
@@ -231,13 +282,11 @@ export function Footer() {
             </p>
             <div className='flex flex-col gap-0'>
               {galleryLinks.map((item) => (
-                <Link
+                <FooterLargeLink
                   key={item.label}
                   href={item.href}
-                  className='w-fit py-1 text-xl font-medium leading-8 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
-                >
-                  {item.label}
-                </Link>
+                  label={item.label}
+                />
               ))}
             </div>
           </nav>
@@ -254,13 +303,12 @@ export function Footer() {
             </p>
             <div className='flex flex-col gap-4'>
               {contactLinks.map((item) => (
-                <Link
+                <FooterTextLink
                   key={item.label}
                   href={item.href}
-                  className='w-fit text-sm font-medium leading-5 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent 2xl:text-base 2xl:leading-6'
-                >
-                  {item.label}
-                </Link>
+                  label={item.label}
+                  className='text-sm font-medium leading-5 2xl:text-base 2xl:leading-6'
+                />
               ))}
             </div>
           </address>
@@ -277,13 +325,12 @@ export function Footer() {
             </p>
             <div className='flex flex-col gap-4'>
               {policyLinks.map((item) => (
-                <Link
+                <FooterTextLink
                   key={item.label}
                   href={item.href}
-                  className='w-fit text-sm font-medium leading-5 transition-colors duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent 2xl:text-base 2xl:leading-6'
-                >
-                  {item.label}
-                </Link>
+                  label={item.label}
+                  className='text-sm font-medium leading-5 2xl:text-base 2xl:leading-6'
+                />
               ))}
             </div>
           </nav>
@@ -298,20 +345,17 @@ export function Footer() {
               { label: 'Privacy Policy', href: '#privacy' },
               { label: 'Terms & Conditions', href: '#terms' },
             ].map((item) => (
-              <Link
+              <FooterTextLink
                 key={item.label}
                 href={item.href}
-                className='border-b border-primary pb-1 transition-colors duration-300 hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
-              >
-                {item.label}
-              </Link>
+                label={item.label}
+                className='text-sm font-medium leading-5'
+              />
             ))}
           </nav>
           <div className='flex flex-wrap items-center gap-1 text-sm font-normal'>
             <span>&copy; 2026 The PAWEN Award. Created by</span>
-            <Link href='#' className=''>
-              Favour Princewill
-            </Link>
+            <FooterTextLink href='#' label='Favour Princewill' />
           </div>
         </div>
       </div>
@@ -329,9 +373,13 @@ export function Footer() {
                 key={item.label}
                 href={item.href}
                 aria-label={item.label}
-                className='flex size-12 items-center justify-center rounded-full border border-border bg-primary/8 text-primary transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-accent-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+                className='group/social relative flex size-12 items-center justify-center overflow-hidden rounded-full border border-border bg-primary/8 text-primary transition-transform duration-500 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
               >
-                <Icon className='size-5' />
+                <span
+                  className='absolute inset-0 origin-bottom-left scale-0 rounded-full bg-accent transition-transform duration-500 ease-out group-hover/social:scale-100 group-focus-visible/social:scale-100'
+                  aria-hidden='true'
+                />
+                <Icon className='relative z-10 size-5 transition-colors duration-500 group-hover/social:text-accent-foreground group-focus-visible/social:text-accent-foreground' />
               </Link>
             )
           })}

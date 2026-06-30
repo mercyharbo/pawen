@@ -37,7 +37,7 @@ export function NominationHero() {
           >
             Nominate the African Women Shaping Our World
           </h1>
-          <p className="max-w-2xl font-brand text-lg leading-8 text-background sm:text-xl sm:leading-8">
+          <p className="max-w-2xl font-brand text-lg leading-8 text-white sm:text-xl sm:leading-8">
             Celebrate the founders, intrapreneurs, and leaders redefining
             business and career across Africa and the diaspora.
           </p>

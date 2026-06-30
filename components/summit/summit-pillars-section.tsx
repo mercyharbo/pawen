@@ -47,55 +47,38 @@ const pillars: Pillar[] = [
 
 function PillarCard({
   pillar,
-  featured = false,
   spanClass,
 }: {
-  featured?: boolean;
   pillar: Pillar;
   spanClass: string;
 }) {
   const { description, Icon, title } = pillar;
 
-  if (featured) {
-    return (
-      <MotionReveal
-        as="article"
-        className={`flex min-h-64 flex-col justify-between gap-10 rounded-2xl bg-champagne-gold p-5 text-background sm:p-7 ${spanClass}`}
-        delay={0.02}
-      >
-        <div className="flex flex-col gap-5">
-          <span className="flex size-8 items-center justify-center rounded-full border border-background/35 bg-background/8 text-background">
-            <Icon className="size-4" aria-hidden="true" />
-          </span>
-          <h3 className="text-xl font-medium leading-7">{title}</h3>
-        </div>
-
-        <p className="max-w-md text-sm leading-5 text-background">
-          {description}
-        </p>
-      </MotionReveal>
-    );
-  }
-
   return (
     <MotionReveal
       as="article"
-      className={`group flex min-h-64 flex-col justify-between gap-10 rounded-2xl border border-champagne-gold/12 bg-background p-5 text-primary transition-colors hover:border-champagne-gold/35 sm:p-7 xl:min-h-72 ${spanClass}`}
+      className={`group/pillar-card flex min-h-64 flex-col justify-between gap-10 rounded-2xl border border-champagne-gold/12 bg-background p-5 text-primary transition-colors duration-500 ease-out hover:border-champagne-gold hover:bg-champagne-gold hover:text-background sm:p-7 xl:min-h-72 ${spanClass}`}
       delay={0.04}
     >
       <div className="flex flex-col gap-5">
-        <span className="flex size-8 items-center justify-center rounded-full border border-primary/15 bg-primary/3 text-primary">
+        <span className="flex size-8 items-center justify-center rounded-full border border-primary/15 bg-primary/3 text-primary transition-colors duration-500 ease-out group-hover/pillar-card:border-background/35 group-hover/pillar-card:bg-background/8 group-hover/pillar-card:text-background">
           <Icon className="size-4" aria-hidden="true" />
         </span>
-        <h3 className="max-w-64 text-base font-normal leading-6 text-primary/82 sm:text-lg sm:leading-7">
+        <h3 className="max-w-64 text-base font-normal leading-6 text-primary/82 transition-colors duration-500 ease-out group-hover/pillar-card:text-background sm:text-lg sm:leading-7">
           {title}
         </h3>
       </div>
 
-      <ArrowUpRight
-        className="size-5 text-primary/45 transition-colors group-hover:text-champagne-gold"
-        aria-hidden="true"
-      />
+      {description ? (
+        <p className="max-w-md text-sm leading-5 text-primary transition-colors duration-500 ease-out group-hover/pillar-card:text-background">
+          {description}
+        </p>
+      ) : (
+        <ArrowUpRight
+          className="size-5 text-primary/45 transition-colors duration-500 ease-out group-hover/pillar-card:text-background"
+          aria-hidden="true"
+        />
+      )}
     </MotionReveal>
   );
 }
@@ -121,7 +104,6 @@ export function SummitPillarsSection() {
             <PillarCard
               key={pillar.title}
               pillar={pillar}
-              featured={index === 0}
               spanClass={
                 index === 0
                   ? "lg:col-span-6"

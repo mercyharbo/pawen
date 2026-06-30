@@ -33,14 +33,14 @@ export function ExhibitionWhySection() {
           {exhibitionBenefits.map((benefit, index) => (
             <MotionReveal
               as="article"
-              className="flex min-h-44 flex-col justify-between gap-10 rounded-xl border border-champagne-gold/12 bg-background p-4 text-primary transition-colors hover:border-champagne-gold/35 sm:min-h-48 lg:min-h-44"
+              className="group/exhibit-card flex min-h-44 flex-col justify-between gap-10 rounded-xl border border-champagne-gold/12 bg-background p-4 text-primary transition-colors duration-500 ease-out hover:border-champagne-gold hover:bg-champagne-gold hover:text-background sm:min-h-48 lg:min-h-44"
               delay={index * 0.04}
               key={benefit}
             >
-              <span className="flex size-8 items-center justify-center rounded-full border border-primary/15 text-xs leading-none text-primary">
+              <span className="flex size-8 items-center justify-center rounded-full border border-primary/15 text-xs leading-none text-primary transition-colors duration-500 ease-out group-hover/exhibit-card:border-background/35 group-hover/exhibit-card:text-background">
                 {index + 1}
               </span>
-              <p className="font-brand text-sm leading-5 text-primary/82 sm:text-base sm:leading-6">
+              <p className="font-brand text-sm leading-5 text-primary/82 transition-colors duration-500 ease-out group-hover/exhibit-card:text-background sm:text-base sm:leading-6">
                 {benefit}
               </p>
             </MotionReveal>

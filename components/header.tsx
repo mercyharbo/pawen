@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { externalLinks } from "@/lib/external-links";
+import { HeaderNavLinks } from "@/components/header-nav-links";
+import { MobileNavMenu } from "@/components/mobile-nav-menu";
+import type { ReactNode } from "react";
 
 const navItems = [
   { label: "PAWEN Hall", href: "/" },
@@ -9,6 +12,31 @@ const navItems = [
   { label: "Exhibition", href: "/exhibition" },
   { label: "Award GALA", href: "/gala" },
 ] as const;
+
+function HeaderMotionLink({
+  children,
+  className = "",
+  href,
+}: {
+  children: ReactNode;
+  className?: string;
+  href: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`group/header-link relative inline-flex overflow-hidden pb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${className}`}
+    >
+      <span className="transition-transform duration-500 ease-out group-hover/header-link:-translate-y-0.5 group-focus-visible/header-link:-translate-y-0.5">
+        {children}
+      </span>
+      <span
+        className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover/header-link:scale-x-100 group-focus-visible/header-link:scale-x-100"
+        aria-hidden="true"
+      />
+    </Link>
+  );
+}
 
 export function Header() {
   return (
@@ -19,19 +47,19 @@ export function Header() {
             <div className="hidden md:block" />
             <div className="flex flex-wrap items-center justify-center gap-3 text-center font-bold">
               <span>Winners announced!</span>
-              <Link
+              <HeaderMotionLink
                 href="#award-categories"
-                className="text-muted-foreground transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                className="text-muted-foreground"
               >
                 Dive In
-              </Link>
+              </HeaderMotionLink>
             </div>
-            <Link
+            {/* <HeaderMotionLink
               href={externalLinks.nominations}
-              className="hidden justify-self-end text-muted-foreground transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:inline-flex"
+              className="hidden justify-self-end text-muted-foreground md:inline-flex"
             >
               Login or Register
-            </Link>
+            </HeaderMotionLink> */}
           </div>
         </div>
       </div>
@@ -58,48 +86,10 @@ export function Header() {
             className="hidden items-center gap-6 font-brand text-sm font-bold text-foreground lg:flex xl:gap-8"
             aria-label="Primary navigation"
           >
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="transition-colors duration-300 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-              >
-                {item.label}
-              </Link>
-            ))}
+            <HeaderNavLinks navItems={navItems} />
           </nav>
 
-          <details className="group relative flex justify-end lg:hidden">
-            <summary
-              className="flex size-11 cursor-pointer list-none items-center justify-center rounded-full border border-border text-foreground transition-colors duration-300 marker:hidden hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-              aria-label="Open navigation menu"
-            >
-              <span className="flex flex-col gap-1.5" aria-hidden="true">
-                <span className="block h-px w-5 bg-current" />
-                <span className="block h-px w-5 bg-current" />
-              </span>
-            </summary>
-            <nav
-              className="absolute right-0 top-14 flex w-[min(18rem,calc(100vw-2.5rem))] flex-col gap-1 rounded-2xl border border-border bg-popover p-3 font-brand text-sm font-semibold shadow-2xl shadow-background/50"
-              aria-label="Mobile navigation"
-            >
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="rounded-xl px-4 py-3 text-popover-foreground transition-colors duration-300 hover:bg-muted hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Link
-                href={externalLinks.nominations}
-                className="rounded-xl px-4 py-3 text-muted-foreground transition-colors duration-300 hover:bg-muted hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
-              >
-                Login or Register
-              </Link>
-            </nav>
-          </details>
+          <MobileNavMenu navItems={navItems} />
         </div>
       </div>
     </header>

@@ -12,7 +12,6 @@ type TicketCard = {
   description: string;
   features: string[];
   action: string;
-  featured?: boolean;
 };
 
 const ticketCards: TicketCard[] = [
@@ -36,7 +35,6 @@ const ticketCards: TicketCard[] = [
       "A bottle of champagne to celebrate",
     ],
     action: "Book a Table of Ten",
-    featured: true,
   },
   {
     title: "Sponsor Table",
@@ -78,24 +76,12 @@ export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
           {ticketCards.map((card, index) => (
             <MotionReveal
               as="article"
-              className={[
-                "flex min-h-80 flex-col gap-10 rounded-2xl border px-6 py-8 sm:px-8",
-                card.featured
-                  ? "border-champagne-gold bg-champagne-gold text-background"
-                  : "border-primary/10 bg-card text-primary",
-              ].join(" ")}
+              className="group/ticket-card flex min-h-80 flex-col gap-10 rounded-2xl border border-primary/10 bg-card px-6 py-8 text-primary transition-colors duration-500 ease-out hover:border-champagne-gold hover:bg-champagne-gold hover:text-background focus-within:border-champagne-gold focus-within:bg-champagne-gold focus-within:text-background sm:px-8"
               delay={index * 0.08}
               key={card.title}
             >
               <div className="flex flex-col gap-6">
-                <div
-                  className={[
-                    "flex size-7 items-center justify-center rounded-full border",
-                    card.featured
-                      ? "border-background/30 text-background"
-                      : "border-primary/15 text-muted-beige",
-                  ].join(" ")}
-                >
+                <div className="flex size-7 items-center justify-center rounded-full border border-primary/15 text-muted-beige transition-colors duration-500 ease-out group-hover/ticket-card:border-background/30 group-hover/ticket-card:text-background group-focus-within/ticket-card:border-background/30 group-focus-within/ticket-card:text-background">
                   <Ticket className="size-3.5" aria-hidden="true" />
                 </div>
 
@@ -103,12 +89,7 @@ export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
                   <h3 className="font-melodrama text-3xl font-medium leading-none">
                     {card.title}
                   </h3>
-                  <p
-                    className={[
-                      "font-brand text-xs leading-5",
-                      card.featured ? "text-background" : "text-muted-beige",
-                    ].join(" ")}
-                  >
+                  <p className="font-brand text-xs leading-5 text-muted-beige transition-colors duration-500 ease-out group-hover/ticket-card:text-background group-focus-within/ticket-card:text-background">
                     {card.description}
                   </p>
                 </div>
@@ -119,12 +100,7 @@ export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
                   {card.features.map((feature) => (
                     <li className="flex items-start gap-2" key={feature}>
                       <Star
-                        className={[
-                          "size-3.5 shrink-0",
-                          card.featured
-                            ? "fill-background text-background"
-                            : "fill-champagne-gold text-champagne-gold",
-                        ].join(" ")}
+                        className="size-3.5 shrink-0 fill-champagne-gold text-champagne-gold transition-colors duration-500 ease-out group-hover/ticket-card:fill-background group-hover/ticket-card:text-background group-focus-within/ticket-card:fill-background group-focus-within/ticket-card:text-background"
                         aria-hidden="true"
                       />
                       <span>{feature}</span>
@@ -134,12 +110,7 @@ export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
 
                 <Button
                   asChild
-                  className={[
-                    "h-11 w-full rounded-full px-6 text-xs font-medium",
-                    card.featured
-                      ? "bg-background text-primary hover:bg-background/90"
-                      : "border border-primary/80 bg-transparent text-primary hover:bg-primary hover:text-background",
-                  ].join(" ")}
+                  className="h-11 w-full rounded-full border border-primary/80 bg-transparent px-6 text-xs font-medium text-primary transition-colors duration-500 ease-out hover:bg-primary hover:text-background group-hover/ticket-card:border-background group-hover/ticket-card:bg-background group-hover/ticket-card:text-primary group-focus-within/ticket-card:border-background group-focus-within/ticket-card:bg-background group-focus-within/ticket-card:text-primary"
                 >
                   <Link href={ticketsUrl}>{card.action}</Link>
                 </Button>
