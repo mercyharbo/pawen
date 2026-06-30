@@ -9,6 +9,7 @@
   --color-premium-gold: #d4af37;
   --color-champagne-gold: #e8c872;
   --color-dark-gold: #9f7a1f;
+  --color-exhibition-gold: #c9942a;
   --color-muted-beige: #c8bfae;
   --color-soft-gray: #9a948a;
   --color-warm-bronze: #b88a44;
@@ -47,6 +48,7 @@
   --premium-gold: var(--color-premium-gold);
   --champagne-gold: var(--color-champagne-gold);
   --dark-gold: var(--color-dark-gold);
+  --exhibition-gold: var(--color-exhibition-gold);
   --muted-beige: var(--color-muted-beige);
   --soft-gray: var(--color-soft-gray);
   --warm-bronze: var(--color-warm-bronze);
@@ -73,6 +75,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+@utility bg-exhibition-gold {
+  background-color: var(--exhibition-gold);
 }
 
 body::before {

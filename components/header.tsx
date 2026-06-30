@@ -6,7 +6,7 @@ const navItems = [
   { label: "PAWEN Hall", href: "/" },
   { label: "Nominations", href: externalLinks.nominations },
   { label: "SUMMIT", href: "/summit" },
-  { label: "Exhibition", href: "#exhibition" },
+  { label: "Exhibition", href: "/exhibition" },
   { label: "Award GALA", href: "#awards-gala" },
 ] as const;
 
@@ -44,7 +44,7 @@ export function Header() {
             aria-label="PAWEN home"
           >
             <Image
-              src="/logo.png"
+              src="/Group.svg"
               alt=""
               width={92}
               height={55}

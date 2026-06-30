@@ -1,0 +1,64 @@
+import { MotionReveal } from "@/components/motion-reveal";
+import Image from "next/image";
+
+const expectationItems = [
+  "A curated pan-African audience",
+  "High-value networking opportunities",
+  "Brand exposure before, during, and after the summit",
+  "Access to decision-makers and ecosystem leaders",
+  "A professionally curated exhibition experience",
+  "A powerful environment for collaboration and growth",
+] as const;
+
+export function ExhibitionExpectSection() {
+  return (
+    <section
+      aria-labelledby="exhibition-expect-heading"
+      className="bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+    >
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-8 xl:gap-12">
+        <MotionReveal className="flex flex-col gap-8">
+          <h2
+            id="exhibition-expect-heading"
+            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
+          >
+            What You Can Expect
+          </h2>
+
+          <ul className="flex flex-col border-y border-primary/10">
+            {expectationItems.map((item) => (
+              <li
+                className="flex items-center gap-3 border-b border-primary/10 py-4 last:border-b-0"
+                key={item}
+              >
+                <span
+                  className="text-base leading-none text-champagne-gold"
+                  aria-hidden="true"
+                >
+                  *
+                </span>
+                <span className="font-brand text-sm leading-6 text-primary/86">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </MotionReveal>
+
+        <MotionReveal
+          className="relative aspect-[1.65] overflow-hidden rounded-xl bg-card"
+          delay={0.08}
+          variant="image-reveal"
+        >
+          <Image
+            src="/images/submit-img.jpg"
+            alt="PAWEN speaker presenting at the summit"
+            fill
+            sizes="(min-width: 1024px) 44vw, 100vw"
+            className="object-cover object-center"
+          />
+        </MotionReveal>
+      </div>
+    </section>
+  );
+}
