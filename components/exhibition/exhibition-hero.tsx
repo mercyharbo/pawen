@@ -33,7 +33,7 @@ export function ExhibitionHero() {
           <div className='flex max-w-4xl flex-col items-center gap-5'>
             <h1
               id='exhibition-hero-heading'
-              className='font-melodrama text-4xl font-semibold leading-tight text-champagne-gold sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-7xl'
+              className='text-4xl font-semibold leading-tight max-w-2xl text-champagne-gold sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-7xl'
             >
               The PAWEN Exhibition
             </h1>
@@ -52,7 +52,7 @@ export function ExhibitionHero() {
               delay={0.08}
               variant='scale-in'
             >
-              <p className='max-w-lg font-brand text-sm font-medium leading-6 sm:text-base sm:leading-7'>
+              <p className='max-w-lg font-brand text-sm leading-6 sm:text-base sm:leading-7'>
                 Taking place alongside the PAWEN Summit 2026 in Lusaka, the
                 exhibition brings together founders, executives, investors,
                 buyers, corporates, policymakers, media, and decision-makers
@@ -65,7 +65,7 @@ export function ExhibitionHero() {
               delay={0.16}
               variant='scale-in'
             >
-              <p className='max-w-xs font-brand text-sm font-medium leading-6 sm:text-base sm:leading-7'>
+              <p className='max-w-xs font-brand text-sm leading-6 sm:text-base sm:leading-7'>
                 This is where brands get seen, businesses get discovered, and
                 conversations turn into real opportunities.
               </p>

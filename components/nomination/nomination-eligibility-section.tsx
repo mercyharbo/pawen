@@ -50,7 +50,7 @@ export function NominationEligibilitySection() {
             >
               <li className="flex items-start gap-4 py-5">
                 <Star
-                  className="size-4 shrink-0 fill-champagne-gold text-champagne-gold sm:size-4"
+                  className="size-4 mt-2 shrink-0 fill-champagne-gold text-champagne-gold sm:size-4"
                   aria-hidden="true"
                 />
                 <span className="font-brand text-lg leading-8 text-primary sm:text-2xl sm:leading-9">

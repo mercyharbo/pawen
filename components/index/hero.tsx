@@ -18,7 +18,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
   } as const;
 
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden bg-background text-foreground">
+    <section className="relative isolate flex min-h-[calc(115svh-7.875rem)] overflow-hidden bg-background text-foreground">
       <motion.div
         className="absolute inset-0"
         initial={reduceMotion ? false : { opacity: 0.68, scale: 1.04 }}
@@ -95,13 +95,13 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Button
               asChild
-              className="h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90"
+              className="h-12 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90"
             >
               <Link href={nominationsUrl}>Nomination</Link>
             </Button>
             <Button
               asChild
-              className="h-12 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              className="h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90"
             >
               <Link href={ticketsUrl}>Get Tickets</Link>
             </Button>

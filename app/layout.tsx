@@ -1,28 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Urbanist } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "lenis/dist/lenis.css";
 import "./globals.css";
-
-const bodyFont = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const displayFont = Playfair_Display({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const brandFont = Urbanist({
-  variable: "--font-urbanist",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "The PAWEN Awards & Summit 2026",
@@ -36,14 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${bodyFont.variable} ${displayFont.variable} ${brandFont.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <head>
         <link
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=melodrama@400,500,600,700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
         />
       </head>
       <body className="min-h-full flex flex-col">

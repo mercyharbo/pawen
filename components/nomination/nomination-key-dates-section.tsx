@@ -46,7 +46,7 @@ export function NominationKeyDatesSection({
         <MotionReveal className="relative z-10 flex w-full max-w-5xl flex-col justify-center gap-7">
           <h2
             id="nomination-key-dates-heading"
-            className="font-melodrama text-5xl font-medium leading-[0.98] text-primary sm:text-6xl lg:text-7xl"
+            className="text-5xl font-medium leading-[0.98] text-primary md:text-4xl lg:text-6xl"
           >
             KEY DATES
           </h2>

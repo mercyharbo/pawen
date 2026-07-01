@@ -1,4 +1,5 @@
 import { MotionReveal } from "@/components/motion-reveal";
+import { Star } from "lucide-react";
 import Image from "next/image";
 
 const expectationItems = [
@@ -20,7 +21,7 @@ export function ExhibitionExpectSection() {
         <MotionReveal className="flex flex-col gap-8">
           <h2
             id="exhibition-expect-heading"
-            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
+            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-5xl 3xl:text-5xl"
           >
             What You Can Expect
           </h2>
@@ -31,12 +32,10 @@ export function ExhibitionExpectSection() {
                 className="flex items-center gap-3 border-b border-primary/10 py-4 last:border-b-0"
                 key={item}
               >
-                <span
-                  className="text-base leading-none text-champagne-gold"
+                <Star
+                  className="size-4 shrink-0 fill-champagne-gold text-champagne-gold"
                   aria-hidden="true"
-                >
-                  *
-                </span>
+                />
                 <span className="font-brand text-sm leading-6 text-primary/86">
                   {item}
                 </span>

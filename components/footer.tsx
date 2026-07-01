@@ -58,29 +58,6 @@ const socialLinks = [
   { label: 'YouTube', href: '#', icon: YouTubeIcon },
 ] as const
 
-function FooterLargeLink({
-  href,
-  label,
-}: {
-  href: string
-  label: string
-}) {
-  return (
-    <Link
-      href={href}
-      className='group/footer-large relative flex w-fit items-center gap-3 py-1 text-xl font-medium leading-8 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent lg:text-lg lg:leading-7 xl:text-xl xl:leading-8 2xl:text-2xl 2xl:leading-10 3xl:text-2xl 3xl:leading-10'
-    >
-      <span
-        className='size-2.5 origin-center rounded-full bg-accent opacity-0 transition-all duration-500 ease-out group-hover/footer-large:opacity-100 group-focus-visible/footer-large:opacity-100'
-        aria-hidden='true'
-      />
-      <span className='-translate-x-5 transition-transform duration-500 ease-out group-hover/footer-large:translate-x-0 group-focus-visible/footer-large:translate-x-0'>
-        {label}
-      </span>
-    </Link>
-  )
-}
-
 function FooterTextLink({
   href,
   label,
@@ -262,12 +239,13 @@ export function Footer() {
             >
               Sitemap
             </p>
-            <div className='flex flex-col gap-0'>
+            <div className='flex flex-col gap-4'>
               {sitemapLinks.map((item) => (
-                <FooterLargeLink
+                <FooterTextLink
                   key={item.label}
                   href={item.href}
                   label={item.label}
+                  className='text-sm font-medium leading-5 2xl:text-base 2xl:leading-6'
                 />
               ))}
             </div>
@@ -280,12 +258,13 @@ export function Footer() {
             >
               Gallery
             </p>
-            <div className='flex flex-col gap-0'>
+            <div className='flex flex-col gap-4'>
               {galleryLinks.map((item) => (
-                <FooterLargeLink
+                <FooterTextLink
                   key={item.label}
                   href={item.href}
                   label={item.label}
+                  className='text-sm font-medium leading-5 2xl:text-base 2xl:leading-6'
                 />
               ))}
             </div>
