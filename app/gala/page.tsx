@@ -4,6 +4,7 @@ import { GalaFaqSection } from "@/components/gala/gala-faq-section";
 import { GalaFinalCtaSection } from "@/components/gala/gala-final-cta-section";
 import { GalaNightSection } from "@/components/gala/gala-night-section";
 import { GalaPastWinnersSection } from "@/components/gala/gala-past-winners-section";
+import { GalaSponsorSection } from "@/components/gala/gala-sponsor-section";
 import { GalaTicketsSection } from "@/components/gala/gala-tickets-section";
 import { GalaVictoriaFallsSection } from "@/components/gala/gala-victoria-falls-section";
 import { externalLinks } from "@/lib/external-links";
@@ -27,6 +28,7 @@ export default function GalaPage() {
       <GalaDressCodeSection />
       <GalaTicketsSection ticketsUrl={externalLinks.tickets} />
       <GalaVictoriaFallsSection />
+      <GalaSponsorSection sponsorUrl={externalLinks.tickets} />
       <GalaFaqSection />
       <GalaFinalCtaSection ticketsUrl={externalLinks.tickets} />
     </>
