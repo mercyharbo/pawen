@@ -15,7 +15,7 @@ export function ExhibitionExpectSection() {
   return (
     <section
       aria-labelledby="exhibition-expect-heading"
-      className="bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="bg-[linear-gradient(180deg,#1c062d_0%,#1c062d_42%,rgba(28,6,45,0.82)_58%,var(--background)_74%,var(--background)_100%)] px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
     >
       <div className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-8 xl:gap-12">
         <MotionReveal className="flex flex-col gap-8">

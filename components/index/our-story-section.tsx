@@ -34,10 +34,15 @@ const sponsorLogos = [
 export function OurStorySection() {
   return (
     <section
-      className="bg-background px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28"
+      className="relative isolate overflow-hidden bg-background px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28"
       id="our-story-details"
     >
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-14">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[76%] bg-[linear-gradient(180deg,#1c062d_0%,#1c062d_56%,rgba(28,6,45,0.82)_72%,rgba(5,5,5,0)_100%)]"
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-14">
         <MotionReveal className="flex max-w-4xl flex-col items-center gap-8 text-center">
           <h2 className="font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl">
             Our Story

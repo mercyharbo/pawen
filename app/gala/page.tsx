@@ -18,17 +18,19 @@ export const metadata: Metadata = {
 
 export default function GalaPage() {
   return (
-    <main className="overflow-x-hidden">
-      <GalaHero
-        brochureUrl="#brochure"
-        ticketsUrl={externalLinks.tickets}
-      />
-      <GalaNightSection />
-      <GalaPastWinnersSection />
-      <GalaDressCodeSection />
-      <GalaTicketsSection ticketsUrl={externalLinks.tickets} />
-      <GalaVictoriaFallsSection />
-      <GalaSponsorSection sponsorUrl={externalLinks.tickets} />
+    <main className="overflow-x-clip">
+      <div className="bg-[#1c062d]">
+        <GalaHero
+          brochureUrl="#brochure"
+          ticketsUrl={externalLinks.tickets}
+        />
+        <GalaNightSection />
+        <GalaPastWinnersSection />
+        <GalaDressCodeSection />
+        <GalaTicketsSection ticketsUrl={externalLinks.tickets} />
+        <GalaVictoriaFallsSection />
+        <GalaSponsorSection sponsorUrl={externalLinks.tickets} />
+      </div>
       <GalaFaqSection />
       <GalaFinalCtaSection ticketsUrl={externalLinks.tickets} />
     </main>

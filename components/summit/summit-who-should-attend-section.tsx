@@ -64,7 +64,7 @@ function AttendeeProfileCard({
 export function SummitWhoShouldAttendSection() {
   return (
     <section
-      className='relative isolate overflow-hidden bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-24'
+      className='relative isolate overflow-hidden bg-[linear-gradient(180deg,#1c062d_0%,#1c062d_42%,rgba(28,6,45,0.82)_58%,var(--background)_74%,var(--background)_100%)] px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-24'
       aria-labelledby='summit-who-should-attend-heading'
     >
       <Image

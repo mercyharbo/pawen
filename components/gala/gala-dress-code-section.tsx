@@ -13,7 +13,7 @@ export function GalaDressCodeSection() {
   return (
     <section
       aria-labelledby='gala-dress-code-heading'
-      className='bg-background px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32'
+      className='px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32'
     >
       <MotionReveal className='mx-auto flex w-full max-w-4xl flex-col items-center gap-8 text-center'>
         <div className='flex flex-col items-center gap-6'>

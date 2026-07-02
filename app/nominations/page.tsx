@@ -16,10 +16,12 @@ export const metadata: Metadata = {
 export default function NominationsPage() {
   return (
     <>
-      <NominationHero />
-      <NominationWhySection />
-      <NominationEligibilitySection />
-      <NominationAwardCategoriesSection />
+      <div className="bg-[#1c062d]">
+        <NominationHero />
+        <NominationWhySection />
+        <NominationEligibilitySection />
+        <NominationAwardCategoriesSection />
+      </div>
       <NominationKeyDatesSection ticketsUrl={externalLinks.tickets} />
       <NominationFormCtaSection />
     </>

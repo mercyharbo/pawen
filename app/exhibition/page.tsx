@@ -16,11 +16,13 @@ export const metadata: Metadata = {
 export default function ExhibitionPage() {
   return (
     <>
-      <ExhibitionHero />
-      <ExhibitionWhySection />
-      <ExhibitionPotentialSection />
-      <ExhibitionWhoSection />
-      <ExhibitionExpectSection />
+      <div className="bg-[#1c062d]">
+        <ExhibitionHero />
+        <ExhibitionWhySection />
+        <ExhibitionPotentialSection />
+        <ExhibitionWhoSection />
+        <ExhibitionExpectSection />
+      </div>
       <ExhibitionFinalCtaSection
         exhibitUrl="#exhibition"
         registerUrl={externalLinks.tickets}

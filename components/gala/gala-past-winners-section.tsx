@@ -1,19 +1,24 @@
 import { MotionReveal } from "@/components/motion-reveal";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const winnerGroups = [
   {
     year: "2023",
     description: "The women honoured in our inaugural celebration",
-    winnerLabel: "2023 Winners",
-    highlightLabel: "2023 Highlight",
+    winners: Array.from({ length: 4 }, () => "2023 Winners"),
+    highlights: Array.from({ length: 3 }, () => "2023 Highlight"),
+  },
+  {
+    year: "2024",
+    description: "The women celebrated in our second year",
+    winners: Array.from({ length: 4 }, () => "2024 Winners"),
+    highlights: Array.from({ length: 3 }, () => "2024 Highlight"),
   },
   {
     year: "2025",
     description: "Last year's class of changemakers",
-    winnerLabel: "2025 Winners",
-    highlightLabel: "2025 Highlight",
+    winners: Array.from({ length: 4 }, () => "2025 Winners"),
+    highlights: Array.from({ length: 3 }, () => "2025 Highlight"),
   },
 ] as const;
 
@@ -22,56 +27,62 @@ export function GalaPastWinnersSection() {
     <section
       id="hall-of-fame"
       aria-labelledby="gala-past-winners-heading"
-      className="bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
     >
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
-        <MotionReveal className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10">
+        <MotionReveal className="flex flex-col items-center gap-3 text-center">
           <h2
             id="gala-past-winners-heading"
-            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-6xl"
+            className="font-melodrama text-4xl font-semibold leading-tight text-champagne-gold sm:text-5xl lg:text-6xl"
           >
             PAWEN Awards Past Winners
           </h2>
-
-          <Button
-            asChild
-            className="h-11 w-fit rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90"
-          >
-            <Link href="#hall-of-fame">View Full Hall of Fame</Link>
-          </Button>
+          <p className="font-brand text-lg leading-7 text-primary sm:text-2xl">
+            The women honoured in our inaugural celebration
+          </p>
         </MotionReveal>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {winnerGroups.map((group, index) => (
-            <MotionReveal
-              as="article"
-              className="flex flex-col gap-6"
-              delay={index * 0.08}
+        <Tabs defaultValue={winnerGroups[0].year} className="w-full items-center gap-8">
+          <TabsList aria-label="Past winners by year">
+            {winnerGroups.map((group) => (
+              <TabsTrigger key={group.year} value={group.year}>
+                {group.year}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {winnerGroups.map((group) => (
+            <TabsContent
+              className="w-full"
               key={group.year}
+              value={group.year}
             >
               <div className="flex flex-col gap-2">
-                <h3 className="font-melodrama text-4xl font-medium leading-none text-primary sm:text-5xl">
-                  {group.year}
-                </h3>
-                <p className="font-brand text-base leading-7 text-primary sm:text-lg">
-                  {group.description}
-                </p>
-              </div>
+                <div className="grid w-full gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                  {group.winners.map((label, index) => (
+                    <div
+                      className="flex min-h-72 items-center justify-center rounded-xl bg-gray-200 px-6 py-8 text-center font-brand text-base leading-6 text-background sm:min-h-96"
+                      key={`${group.year}-winner-${index}`}
+                    >
+                      {label}
+                    </div>
+                  ))}
+                </div>
 
-              <div className="grid gap-2 sm:grid-cols-2">
-                <div className="flex min-h-80 items-center justify-center rounded-2xl bg-champagne-gold px-6 py-8 text-center font-brand text-sm font-medium text-background sm:min-h-96">
-                  {group.winnerLabel}
-                </div>
-                <div className="flex min-h-80 items-center justify-center rounded-2xl bg-champagne-gold px-6 py-8 text-center font-brand text-sm font-medium text-background sm:min-h-96">
-                  {group.winnerLabel}
-                </div>
-                <div className="flex min-h-36 items-center justify-center rounded-2xl bg-champagne-gold px-6 py-8 text-center font-brand text-sm font-medium text-background sm:col-span-2 sm:min-h-40">
-                  {group.highlightLabel}
+                <div className="grid w-full gap-2 sm:grid-cols-3">
+                  {group.highlights.map((label, index) => (
+                    <div
+                      className="flex min-h-36 items-center justify-center rounded-xl bg-gray-200 px-6 py-8 text-center font-brand text-base leading-6 text-background sm:min-h-44"
+                      key={`${group.year}-highlight-${index}`}
+                    >
+                      {label}
+                    </div>
+                  ))}
                 </div>
               </div>
-            </MotionReveal>
+            </TabsContent>
           ))}
-        </div>
+        </Tabs>
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ export function GalaVictoriaFallsSection() {
   return (
     <section
       aria-labelledby='gala-victoria-falls-heading'
-      className='bg-background py-20 text-primary lg:py-28'
+      className='py-20 text-primary lg:py-28'
     >
       <MotionReveal
         className='relative flex min-h-[36rem] w-full overflow-hidden px-5 py-16 sm:px-8 lg:min-h-[42rem] lg:px-10'

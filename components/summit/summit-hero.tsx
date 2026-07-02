@@ -18,7 +18,7 @@ export function SummitHero({
     <section
       id="summit"
       aria-labelledby="summit-hero-heading"
-      className="relative isolate min-h-[calc(100svh-7.875rem)] overflow-hidden bg-background px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28"
+      className="relative isolate min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28"
     >
       <Image
         src="/images/hero-bg.jpg"
@@ -30,11 +30,11 @@ export function SummitHero({
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-background/60"
+        className="absolute inset-0 bg-[#1c062d]/60"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-background/0 via-background/80 to-background"
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-[#1c062d]/0 via-[#1c062d]/80 to-[#1c062d]"
         aria-hidden="true"
       />
 

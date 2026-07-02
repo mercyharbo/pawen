@@ -14,9 +14,9 @@ export default function Home() {
         ticketsUrl={externalLinks.tickets}
       />
       <StorySection supportUrl={externalLinks.supportOurWork} />
-      <TicketVenueSection ticketsUrl={externalLinks.tickets} />
       <OurStorySection />
       <WhyPawenSection />
+      <TicketVenueSection ticketsUrl={externalLinks.tickets} />
       <FooterTicketCta ticketsUrl={externalLinks.tickets} />
     </>
   );

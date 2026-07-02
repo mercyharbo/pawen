@@ -18,7 +18,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
   } as const;
 
   return (
-    <section className="relative isolate flex min-h-[calc(115svh-7.875rem)] overflow-hidden bg-background text-foreground">
+    <section className="relative isolate flex min-h-[calc(115svh-7.875rem)] overflow-hidden bg-[#1c062d] text-foreground">
       <motion.div
         className="absolute inset-0"
         initial={reduceMotion ? false : { opacity: 0.68, scale: 1.04 }}
@@ -54,14 +54,14 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
       </motion.div>
 
       <motion.div
-        className="absolute inset-0 bg-background/30"
+        className="absolute inset-0 bg-[#1c062d]/30"
         initial={reduceMotion ? false : { opacity: 0.78 }}
         animate={reduceMotion ? undefined : { opacity: 1 }}
         transition={revealTransition}
         aria-hidden="true"
       />
       <motion.div
-        className="absolute inset-0 shadow-[inset_0_0_10rem_var(--color-background)] opacity-80"
+        className="absolute inset-0 shadow-[inset_0_0_10rem_#1c062d] opacity-80"
         initial={reduceMotion ? false : { opacity: 0.3 }}
         animate={reduceMotion ? undefined : { opacity: 0.8 }}
         transition={revealTransition}

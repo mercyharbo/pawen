@@ -157,7 +157,7 @@ export function GalaNightSection() {
     return (
       <section
         aria-labelledby='gala-night-heading'
-        className='bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+        className='px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
       >
         <div className='mx-auto flex w-full max-w-6xl flex-col items-center gap-8'>
           <h2
@@ -215,10 +215,10 @@ export function GalaNightSection() {
   return (
     <section
       aria-labelledby='gala-night-heading'
-      className='relative min-h-[320svh] bg-background px-5 text-primary sm:px-8 lg:px-10'
+      className='relative min-h-[320svh] px-5 text-primary sm:px-8 lg:px-10'
       ref={sectionRef}
     >
-      <div className='sticky top-24 mx-auto flex min-h-[calc(100svh-6rem)] w-full max-w-6xl flex-col items-center justify-center gap-8 py-20 lg:py-28'>
+      <div className='sticky top-0 mx-auto flex h-svh w-full max-w-6xl flex-col items-center justify-center gap-6 py-10 lg:py-12'>
         <motion.h2
           id='gala-night-heading'
           className='font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-6xl'

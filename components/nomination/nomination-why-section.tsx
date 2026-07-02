@@ -5,7 +5,7 @@ export function NominationWhySection() {
   return (
     <section
       aria-labelledby="nomination-why-heading"
-      className="relative isolate overflow-hidden bg-background px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32"
+      className="relative isolate overflow-hidden px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32"
     >
       <MotionReveal
         ariaHidden
@@ -13,14 +13,14 @@ export function NominationWhySection() {
         variant="image-reveal"
       >
         <Image
-          src="/clip-path.png"
+          src="/Vector.png"
           alt=""
           fill
           sizes="100vw"
           className="object-cover object-center"
         />
       </MotionReveal>
-      <div className="absolute inset-0 bg-background/18" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[#1c062d]/18" aria-hidden="true" />
 
       <MotionReveal className="relative z-10 mx-auto flex min-h-96 w-full max-w-4xl flex-col items-center justify-center gap-6 text-center lg:min-h-[32rem]">
         <h2

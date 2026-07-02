@@ -36,7 +36,7 @@ export function ExhibitionWhoSection() {
   return (
     <section
       aria-labelledby='exhibition-who-heading'
-      className='overflow-hidden bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+      className='overflow-hidden px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
     >
       <div className='mx-auto flex w-full max-w-7xl flex-col gap-7'>
         <MotionReveal delay={0.08}>

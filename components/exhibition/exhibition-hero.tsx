@@ -6,7 +6,7 @@ export function ExhibitionHero() {
     <section
       id='exhibition'
       aria-labelledby='exhibition-hero-heading'
-      className='relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+      className='relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
     >
       <MotionReveal
         ariaHidden
@@ -22,7 +22,7 @@ export function ExhibitionHero() {
           className='object-cover object-center'
         />
       </MotionReveal>
-      <div className='absolute inset-0 bg-background/62' aria-hidden='true' />
+      <div className='absolute inset-0 bg-[#1c062d]/62' aria-hidden='true' />
       <div
         className='absolute inset-0 bg-dark-gold/80 mix-blend-multiply'
         aria-hidden='true'

@@ -6,7 +6,7 @@ import Link from "next/link";
 export function NominationHero() {
   return (
     <section
-      className="relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
       aria-labelledby="nominations-hero-heading"
     >
       <MotionReveal

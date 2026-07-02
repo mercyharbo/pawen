@@ -86,7 +86,7 @@ function PillarCard({
 export function SummitPillarsSection() {
   return (
     <section
-      className="bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
       aria-labelledby="summit-pillars-heading"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-9">

@@ -15,7 +15,7 @@ const exploreChipClass =
 export function SummitWhyZambiaSection() {
   return (
     <section
-      className="bg-summit-dark px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
       aria-labelledby="summit-why-zambia-heading"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10 lg:gap-12">

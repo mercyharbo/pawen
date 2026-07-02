@@ -16,15 +16,17 @@ export const metadata: Metadata = {
 export default function SummitPage() {
   return (
     <>
-      <SummitHero
-        registerUrl={externalLinks.tickets}
-        exhibitUrl="#exhibition"
-        speakUrl="#speakers"
-      />
-      <SummitPillarsSection />
-      <SummitWhyZambiaSection />
-      <SummitWhyAttendSection />
-      <SummitWhoShouldAttendSection />
+      <div className="bg-[#1c062d]">
+        <SummitHero
+          registerUrl={externalLinks.tickets}
+          exhibitUrl="#exhibition"
+          speakUrl="#speakers"
+        />
+        <SummitPillarsSection />
+        <SummitWhyZambiaSection />
+        <SummitWhyAttendSection />
+        <SummitWhoShouldAttendSection />
+      </div>
       <SummitFinalCtaSection
         registerUrl={externalLinks.tickets}
         exhibitUrl="#exhibition"

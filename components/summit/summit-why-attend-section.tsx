@@ -27,7 +27,7 @@ const benefitSpanClasses = [
 export function SummitWhyAttendSection() {
   return (
     <section
-      className='bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+      className='px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
       aria-labelledby='summit-why-attend-heading'
     >
       <div className='mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6'>

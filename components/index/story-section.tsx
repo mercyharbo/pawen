@@ -28,7 +28,7 @@ const experiences = [
 export function StorySection({ supportUrl }: StorySectionProps) {
   return (
     <section
-      className='relative isolate overflow-hidden bg-background px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
+      className='relative isolate overflow-hidden bg-[#1c062d] px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
       id='our-story'
     >
       <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-68'>
@@ -105,7 +105,7 @@ export function StorySection({ supportUrl }: StorySectionProps) {
                     aria-hidden='true'
                   />
                   <div
-                    className='absolute inset-0 bg-background/10'
+                    className='absolute inset-0 bg-[#1c062d]/10'
                     aria-hidden='true'
                   />
                 </div>

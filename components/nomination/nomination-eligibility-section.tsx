@@ -14,7 +14,7 @@ export function NominationEligibilitySection() {
   return (
     <section
       aria-labelledby="nomination-eligibility-heading"
-      className="bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
     >
       <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-16 xl:gap-24">
         <MotionReveal className="flex max-w-xl flex-col gap-7">
