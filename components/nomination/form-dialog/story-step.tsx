@@ -48,12 +48,12 @@ export function StoryStep({
   return (
     <div className="flex flex-col gap-6">
       <StepProgress step="story" />
-      <DialogTitle className="text-2xl font-semibold text-background">
+      <DialogTitle className="text-2xl font-semibold text-champagne-gold">
         Story and Evidence
       </DialogTitle>
 
       <label className="flex flex-col gap-2" htmlFor="whyDeserving-dialog-field">
-        <span className="text-sm font-semibold text-background">
+        <span className="text-sm font-semibold text-primary">
           Why does she deserve this award?
         </span>
         <Textarea
@@ -72,7 +72,7 @@ export function StoryStep({
             {storyError}
           </span>
         ) : (
-          <span className="text-xs leading-5 text-background/70" id="story-help">
+          <span className="text-xs leading-5 text-primary/70" id="story-help">
             Aim for 200-500 words. Specific examples and numbers carry more
             weight than general praise.
           </span>
@@ -80,7 +80,7 @@ export function StoryStep({
       </label>
 
       <div className="flex flex-col gap-2">
-        <span className="text-sm font-semibold text-background">
+        <span className="text-sm font-semibold text-primary">
           Supporting evidence
         </span>
         <div
@@ -128,7 +128,7 @@ export function StoryStep({
             {fileError}
           </span>
         ) : (
-          <span className="text-xs leading-5 text-background/70">
+          <span className="text-xs leading-5 text-primary/70">
             Supporting documents help the judges see her work clearly. Quality
             matters more than quantity.
           </span>
@@ -137,7 +137,7 @@ export function StoryStep({
 
       <div className="flex flex-col gap-2">
         <label
-          className="text-sm font-semibold text-background"
+          className="text-sm font-semibold text-primary"
           htmlFor="discoverySource-dialog-select"
         >
           How did you hear about The PAWEN Awards? *
@@ -196,14 +196,14 @@ export function StoryStep({
 
           return (
             <label
-              className="flex items-start gap-3 text-sm leading-6 text-background"
+              className="flex items-start gap-3 text-sm leading-6 text-primary"
               htmlFor={`dialog-${confirmation}`}
               key={confirmation}
             >
               <Checkbox
                 aria-invalid={confirmationError ? "true" : "false"}
                 checked={checked}
-                className="size-5 rounded-[4px] border border-background bg-white data-checked:bg-background data-checked:text-black"
+                className="size-5 rounded-[4px] border border-primary bg-white data-checked:bg-champagne-gold data-checked:text-background"
                 id={`dialog-${confirmation}`}
                 onCheckedChange={(nextChecked) =>
                   setConfirmation(confirmation, nextChecked)
@@ -229,14 +229,14 @@ export function StoryStep({
 
       <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
         <Button
-          className="h-12 w-full rounded-full border !border-black bg-transparent px-10 text-background hover:!scale-100 hover:bg-background/10 active:!translate-y-0 active:!scale-100 sm:w-36"
+          className="h-12 w-full rounded-full border border-primary bg-transparent px-10 text-primary hover:!scale-100 hover:bg-primary/10 active:!translate-y-0 active:!scale-100 sm:w-36"
           onClick={previousStep}
           type="button"
         >
           Back
         </Button>
         <Button
-          className="h-12 w-full rounded-full bg-background px-10 text-primary hover:!scale-100 hover:bg-background/90 active:!translate-y-0 active:!scale-100 disabled:bg-background/70 sm:w-fit"
+          className="h-12 w-full rounded-full bg-champagne-gold px-10 text-background hover:!scale-100 hover:bg-champagne-gold/90 active:!translate-y-0 active:!scale-100 disabled:bg-champagne-gold/70 sm:w-fit"
           disabled={isSubmitting}
           type="submit"
         >

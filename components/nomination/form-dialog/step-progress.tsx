@@ -10,7 +10,7 @@ export function StepProgress({ step }: { step: NominationDialogStep }) {
   );
 
   return (
-    <div className="flex flex-wrap items-center gap-4 border-b border-background/45 pb-7">
+    <div className="flex flex-wrap items-center gap-4 border-b border-primary/35 pb-7">
       {stepItems.map((item, index) => {
         const isActive = index === activeIndex;
 
@@ -21,8 +21,8 @@ export function StepProgress({ step }: { step: NominationDialogStep }) {
                 className={cn(
                   "flex size-8 items-center justify-center rounded-full text-sm font-bold",
                   isActive
-                    ? "bg-background text-primary"
-                    : "bg-dark-gold/25 text-background/50",
+                    ? "bg-champagne-gold text-background"
+                    : "bg-primary/10 text-primary/60",
                 )}
               >
                 {index + 1}
@@ -30,7 +30,7 @@ export function StepProgress({ step }: { step: NominationDialogStep }) {
               <span
                 className={cn(
                   "text-sm font-bold sm:text-base",
-                  isActive ? "text-background" : "text-background/50",
+                  isActive ? "text-primary" : "text-primary/60",
                 )}
               >
                 {item.label}
@@ -38,7 +38,7 @@ export function StepProgress({ step }: { step: NominationDialogStep }) {
             </div>
             {index < stepItems.length - 1 ? (
               <ChevronRight
-                className="size-5 text-background"
+                className="size-5 text-primary/60"
                 aria-hidden="true"
               />
             ) : null}

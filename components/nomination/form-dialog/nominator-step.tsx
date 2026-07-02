@@ -32,12 +32,12 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
   return (
     <div className="flex flex-col gap-7">
       <StepProgress step="nominator" />
-      <DialogTitle className="text-2xl font-semibold text-background">
+      <DialogTitle className="text-2xl font-semibold text-champagne-gold">
         Nominator Details
       </DialogTitle>
       <div className="grid gap-5 md:grid-cols-2">
         <label className="flex flex-col gap-3" htmlFor="nominatorFirstName-dialog-field">
-          <span className="text-sm font-semibold text-background">First Name</span>
+          <span className="text-sm font-semibold text-primary">First Name</span>
           <Input
             aria-describedby={firstNameError ? errorId("nominatorFirstName") : undefined}
             aria-invalid={firstNameError ? "true" : "false"}
@@ -56,7 +56,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
           ) : null}
         </label>
         <label className="flex flex-col gap-3" htmlFor="nominatorLastName-dialog-field">
-          <span className="text-sm font-semibold text-background">Last Name</span>
+          <span className="text-sm font-semibold text-primary">Last Name</span>
           <Input
             aria-describedby={lastNameError ? errorId("nominatorLastName") : undefined}
             aria-invalid={lastNameError ? "true" : "false"}
@@ -75,7 +75,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
           ) : null}
         </label>
         <label className="flex flex-col gap-3" htmlFor="nominatorEmail-dialog-field">
-          <span className="text-sm font-semibold text-background">Email Address</span>
+          <span className="text-sm font-semibold text-primary">Email Address</span>
           <Input
             aria-describedby={emailError ? errorId("nominatorEmail") : undefined}
             aria-invalid={emailError ? "true" : "false"}
@@ -95,7 +95,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
           ) : null}
         </label>
         <label className="flex flex-col gap-3" htmlFor="nominatorPhone-dialog-field">
-          <span className="text-sm font-semibold text-background">Phone / Whatsapp</span>
+          <span className="text-sm font-semibold text-primary">Phone / Whatsapp</span>
           <Input
             aria-describedby={phoneError ? errorId("nominatorPhone") : undefined}
             aria-invalid={phoneError ? "true" : "false"}
@@ -116,7 +116,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
         <div className="md:col-span-2">
           <div className="flex flex-col gap-2">
             <label
-              className="text-sm font-semibold text-background"
+              className="text-sm font-semibold text-primary"
               htmlFor="relationship-dialog-select"
             >
               Relationship to Nominee
@@ -164,14 +164,14 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
       </div>
       <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
         <Button
-          className="h-12 w-full rounded-full border !border-black bg-transparent px-10 text-background hover:!scale-100 hover:bg-background/10 active:!translate-y-0 active:!scale-100 sm:w-36"
+          className="h-12 w-full rounded-full border border-primary bg-transparent px-10 text-primary hover:!scale-100 hover:bg-primary/10 active:!translate-y-0 active:!scale-100 sm:w-36"
           onClick={previousStep}
           type="button"
         >
           Back
         </Button>
         <Button
-          className="h-12 w-full rounded-full bg-background px-10 text-primary hover:!scale-100 hover:bg-background/90 active:!translate-y-0 active:!scale-100 sm:w-36"
+          className="h-12 w-full rounded-full bg-champagne-gold px-10 text-background hover:!scale-100 hover:bg-champagne-gold/90 active:!translate-y-0 active:!scale-100 sm:w-36"
           onClick={nextStep}
           type="button"
         >

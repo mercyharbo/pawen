@@ -74,7 +74,7 @@ export function NominationFormDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
       <DialogContent
-        className="h-fit max-h-[70vh] overflow-hidden rounded-lg bg-champagne-gold text-background ring-0 sm:max-w-2xl"
+        className="h-fit max-h-[70vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-2xl"
         showCloseButton
       >
         <form

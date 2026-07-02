@@ -32,17 +32,17 @@ export function IntroStep({ state }: { state: NominationFormState }) {
   return (
     <div className='flex flex-col justify-center gap-8'>
       <div className=''>
-        <DialogTitle className='text-2xl font-semibold'>
+        <DialogTitle className='text-2xl font-semibold text-champagne-gold'>
           Nomination Form
         </DialogTitle>
-        <DialogDescription className='text-black font-medium'>
+        <DialogDescription className='font-medium text-primary'>
           Complete the form below to submit a nominee for the PAWEN Awards
         </DialogDescription>
       </div>
 
       <div className='flex flex-col gap-2'>
         <label
-          className='text-sm font-semibold text-background'
+          className='text-sm font-semibold text-primary'
           htmlFor='category-dialog-select'
         >
           Which category are you nominating for? *
@@ -96,20 +96,20 @@ export function IntroStep({ state }: { state: NominationFormState }) {
         aria-describedby={targetError ? errorId('nominatingFor') : undefined}
         className='flex flex-col gap-4 space-y-3'
       >
-        <legend className='text-base font-semibold text-background sm:text-xl'>
+        <legend className='text-base font-semibold text-primary sm:text-xl'>
           Are you nominating yourself or someone else? *
         </legend>
         <div className='flex flex-col gap-4 sm:flex-row sm:flex-wrap'>
           {nominationTargets.map((target) => (
             <label
-              className='flex items-center gap-3 text-base text-background'
+              className='flex items-center gap-3 text-base text-primary'
               htmlFor={`target-${target}`}
               key={target}
             >
               <Checkbox
                 aria-invalid={targetError ? 'true' : 'false'}
                 checked={nominatingFor === target}
-                className='size-5 border border-background bg-white data-checked:bg-background data-checked:text-black'
+                className='size-5 border border-primary bg-white data-checked:bg-champagne-gold data-checked:text-background'
                 id={`target-${target}`}
                 onCheckedChange={(checked) =>
                   setField('nominatingFor', checked ? target : '')
@@ -132,7 +132,7 @@ export function IntroStep({ state }: { state: NominationFormState }) {
 
       <div className='flex justify-end'>
         <Button
-          className='h-12 w-full rounded-full bg-background px-10 text-primary hover:!scale-100 hover:bg-background/90 active:!translate-y-0 active:!scale-100 sm:w-36'
+          className='h-12 w-full rounded-full bg-champagne-gold px-10 text-background hover:!scale-100 hover:bg-champagne-gold/90 active:!translate-y-0 active:!scale-100 sm:w-36'
           onClick={nextStep}
           type='button'
         >
