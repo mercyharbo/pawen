@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function GalaPage() {
   return (
-    <>
+    <main className="overflow-x-hidden">
       <GalaHero
         brochureUrl="#brochure"
         ticketsUrl={externalLinks.tickets}
@@ -31,6 +31,6 @@ export default function GalaPage() {
       <GalaSponsorSection sponsorUrl={externalLinks.tickets} />
       <GalaFaqSection />
       <GalaFinalCtaSection ticketsUrl={externalLinks.tickets} />
-    </>
+    </main>
   );
 }
