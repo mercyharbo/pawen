@@ -26,7 +26,7 @@ export function GalaSponsorSection({ sponsorUrl }: GalaSponsorSectionProps) {
             >
               Sponsor the Night Africa Celebrates Her Women
             </h2>
-            <p className="font-brand text-sm leading-6 text-primary sm:text-base sm:leading-7">
+            <p className="font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
               The PAWEN Awards Gala is one of the most strategically valuable
               nights on the African business calendar, bringing together
               founders, executives, investors, policymakers, and the cultural

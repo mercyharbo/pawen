@@ -3,11 +3,11 @@
 import { MotionReveal } from "@/components/motion-reveal";
 import { NominationFormDialog } from "@/components/nomination/nomination-form-dialog";
 import { Button } from "@/components/ui/button";
-import { useNominationDialogStore } from "@/lib/stores/nomination-dialog-store";
+import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import Image from "next/image";
 
 export function NominationFormCtaSection() {
-  const openDialog = useNominationDialogStore((state) => state.openDialog);
+  const { openDialog } = useNomination();
 
   return (
     <section

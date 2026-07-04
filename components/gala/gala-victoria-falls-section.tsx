@@ -49,7 +49,7 @@ export function GalaVictoriaFallsSection() {
             Extend Your Stay: The PAWEN Victoria Falls Experience
           </h2>
 
-          <div className='flex max-w-3xl flex-col gap-3 text-xs leading-5 text-primary sm:text-sm sm:leading-6'>
+          <div className='flex max-w-3xl flex-col gap-3 text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
             <p>
               One of the Seven Natural Wonders of the World. Curated for the
               PAWEN community. After the celebration in Lusaka, join us on a

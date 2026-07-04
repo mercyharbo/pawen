@@ -23,11 +23,11 @@ export function GalaFinalCtaSection({ ticketsUrl }: GalaFinalCtaSectionProps) {
         <div className="flex flex-col items-center gap-5">
           <h2
             id="gala-final-cta-heading"
-            className="font-melodrama text-5xl font-semibold leading-[0.98] text-primary sm:text-6xl lg:text-7xl"
+            className="font-melodrama text-5xl font-medium leading-[0.98] text-primary sm:text-6xl lg:text-7xl"
           >
             SEE YOU IN LUSAKA.
           </h2>
-          <p className="max-w-xl font-brand text-sm leading-6 text-champagne-gold sm:text-base sm:leading-7">
+          <p className="max-w-xl font-brand text-sm leading-6 text-champagne-gold md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
             One night. One room. The women shaping Africa&apos;s next decade.
             <br />
             Be in the room.

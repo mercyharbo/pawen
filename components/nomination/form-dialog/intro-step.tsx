@@ -18,14 +18,11 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { categoryGroups, nominationTargets } from '@/lib/nomination-form-data'
-import { useNominationDialogStore } from '@/lib/stores/nomination-dialog-store'
+import { useNomination } from '@/lib/stores/nomination-dialog-store'
 import { cn } from '@/lib/utils'
 
 export function IntroStep({ state }: { state: NominationFormState }) {
-  const category = useNominationDialogStore((store) => store.category)
-  const nominatingFor = useNominationDialogStore((store) => store.nominatingFor)
-  const setField = useNominationDialogStore((store) => store.setField)
-  const nextStep = useNominationDialogStore((store) => store.nextStep)
+  const { category, nextStep, nominatingFor, setField } = useNomination()
   const categoryError = fieldError(state, 'category')
   const targetError = fieldError(state, 'nominatingFor')
 

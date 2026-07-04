@@ -36,11 +36,11 @@ export function SummitFinalCtaSection({
         <div className='flex flex-col items-center gap-7'>
           <h2
             id='summit-final-cta-heading'
-            className='max-w-2xl font-melodrama text-5xl font-medium leading-[0.96] text-primary sm:text-6xl lg:text-7xl'
+            className='max-w-2xl text-5xl font-medium leading-tight text-primary sm:text-6xl lg:text-6xl'
           >
             VOICES THAT SHAPE THE CONTINENT
           </h2>
-          <p className='max-w-lg text-sm leading-5 text-champagne-gold sm:text-base sm:leading-6'>
+          <p className='max-w-lg text-sm leading-6 text-champagne-gold md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
             PAWEN&apos;s stages feature some of Africa&apos;s most respected
             leaders in business, innovation, finance, policy, and enterprise.
             Explore the 2025 speaker line-up for a sense of the calibre of

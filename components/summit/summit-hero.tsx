@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { MotionReveal } from "@/components/motion-reveal";
-import Image from "next/image";
-import Link from "next/link";
+import { MotionReveal } from '@/components/motion-reveal'
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+import Link from 'next/link'
 
 type SummitHeroProps = {
-  exhibitUrl: string;
-  registerUrl: string;
-  speakUrl: string;
-};
+  exhibitUrl: string
+  registerUrl: string
+  speakUrl: string
+}
 
 export function SummitHero({
   exhibitUrl,
@@ -16,67 +16,77 @@ export function SummitHero({
 }: SummitHeroProps) {
   return (
     <section
-      id="summit"
-      aria-labelledby="summit-hero-heading"
-      className="relative isolate min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28"
+      id='summit'
+      aria-labelledby='summit-hero-heading'
+      className='relative isolate min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
     >
       <Image
-        src="/images/hero-bg.jpg"
-        alt=""
+        src='/images/hero-bg.jpg'
+        alt=''
         fill
         priority
-        sizes="100vw"
-        className="object-cover object-center"
-        aria-hidden="true"
+        sizes='100vw'
+        className='object-cover object-center'
+        aria-hidden='true'
       />
+      <div className='absolute inset-0 bg-[#2b0645]/58' aria-hidden='true' />
       <div
-        className="absolute inset-0 bg-[#1c062d]/60"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-[#1c062d]/0 via-[#1c062d]/80 to-[#1c062d]"
-        aria-hidden="true"
+        className='absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-b from-[#26043f]/0 via-[#26043f]/85 to-[#26043f]'
+        aria-hidden='true'
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-32 text-center sm:gap-36 lg:gap-44">
-        <MotionReveal className="flex flex-col items-center gap-8">
-          <div className="flex max-w-4xl flex-col items-center gap-5">
+      <div className='relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center gap-32 text-center sm:gap-36 lg:gap-44'>
+        <MotionReveal className='flex flex-col items-center gap-8'>
+          <div className='flex max-w-4xl flex-col items-center gap-5'>
             <h1
-              id="summit-hero-heading"
-              className="font-melodrama text-4xl font-bold leading-tight text-champagne-gold sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl"
+              id='summit-hero-heading'
+              className='font-melodrama text-4xl font-bold leading-tight text-champagne-gold sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'
             >
-              The 2026 PAWEN Summit <br className="hidden sm:block" />&amp;
-              Exhibition
+              The 2026 PAWEN Summit <br className='hidden sm:block' />
+              &amp; Exhibition
             </h1>
 
-            <div className="flex flex-col items-center gap-3 font-brand text-base leading-7 text-muted-beige sm:text-xl lg:text-2xl">
-              <p>The Power Shift: African Women Leading in a Transformed World</p>
-              <p className="flex flex-col items-center gap-2 sm:flex-row sm:gap-5">
-                <span>Friday, 13 November 2026</span>
-                <span aria-hidden="true" className="hidden sm:inline">
-                  |
+            <div className='flex flex-col items-center gap-5 font-brand text-sm leading-6 text-muted-beige md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+              <p>
+                The Power Shift: African Women Leading in a Transformed World
+              </p>
+              <p className='flex flex-col items-center justify-center gap-3 text-primary lg:flex-row lg:flex-nowrap lg:gap-8'>
+                <span className='lg:whitespace-nowrap'>
+                  <span className='font-semibold text-champagne-gold'>
+                    Date:
+                  </span>{' '}
+                  <span className='font-semibold'>
+                    Friday, 13 November 2026
+                  </span>
                 </span>
-                <span>InterContinental Hotel, Lusaka, Zambia</span>
+                <span className='lg:whitespace-nowrap'>
+                  <span className='font-semibold text-champagne-gold'>
+                    Location:
+                  </span>{' '}
+                  <span className='font-semibold'>
+                    InterContinental Hotel, Lusaka, Zambia
+                  </span>
+                </span>
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
             <Button
               asChild
-              className="h-11 min-w-32 rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90"
+              className='h-11 min-w-32 rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90'
             >
               <Link href={registerUrl}>Register</Link>
             </Button>
             <Button
               asChild
-              className="h-11 min-w-36 rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90"
+              className='h-11 min-w-36 rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
             >
               <Link href={exhibitUrl}>Apply to Exhibit</Link>
             </Button>
             <Button
               asChild
-              className="h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-champagne-gold hover:bg-champagne-gold hover:text-background"
+              className='h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-champagne-gold hover:bg-champagne-gold hover:text-background'
             >
               <Link href={speakUrl}>Apply to Speak</Link>
             </Button>
@@ -84,7 +94,7 @@ export function SummitHero({
         </MotionReveal>
 
         <MotionReveal
-          className="max-w-4xl font-brand text-2xl font-normal leading-tight text-muted-beige sm:text-2xl lg:text-2xl xl:text-2xl 2xl:text-3xl 3xl:text-3xl"
+          className='max-w-4xl space-y-10 font-brand text-sm font-normal leading-6 text-muted-beige md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
           delay={0.1}
         >
           <p>
@@ -107,5 +117,5 @@ export function SummitHero({
         </MotionReveal>
       </div>
     </section>
-  );
+  )
 }

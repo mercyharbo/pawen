@@ -64,7 +64,7 @@ export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
           >
             Tickets &amp; Tables
           </h2>
-          <p className="font-brand text-lg leading-8 text-primary sm:text-xl">
+          <p className="font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
             Three ways to be in the room.
             <br />
             Finalists and their nominators receive complimentary tickets to the

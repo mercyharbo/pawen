@@ -1,14 +1,13 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { FooterNewsletterForm } from '../footer-newsletter-form'
 
 type FooterTicketCtaProps = {
-  ticketsUrl: string;
-};
+  ticketsUrl: string
+}
 
 export function FooterTicketCta({ ticketsUrl }: FooterTicketCtaProps) {
   return (
-    <section className="bg-background px-5 py-14 text-primary sm:px-8 lg:px-10 lg:py-20">
-      <div className="mx-auto flex w-full max-w-[1905px] justify-center text-center">
+    <section className='bg-background px-5 py-14 max-w-3xl mx-auto flex flex-col justify-center gap-5 text-primary sm:px-8 lg:px-10 lg:py-20'>
+      {/* <div className="mx-auto flex w-full max-w-[1905px] justify-center text-center">
         <div className="flex max-w-sm flex-col items-center gap-5">
           <p className="font-sans text-sm font-normal leading-5 opacity-90">
             The PAWEN Awards &amp; Summit 2026
@@ -25,7 +24,13 @@ export function FooterTicketCta({ ticketsUrl }: FooterTicketCtaProps) {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <p id='footer-newsletter' className='max-w-xs text-sm leading-7'>
+        Subscribe to our newsletter and bring get updated with The PAWEN Award
+      </p>
+
+      <FooterNewsletterForm />
     </section>
-  );
+  )
 }

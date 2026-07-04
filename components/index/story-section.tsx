@@ -53,7 +53,7 @@ export function StorySection({ supportUrl }: StorySectionProps) {
               History Is Shaped by{' '}
               <span className='text-accent'>Those Who Lead</span>
             </h2>
-            <div className='flex max-w-lg flex-col gap-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8'>
+            <div className='flex max-w-lg flex-col gap-6 text-sm leading-6 text-muted-foreground md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
               <p>
                 Great achievements deserve more than applause. They deserve a
                 place in history. The PAWEN Awards recognises visionary women

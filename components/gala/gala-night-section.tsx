@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import {
   motion,
+  useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useTransform,
@@ -10,7 +11,7 @@ import {
 } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 type GalaNightCard = {
   body: string
@@ -147,11 +148,38 @@ function GalaNightStackCard({
 
 export function GalaNightSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [activeSlide, setActiveSlide] = useState(0)
   const reduceMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
   })
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const nextSlide = Math.min(
+      galaNightCards.length - 1,
+      Math.floor(latest * galaNightCards.length),
+    )
+
+    setActiveSlide(nextSlide)
+  })
+
+  function scrollToSlide(index: number) {
+    const section = sectionRef.current
+
+    if (!section) {
+      return
+    }
+
+    const scrollRange = section.offsetHeight - window.innerHeight
+    const targetProgress =
+      galaNightCards.length === 1 ? 0 : index / (galaNightCards.length - 1)
+
+    window.scrollTo({
+      behavior: 'smooth',
+      top: section.offsetTop + scrollRange * targetProgress,
+    })
+  }
 
   if (reduceMotion) {
     return (
@@ -239,6 +267,31 @@ export function GalaNightSection() {
               progress={scrollYProgress}
             />
           ))}
+
+          <nav
+            aria-label='Gala night slides'
+            className='absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full bg-background/35 p-2 backdrop-blur-sm'
+          >
+            {galaNightCards.map((card, index) => {
+              const isActive = activeSlide === index
+
+              return (
+                <button
+                  aria-current={isActive ? 'true' : undefined}
+                  className={`h-2.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
+                    isActive
+                      ? 'w-8 bg-champagne-gold'
+                      : 'w-2.5 bg-white/70 hover:bg-white'
+                  }`}
+                  key={card.title}
+                  onClick={() => scrollToSlide(index)}
+                  type='button'
+                >
+                  <span className='sr-only'>{`Show ${card.title}`}</span>
+                </button>
+              )
+            })}
+          </nav>
         </div>
       </div>
     </section>

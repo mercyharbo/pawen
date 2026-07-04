@@ -15,14 +15,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { relationships } from "@/lib/nomination-form-data";
-import { useNominationDialogStore } from "@/lib/stores/nomination-dialog-store";
+import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import { cn } from "@/lib/utils";
 
 export function NominatorStep({ state }: { state: NominationFormState }) {
-  const relationship = useNominationDialogStore((store) => store.relationship);
-  const setField = useNominationDialogStore((store) => store.setField);
-  const nextStep = useNominationDialogStore((store) => store.nextStep);
-  const previousStep = useNominationDialogStore((store) => store.previousStep);
+  const { nextStep, previousStep, relationship, setField } = useNomination();
   const firstNameError = fieldError(state, "nominatorFirstName");
   const lastNameError = fieldError(state, "nominatorLastName");
   const emailError = fieldError(state, "nominatorEmail");

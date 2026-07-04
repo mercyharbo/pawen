@@ -25,7 +25,7 @@ export function ExhibitionFinalCtaSection({
             PUT YOUR BRAND IN THE ROOM WHERE AFRICA&apos;S FUTURE IS BEING
             SHAPED
           </h2>
-          <p className='max-w-xl text-sm leading-5 text-champagne-gold sm:text-base sm:leading-6'>
+          <p className='max-w-xl text-sm leading-6 text-champagne-gold md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
             The women building Africa&apos;s next economy will be in Zambia.
             Make sure your business is seen by them.
           </p>

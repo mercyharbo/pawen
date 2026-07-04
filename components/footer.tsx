@@ -1,7 +1,5 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { FooterNewsletterForm } from '@/components/footer-newsletter-form'
 import { externalLinks } from '@/lib/external-links'
-import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 
 const sitemapLinks = [
@@ -52,11 +50,50 @@ const policyLinks = [
 ] as const
 
 const socialLinks = [
-  { label: 'Instagram', href: '#', icon: InstagramIcon },
-  { label: 'X', href: '#', icon: XIcon },
-  { label: 'TikTok', href: '#', icon: TikTokIcon },
-  { label: 'YouTube', href: '#', icon: YouTubeIcon },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/pawencommunity',
+    icon: LinkedInIcon,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/pawencommunity',
+    icon: InstagramIcon,
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@pawencommunity1',
+    icon: YouTubeIcon,
+  },
 ] as const
+
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox='0 0 24 24'
+      fill='none'
+      aria-hidden='true'
+    >
+      <path
+        d='M6.9 10.1v8.4M6.9 7.2v.1M11 18.5v-8.4M11 13.8c0-2.1 1.2-3.7 3.5-3.7 2.2 0 3.3 1.5 3.3 4v4.4'
+        stroke='currentColor'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2'
+      />
+      <rect
+        x='3.5'
+        y='3.5'
+        width='17'
+        height='17'
+        rx='3'
+        stroke='currentColor'
+        strokeWidth='2'
+      />
+    </svg>
+  )
+}
 
 function FooterTextLink({
   href,
@@ -104,51 +141,6 @@ function InstagramIcon({ className }: { className?: string }) {
   )
 }
 
-function XIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox='0 0 24 24'
-      fill='none'
-      aria-hidden='true'
-    >
-      <path
-        d='M4 4L20 20M20 4L4 20'
-        stroke='currentColor'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        strokeWidth='2.2'
-      />
-    </svg>
-  )
-}
-
-function TikTokIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox='0 0 24 24'
-      fill='none'
-      aria-hidden='true'
-    >
-      <path
-        d='M14.5 4v10.1a4.1 4.1 0 1 1-3.6-4.07'
-        stroke='currentColor'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        strokeWidth='2'
-      />
-      <path
-        d='M14.5 4c.7 2.9 2.5 4.6 5.1 5'
-        stroke='currentColor'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-        strokeWidth='2'
-      />
-    </svg>
-  )
-}
-
 function YouTubeIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -175,9 +167,9 @@ export function Footer() {
   return (
     <footer className='relative isolate overflow-hidden bg-background text-primary'>
       <div className='relative z-10 mx-auto flex w-full max-w-[1905px] flex-col gap-12 px-5 py-14 sm:px-8 lg:px-10 lg:py-20'>
-        <div className='grid gap-10 border-y border-border py-10 lg:grid-cols-[1.1fr_0.8fr_0.8fr_1fr_1.2fr] lg:gap-10 xl:gap-14'>
+        <div className='grid gap-10 border-y border-border py-10 lg:grid-cols-[1.1fr_1.1fr_0.8fr_0.8fr_1fr_1.2fr] lg:gap-10 xl:gap-14'>
           <section
-            className='flex flex-col gap-5'
+            className='flex flex-col gap-5 lg:col-span-2'
             aria-labelledby='footer-newsletter'
           >
             {/* <Link
@@ -200,36 +192,7 @@ export function Footer() {
               Award
             </p>
 
-            <div
-              className='flex max-w-sm items-center gap-3'
-              role='group'
-              aria-label='Newsletter signup preview'
-            >
-              <label className='sr-only' htmlFor='footer-email'>
-                Email address
-              </label>
-              <Input
-                id='footer-email'
-                type='email'
-                placeholder='your@email.com'
-                className='min-h-14 min-w-0 flex-1 rounded-full border-input bg-primary/15 px-7 text-sm text-primary placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30'
-              />
-              <Button
-                type='button'
-                size='icon-lg'
-                className='group/newsletter relative size-16 overflow-hidden rounded-full bg-primary text-2xl text-primary-foreground hover:bg-primary'
-                aria-label='Newsletter signup is coming soon'
-              >
-                <span
-                  className='absolute inset-0 origin-bottom-left scale-0 rounded-full bg-accent transition-transform duration-500 ease-out group-hover/newsletter:scale-100 group-focus-visible/newsletter:scale-100'
-                  aria-hidden='true'
-                />
-                <ArrowUpRight
-                  className='relative z-10 size-8 transition-transform duration-500 ease-out group-hover/newsletter:-translate-y-0.5 group-hover/newsletter:translate-x-0.5 group-focus-visible/newsletter:-translate-y-0.5 group-focus-visible/newsletter:translate-x-0.5'
-                  aria-hidden='true'
-                />
-              </Button>
-            </div>
+            <FooterNewsletterForm />
           </section>
 
           <nav className='flex flex-col gap-4' aria-labelledby='footer-sitemap'>
@@ -321,7 +284,7 @@ export function Footer() {
             aria-label='Legal navigation'
           >
             {[
-              { label: 'Privacy Policy', href: '#privacy' },
+              { label: 'Privacy Policy', href: '/privacy-policy' },
               { label: 'Terms & Conditions', href: '#terms' },
             ].map((item) => (
               <FooterTextLink
@@ -352,6 +315,8 @@ export function Footer() {
                 key={item.label}
                 href={item.href}
                 aria-label={item.label}
+                target='_blank'
+                rel='noreferrer'
                 className='group/social relative flex size-12 items-center justify-center overflow-hidden rounded-full border border-border bg-primary/8 text-primary transition-transform duration-500 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
               >
                 <span

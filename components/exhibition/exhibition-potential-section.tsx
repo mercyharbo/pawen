@@ -42,7 +42,7 @@ export function ExhibitionPotentialSection() {
             >
               More Than Foot Traffic. Real Business Potential.
             </h2>
-            <p className="font-brand text-sm leading-6 text-background sm:text-base sm:leading-7">
+            <p className="font-brand text-sm leading-6 text-background md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
               The PAWEN Exhibition is designed to help women-led businesses
               generate leads and sales, increase brand awareness, attract
               strategic partnerships, connect with distributors and retailers,
@@ -61,7 +61,7 @@ export function ExhibitionPotentialSection() {
             <h3 className="text-3xl font-medium leading-tight sm:text-3xl lg:text-3xl">
               Why Zambia?
             </h3>
-            <p className="font-brand text-sm leading-6 sm:text-base sm:leading-7">
+            <p className="font-brand text-sm leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
               Zambia is emerging as one of Africa&apos;s most promising
               destinations for growth and investment, strategically positioned
               at the heart of Southern Africa. For exhibitors, this creates

@@ -40,22 +40,12 @@ function AttendeeProfileCard({
   return (
     <MotionReveal
       as='article'
-      className={`overflow-hidden rounded bg-[#222315] text-center text-champagne-gold shadow-[0_18px_50px_rgba(0,0,0,0.25)] lg:absolute lg:w-32 ${positionClass}`}
+      className={`overflow-hidden rounded bg-[#222315] text-center text-champagne-gold shadow-[0_18px_50px_rgba(0,0,0,0.25)] lg:absolute lg:w-40 ${positionClass}`}
       delay={delay}
       variant='scale-in'
     >
-      <div className='relative aspect-[1.55] w-full overflow-hidden bg-card'>
-        <Image
-          src='/images/submit-img.jpg'
-          alt=''
-          fill
-          sizes='(min-width: 1024px) 8rem, 45vw'
-          className='object-cover object-center'
-          aria-hidden='true'
-        />
-      </div>
-      <p className='flex min-h-14 items-center justify-center px-3 py-2 text-xs font-medium leading-4'>
-        {label}
+      <p className='flex min-h-16 items-center justify-center px-3 py-2 text-xs font-medium leading-4'>
+        <span className='line-clamp-4'>{label}</span>
       </p>
     </MotionReveal>
   )
@@ -95,7 +85,7 @@ export function SummitWhoShouldAttendSection() {
           />
           <h2
             id='summit-who-should-attend-heading'
-            className='relative z-10 max-w-44 text-center font-melodrama font-semibold text-4xl text-background sm:text-3xl'
+            className='absolute left-1/2 top-1/2 z-10 w-44 -translate-x-1/2 -translate-y-[42%] text-center font-melodrama font-semibold text-4xl text-background lg:text-3xl'
           >
             Who Should Attend?
           </h2>

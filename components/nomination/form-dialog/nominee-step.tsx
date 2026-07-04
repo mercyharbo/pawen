@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useNominationDialogStore } from "@/lib/stores/nomination-dialog-store";
+import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import { cn } from "@/lib/utils";
 
 export function NomineeStep({
@@ -24,10 +24,7 @@ export function NomineeStep({
   countries: string[];
   state: NominationFormState;
 }) {
-  const country = useNominationDialogStore((store) => store.country);
-  const setField = useNominationDialogStore((store) => store.setField);
-  const nextStep = useNominationDialogStore((store) => store.nextStep);
-  const previousStep = useNominationDialogStore((store) => store.previousStep);
+  const { country, nextStep, previousStep, setField } = useNomination();
   const firstNameError = fieldError(state, "nomineeFirstName");
   const lastNameError = fieldError(state, "nomineeLastName");
   const emailError = fieldError(state, "nomineeEmail");

@@ -55,22 +55,17 @@ export function WhyPawenSection() {
           <h2 className='font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'>
             Why the PAWEN Awards Matter
           </h2>
-          <div className='flex max-w-3xl flex-col gap-2 text-sm leading-6 text-primary'>
+          <div className='flex max-w-3xl flex-col gap-2 text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
             <p>
-              The PAWEN Awards is Africa&apos;s premier platform recognising
-              women whose leadership, innovation and influence are shaping the
+              The PAWEN Awards is Africa&apos;s leading platform celebrating
+              women whose leadership, innovation, and impact are shaping the
               continent&apos;s future.
             </p>
             <p>
-              More than an award, it is a permanent record of achievement. A
-              celebration of women whose work is creating jobs, building
-              institutions, driving innovation, influencing policy and expanding
-              opportunity across Africa and the diaspora.
-            </p>
-            <p>
-              Each year, PAWEN brings together founders, executives, investors,
-              policymakers and changemakers to honour excellence and spotlight
-              the women helping define Africa&apos;s next chapter.
+              More than an award, PAWEN honours founders, executives,
+              policymakers and changemakers who are creating jobs, driving
+              innovation, influencing policy and expanding opportunities across
+              Africa and the diaspora.
             </p>
           </div>
         </MotionReveal>

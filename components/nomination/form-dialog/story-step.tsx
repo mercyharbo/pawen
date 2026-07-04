@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { confirmations, discoverySources } from "@/lib/nomination-form-data";
-import { useNominationDialogStore } from "@/lib/stores/nomination-dialog-store";
+import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import { cn } from "@/lib/utils";
 
 export function StoryStep({
@@ -26,20 +26,14 @@ export function StoryStep({
   isSubmitting: boolean;
   state: NominationFormState;
 }) {
-  const confirmationsValue = useNominationDialogStore(
-    (store) => store.confirmations,
-  );
-  const discoverySource = useNominationDialogStore(
-    (store) => store.discoverySource,
-  );
-  const supportingEvidenceName = useNominationDialogStore(
-    (store) => store.supportingEvidenceName,
-  );
-  const setConfirmation = useNominationDialogStore(
-    (store) => store.setConfirmation,
-  );
-  const setField = useNominationDialogStore((store) => store.setField);
-  const previousStep = useNominationDialogStore((store) => store.previousStep);
+  const {
+    confirmations: confirmationsValue,
+    discoverySource,
+    previousStep,
+    setConfirmation,
+    setField,
+    supportingEvidenceName,
+  } = useNomination();
   const storyError = fieldError(state, "whyDeserving");
   const fileError = fieldError(state, "supportingEvidence");
   const discoverySourceError = fieldError(state, "discoverySource");

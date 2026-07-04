@@ -54,16 +54,16 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
       </motion.div>
 
       <motion.div
-        className="absolute inset-0 bg-[#1c062d]/30"
+        className="absolute inset-0 bg-[#2b0645]/58"
         initial={reduceMotion ? false : { opacity: 0.78 }}
         animate={reduceMotion ? undefined : { opacity: 1 }}
         transition={revealTransition}
         aria-hidden="true"
       />
       <motion.div
-        className="absolute inset-0 shadow-[inset_0_0_10rem_#1c062d] opacity-80"
+        className="absolute inset-0 shadow-[inset_0_0_10rem_#26043f] opacity-90"
         initial={reduceMotion ? false : { opacity: 0.3 }}
-        animate={reduceMotion ? undefined : { opacity: 0.8 }}
+        animate={reduceMotion ? undefined : { opacity: 0.9 }}
         transition={revealTransition}
         aria-hidden="true"
       />
@@ -84,7 +84,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
           transition={revealTransition}
         >
           <div className="flex flex-col items-center gap-5">
-            <p className="font-sans text-lg font-normal leading-8 text-muted-foreground">
+            <p className="font-sans text-sm font-normal leading-6 text-muted-foreground md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
               The PAWEN Awards &amp; Summit 2026
             </p>
             <h1 className="max-w-3xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl">

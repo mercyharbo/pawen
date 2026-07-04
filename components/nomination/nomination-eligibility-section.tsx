@@ -25,7 +25,7 @@ export function NominationEligibilitySection() {
             >
               Who Can Be Nominated
             </h2>
-            <p className="font-brand text-base leading-7 text-muted-beige sm:text-lg sm:leading-8">
+            <p className="font-brand text-sm leading-6 text-muted-beige md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
               The PAWEN Awards are open to African women worldwide whose work is
               shaping business, leadership, and impact. Whether you are
               nominating yourself or championing a remarkable woman, nominees

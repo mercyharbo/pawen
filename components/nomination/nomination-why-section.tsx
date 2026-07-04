@@ -29,7 +29,7 @@ export function NominationWhySection() {
         >
           Why Nominate
         </h2>
-        <p className="max-w-3xl font-brand text-lg leading-8 text-muted-beige sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9">
+        <p className="max-w-3xl font-brand text-sm leading-6 text-muted-beige md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
           The women leading Africa forward are everywhere: in boardrooms and at
           decision-making tables, building startups and scaling enterprises,
           leading public institutions and reshaping entire industries. The

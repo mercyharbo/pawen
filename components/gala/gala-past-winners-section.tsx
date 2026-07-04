@@ -37,7 +37,7 @@ export function GalaPastWinnersSection() {
           >
             PAWEN Awards Past Winners
           </h2>
-          <p className="font-brand text-lg leading-7 text-primary sm:text-2xl">
+          <p className="font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
             The women honoured in our inaugural celebration
           </p>
         </MotionReveal>

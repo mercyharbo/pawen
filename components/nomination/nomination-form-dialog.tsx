@@ -20,7 +20,7 @@ import { StatusMessage } from "@/components/nomination/form-dialog/status-messag
 import { StoryStep } from "@/components/nomination/form-dialog/story-step";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { fallbackAfricanCountries } from "@/lib/nomination-form-data";
-import { useNominationDialogStore } from "@/lib/stores/nomination-dialog-store";
+import { useNomination } from "@/lib/stores/nomination-dialog-store";
 
 export function NominationFormDialog() {
   const [state, formAction, pending] = useActionState(
@@ -33,11 +33,7 @@ export function NominationFormDialog() {
     fallbackData: { countries: fallbackAfricanCountries },
   });
   const countries = data?.countries ?? fallbackAfricanCountries;
-  const isOpen = useNominationDialogStore((store) => store.isOpen);
-  const step = useNominationDialogStore((store) => store.step);
-  const closeDialog = useNominationDialogStore((store) => store.closeDialog);
-  const resetDialog = useNominationDialogStore((store) => store.resetDialog);
-  const setStep = useNominationDialogStore((store) => store.setStep);
+  const { closeDialog, isOpen, resetDialog, setStep, step } = useNomination();
 
   useEffect(() => {
     if (state.status !== "error" || !state.fieldErrors) {

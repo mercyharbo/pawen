@@ -22,9 +22,9 @@ export function ExhibitionHero() {
           className='object-cover object-center'
         />
       </MotionReveal>
-      <div className='absolute inset-0 bg-[#1c062d]/62' aria-hidden='true' />
+      <div className='absolute inset-0 bg-[#2b0645]/58' aria-hidden='true' />
       <div
-        className='absolute inset-0 bg-dark-gold/80 mix-blend-multiply'
+        className='absolute inset-0 bg-[#26043f]/72 mix-blend-multiply'
         aria-hidden='true'
       />
 
@@ -37,7 +37,7 @@ export function ExhibitionHero() {
             >
               The PAWEN Exhibition
             </h1>
-            <p className='max-w-3xl font-brand text-base leading-7 text-primary sm:text-xl sm:leading-8 lg:text-2xl lg:leading-9'>
+            <p className='max-w-3xl font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
               The PAWEN Exhibition is more than a showcase. It is a high-value
               marketplace connecting Africa&apos;s women-led businesses with the
               people, partnerships, and opportunities that accelerate their
@@ -61,7 +61,7 @@ export function ExhibitionHero() {
             </MotionReveal>
             <MotionReveal
               as='article'
-              className='flex min-h-32 items-center justify-center rounded-md bg-exhibition-gold px-6 py-5 sm:min-h-36 sm:px-8'
+              className='flex min-h-32 items-center justify-center rounded-md bg-white px-6 py-5 sm:min-h-36 sm:px-8'
               delay={0.16}
               variant='scale-in'
             >

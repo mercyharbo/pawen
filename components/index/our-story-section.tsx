@@ -47,7 +47,7 @@ export function OurStorySection() {
           <h2 className="font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl">
             Our Story
           </h2>
-          <div className="flex max-w-3xl flex-col gap-1 text-base text-primary">
+          <div className="flex max-w-3xl flex-col gap-1 text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
             <p>
               Great achievements deserve more than applause. They deserve a
               place in history. The PAWEN Awards recognises visionary women

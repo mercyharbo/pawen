@@ -26,7 +26,7 @@ export function GalaDressCodeSection() {
             An expression of who we are.
           </h2>
 
-          <p className='max-w-2xl font-brand text-sm leading-6 text-primary sm:text-base sm:leading-7'>
+          <p className='max-w-2xl font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
             The dress code for the 2026 PAWEN Awards Gala is African Glam: a
             deliberate invitation to step onto the stage of the night dressed in
             the elegance, colour, and craftsmanship of the continent. Whether

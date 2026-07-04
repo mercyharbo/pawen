@@ -46,7 +46,7 @@ const orderedSteps: NominationDialogStep[] = [
   "story",
 ];
 
-export const useNominationDialogStore = create<NominationDialogStore>(
+export const useNomination = create<NominationDialogStore>(
   (set, get) => ({
     ...initialValues,
     isOpen: false,
@@ -82,3 +82,5 @@ export const useNominationDialogStore = create<NominationDialogStore>(
     setStep: (step) => set({ step }),
   }),
 );
+
+export const useNominationDialogStore = useNomination;

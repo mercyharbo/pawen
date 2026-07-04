@@ -41,7 +41,7 @@ export function SummitWhyAttendSection() {
         </MotionReveal>
 
         <MotionReveal
-          className='flex flex-col gap-5 text-sm leading-5 text-primary sm:text-base sm:leading-6 lg:max-w-3xl'
+          className='flex flex-col gap-5 text-sm leading-6 text-primary md:text-lg md:leading-8 lg:max-w-3xl lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
           delay={0.08}
         >
           <p>
