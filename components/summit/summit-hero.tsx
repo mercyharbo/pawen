@@ -40,7 +40,7 @@ export function SummitHero({
           <div className='flex max-w-4xl flex-col items-center gap-5'>
             <h1
               id='summit-hero-heading'
-              className='font-melodrama text-4xl font-bold leading-tight text-champagne-gold sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'
+              className='font-melodrama text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'
             >
               The 2026 PAWEN Summit <br className='hidden sm:block' />
               &amp; Exhibition
@@ -52,15 +52,15 @@ export function SummitHero({
               </p>
               <p className='flex flex-col items-center justify-center gap-3 text-primary lg:flex-row lg:flex-nowrap lg:gap-8'>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-champagne-gold'>
+                  <span className='font-semibold text-accent'>
                     Date:
                   </span>{' '}
                   <span className='font-semibold'>
-                    Friday, 13 November 2026
+                    13-14 November 2026
                   </span>
                 </span>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-champagne-gold'>
+                  <span className='font-semibold text-accent'>
                     Location:
                   </span>{' '}
                   <span className='font-semibold'>
@@ -74,7 +74,7 @@ export function SummitHero({
           <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
             <Button
               asChild
-              className='h-11 min-w-32 rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90'
+              className='h-11 min-w-32 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
             >
               <Link href={registerUrl}>Register</Link>
             </Button>
@@ -82,11 +82,11 @@ export function SummitHero({
               asChild
               className='h-11 min-w-36 rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
             >
-              <Link href={exhibitUrl}>Apply to Exhibit</Link>
+              <Link href={exhibitUrl}>Book Exhibition Booth</Link>
             </Button>
             <Button
               asChild
-              className='h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-champagne-gold hover:bg-champagne-gold hover:text-background'
+              className='h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-accent hover:bg-accent hover:text-background'
             >
               <Link href={speakUrl}>Apply to Speak</Link>
             </Button>
@@ -94,7 +94,7 @@ export function SummitHero({
         </MotionReveal>
 
         <MotionReveal
-          className='max-w-4xl space-y-10 font-brand text-sm font-normal leading-6 text-muted-beige md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
+          className='max-w-4xl space-y-10 font-brand text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
           delay={0.1}
         >
           <p>
@@ -109,7 +109,7 @@ export function SummitHero({
             future of leadership, business, and opportunity on the continent.
           </p>
           <p>
-            This is where ambitious women come to build powerful connections,
+            This is where 1000+ ambitious women gather to build powerful connections,
             access new opportunities, gain strategic insight, expand across
             markets, and position themselves for Africa&apos;s next chapter of
             growth.

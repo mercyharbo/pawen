@@ -42,7 +42,7 @@ export function ExhibitionWhoSection() {
         <MotionReveal delay={0.08}>
           <h2
             id='exhibition-who-heading'
-            className='text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl'
+            className='text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl'
           >
             Who Should Exhibit?
           </h2>
@@ -53,7 +53,7 @@ export function ExhibitionWhoSection() {
             {exhibitorProfiles.map(({ label, layoutClass }, index) => (
               <MotionReveal
                 as='article'
-                className={`group/exhibit-card flex min-h-40 flex-col justify-between gap-10 rounded-xl border border-champagne-gold/12 bg-background p-4 text-primary transition-colors duration-500 ease-out hover:border-champagne-gold hover:bg-champagne-gold hover:text-background sm:min-h-44 sm:p-5 lg:min-h-40 ${layoutClass}`}
+                className={`group/exhibit-card flex min-h-40 flex-col justify-between gap-10 rounded-xl border border-accent/12 bg-background p-4 text-primary transition-colors duration-500 ease-out hover:border-accent hover:bg-accent hover:text-background sm:min-h-44 sm:p-5 lg:min-h-40 ${layoutClass}`}
                 delay={0.16 + index * 0.04}
                 key={label.join(' ')}
                 variant='scale-in'

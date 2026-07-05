@@ -44,7 +44,7 @@ export function GalaVictoriaFallsSection() {
         <div className='relative z-10 m-auto flex w-full max-w-4xl flex-col items-center gap-7 text-center'>
           <h2
             id='gala-victoria-falls-heading'
-            className='max-w-4xl text-4xl font-semibold leading-tight text-champagne-gold sm:text-5xl lg:text-6xl'
+            className='max-w-4xl text-4xl font-semibold leading-tight text-accent sm:text-5xl lg:text-6xl'
           >
             Extend Your Stay: The PAWEN Victoria Falls Experience
           </h2>
@@ -80,7 +80,7 @@ export function GalaVictoriaFallsSection() {
                 className='flex min-h-16 flex-col items-center justify-center gap-2 rounded-md bg-background/30 px-4 py-4 text-center'
                 key={detail.label}
               >
-                <h3 className='text-sm font-semibold text-champagne-gold'>
+                <h3 className='text-sm font-semibold text-accent'>
                   {detail.label}
                 </h3>
                 <p className='text-sm font-semibold leading-5 text-primary'>
@@ -92,7 +92,7 @@ export function GalaVictoriaFallsSection() {
 
           <Button
             asChild
-            className='h-11 w-full rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90 sm:w-fit'
+            className='h-11 w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90 sm:w-fit'
           >
             <Link href='#tickets-and-tables'>
               Express Interest in the Victoria Falls Experience

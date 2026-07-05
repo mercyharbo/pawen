@@ -57,14 +57,14 @@ function PillarCard({
   return (
     <MotionReveal
       as="article"
-      className={`group/pillar-card flex min-h-64 flex-col justify-between gap-10 rounded-2xl border border-champagne-gold/12 bg-background p-5 text-primary transition-colors duration-500 ease-out hover:border-champagne-gold hover:bg-champagne-gold hover:text-background sm:p-7 xl:min-h-72 ${spanClass}`}
+      className={`group/pillar-card flex min-h-64 flex-col justify-between gap-10 rounded-2xl border border-accent bg-transparent p-5 text-primary transition-colors duration-500 ease-out hover:border-accent hover:bg-accent hover:text-background sm:p-7 xl:min-h-72 ${spanClass}`}
       delay={0.04}
     >
       <div className="flex flex-col gap-5">
         <span className="flex size-8 items-center justify-center rounded-full border border-primary/15 bg-primary/3 text-primary transition-colors duration-500 ease-out group-hover/pillar-card:border-background/35 group-hover/pillar-card:bg-background/8 group-hover/pillar-card:text-background">
           <Icon className="size-4" aria-hidden="true" />
         </span>
-        <h3 className="max-w-64 text-base font-normal leading-6 text-primary/82 transition-colors duration-500 ease-out group-hover/pillar-card:text-background sm:text-lg sm:leading-7">
+        <h3 className="max-w-64 text-base font-semibold leading-6 text-primary/82 transition-colors duration-500 ease-out group-hover/pillar-card:text-background sm:text-lg sm:leading-7">
           {title}
         </h3>
       </div>
@@ -86,14 +86,14 @@ function PillarCard({
 export function SummitPillarsSection() {
   return (
     <section
-      className="px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
       aria-labelledby="summit-pillars-heading"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-9">
         <MotionReveal>
           <h2
             id="summit-pillars-heading"
-            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
+            className="font-melodrama text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
           >
             Six Pillars. One Future.
           </h2>

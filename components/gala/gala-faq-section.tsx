@@ -49,7 +49,7 @@ export function GalaFaqSection() {
       <MotionReveal className="mx-auto flex w-full max-w-3xl flex-col gap-12">
         <h2
           id="gala-faq-heading"
-          className="text-center font-melodrama text-4xl font-medium text-champagne-gold sm:text-5xl lg:text-6xl"
+          className="text-center font-melodrama text-4xl font-medium text-accent sm:text-5xl lg:text-6xl"
         >
           Frequently Asked Questions
         </h2>
@@ -62,7 +62,7 @@ export function GalaFaqSection() {
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-brand text-sm leading-6 text-primary marker:hidden sm:text-base">
                 <span>{faq.question}</span>
-                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-champagne-gold text-background transition-transform group-open:rotate-45">
+                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-accent text-background transition-transform group-open:rotate-45">
                   <Plus className="size-3.5" aria-hidden="true" />
                 </span>
               </summary>

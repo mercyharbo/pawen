@@ -21,7 +21,7 @@ export function ExhibitionExpectSection() {
         <MotionReveal className="flex flex-col gap-8">
           <h2
             id="exhibition-expect-heading"
-            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-5xl 3xl:text-5xl"
+            className="font-melodrama text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-5xl 2xl:text-5xl 3xl:text-5xl"
           >
             What You Can Expect
           </h2>
@@ -33,7 +33,7 @@ export function ExhibitionExpectSection() {
                 key={item}
               >
                 <Star
-                  className="size-4 shrink-0 fill-champagne-gold text-champagne-gold"
+                  className="size-4 shrink-0 fill-accent text-accent"
                   aria-hidden="true"
                 />
                 <span className="font-brand text-sm leading-6 text-primary/86">

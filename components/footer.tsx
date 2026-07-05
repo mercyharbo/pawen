@@ -188,8 +188,8 @@ export function Footer() {
             </Link> */}
 
             <p id='footer-newsletter' className='max-w-xs text-sm leading-7'>
-              Subscribe to our newsletter and bring get updated with The PAWEN
-              Award
+              Subscribe to our newsletter for exclusive updates and
+              behind-the-scenes moments
             </p>
 
             <FooterNewsletterForm />

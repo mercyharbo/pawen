@@ -27,7 +27,7 @@ export function FooterTicketCta({ ticketsUrl }: FooterTicketCtaProps) {
       </div> */}
 
       <p id='footer-newsletter' className='max-w-xs text-sm leading-7'>
-        Subscribe to our newsletter and bring get updated with The PAWEN Award
+        Subscribe to our newsletter and get updated with The PAWEN Award
       </p>
 
       <FooterNewsletterForm />

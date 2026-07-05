@@ -8,7 +8,6 @@
   --color-summit-dark: #0a0a0a;
   --color-charcoal: #111111;
   --color-premium-gold: #d4af37;
-  --color-champagne-gold: #e8c872;
   --color-dark-gold: #9f7a1f;
   --color-exhibition-gold: #c9942a;
   --color-muted-beige: #c8bfae;
@@ -47,7 +46,6 @@
   --summit-dark: var(--color-summit-dark);
   --charcoal: var(--color-charcoal);
   --premium-gold: var(--color-premium-gold);
-  --champagne-gold: var(--color-champagne-gold);
   --dark-gold: var(--color-dark-gold);
   --exhibition-gold: var(--color-exhibition-gold);
   --muted-beige: var(--color-muted-beige);

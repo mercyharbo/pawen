@@ -33,7 +33,7 @@ export function GalaPastWinnersSection() {
         <MotionReveal className="flex flex-col items-center gap-3 text-center">
           <h2
             id="gala-past-winners-heading"
-            className="font-melodrama text-4xl font-semibold leading-tight text-champagne-gold sm:text-5xl lg:text-6xl"
+            className="font-melodrama text-4xl font-semibold leading-tight text-accent sm:text-5xl lg:text-6xl"
           >
             PAWEN Awards Past Winners
           </h2>

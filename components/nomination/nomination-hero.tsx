@@ -46,7 +46,7 @@ export function NominationHero() {
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button
             asChild
-            className="h-11 min-w-32 rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90"
+            className="h-11 min-w-32 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90"
           >
             <Link href="#nomination-form">Nomination</Link>
           </Button>

@@ -21,7 +21,7 @@ export function ExhibitionPotentialSection() {
         />
       </MotionReveal>
       <div
-        className="absolute inset-0 bg-champagne-gold/40"
+        className="absolute inset-0 bg-accent/40"
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-background/30" aria-hidden="true" />
@@ -34,7 +34,7 @@ export function ExhibitionPotentialSection() {
         <div className="grid w-full gap-4 md:grid-cols-2 md:items-stretch">
           <MotionReveal
             as="article"
-            className="flex flex-col justify-center gap-5 rounded-2xl bg-champagne-gold px-6 py-8 sm:px-8 lg:px-10"
+            className="flex flex-col justify-center gap-5 rounded-2xl bg-accent px-6 py-8 sm:px-8 lg:px-10"
           >
             <h2
               id="exhibition-potential-heading"

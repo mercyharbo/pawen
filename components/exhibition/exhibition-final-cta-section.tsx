@@ -25,7 +25,7 @@ export function ExhibitionFinalCtaSection({
             PUT YOUR BRAND IN THE ROOM WHERE AFRICA&apos;S FUTURE IS BEING
             SHAPED
           </h2>
-          <p className='max-w-xl text-sm leading-6 text-champagne-gold md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+          <p className='max-w-xl text-sm leading-6 text-accent md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
             The women building Africa&apos;s next economy will be in Zambia.
             Make sure your business is seen by them.
           </p>
@@ -36,11 +36,11 @@ export function ExhibitionFinalCtaSection({
             asChild
             className='h-11 min-w-36 rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90'
           >
-            <Link href={exhibitUrl}>Apply to Exhibit</Link>
+            <Link href={exhibitUrl}>Book Exhibition Booth</Link>
           </Button>
           <Button
             asChild
-            className='h-11 min-w-44 rounded-full bg-champagne-gold px-8 text-background hover:bg-champagne-gold/90'
+            className='h-11 min-w-44 rounded-full bg-accent px-8 text-background hover:bg-accent/90'
           >
             <Link href={registerUrl}>Register for the Summit</Link>
           </Button>

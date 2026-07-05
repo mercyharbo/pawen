@@ -29,14 +29,14 @@ type GalaNightCard = {
 const galaNightCards: GalaNightCard[] = [
   {
     title: '25 Awards',
-    body: 'Across 4 Categories Recognising African women in entrepreneurship, corporate leadership, and impact and public service.',
+    body: 'Recognising African women in entrepreneurship, corporate leadership, and public service.',
     cta: 'View All Categories',
     href: '/nominations#award-categories',
     imageSrc: '/images/IMG-7.png',
     imageAlt: 'PAWEN award winner holding a trophy',
     imageClassName:
       'origin-right scale-200 object-cover object-right sm:scale-150',
-    overlayClassName: 'bg-champagne-gold/65 sm:bg-champagne-gold/10',
+    overlayClassName: 'bg-accent/65 sm:bg-accent/10',
     textClassName: 'text-background',
     buttonClassName: 'bg-background text-primary hover:bg-background/90',
   },
@@ -48,7 +48,7 @@ const galaNightCards: GalaNightCard[] = [
     imageSrc: '/images/IMG-9.png',
     imageAlt: 'PAWEN gala guest speaking during dinner',
     imageClassName: 'object-cover object-center',
-    overlayClassName: 'bg-champagne-gold/20 sm:bg-transparent',
+    overlayClassName: 'bg-accent/20 sm:bg-transparent',
     textClassName: 'text-background',
     buttonClassName: 'bg-background text-primary hover:bg-background/90',
   },
@@ -63,7 +63,7 @@ const galaNightCards: GalaNightCard[] = [
     overlayClassName: 'bg-background/45 sm:bg-background/15',
     textClassName: 'text-primary',
     buttonClassName:
-      'bg-champagne-gold text-background hover:bg-champagne-gold/90',
+      'bg-accent text-background hover:bg-accent/90',
   },
 ]
 
@@ -106,7 +106,7 @@ function GalaNightStackCard({
 
   return (
     <motion.article
-      className='absolute inset-0 overflow-hidden rounded-2xl bg-champagne-gold text-background shadow-2xl shadow-background/30'
+      className='absolute inset-0 overflow-hidden rounded-2xl bg-accent text-background shadow-2xl shadow-background/30'
       style={{ opacity, scale, x, zIndex: index + 1 }}
     >
       <Image
@@ -185,12 +185,12 @@ export function GalaNightSection() {
     return (
       <section
         aria-labelledby='gala-night-heading'
-        className='px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+        className='px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
       >
         <div className='mx-auto flex w-full max-w-6xl flex-col items-center gap-8'>
           <h2
             id='gala-night-heading'
-            className='font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-6xl'
+            className='font-melodrama text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-6xl'
           >
             What the Night Holds
           </h2>
@@ -198,7 +198,7 @@ export function GalaNightSection() {
           <div className='grid w-full gap-5'>
             {galaNightCards.map((card) => (
               <article
-                className='relative min-h-[24rem] overflow-hidden rounded-2xl bg-champagne-gold text-background sm:min-h-[28rem] lg:min-h-[30rem]'
+                className='relative min-h-[24rem] overflow-hidden rounded-2xl bg-accent text-background sm:min-h-[28rem] lg:min-h-[30rem]'
                 key={card.title}
               >
                 <Image
@@ -249,7 +249,7 @@ export function GalaNightSection() {
       <div className='sticky top-0 mx-auto flex h-svh w-full max-w-6xl flex-col items-center justify-center gap-6 py-10 lg:py-12'>
         <motion.h2
           id='gala-night-heading'
-          className='font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-6xl'
+          className='font-melodrama text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-6xl'
           initial={{ opacity: 0, y: 40, filter: 'blur(16px)' }}
           transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, amount: 0.4 }}
@@ -280,7 +280,7 @@ export function GalaNightSection() {
                   aria-current={isActive ? 'true' : undefined}
                   className={`h-2.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
                     isActive
-                      ? 'w-8 bg-champagne-gold'
+                      ? 'w-8 bg-accent'
                       : 'w-2.5 bg-white/70 hover:bg-white'
                   }`}
                   key={card.title}

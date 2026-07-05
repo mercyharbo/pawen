@@ -27,21 +27,21 @@ const benefitSpanClasses = [
 export function SummitWhyAttendSection() {
   return (
     <section
-      className='px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+      className='px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
       aria-labelledby='summit-why-attend-heading'
     >
       <div className='mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6'>
         <MotionReveal>
           <h2
             id='summit-why-attend-heading'
-            className='font-melodrama text-5xl font-semibold leading-[0.95] text-champagne-gold sm:text-6xl lg:text-6xl 2xl:text-7xl'
+            className='font-melodrama text-5xl font-semibold leading-[0.95] text-accent sm:text-6xl lg:text-6xl 2xl:text-7xl'
           >
             Why Attend?
           </h2>
         </MotionReveal>
 
         <MotionReveal
-          className='flex flex-col gap-5 text-sm leading-6 text-primary md:text-lg md:leading-8 lg:max-w-3xl lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
+          className='flex flex-col gap-5 text-base leading-6 text-white md:text-lg md:leading-8 lg:max-w-3xl lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
           delay={0.08}
         >
           <p>
@@ -79,7 +79,7 @@ export function SummitWhyAttendSection() {
               delay={index * 0.03}
             >
               <Star
-                className='size-4 shrink-0 fill-champagne-gold text-champagne-gold'
+                className='size-4 shrink-0 fill-accent text-accent'
                 aria-hidden='true'
               />
               <p className='text-sm leading-5 text-primary/86'>{benefit}</p>

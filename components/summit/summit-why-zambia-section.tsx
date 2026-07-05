@@ -19,7 +19,7 @@ export function SummitWhyZambiaSection() {
         <MotionReveal>
           <h2
             id='summit-why-zambia-heading'
-            className='font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold lg:text-5xl xl:text-4xl 2xl:text-6xl 3xl:text-6xl'
+            className='font-melodrama text-4xl font-semibold leading-[0.98] text-accent lg:text-5xl xl:text-4xl 2xl:text-6xl 3xl:text-6xl'
           >
             Why Zambia? Why Now?
           </h2>
@@ -53,7 +53,7 @@ export function SummitWhyZambiaSection() {
 
           <MotionReveal
             as='article'
-            className='flex aspect-square flex-col justify-center gap-7 rounded-3xl bg-champagne-gold px-6 py-8 text-background sm:px-10'
+            className='flex aspect-square flex-col justify-center gap-7 rounded-3xl bg-accent px-6 py-8 text-background sm:px-10'
             delay={0.08}
           >
             <p className='2xl:text-lg leading-tight font-medium'>
@@ -89,7 +89,7 @@ export function SummitWhyZambiaSection() {
               <div className='grid h-full grid-cols-3 gap-3'>
                 {exploreItems.map((item) => (
                   <article
-                    className='flex min-w-0 flex-col overflow-hidden rounded-lg bg-champagne-gold'
+                    className='flex min-w-0 flex-col overflow-hidden rounded-lg bg-accent'
                     key={item}
                   >
                     <div

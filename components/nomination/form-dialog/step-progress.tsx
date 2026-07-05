@@ -21,7 +21,7 @@ export function StepProgress({ step }: { step: NominationDialogStep }) {
                 className={cn(
                   "flex size-8 items-center justify-center rounded-full text-sm font-bold",
                   isActive
-                    ? "bg-champagne-gold text-background"
+                    ? "bg-accent text-background"
                     : "bg-primary/10 text-primary/60",
                 )}
               >

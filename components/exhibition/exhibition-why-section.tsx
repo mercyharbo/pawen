@@ -19,7 +19,7 @@ export function ExhibitionWhySection() {
         <MotionReveal className="flex flex-col gap-5">
           <h2
             id="exhibition-why-heading"
-            className="font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
+            className="font-melodrama text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-5xl 2xl:text-6xl 3xl:text-6xl"
           >
             Why Exhibit?
           </h2>
@@ -33,7 +33,7 @@ export function ExhibitionWhySection() {
           {exhibitionBenefits.map((benefitLines, index) => (
             <MotionReveal
               as="article"
-              className="group/exhibit-card flex min-h-44 flex-col justify-between gap-10 rounded-xl border border-champagne-gold/12 bg-background p-4 text-primary transition-colors duration-500 ease-out hover:border-champagne-gold hover:bg-champagne-gold hover:text-background sm:min-h-48 lg:min-h-44"
+              className="group/exhibit-card flex min-h-44 flex-col justify-between gap-10 rounded-xl border border-accent/12 bg-background p-4 text-primary transition-colors duration-500 ease-out hover:border-accent hover:bg-accent hover:text-background sm:min-h-48 lg:min-h-44"
               delay={index * 0.04}
               key={benefitLines.join(" ")}
             >

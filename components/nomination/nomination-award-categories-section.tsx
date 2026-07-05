@@ -35,79 +35,76 @@ export function NominationAwardCategoriesSection() {
 
   return (
     <section
-      id="award-categories"
-      aria-labelledby="nomination-award-categories-heading"
-      className="bg-[linear-gradient(180deg,#1c062d_0%,#1c062d_42%,rgba(28,6,45,0.82)_58%,var(--background)_74%,var(--background)_100%)] px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      id='award-categories'
+      aria-labelledby='nomination-award-categories-heading'
+      className='bg-[linear-gradient(180deg,#1c062d_0%,#1c062d_42%,rgba(28,6,45,0.82)_58%,var(--background)_74%,var(--background)_100%)] px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
     >
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
-        <div className="flex flex-col items-center gap-5 text-center">
+      <div className='mx-auto flex w-full max-w-6xl flex-col gap-10'>
+        <div className='flex flex-col items-center gap-5 text-center'>
           <MotionReveal>
             <h2
-              id="nomination-award-categories-heading"
-              className="font-brand text-4xl font-semibold leading-tight text-champagne-gold sm:text-5xl"
+              id='nomination-award-categories-heading'
+              className='font-brand text-4xl font-semibold leading-tight text-accent sm:text-5xl'
             >
               Award Categories
             </h2>
           </MotionReveal>
 
-          <MotionReveal className="max-w-5xl" delay={0.12}>
-            <p className="font-brand text-sm leading-6 text-muted-beige md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
-              Five Categories, One stage where Africa&apos;s most outstanding
-              women in business and career are celebrated. Whether you are a
-              founder, a corporate leader, or a changemaker driving impact
-              across the continent, there is a category for the work you are
-              doing. Explore the categories below and nominate the African
-              woman, including yourself, whose contribution deserves to be on
-              record. Every nomination undergoes a rigorous multi-stage
-              evaluation process led by an independent judging panel comprising
-              respected leaders from business, governance, academia and civil
-              society.
+          <MotionReveal className='max-w-5xl' delay={0.12}>
+            <p className='font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+              Explore the categories below and nominate that African woman whose
+              contribution deserves to be recognized and celebrated. Every
+              nomination undergoes a rigorous multi-stage evaluation process led
+              by an independent judging panel comprising respected leaders from
+              business, governance, academia and civil society. Self nominations
+              are accepted. NOMINATION is FREE!!! We will never ask you to pay
+              for any award.
             </p>
           </MotionReveal>
         </div>
 
-        <div className="flex flex-col">
+        <div className='flex flex-col'>
           {awardCategories.map((category, index) => {
-            const isActive = activeCategory === index;
-            const categoryNumber = String(index + 1).padStart(2, "0");
-            const contentId = `award-category-panel-${index}`;
+            const isActive = activeCategory === index
+            const categoryNumber = String(index + 1).padStart(2, '0')
+            const contentId = `award-category-panel-${index}`
 
             return (
               <MotionReveal
-                className="border-b border-primary/10"
+                className='border-b border-primary/10'
                 delay={index * 0.06}
                 key={category.title}
               >
-                <article className="py-7 lg:py-8">
+                <article className='py-7 lg:py-8'>
                   {isActive ? (
                     <div
                       id={contentId}
-                      className="grid gap-8 lg:grid-cols-[1fr_18rem] lg:items-center lg:gap-16 xl:grid-cols-[1fr_20rem]"
+                      className='grid gap-8 lg:grid-cols-[1fr_18rem] lg:items-center lg:gap-16 xl:grid-cols-[1fr_20rem]'
                     >
-                      <div className="flex flex-col gap-5">
+                      <div className='flex flex-col gap-5'>
                         <button
-                          type="button"
+                          type='button'
                           aria-controls={contentId}
                           aria-expanded={isActive}
-                          className="group/category flex w-full items-start gap-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:gap-5"
+                          className='group/category flex w-full items-start gap-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:gap-5'
                           onClick={() => setActiveCategory(index)}
                         >
-                          <span className="font-brand text-lg leading-8 text-champagne-gold sm:text-xl">
+                          <span className='font-brand text-lg leading-8 text-accent sm:text-xl'>
                             {categoryNumber}
                           </span>
-                          <span className="flex-1 font-brand text-2xl leading-tight text-primary sm:text-3xl">
+                          <span className='flex-1 font-brand text-2xl leading-tight text-primary sm:text-3xl'>
                             {category.title}
                           </span>
                         </button>
 
-                        <div className="flex flex-col gap-5 pl-12 sm:pl-14">
-                          <p className="max-w-xl font-brand text-sm leading-6 text-muted-beige md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
+                        <div className='flex flex-col gap-5 pl-12 sm:pl-14'>
+                          <p className='max-w-xl font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
                             {category.description}
                           </p>
                           <Button
-                            className="h-10 w-fit rounded-full bg-champagne-gold px-6 font-medium text-background hover:bg-champagne-gold/90"
+                            className='h-10 w-fit rounded-full bg-accent px-6 font-medium text-background hover:bg-accent/90'
                             onClick={openDialog}
-                            type="button"
+                            type='button'
                           >
                             Submit a Nomination
                           </Button>
@@ -115,39 +112,39 @@ export function NominationAwardCategoriesSection() {
                       </div>
 
                       <div
-                        className="aspect-[1.75] w-full rounded-xl bg-primary"
+                        className='aspect-[1.75] w-full rounded-xl bg-primary'
                         aria-label={`${category.title} image placeholder`}
-                        role="img"
+                        role='img'
                       />
                     </div>
                   ) : (
                     <button
-                      type="button"
+                      type='button'
                       aria-controls={contentId}
                       aria-expanded={isActive}
-                      className="group/category flex w-full items-center gap-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:gap-5"
+                      className='group/category flex w-full items-center gap-4 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:gap-5'
                       onClick={() => setActiveCategory(index)}
                     >
-                      <span className="font-brand text-lg leading-none text-champagne-gold sm:text-xl">
+                      <span className='font-brand text-lg leading-none text-accent sm:text-xl'>
                         {categoryNumber}
                       </span>
-                      <span className="flex-1 font-brand text-2xl leading-tight text-primary sm:text-3xl">
+                      <span className='flex-1 font-brand text-2xl leading-tight text-primary sm:text-3xl'>
                         {category.title}
                       </span>
                       <span
-                        className="flex size-9 shrink-0 items-center justify-center rounded-full bg-champagne-gold/45 text-primary transition-colors duration-500 ease-out group-hover/category:bg-champagne-gold group-hover/category:text-background group-focus-visible/category:bg-champagne-gold group-focus-visible/category:text-background sm:size-10"
-                        aria-hidden="true"
+                        className='flex size-9 shrink-0 items-center justify-center rounded-full bg-accent/45 text-primary transition-colors duration-500 ease-out group-hover/category:bg-accent group-hover/category:text-background group-focus-visible/category:bg-accent group-focus-visible/category:text-background sm:size-10'
+                        aria-hidden='true'
                       >
-                        <ArrowRight className="size-5" />
+                        <ArrowRight className='size-5' />
                       </span>
                     </button>
                   )}
                 </article>
               </MotionReveal>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
+  )
 }

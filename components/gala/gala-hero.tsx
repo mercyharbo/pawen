@@ -46,7 +46,7 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
           <div className='flex max-w-4xl flex-col items-center gap-5'>
             <h1
               id='gala-hero-heading'
-              className='font-melodrama text-4xl font-bold leading-tight text-champagne-gold sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'
+              className='font-melodrama text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'
             >
               The 2026 PAWEN
               <br />
@@ -57,7 +57,7 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
               <p>An evening of recognition, celebration, and connection.</p>
               <p className='flex flex-col items-center justify-center gap-3 text-primary lg:flex-row lg:flex-nowrap lg:gap-8'>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-champagne-gold'>
+                  <span className='font-semibold text-accent'>
                     Date:
                   </span>{' '}
                   <span className='font-semibold'>
@@ -65,7 +65,7 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
                   </span>
                 </span>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-champagne-gold'>
+                  <span className='font-semibold text-accent'>
                     Location:
                   </span>{' '}
                   <span className='font-semibold'>
@@ -79,9 +79,9 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
           <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
             <Button
               asChild
-              className='h-11 min-w-32 rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90'
+              className='h-11 min-w-32 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
             >
-              <Link href={ticketsUrl}>Get Tickets</Link>
+              <Link href={ticketsUrl}>Get Gala Tickets</Link>
             </Button>
             <Button
               asChild
@@ -91,14 +91,14 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
             </Button>
           </div>
 
-          <div className='grid w-full max-w-4xl gap-8 sm:grid-cols-3 sm:gap-0'>
+          {/* <div className='grid w-full max-w-4xl gap-8 sm:grid-cols-3 sm:gap-0'>
             {galaStats.map((stat) => (
               <div
                 className='flex min-h-24 flex-col items-center justify-center gap-4 border-primary/10 sm:border-r sm:last:border-r-0'
                 key={stat.label}
               >
                 <CountUpNumber
-                  className='font-brand text-4xl font-semibold leading-none text-champagne-gold sm:text-5xl'
+                  className='font-brand text-4xl font-semibold leading-none text-accent sm:text-5xl'
                   suffix={stat.suffix}
                   target={stat.target}
                 />
@@ -107,12 +107,12 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
         </MotionReveal>
 
         <div className='grid w-full items-center gap-12 text-left lg:grid-cols-2 lg:gap-16'>
           <MotionReveal className='flex max-w-xl flex-col gap-6'>
-            <h2 className='font-melodrama text-4xl font-semibold leading-[0.98] text-champagne-gold sm:text-5xl lg:text-6xl'>
+            <h2 className='font-melodrama text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-6xl'>
               A Night to Remember
             </h2>
             <p className='font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>

@@ -22,7 +22,7 @@ export function GalaSponsorSection({ sponsorUrl }: GalaSponsorSectionProps) {
           <div className="flex max-w-xl flex-col gap-8">
             <h2
               id="gala-sponsor-heading"
-              className="text-4xl font-semibold leading-tight text-champagne-gold sm:text-4xl lg:text-4xl 2xl:text-5xl"
+              className="text-4xl font-semibold leading-tight text-accent sm:text-4xl lg:text-4xl 2xl:text-5xl"
             >
               Sponsor the Night Africa Celebrates Her Women
             </h2>
@@ -40,7 +40,7 @@ export function GalaSponsorSection({ sponsorUrl }: GalaSponsorSectionProps) {
 
           <Button
             asChild
-            className="h-11 w-full rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90 sm:w-fit"
+            className="h-11 w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90 sm:w-fit"
           >
             <Link href={sponsorUrl}>Become a 2026 Sponsor</Link>
           </Button>

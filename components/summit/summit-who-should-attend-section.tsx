@@ -40,7 +40,7 @@ function AttendeeProfileCard({
   return (
     <MotionReveal
       as='article'
-      className={`overflow-hidden rounded bg-[#222315] text-center text-champagne-gold shadow-[0_18px_50px_rgba(0,0,0,0.25)] lg:absolute lg:w-40 ${positionClass}`}
+      className={`overflow-hidden rounded bg-[#222315] text-center text-accent shadow-[0_18px_50px_rgba(0,0,0,0.25)] lg:absolute lg:w-40 ${positionClass}`}
       delay={delay}
       variant='scale-in'
     >

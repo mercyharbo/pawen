@@ -11,7 +11,7 @@ export function StatusMessage({ state }: { state: NominationFormState }) {
       className={cn(
         "rounded-2xl px-4 py-3 text-sm",
         state.status === "success"
-          ? "bg-background text-champagne-gold"
+          ? "bg-background text-accent"
           : "bg-destructive/15 text-destructive",
       )}
       aria-live="polite"

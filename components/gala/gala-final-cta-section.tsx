@@ -27,7 +27,7 @@ export function GalaFinalCtaSection({ ticketsUrl }: GalaFinalCtaSectionProps) {
           >
             SEE YOU IN LUSAKA.
           </h2>
-          <p className="max-w-xl font-brand text-sm leading-6 text-champagne-gold md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
+          <p className="max-w-xl font-brand text-sm leading-6 text-accent md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
             One night. One room. The women shaping Africa&apos;s next decade.
             <br />
             Be in the room.
@@ -37,9 +37,9 @@ export function GalaFinalCtaSection({ ticketsUrl }: GalaFinalCtaSectionProps) {
         <div className="flex w-full flex-col items-center justify-center gap-3 sm:flex-row">
           <Button
             asChild
-            className="h-11 w-full rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90 sm:w-auto"
+            className="h-11 w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90 sm:w-auto"
           >
-            <Link href={ticketsUrl}>Get Ticket</Link>
+            <Link href={ticketsUrl}>Get Gala Ticket</Link>
           </Button>
           <Button
             asChild

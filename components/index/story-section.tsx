@@ -1,29 +1,27 @@
-import { Button } from "@/components/ui/button";
-import { MotionReveal } from "@/components/motion-reveal";
-import Image from "next/image";
-import Link from "next/link";
+import { MotionReveal } from '@/components/motion-reveal'
+import Image from 'next/image'
 
 type StorySectionProps = {
-  supportUrl: string;
-};
+  supportUrl: string
+}
 
 const experiences = [
   {
-    title: "PAWEN Leadership Summit",
-    copy: "Where Africa's women leaders gather for strategic conversations and purposeful growth.",
-    image: "/images/IMG (1).jpg",
+    title: 'Leadership Summit',
+    copy: 'Where 1000+ African women leaders gather for strategic conversations, networking and purposeful growth.',
+    image: '/images/IMG (1).jpg',
   },
   {
-    title: "PAWEN Trade Exhibition",
-    copy: "Where women-led businesses meet buyers, investors, partners and new markets.",
-    image: "/images/IMG (3).jpg",
+    title: 'Exhibition',
+    copy: 'Where women-led businesses meet buyers, investors, partners and new markets.',
+    image: '/images/IMG (3).jpg',
   },
   {
-    title: "The PAWEN Award Gala",
-    copy: "A night honouring the women shaping the continent through vision, leadership and enterprise.",
-    image: "/images/IMG (2).jpg",
+    title: 'Awards Gala',
+    copy: 'A night honouring the women building Africa’s economic future',
+    image: '/images/IMG (2).jpg',
   },
-] as const;
+] as const
 
 export function StorySection({ supportUrl }: StorySectionProps) {
   return (
@@ -49,20 +47,52 @@ export function StorySection({ supportUrl }: StorySectionProps) {
           </MotionReveal>
 
           <MotionReveal className='flex max-w-xl flex-col gap-5'>
-            <h2 className='font-brand text-4xl font-bold leading-tight text-primary sm:text-5xl'>
-              History Is Shaped by{' '}
-              <span className='text-accent'>Those Who Lead</span>
-            </h2>
-            <div className='flex max-w-lg flex-col gap-6 text-sm leading-6 text-muted-foreground md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
-              <p>
-                Great achievements deserve more than applause. They deserve a
-                place in history. The PAWEN Awards recognises visionary women
-                across Africa and the diaspora, celebrating their impact while
-                preserving their legacy for generations to come.
+            <div className='flex flex-col gap-2'>
+              <h2 className='font-brand text-4xl font-bold leading-tight text-primary sm:text-5xl'>
+                A Pan-African <span className='text-accent'>Movement</span>
+              </h2>
+              <p className='italic text-sm text-muted-foreground'>
+                Every edition carries this platform further across the
+                continent.
               </p>
-              <p>
-                This is where achievement is recognised. Influence is amplified.
-                Legacy is established.
+            </div>
+
+            <div className='flex max-w-lg flex-col gap-8 text-sm leading-6 text-muted-foreground md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+              <div className='flex flex-wrap items-start gap-8 sm:gap-12'>
+                <div className='flex flex-col gap-1'>
+                  <h3 className='text-lg font-bold leading-6 text-primary'>
+                    Lagos
+                  </h3>
+                  <div className='flex flex-col text-xs leading-5'>
+                    <span>Nigeria</span>
+                    <span>2023-2025</span>
+                  </div>
+                </div>
+                <span
+                  className='pt-7 text-lg leading-none text-accent'
+                  aria-hidden='true'
+                >
+                  •
+                </span>
+                <div className='flex flex-col gap-1'>
+                  <h3 className='text-lg font-bold leading-6 text-primary'>
+                    Lusaka
+                  </h3>
+                  <div className='flex flex-col text-xs leading-5'>
+                    <span>Zambia</span>
+                    <span className='text-accent'>2026</span>
+                  </div>
+                </div>
+                <span className='pt-7 text-lg leading-none' aria-hidden='true'>
+                  •
+                </span>
+                <p className='text-lg italic leading-7'>next</p>
+              </div>
+
+              <p className='text-lg leading-relaxed font-semibold text-primary'>
+                The PAWEN Awards recognises visionary women across Africa and
+                the diaspora, celebrating their impact while preserving their
+                legacy for generations to come.
               </p>
             </div>
           </MotionReveal>
@@ -71,16 +101,11 @@ export function StorySection({ supportUrl }: StorySectionProps) {
         <div className='flex flex-col gap-10'>
           <MotionReveal className='flex flex-col gap-6 md:flex-row md:items-end md:justify-between'>
             <h2 className='max-w-2xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl'>
-              Three experiences,
+              3 experiences,
               <br />
-              Two days, <span className='text-primary'>One Platform:</span>
+              2 days, <br />
+              <span className='text-primary'>1 Platform.</span>
             </h2>
-            <Button
-              asChild
-              className='h-11 w-fit rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90'
-            >
-              <Link href={supportUrl}>View More</Link>
-            </Button>
           </MotionReveal>
 
           <div className='grid gap-5 md:grid-cols-3'>

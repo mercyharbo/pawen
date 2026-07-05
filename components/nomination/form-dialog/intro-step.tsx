@@ -29,7 +29,7 @@ export function IntroStep({ state }: { state: NominationFormState }) {
   return (
     <div className='flex flex-col justify-center gap-8'>
       <div className=''>
-        <DialogTitle className='text-2xl font-semibold text-champagne-gold'>
+        <DialogTitle className='text-2xl font-semibold text-accent'>
           Nomination Form
         </DialogTitle>
         <DialogDescription className='font-medium text-primary'>
@@ -71,7 +71,7 @@ export function IntroStep({ state }: { state: NominationFormState }) {
                 </SelectLabel>
                 {group.options.map((option) => (
                   <SelectItem
-                    className='text-background focus:bg-champagne-gold focus:text-background'
+                    className='text-background focus:bg-accent focus:text-background'
                     key={option}
                     value={option}
                   >
@@ -106,7 +106,7 @@ export function IntroStep({ state }: { state: NominationFormState }) {
               <Checkbox
                 aria-invalid={targetError ? 'true' : 'false'}
                 checked={nominatingFor === target}
-                className='size-5 border border-primary bg-white data-checked:bg-champagne-gold data-checked:text-background'
+                className='size-5 border border-primary bg-white data-checked:bg-accent data-checked:text-background'
                 id={`target-${target}`}
                 onCheckedChange={(checked) =>
                   setField('nominatingFor', checked ? target : '')
@@ -129,7 +129,7 @@ export function IntroStep({ state }: { state: NominationFormState }) {
 
       <div className='flex justify-end'>
         <Button
-          className='h-12 w-full rounded-full bg-champagne-gold px-10 text-background hover:!scale-100 hover:bg-champagne-gold/90 active:!translate-y-0 active:!scale-100 sm:w-36'
+          className='h-12 w-full rounded-full bg-accent px-10 text-background hover:!scale-100 hover:bg-accent/90 active:!translate-y-0 active:!scale-100 sm:w-36'
           onClick={nextStep}
           type='button'
         >

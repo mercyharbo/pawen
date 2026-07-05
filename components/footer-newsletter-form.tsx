@@ -135,7 +135,7 @@ export function FooterNewsletterForm() {
           className={cn(
             'px-1 text-sm leading-6',
             state.status === 'success'
-              ? 'text-champagne-gold'
+              ? 'text-accent'
               : 'text-destructive',
           )}
           aria-live='polite'

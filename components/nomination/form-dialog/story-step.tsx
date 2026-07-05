@@ -42,7 +42,7 @@ export function StoryStep({
   return (
     <div className="flex flex-col gap-6">
       <StepProgress step="story" />
-      <DialogTitle className="text-2xl font-semibold text-champagne-gold">
+      <DialogTitle className="text-2xl font-semibold text-accent">
         Story and Evidence
       </DialogTitle>
 
@@ -88,7 +88,7 @@ export function StoryStep({
             PDF, DOC, DOCX, JPG, PNG, or ZIP. Maximum 10MB.
           </span>
           <label
-            className="cursor-pointer rounded-full bg-champagne-gold px-7 py-3 text-xs font-bold text-background"
+            className="cursor-pointer rounded-full bg-accent px-7 py-3 text-xs font-bold text-background"
             htmlFor="supportingEvidence-dialog-field"
           >
             Choose file
@@ -161,7 +161,7 @@ export function StoryStep({
             <SelectGroup>
               {discoverySources.map((option) => (
                 <SelectItem
-                  className="text-background focus:bg-champagne-gold focus:text-background"
+                  className="text-background focus:bg-accent focus:text-background"
                   key={option}
                   value={option}
                 >
@@ -197,7 +197,7 @@ export function StoryStep({
               <Checkbox
                 aria-invalid={confirmationError ? "true" : "false"}
                 checked={checked}
-                className="size-5 rounded-[4px] border border-primary bg-white data-checked:bg-champagne-gold data-checked:text-background"
+                className="size-5 rounded-[4px] border border-primary bg-white data-checked:bg-accent data-checked:text-background"
                 id={`dialog-${confirmation}`}
                 onCheckedChange={(nextChecked) =>
                   setConfirmation(confirmation, nextChecked)
@@ -230,7 +230,7 @@ export function StoryStep({
           Back
         </Button>
         <Button
-          className="h-12 w-full rounded-full bg-champagne-gold px-10 text-background hover:!scale-100 hover:bg-champagne-gold/90 active:!translate-y-0 active:!scale-100 disabled:bg-champagne-gold/70 sm:w-fit"
+          className="h-12 w-full rounded-full bg-accent px-10 text-background hover:!scale-100 hover:bg-accent/90 active:!translate-y-0 active:!scale-100 disabled:bg-accent/70 sm:w-fit"
           disabled={isSubmitting}
           type="submit"
         >

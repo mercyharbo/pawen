@@ -12,7 +12,7 @@ export function NominationFormCtaSection() {
   return (
     <section
       aria-labelledby="nomination-form-heading"
-      className="relative isolate overflow-hidden bg-background px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32"
+      className="relative isolate overflow-hidden bg-background px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
       id="nomination-form"
     >
       <Image
@@ -32,7 +32,7 @@ export function NominationFormCtaSection() {
           NOMINATE YOUR FAVORITE NOW!
         </h2>
         <Button
-          className="h-11 rounded-full bg-champagne-gold px-8 text-xs font-medium text-background hover:bg-champagne-gold/90"
+          className="h-11 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90"
           onClick={openDialog}
           type="button"
         >

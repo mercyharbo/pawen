@@ -29,7 +29,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
   return (
     <div className="flex flex-col gap-7">
       <StepProgress step="nominator" />
-      <DialogTitle className="text-2xl font-semibold text-champagne-gold">
+      <DialogTitle className="text-2xl font-semibold text-accent">
         Nominator Details
       </DialogTitle>
       <div className="grid gap-5 md:grid-cols-2">
@@ -141,7 +141,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
                 <SelectGroup>
                   {relationships.map((option) => (
                     <SelectItem
-                      className="text-background focus:bg-champagne-gold focus:text-background"
+                      className="text-background focus:bg-accent focus:text-background"
                       key={option}
                       value={option}
                     >
@@ -168,7 +168,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
           Back
         </Button>
         <Button
-          className="h-12 w-full rounded-full bg-champagne-gold px-10 text-background hover:!scale-100 hover:bg-champagne-gold/90 active:!translate-y-0 active:!scale-100 sm:w-36"
+          className="h-12 w-full rounded-full bg-accent px-10 text-background hover:!scale-100 hover:bg-accent/90 active:!translate-y-0 active:!scale-100 sm:w-36"
           onClick={nextStep}
           type="button"
         >

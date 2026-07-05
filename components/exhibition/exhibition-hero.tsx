@@ -33,7 +33,7 @@ export function ExhibitionHero() {
           <div className='flex max-w-4xl flex-col items-center gap-5'>
             <h1
               id='exhibition-hero-heading'
-              className='text-4xl font-semibold leading-tight max-w-2xl text-champagne-gold sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-7xl'
+              className='text-5xl font-semibold leading-tight max-w-2xl text-accent sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-7xl'
             >
               The PAWEN Exhibition
             </h1>
@@ -48,7 +48,7 @@ export function ExhibitionHero() {
           <div className='grid w-full max-w-3xl gap-4 text-background sm:grid-cols-[1.6fr_1fr] sm:gap-5'>
             <MotionReveal
               as='article'
-              className='flex min-h-32 items-center justify-center rounded-md bg-champagne-gold px-6 py-5 sm:min-h-36 sm:px-8'
+              className='flex min-h-32 items-center justify-center rounded-md bg-accent px-6 py-5 sm:min-h-36 sm:px-8'
               delay={0.08}
               variant='scale-in'
             >

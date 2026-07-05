@@ -9,19 +9,14 @@ const impactStats = [
     label: 'Countries represented',
   },
   {
-    target: 10000,
-    suffix: '+',
-    label: 'Women in our community',
-  },
-  {
-    target: 70,
-    suffix: '+',
-    label: 'Faculty & speakers',
-  },
-  {
     target: 500,
     suffix: '+',
     label: 'Gala attendees',
+  },
+  {
+    target: 10000,
+    suffix: '+',
+    label: 'Women in our community',
   },
 ] as const
 
