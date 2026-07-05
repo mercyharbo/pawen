@@ -37,15 +37,18 @@ export function FooterNewsletterForm() {
       key={state.resetKey ?? 'footer-newsletter-form'}
       noValidate
     >
-      <div className='grid gap-3 sm:grid-cols-2'>
-        <label className='flex flex-col gap-2' htmlFor='footer-first-name'>
+      <div className='grid w-full gap-3 sm:grid-cols-2'>
+        <label
+          className='flex w-full flex-col gap-2'
+          htmlFor='footer-first-name'
+        >
           <span className='sr-only'>First name</span>
           <Input
             aria-describedby={firstNameError ? errorId('firstName') : undefined}
             aria-invalid={firstNameError ? 'true' : 'false'}
             autoComplete='given-name'
             className={cn(
-              'min-h-14 min-w-0 flex-1 rounded-full bg-white/15 px-7 text-sm text-primary placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30',
+              'min-h-14 w-full min-w-0 rounded-full bg-white/15 px-7 text-sm text-primary placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30',
               firstNameError ? 'ring-3 ring-destructive/40' : '',
             )}
             id='footer-first-name'
@@ -63,14 +66,17 @@ export function FooterNewsletterForm() {
           ) : null}
         </label>
 
-        <label className='flex flex-col gap-2' htmlFor='footer-last-name'>
+        <label
+          className='flex w-full flex-col gap-2'
+          htmlFor='footer-last-name'
+        >
           <span className='sr-only'>Last name</span>
           <Input
             aria-describedby={lastNameError ? errorId('lastName') : undefined}
             aria-invalid={lastNameError ? 'true' : 'false'}
             autoComplete='family-name'
             className={cn(
-              'min-h-14 min-w-0 flex-1 rounded-full bg-white/15 px-7 text-sm text-primary placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30',
+              'min-h-14 w-full min-w-0 rounded-full bg-white/15 px-7 text-sm text-primary placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30',
               lastNameError ? 'ring-3 ring-destructive/40' : '',
             )}
             id='footer-last-name'
@@ -87,7 +93,7 @@ export function FooterNewsletterForm() {
       </div>
 
       <label
-        className='flex min-w-0 flex-1 flex-col gap-2'
+        className='flex w-full min-w-0 flex-col gap-2'
         htmlFor='footer-email'
       >
         <span className='sr-only'>Email address</span>
@@ -96,7 +102,7 @@ export function FooterNewsletterForm() {
           aria-invalid={emailError ? 'true' : 'false'}
           autoComplete='email'
           className={cn(
-            'min-h-14 min-w-0 flex-1 rounded-full bg-white/15 px-7 text-sm text-primary placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30',
+            'min-h-14 w-full min-w-0 rounded-full bg-white/15 px-7 text-sm text-primary placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-accent/30',
             emailError ? 'ring-3 ring-destructive/40' : '',
           )}
           id='footer-email'

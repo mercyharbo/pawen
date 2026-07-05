@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function GalaPage() {
   return (
     <main className="overflow-x-clip">
-      <div className="bg-[#1c062d]">
+      <div className="bg-pawen-brand-color">
         <GalaHero
           brochureUrl="#brochure"
           ticketsUrl={externalLinks.tickets}

@@ -12,7 +12,7 @@ export function NominationFormCtaSection() {
   return (
     <section
       aria-labelledby="nomination-form-heading"
-      className="relative isolate overflow-hidden bg-background px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
+      className="relative isolate overflow-hidden bg-pawen-brand-color px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
       id="nomination-form"
     >
       <Image

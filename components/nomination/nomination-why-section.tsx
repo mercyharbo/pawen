@@ -20,7 +20,10 @@ export function NominationWhySection() {
           className='object-cover object-center'
         />
       </MotionReveal>
-      <div className='absolute inset-0 bg-[#1c062d]/18' aria-hidden='true' />
+      <div
+        className='absolute inset-0 bg-pawen-brand-color/18'
+        aria-hidden='true'
+      />
 
       <MotionReveal className='relative z-10 mx-auto flex min-h-96 w-full max-w-4xl flex-col items-center justify-center gap-6 text-center lg:min-h-[32rem]'>
         <h2

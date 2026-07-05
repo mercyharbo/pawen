@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function NominationsPage() {
   return (
     <>
-      <div className="bg-[#1c062d]">
+      <div className="bg-pawen-brand-color">
         <NominationHero />
         <NominationWhySection />
         <NominationEligibilitySection />

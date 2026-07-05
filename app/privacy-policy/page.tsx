@@ -105,7 +105,7 @@ const contactDetails = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <section className='bg-background text-primary'>
+    <section className='bg-pawen-brand-color text-primary'>
       <article className='mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 py-16 sm:px-8 lg:px-10 lg:py-24'>
         <header className='flex flex-col gap-4'>
           <p className='text-sm font-medium text-muted-foreground'>

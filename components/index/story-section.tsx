@@ -26,10 +26,10 @@ const experiences = [
 export function StorySection({ supportUrl }: StorySectionProps) {
   return (
     <section
-      className='relative isolate overflow-hidden bg-[#1c062d] px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-10 text-foreground sm:px-8 lg:px-10 lg:py-16'
       id='our-story'
     >
-      <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-68'>
+      <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-20 lg:gap-28'>
         <div className='grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-28 xl:gap-36 2xl:gap-50'>
           <MotionReveal
             className='flex justify-center lg:justify-end'
@@ -51,7 +51,7 @@ export function StorySection({ supportUrl }: StorySectionProps) {
               <h2 className='font-brand text-4xl font-bold leading-tight text-primary sm:text-5xl'>
                 A Pan-African <span className='text-accent'>Movement</span>
               </h2>
-              <p className='italic text-sm text-muted-foreground'>
+              <p className='text-sm'>
                 Every edition carries this platform further across the
                 continent.
               </p>
@@ -86,10 +86,10 @@ export function StorySection({ supportUrl }: StorySectionProps) {
                 <span className='pt-7 text-lg leading-none' aria-hidden='true'>
                   •
                 </span>
-                <p className='text-lg italic leading-7'>next</p>
+                <p className='self-center text-lg italic leading-7'>next</p>
               </div>
 
-              <p className='text-lg leading-relaxed font-semibold text-primary'>
+              <p className='text-base lg:text-lg leading-relaxed font-medium text-primary'>
                 The PAWEN Awards recognises visionary women across Africa and
                 the diaspora, celebrating their impact while preserving their
                 legacy for generations to come.
@@ -130,7 +130,7 @@ export function StorySection({ supportUrl }: StorySectionProps) {
                     aria-hidden='true'
                   />
                   <div
-                    className='absolute inset-0 bg-[#1c062d]/10'
+                    className='absolute inset-0 bg-pawen-brand-color/10'
                     aria-hidden='true'
                   />
                 </div>

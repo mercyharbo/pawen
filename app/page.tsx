@@ -1,5 +1,6 @@
 import { Hero } from '@/components/index/hero'
-import { OurStorySection } from '@/components/index/our-story-section'
+import { FooterTicketCta } from '@/components/index/footer-ticket-cta'
+import { SponsorsSection } from '@/components/index/sponsors-section'
 import { StorySection } from '@/components/index/story-section'
 import { TicketVenueSection } from '@/components/index/ticket-venue-section'
 import { WhyPawenSection } from '@/components/index/why-pawen-section'
@@ -13,10 +14,10 @@ export default function Home() {
         ticketsUrl={externalLinks.tickets}
       />
       <StorySection supportUrl={externalLinks.supportOurWork} />
-      <OurStorySection />
+      <SponsorsSection />
       <WhyPawenSection />
       <TicketVenueSection ticketsUrl={externalLinks.tickets} />
-      {/* <FooterTicketCta ticketsUrl={externalLinks.tickets} /> */}
+      <FooterTicketCta />
     </>
   )
 }

@@ -10,10 +10,10 @@ type TicketVenueSectionProps = {
 export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
   return (
     <section
-      className='relative isolate overflow-hidden bg-background px-5 py-16 text-foreground sm:px-8 lg:px-10'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-4 py-16 text-foreground sm:px-8 lg:px-10'
       aria-labelledby='ticket-venue-heading'
     >
-      <div className='relative mx-auto flex min-h-96 w-full max-w-7xl overflow-hidden rounded-md bg-card px-5 py-16 sm:px-8 lg:min-h-128 lg:px-10'>
+      <div className='relative mx-auto flex min-h-96 w-full max-w-7xl overflow-hidden rounded-md bg-card px-4 py-16 sm:px-8 lg:min-h-128 lg:px-10'>
         <MotionReveal
           ariaHidden
           className='absolute inset-0'
@@ -33,13 +33,13 @@ export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
           aria-hidden='true'
         />
 
-        <MotionReveal className='relative z-10 m-auto flex max-w-4xl flex-col items-center gap-6 text-center'>
+        <MotionReveal className='relative z-10 m-auto flex w-full max-w-4xl flex-col items-center gap-6 text-center'>
           <p className='font-brand text-sm font-medium leading-5 text-accent'>
             13-14 November 2026.
           </p>
           <h2
             id='ticket-venue-heading'
-            className='font-brand text-4xl font-normal leading-tight text-primary sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'
+            className='font-brand text-3xl font-normal leading-tight text-primary min-[380px]:text-4xl sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'
           >
             INTERCONTINENTAL
             <br />

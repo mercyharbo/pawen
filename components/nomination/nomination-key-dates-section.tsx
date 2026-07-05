@@ -21,7 +21,7 @@ export function NominationKeyDatesSection({
   return (
     <section
       aria-labelledby='nomination-key-dates-heading'
-      className='relative isolate overflow-hidden bg-background px-5 py-10 text-white sm:px-8 lg:px-10 lg:py-16'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-10 text-white sm:px-8 lg:px-10 lg:py-16'
     >
       <div className='relative mx-auto flex min-h-96 w-full max-w-7xl overflow-hidden rounded-md bg-card px-5 py-16 sm:px-8 lg:min-h-128 lg:px-20'>
         <MotionReveal

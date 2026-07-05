@@ -16,7 +16,7 @@ export function SummitFinalCtaSection({
 }: SummitFinalCtaSectionProps) {
   return (
     <section
-      className='relative isolate overflow-hidden bg-background px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32'
       aria-labelledby='summit-final-cta-heading'
     >
       <Image

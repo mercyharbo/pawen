@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function ExhibitionPage() {
   return (
     <>
-      <div className="bg-[#1c062d]">
+      <div className="bg-pawen-brand-color">
         <ExhibitionHero />
         <ExhibitionWhySection />
         <ExhibitionPotentialSection />

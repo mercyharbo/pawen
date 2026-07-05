@@ -1,4 +1,3 @@
-import { FooterNewsletterForm } from '@/components/footer-newsletter-form'
 import { externalLinks } from '@/lib/external-links'
 import Link from 'next/link'
 
@@ -167,34 +166,7 @@ export function Footer() {
   return (
     <footer className='relative isolate overflow-hidden bg-background text-primary'>
       <div className='relative z-10 mx-auto flex w-full max-w-[1905px] flex-col gap-12 px-5 py-14 sm:px-8 lg:px-10 lg:py-20'>
-        <div className='grid gap-10 border-y border-border py-10 lg:grid-cols-[1.1fr_1.1fr_0.8fr_0.8fr_1fr_1.2fr] lg:gap-10 xl:gap-14'>
-          <section
-            className='flex flex-col gap-5 lg:col-span-2'
-            aria-labelledby='footer-newsletter'
-          >
-            {/* <Link
-              href='/'
-              className='group flex w-fit items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
-              aria-label='PAWEN home'
-            >
-              <Image
-                src='/logo.png'
-                alt=''
-                width={92}
-                height={55}
-                className='h-14 w-auto'
-                aria-hidden='true'
-              />
-            </Link> */}
-
-            <p id='footer-newsletter' className='max-w-xs text-sm leading-7'>
-              Subscribe to our newsletter for exclusive updates and
-              behind-the-scenes moments
-            </p>
-
-            <FooterNewsletterForm />
-          </section>
-
+        <div className='grid gap-10 py-10 lg:grid-cols-5 lg:gap-10 xl:gap-14'>
           <nav className='flex flex-col gap-4' aria-labelledby='footer-sitemap'>
             <p
               id='footer-sitemap'
@@ -233,6 +205,28 @@ export function Footer() {
             </div>
           </nav>
 
+          <nav
+            className='flex flex-col gap-4 lg:col-span-2'
+            aria-labelledby='footer-policies'
+          >
+            <p
+              id='footer-policies'
+              className='text-sm font-normal opacity-90 leading-5'
+            >
+              Policies
+            </p>
+            <div className='flex flex-col gap-4'>
+              {policyLinks.map((item) => (
+                <FooterTextLink
+                  key={item.label}
+                  href={item.href}
+                  label={item.label}
+                  className='text-sm font-medium leading-5 2xl:text-base 2xl:leading-6'
+                />
+              ))}
+            </div>
+          </nav>
+
           <address
             className='flex flex-col gap-4 not-italic'
             aria-labelledby='footer-contact'
@@ -253,29 +247,32 @@ export function Footer() {
                 />
               ))}
             </div>
-          </address>
-
-          <nav
-            className='flex flex-col gap-4'
-            aria-labelledby='footer-policies'
-          >
-            <p
-              id='footer-policies'
-              className='text-sm font-normal opacity-90 leading-5'
+            <nav
+              className='flex flex-wrap items-center gap-3 pt-2'
+              aria-label='Social media links'
             >
-              Policies
-            </p>
-            <div className='flex flex-col gap-4'>
-              {policyLinks.map((item) => (
-                <FooterTextLink
-                  key={item.label}
-                  href={item.href}
-                  label={item.label}
-                  className='text-sm font-medium leading-5 2xl:text-base 2xl:leading-6'
-                />
-              ))}
-            </div>
-          </nav>
+              {socialLinks.map((item) => {
+                const Icon = item.icon
+
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    aria-label={item.label}
+                    target='_blank'
+                    rel='noreferrer'
+                    className='group/social relative flex size-12 items-center justify-center overflow-hidden rounded-full border border-border bg-primary/8 text-primary transition-transform duration-500 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+                  >
+                    <span
+                      className='absolute inset-0 origin-bottom-left scale-0 rounded-full bg-accent transition-transform duration-500 ease-out group-hover/social:scale-100 group-focus-visible/social:scale-100'
+                      aria-hidden='true'
+                    />
+                    <Icon className='relative z-10 size-5 transition-colors duration-500 group-hover/social:text-accent-foreground group-focus-visible/social:text-accent-foreground' />
+                  </Link>
+                )
+              })}
+            </nav>
+          </address>
         </div>
 
         <div className='flex flex-col justify-between gap-5 text-sm font-medium leading-5 md:flex-row md:items-center'>
@@ -302,33 +299,6 @@ export function Footer() {
         </div>
       </div>
 
-      <div className='relative z-0 px-5 pb-8 sm:px-8 lg:px-10'>
-        <nav
-          className='mx-auto flex w-full max-w-[1905px] flex-wrap items-center justify-center gap-3'
-          aria-label='Social media links'
-        >
-          {socialLinks.map((item) => {
-            const Icon = item.icon
-
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                aria-label={item.label}
-                target='_blank'
-                rel='noreferrer'
-                className='group/social relative flex size-12 items-center justify-center overflow-hidden rounded-full border border-border bg-primary/8 text-primary transition-transform duration-500 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
-              >
-                <span
-                  className='absolute inset-0 origin-bottom-left scale-0 rounded-full bg-accent transition-transform duration-500 ease-out group-hover/social:scale-100 group-focus-visible/social:scale-100'
-                  aria-hidden='true'
-                />
-                <Icon className='relative z-10 size-5 transition-colors duration-500 group-hover/social:text-accent-foreground group-focus-visible/social:text-accent-foreground' />
-              </Link>
-            )
-          })}
-        </nav>
-      </div>
     </footer>
   )
 }

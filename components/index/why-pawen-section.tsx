@@ -23,7 +23,7 @@ const impactStats = [
 export function WhyPawenSection() {
   return (
     <section
-      className='relative isolate overflow-hidden bg-background px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
       id='why-pawen'
     >
       <MotionReveal
@@ -39,9 +39,12 @@ export function WhyPawenSection() {
           className='object-cover object-center'
         />
       </MotionReveal>
-      <div className='absolute inset-0 bg-background/40' aria-hidden='true' />
       <div
-        className='absolute inset-0 shadow-[inset_0_0_10rem_var(--color-background)]'
+        className='absolute inset-0 bg-pawen-brand-color/40'
+        aria-hidden='true'
+      />
+      <div
+        className='absolute inset-0 shadow-[inset_0_0_10rem_var(--color-pawen-brand-color)]'
         aria-hidden='true'
       />
 

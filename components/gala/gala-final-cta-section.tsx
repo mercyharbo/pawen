@@ -10,7 +10,7 @@ export function GalaFinalCtaSection({ ticketsUrl }: GalaFinalCtaSectionProps) {
   return (
     <section
       aria-labelledby="gala-final-cta-heading"
-      className="relative isolate overflow-hidden bg-background px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="relative isolate overflow-hidden bg-pawen-brand-color px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
     >
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-melodrama text-[18rem] font-bold leading-none text-primary/[0.03] sm:text-[24rem] lg:text-[34rem]"

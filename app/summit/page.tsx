@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function SummitPage() {
   return (
     <>
-      <div className="bg-[#1c062d]">
+      <div className="bg-pawen-brand-color">
         <SummitHero
           registerUrl={externalLinks.tickets}
           exhibitUrl="#exhibition"

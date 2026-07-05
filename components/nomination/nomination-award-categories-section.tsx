@@ -37,7 +37,7 @@ export function NominationAwardCategoriesSection() {
     <section
       id='award-categories'
       aria-labelledby='nomination-award-categories-heading'
-      className='bg-[linear-gradient(180deg,#1c062d_0%,#1c062d_42%,rgba(28,6,45,0.82)_58%,var(--background)_74%,var(--background)_100%)] px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
+      className='bg-[linear-gradient(180deg,var(--color-pawen-brand-color)_0%,var(--color-pawen-brand-color)_42%,rgba(28,6,45,0.82)_58%,var(--background)_74%,var(--background)_100%)] px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
     >
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-10'>
         <div className='flex flex-col items-center gap-5 text-center'>

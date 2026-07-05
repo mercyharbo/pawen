@@ -40,8 +40,8 @@ function HeaderMotionLink({
 
 export function Header() {
   return (
-    <header className='sticky top-0 z-50 bg-[#1c062d] text-foreground'>
-      <div className='border-b border-border bg-[#1c062d] h-10 flex justify-center items-center font-brand text-sm'>
+    <header className='sticky top-0 z-50 bg-pawen-brand-color text-foreground'>
+      <div className='border-b border-border bg-pawen-brand-color h-10 flex justify-center items-center font-brand text-sm'>
         <div className='flex flex-wrap items-center justify-center gap-3 text-center font-medium'>
           <span>Nomination Open!</span>
           <HeaderMotionLink
@@ -53,7 +53,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className='border-b border-border bg-[#1c062d]'>
+      <div className='border-b border-border bg-pawen-brand-color'>
         <div className='mx-auto flex min-h-[4.875rem] w-full max-w-[1905px] items-center justify-between gap-6 px-5 py-3 sm:px-8 lg:px-10'>
           <Link
             href='/'

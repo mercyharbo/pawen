@@ -5,7 +5,7 @@ export function ExhibitionPotentialSection() {
   return (
     <section
       aria-labelledby="exhibition-potential-heading"
-      className="relative isolate flex min-h-[38rem] items-center overflow-hidden bg-background px-5 py-24 text-background sm:px-8 lg:min-h-[46rem] lg:px-10 lg:py-36"
+      className="relative isolate flex min-h-[38rem] items-center overflow-hidden bg-pawen-brand-color px-5 py-24 text-background sm:px-8 lg:min-h-[46rem] lg:px-10 lg:py-36"
     >
       <MotionReveal
         ariaHidden

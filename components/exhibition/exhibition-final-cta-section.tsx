@@ -14,7 +14,7 @@ export function ExhibitionFinalCtaSection({
   return (
     <section
       aria-labelledby='exhibition-final-cta-heading'
-      className='relative isolate overflow-hidden bg-background px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-24 text-primary sm:px-8 lg:px-10 lg:py-32'
     >
       <MotionReveal className='relative z-10 mx-auto flex min-h-[28rem] w-full max-w-5xl flex-col items-center justify-center gap-8 text-center'>
         <div className='flex flex-col items-center gap-7'>

@@ -13,6 +13,7 @@
   --color-muted-beige: #c8bfae;
   --color-soft-gray: #9a948a;
   --color-warm-bronze: #b88a44;
+  --color-pawen-brand-color: #1c062d;
   --color-border: rgba(246, 239, 229, 0.18);
   --color-input: rgba(246, 239, 229, 0.2);
   --color-ring: #e8c872;
@@ -51,6 +52,7 @@
   --muted-beige: var(--color-muted-beige);
   --soft-gray: var(--color-soft-gray);
   --warm-bronze: var(--color-warm-bronze);
+  --pawen-brand-color: var(--color-pawen-brand-color);
   --border: var(--color-border);
   --input: var(--color-input);
   --ring: var(--color-ring);

@@ -70,7 +70,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
   } as const;
 
   return (
-    <section className='relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden bg-[#1c062d] text-foreground md:min-h-[calc(115svh-7.875rem)]'>
+    <section className='relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden bg-pawen-brand-color text-foreground md:min-h-[calc(115svh-7.875rem)]'>
       <motion.div
         className='absolute inset-0'
         initial={reduceMotion ? false : { opacity: 0.68, scale: 1.04 }}
