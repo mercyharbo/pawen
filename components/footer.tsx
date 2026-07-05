@@ -18,7 +18,7 @@ const contactLinks = [
   { label: '+00 1234567890', href: 'tel:+001234567890' },
   { label: 'hello@thepawenaward.com', href: 'mailto:hello@thepawenaward.com' },
   { label: 'Contact us', href: 'mailto:hello@thepawenaward.com' },
-  { label: "FAQ's", href: '#faq' },
+  { label: "FAQ's", href: '/gala#faq' },
 ] as const
 
 const policyLinks = [
