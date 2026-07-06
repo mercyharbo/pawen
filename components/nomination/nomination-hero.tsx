@@ -23,11 +23,10 @@ export function NominationHero() {
           className="object-cover object-center"
         />
       </MotionReveal>
-      <div className="absolute inset-0 bg-background/40" aria-hidden="true" />
-      {/* <div
-        className="absolute inset-0 shadow-[inset_0_0_10rem_var(--color-background)]"
+      <div
+        className="absolute inset-0 bg-pawen-brand-color/35"
         aria-hidden="true"
-      /> */}
+      />
 
       <MotionReveal className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center justify-center gap-7 text-center">
         <div className="flex flex-col items-center gap-6">

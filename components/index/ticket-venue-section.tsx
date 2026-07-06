@@ -10,7 +10,7 @@ type TicketVenueSectionProps = {
 export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
   return (
     <section
-      className='relative isolate overflow-hidden bg-pawen-brand-color px-4 py-16 text-foreground sm:px-8 lg:px-10'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-4 py-10 text-foreground sm:px-8 lg:px-10 lg:py-16'
       aria-labelledby='ticket-venue-heading'
     >
       <div className='relative mx-auto flex min-h-96 w-full max-w-7xl overflow-hidden rounded-md bg-card px-4 py-16 sm:px-8 lg:min-h-128 lg:px-10'>

@@ -44,7 +44,7 @@ export function GalaFaqSection() {
     <section
       id="faq"
       aria-labelledby="gala-faq-heading"
-      className="bg-pawen-brand-color px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="bg-pawen-brand-color px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
     >
       <MotionReveal className="mx-auto flex w-full max-w-3xl flex-col gap-12">
         <h2

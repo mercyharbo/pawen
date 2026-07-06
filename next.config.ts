@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "12mb",
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "images.ctfassets.net",
+        protocol: "https",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

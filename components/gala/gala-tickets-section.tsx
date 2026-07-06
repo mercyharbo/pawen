@@ -54,7 +54,7 @@ export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
     <section
       id='tickets-and-tables'
       aria-labelledby='gala-tickets-heading'
-      className='px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+      className='px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
     >
       <div className='mx-auto flex w-full max-w-6xl flex-col items-center gap-8'>
         <MotionReveal className='flex max-w-3xl flex-col items-center gap-6 text-center'>

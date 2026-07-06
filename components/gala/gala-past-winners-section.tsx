@@ -1,5 +1,7 @@
 import { MotionReveal } from "@/components/motion-reveal";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
 
 const winnerGroups = [
   {
@@ -27,7 +29,7 @@ export function GalaPastWinnersSection() {
     <section
       id="hall-of-fame"
       aria-labelledby="gala-past-winners-heading"
-      className="px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="px-5 pb-10 pt-0 text-primary sm:px-8 lg:px-10 lg:pb-16"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-10">
         <MotionReveal className="flex flex-col items-center gap-3 text-center">
@@ -83,6 +85,13 @@ export function GalaPastWinnersSection() {
             </TabsContent>
           ))}
         </Tabs>
+
+        <Button
+          asChild
+          className="h-11 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90"
+        >
+          <Link href="/winners">See All Gallery</Link>
+        </Button>
       </div>
     </section>
   );

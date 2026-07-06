@@ -1,33 +1,48 @@
 import { MotionReveal } from '@/components/motion-reveal'
-import { BriefcaseBusiness } from 'lucide-react'
+import {
+  Building2,
+  Cpu,
+  Globe2,
+  Handshake,
+  Palette,
+  Rocket,
+  ShoppingBag,
+} from 'lucide-react'
 
 const exhibitorProfiles = [
   {
     label: ['Women-led startups and', 'growth-stage businesses'],
+    Icon: Rocket,
     layoutClass: 'lg:order-1',
   },
   {
     label: ['Tech, fintech, agritech,', 'and innovation companies'],
+    Icon: Cpu,
     layoutClass: 'lg:order-2',
   },
   {
     label: ['Creative and', 'lifestyle brands'],
+    Icon: Palette,
     layoutClass: 'lg:order-3',
   },
   {
     label: ['Consumer brands and', 'product-based businesses'],
+    Icon: ShoppingBag,
     layoutClass: 'lg:order-5',
   },
   {
     label: ['Corporations and institutions', 'supporting women-led enterprise'],
+    Icon: Building2,
     layoutClass: 'lg:order-6',
   },
   {
     label: ['Service providers', 'and consultants'],
+    Icon: Handshake,
     layoutClass: 'lg:order-7',
   },
   {
     label: ['Businesses looking to expand', 'across African markets'],
+    Icon: Globe2,
     layoutClass: 'lg:order-4 lg:row-span-2 lg:min-h-full',
   },
 ] as const
@@ -36,7 +51,7 @@ export function ExhibitionWhoSection() {
   return (
     <section
       aria-labelledby='exhibition-who-heading'
-      className='overflow-hidden px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+      className='overflow-hidden px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
     >
       <div className='mx-auto flex w-full max-w-7xl flex-col gap-7'>
         <MotionReveal delay={0.08}>
@@ -50,18 +65,18 @@ export function ExhibitionWhoSection() {
 
         <MotionReveal className='w-full' variant='image-reveal'>
           <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-4'>
-            {exhibitorProfiles.map(({ label, layoutClass }, index) => (
+            {exhibitorProfiles.map(({ label, layoutClass, Icon }, index) => (
               <MotionReveal
                 as='article'
-                className={`group/exhibit-card flex min-h-40 flex-col justify-between gap-10 rounded-xl border border-accent/12 bg-background p-4 text-primary transition-colors duration-500 ease-out hover:border-accent hover:bg-accent hover:text-background sm:min-h-44 sm:p-5 lg:min-h-40 ${layoutClass}`}
+                className={`flex min-h-40 flex-col justify-between gap-10 rounded-xl border border-accent p-4 text-primary transition-colors duration-500 ease-out sm:min-h-44 sm:p-5 lg:min-h-40 ${layoutClass}`}
                 delay={0.16 + index * 0.04}
                 key={label.join(' ')}
                 variant='scale-in'
               >
-                <span className='flex size-8 items-center justify-center rounded-full border border-primary/15 bg-primary/3 text-primary transition-colors duration-500 ease-out group-hover/exhibit-card:border-background/35 group-hover/exhibit-card:text-background'>
-                  <BriefcaseBusiness className='size-4' aria-hidden='true' />
+                <span className='flex size-8 items-center justify-center rounded-full border border-accent text-primary'>
+                  <Icon className='size-4' aria-hidden='true' />
                 </span>
-                <p className='flex flex-col font-brand text-sm leading-5 text-primary/82 transition-colors duration-500 ease-out group-hover/exhibit-card:text-background sm:text-base sm:leading-6'>
+                <p className='flex flex-col font-brand text-sm leading-5 text-primary/82 sm:text-base sm:leading-6'>
                   {label.map((line) => (
                     <span key={line}>{line}</span>
                   ))}

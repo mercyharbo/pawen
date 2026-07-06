@@ -3,16 +3,27 @@ import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 
 const exploreItems = [
-  'Victoria Falls',
-  "Zambia's safari and wildlife experiences",
-  'local culture, cuisine, and creativity',
-  // "one of Southern Africa's most welcoming destinations",
+  {
+    title: 'Victoria Falls',
+    image: '/images/waterfall.jpg',
+    alt: 'Victoria Falls waterfall in Zambia',
+  },
+  {
+    title: "Zambia's safari and wildlife experiences",
+    image: '/images/safari.jpg',
+    alt: 'Safari wildlife experience in Zambia',
+  },
+  {
+    title: 'local culture, cuisine, and creativity',
+    image: '/images/culture.jpg',
+    alt: 'Local Zambian culture and cuisine',
+  },
 ] as const
 
 export function SummitWhyZambiaSection() {
   return (
     <section
-      className='px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
+      className='px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
       aria-labelledby='summit-why-zambia-heading'
     >
       <div className='mx-auto flex w-full max-w-7xl flex-col items-center gap-10 lg:gap-12'>
@@ -90,18 +101,19 @@ export function SummitWhyZambiaSection() {
                 {exploreItems.map((item) => (
                   <article
                     className='flex min-w-0 flex-col overflow-hidden rounded-lg bg-accent'
-                    key={item}
+                    key={item.title}
                   >
-                    <div
-                      className='flex min-h-0 flex-1 items-center justify-center bg-gray-200'
-                      aria-hidden='true'
-                    >
-                      <span className='px-1 text-xs font-medium leading-4 text-gray-500'>
-                        Image
-                      </span>
+                    <div className='relative min-h-0 flex-1 overflow-hidden bg-gray-200'>
+                      <Image
+                        src={item.image}
+                        alt={item.alt}
+                        fill
+                        sizes='(min-width: 1024px) 8vw, 30vw'
+                        className='object-cover object-center'
+                      />
                     </div>
                     <p className='flex min-h-14 items-center justify-center px-1 py-2 text-center text-[11px] font-medium'>
-                      {item}
+                      {item.title}
                     </p>
                   </article>
                 ))}

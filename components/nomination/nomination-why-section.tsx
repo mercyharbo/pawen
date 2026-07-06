@@ -5,7 +5,7 @@ export function NominationWhySection() {
   return (
     <section
       aria-labelledby='nomination-why-heading'
-      className='relative isolate overflow-hidden px-5 py-5 text-primary sm:px-8 lg:px-10 lg:py-10'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 pb-4 pt-10 text-primary sm:px-8 lg:px-10 lg:pb-8 lg:pt-16'
     >
       <MotionReveal
         ariaHidden
@@ -17,7 +17,7 @@ export function NominationWhySection() {
           alt=''
           fill
           sizes='100vw'
-          className='object-cover object-center'
+          className='object-contain object-center md:object-cover'
         />
       </MotionReveal>
       <div
@@ -25,7 +25,7 @@ export function NominationWhySection() {
         aria-hidden='true'
       />
 
-      <MotionReveal className='relative z-10 mx-auto flex min-h-96 w-full max-w-4xl flex-col items-center justify-center gap-6 text-center lg:min-h-[32rem]'>
+      <MotionReveal className='relative z-10 mx-auto flex min-h-80 w-full max-w-4xl flex-col items-center justify-center gap-6 text-center lg:min-h-[32rem]'>
         <h2
           id='nomination-why-heading'
           className='font-melodrama text-4xl font-medium leading-[0.98] text-primary sm:text-5xl lg:text-6xl'

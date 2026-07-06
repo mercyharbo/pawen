@@ -13,7 +13,7 @@ export function ExhibitionWhySection() {
   return (
     <section
       aria-labelledby="exhibition-why-heading"
-      className="px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-7">
         <MotionReveal className="flex flex-col gap-5">
@@ -33,14 +33,14 @@ export function ExhibitionWhySection() {
           {exhibitionBenefits.map((benefitLines, index) => (
             <MotionReveal
               as="article"
-              className="group/exhibit-card flex min-h-44 flex-col justify-between gap-10 rounded-xl border border-accent/12 bg-background p-4 text-primary transition-colors duration-500 ease-out hover:border-accent hover:bg-accent hover:text-background sm:min-h-48 lg:min-h-44"
+              className="flex min-h-44 flex-col justify-between gap-10 rounded-xl border border-accent p-4 text-primary transition-colors duration-500 ease-out sm:min-h-48 lg:min-h-44"
               delay={index * 0.04}
               key={benefitLines.join(" ")}
             >
-              <span className="flex size-8 items-center justify-center rounded-full border border-primary/15 text-xs leading-none text-primary transition-colors duration-500 ease-out group-hover/exhibit-card:border-background/35 group-hover/exhibit-card:text-background">
+              <span className="flex size-8 items-center justify-center rounded-full border border-accent text-xs leading-none text-primary">
                 {index + 1}
               </span>
-              <p className="flex flex-col font-brand text-sm leading-5 text-primary/82 transition-colors duration-500 ease-out group-hover/exhibit-card:text-background sm:text-base sm:leading-6">
+              <p className="flex flex-col font-brand text-sm leading-5 text-primary/82 sm:text-base sm:leading-6">
                 {benefitLines.map((line) => (
                   <span key={line}>{line}</span>
                 ))}

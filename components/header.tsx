@@ -9,6 +9,7 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Nominations', href: externalLinks.nominations },
   { label: 'Summit', href: '/summit' },
+  { label: 'Speakers', href: '/speakers' },
   { label: 'Exhibition', href: '/exhibition' },
   { label: 'Award Gala', href: '/gala' },
 ] as const

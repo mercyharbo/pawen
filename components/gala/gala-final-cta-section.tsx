@@ -10,15 +10,8 @@ export function GalaFinalCtaSection({ ticketsUrl }: GalaFinalCtaSectionProps) {
   return (
     <section
       aria-labelledby="gala-final-cta-heading"
-      className="relative isolate overflow-hidden bg-pawen-brand-color px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
+      className="relative isolate overflow-hidden bg-pawen-brand-color px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
     >
-      <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-melodrama text-[18rem] font-bold leading-none text-primary/[0.03] sm:text-[24rem] lg:text-[34rem]"
-        aria-hidden="true"
-      >
-        <span className="translate-y-8">PAWEN</span>
-      </div>
-
       <MotionReveal className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-7 text-center">
         <div className="flex flex-col items-center gap-5">
           <h2

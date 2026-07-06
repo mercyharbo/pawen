@@ -34,7 +34,7 @@ const partnerLogos = [
 export function SponsorsSection() {
   return (
     <section
-      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
+      className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-10 text-foreground sm:px-8 lg:px-10 lg:py-16'
       id='our-story-details'
     >
       <div

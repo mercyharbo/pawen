@@ -37,7 +37,7 @@ const galaNightCards: GalaNightCard[] = [
     imageClassName:
       'origin-right scale-200 object-cover object-right sm:scale-150',
     overlayClassName: 'bg-accent/65 sm:bg-accent/10',
-    textClassName: 'text-background',
+    textClassName: 'text-black',
     buttonClassName: 'bg-background text-primary hover:bg-background/90',
   },
   {
@@ -49,7 +49,7 @@ const galaNightCards: GalaNightCard[] = [
     imageAlt: 'PAWEN gala guest speaking during dinner',
     imageClassName: 'object-cover object-center',
     overlayClassName: 'bg-accent/20 sm:bg-transparent',
-    textClassName: 'text-background',
+    textClassName: 'text-white',
     buttonClassName: 'bg-background text-primary hover:bg-background/90',
   },
   {
@@ -124,12 +124,12 @@ function GalaNightStackCard({
       <div className='relative z-10 flex min-h-[24rem] w-full max-w-xl flex-col justify-center gap-8 px-6 py-10 sm:min-h-[28rem] sm:px-12 lg:min-h-[30rem] lg:px-20'>
         <div className='flex flex-col gap-5'>
           <h3
-            className={`font-melodrama text-3xl font-medium leading-tight text-white sm:text-4xl lg:text-5xl ${card.textClassName}`}
+            className={`font-melodrama text-3xl font-medium leading-tight sm:text-4xl lg:text-5xl ${card.textClassName}`}
           >
             {card.title}
           </h3>
           <p
-            className={`max-w-sm font-brand text-base font-medium leading-7 text-white sm:text-lg sm:leading-8 ${card.textClassName}`}
+            className={`max-w-sm font-brand text-base font-medium leading-7 sm:text-lg sm:leading-8 ${card.textClassName}`}
           >
             {card.body}
           </p>
@@ -243,10 +243,10 @@ export function GalaNightSection() {
   return (
     <section
       aria-labelledby='gala-night-heading'
-      className='relative min-h-[320svh] px-5 text-primary sm:px-8 lg:px-10'
+      className='relative min-h-[240svh] px-5 text-primary sm:px-8 lg:px-10'
       ref={sectionRef}
     >
-      <div className='sticky top-0 mx-auto flex h-svh w-full max-w-6xl flex-col items-center justify-center gap-6 py-10 lg:py-12'>
+      <div className='sticky top-0 mx-auto flex h-svh w-full max-w-6xl flex-col items-center justify-center gap-6 py-8 lg:py-10'>
         <motion.h2
           id='gala-night-heading'
           className='font-melodrama text-4xl font-semibold leading-[0.98] text-accent sm:text-5xl lg:text-6xl'
