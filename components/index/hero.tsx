@@ -90,7 +90,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
           fill
           priority
           sizes='100vw'
-          className='hidden object-cover object-top md:block'
+          className='hidden object-cover object-[center_42%] md:block'
         />
       </motion.div>
 
@@ -176,7 +176,7 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
         ))}
       </motion.div>
 
-      <div className='relative z-10 mx-auto flex w-full max-w-[1905px] items-center justify-center px-5 py-12 text-center sm:px-8 md:py-20 lg:px-10'>
+      <div className='relative z-10 mx-auto flex w-full max-w-[1905px] items-center justify-center px-5 py-12 text-center sm:px-8 md:translate-y-8 md:py-20 lg:px-10 xl:translate-y-10'>
         <motion.div
           className='flex max-w-4xl flex-col items-center gap-8'
           initial={
