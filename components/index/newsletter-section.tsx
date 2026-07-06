@@ -1,6 +1,6 @@
 import { FooterNewsletterForm } from '../footer-newsletter-form'
 
-export function FooterTicketCta() {
+export function NewsletterSection() {
   return (
     <section className='bg-pawen-brand-color px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'>
       <div className='mx-auto flex w-full max-w-2xl flex-col items-center justify-center gap-5'>

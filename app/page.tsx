@@ -1,5 +1,5 @@
 import { Hero } from '@/components/index/hero'
-import { FooterTicketCta } from '@/components/index/footer-ticket-cta'
+import { NewsletterSection } from '@/components/index/newsletter-section'
 import { SponsorsSection } from '@/components/index/sponsors-section'
 import { StorySection } from '@/components/index/story-section'
 import { TicketVenueSection } from '@/components/index/ticket-venue-section'
@@ -17,7 +17,7 @@ export default function Home() {
       <SponsorsSection />
       <WhyPawenSection />
       <TicketVenueSection ticketsUrl={externalLinks.tickets} />
-      <FooterTicketCta />
+      <NewsletterSection />
     </>
   )
 }
