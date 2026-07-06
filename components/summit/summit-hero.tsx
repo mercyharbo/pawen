@@ -76,19 +76,25 @@ export function SummitHero({
               asChild
               className='h-11 min-w-32 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
             >
-              <Link href={registerUrl}>Register</Link>
+              <Link href={registerUrl} target='_blank' rel='noreferrer'>
+                Register
+              </Link>
             </Button>
             <Button
               asChild
               className='h-11 min-w-36 rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
             >
-              <Link href={exhibitUrl}>Book Exhibition Booth</Link>
+              <Link href={exhibitUrl} target='_blank' rel='noreferrer'>
+                Book Exhibition Booth
+              </Link>
             </Button>
             <Button
               asChild
               className='h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-accent hover:bg-accent hover:text-background'
             >
-              <Link href={speakUrl}>Apply to Speak</Link>
+              <Link href={speakUrl} target='_blank' rel='noreferrer'>
+                Apply to Speak
+              </Link>
             </Button>
           </div>
         </MotionReveal>

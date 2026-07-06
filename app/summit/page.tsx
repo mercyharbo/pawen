@@ -18,9 +18,9 @@ export default function SummitPage() {
     <>
       <div className="bg-pawen-brand-color">
         <SummitHero
-          registerUrl={externalLinks.tickets}
-          exhibitUrl="#exhibition"
-          speakUrl="#speakers"
+          registerUrl={externalLinks.summitRegistration}
+          exhibitUrl={externalLinks.bookExhibition}
+          speakUrl={externalLinks.applyToSpeak}
         />
         <SummitPillarsSection />
         <SummitWhyZambiaSection />
@@ -28,9 +28,9 @@ export default function SummitPage() {
         <SummitWhoShouldAttendSection />
       </div>
       <SummitFinalCtaSection
-        registerUrl={externalLinks.tickets}
-        exhibitUrl="#exhibition"
-        speakUrl="#speakers"
+        registerUrl={externalLinks.summitRegistration}
+        exhibitUrl={externalLinks.bookExhibition}
+        speakUrl={externalLinks.applyToSpeak}
       />
     </>
   );

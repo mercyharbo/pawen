@@ -24,8 +24,8 @@ export default function ExhibitionPage() {
         <ExhibitionExpectSection />
       </div>
       <ExhibitionFinalCtaSection
-        exhibitUrl="#exhibition"
-        registerUrl={externalLinks.tickets}
+        exhibitUrl={externalLinks.bookExhibition}
+        registerUrl={externalLinks.summitRegistration}
       />
     </>
   );

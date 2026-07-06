@@ -36,13 +36,17 @@ export function ExhibitionFinalCtaSection({
             asChild
             className='h-11 min-w-36 rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90'
           >
-            <Link href={exhibitUrl}>Book Exhibition Booth</Link>
+            <Link href={exhibitUrl} target='_blank' rel='noreferrer'>
+              Book Exhibition Booth
+            </Link>
           </Button>
           <Button
             asChild
             className='h-11 min-w-44 rounded-full bg-accent px-8 text-background hover:bg-accent/90'
           >
-            <Link href={registerUrl}>Register for the Summit</Link>
+            <Link href={registerUrl} target='_blank' rel='noreferrer'>
+              Register for the Summit
+            </Link>
           </Button>
         </div>
       </MotionReveal>

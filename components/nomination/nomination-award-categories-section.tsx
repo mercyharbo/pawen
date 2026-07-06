@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 const awardCategories = [
@@ -12,21 +13,34 @@ const awardCategories = [
     title: "Entrepreneurship Excellence Awards",
     description:
       "Scaling African Businesses for Growth. African women entrepreneurs are building resilient, innovative, high-growth businesses across every industry. This category celebrates market access, scaling strategy, and the opportunities shaping the future of African enterprise.",
+    image: {
+      src: "/images/entreprenuer.jpg",
+      alt: "Entrepreneurship Excellence Awards flyer",
+    },
   },
   {
     title: "Leadership Excellence Awards",
     description:
       "Recognising women leading institutions, teams, and industries with vision, courage, and measurable influence across Africa's business and professional landscape.",
+    image: {
+      src: "/images/leadership.jpg",
+      alt: "Leadership Excellence Awards flyer",
+    },
   },
   {
     title: "Impact Leadership Awards",
     description:
       "Celebrating women whose work creates lasting social, economic, policy, community, or environmental impact across the continent and diaspora.",
+    image: {
+      src: "/images/impact.jpg",
+      alt: "Impact Leadership Awards flyer",
+    },
   },
   {
     title: "Special Awards",
     description:
       "Honouring exceptional contributions, legacy achievements, and standout work that deserves dedicated recognition beyond the core award categories.",
+    image: null,
   },
 ] as const;
 
@@ -124,9 +138,19 @@ export function NominationAwardCategoriesSection() {
                         key='expanded-content'
                         transition={panelTransition}
                       >
-                        <div className='grid gap-8 pt-5 lg:grid-cols-[1fr_18rem] lg:items-center lg:gap-16 xl:grid-cols-[1fr_20rem]'>
+                        <div
+                          className={`grid gap-8 pt-5 lg:items-center lg:gap-16 ${
+                            category.image
+                              ? "lg:grid-cols-[1fr_18rem] xl:grid-cols-[1fr_20rem]"
+                              : ""
+                          }`}
+                        >
                           <div className='flex flex-col gap-5 pl-12 sm:pl-14'>
-                            <p className='max-w-xl font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+                            <p
+                              className={`font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8 ${
+                                category.image ? "max-w-xl" : "max-w-3xl"
+                              }`}
+                            >
                               {category.description}
                             </p>
                             <Button
@@ -138,11 +162,17 @@ export function NominationAwardCategoriesSection() {
                             </Button>
                           </div>
 
-                          <div
-                            className='aspect-[1.75] w-full rounded-xl bg-primary'
-                            aria-label={`${category.title} image placeholder`}
-                            role='img'
-                          />
+                          {category.image ? (
+                            <div className='relative aspect-square w-full overflow-hidden rounded-xl'>
+                              <Image
+                                src={category.image.src}
+                                alt={category.image.alt}
+                                fill
+                                sizes='(min-width: 1280px) 20rem, (min-width: 1024px) 18rem, calc(100vw - 5.5rem)'
+                                className='object-cover'
+                              />
+                            </div>
+                          ) : null}
                         </div>
                       </motion.div>
                     ) : null}
