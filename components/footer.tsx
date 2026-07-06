@@ -282,7 +282,7 @@ export function Footer() {
           >
             {[
               { label: 'Privacy Policy', href: '/privacy-policy' },
-              { label: 'Terms & Conditions', href: '#terms' },
+              { label: 'Terms & Conditions', href: '/terms-and-conditions' },
             ].map((item) => (
               <FooterTextLink
                 key={item.label}
