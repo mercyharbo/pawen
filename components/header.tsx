@@ -44,7 +44,7 @@ export function Header() {
     <header className='sticky top-0 z-50 bg-pawen-brand-color text-foreground'>
       <div className='border-b border-border bg-pawen-brand-color h-10 flex justify-center items-center font-brand text-sm'>
         <div className='flex flex-wrap items-center justify-center gap-3 text-center font-medium'>
-          <span>Nomination Open!</span>
+          <span>Nominations Open!</span>
           <HeaderMotionLink
             href='#award-categories'
             className='text-muted-foreground'

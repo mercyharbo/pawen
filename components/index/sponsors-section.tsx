@@ -6,28 +6,39 @@ import Marquee from 'react-fast-marquee'
 
 const partnerLogos = [
   {
-    src: '/images/sponsor (1).jpg',
-    alt: 'Stejarri Country Club',
+    name: 'Zanaco',
+    src: '/zanaco.png',
+    alt: 'Zanaco logo',
+    href: 'https://www.zanaco.co.zm',
   },
   {
-    src: '/images/sponsor (1).png',
-    alt: 'JYH International Architects',
+    name: 'Nugi Technologies',
+    src: '/NTW.png',
+    alt: 'Nugi Technologies logo',
+    href: 'https://nugitech.co.uk/',
   },
   {
-    src: '/images/sponsor (2).jpg',
-    alt: 'Jets 100',
+    name: 'Qloop',
+    src: '/QLoop.png',
+    alt: 'Qloop logo',
+    href: 'https://theqloop.com/',
   },
   {
-    src: '/images/sponsor (2).png',
-    alt: 'Peacebird',
+    name: 'Syncventory',
+    src: '/Syncventory Logo B.jpg',
+    alt: 'Syncventory logo',
+    href: 'https://www.syncventory.co/',
   },
   {
-    src: '/images/sponsor (3).png',
-    alt: 'Milk',
+    name: '360 Gov',
+    src: '/360 gov_W.png',
+    alt: '360 Gov logo',
   },
   {
-    src: '/images/sponsor (4).png',
-    alt: 'ROW',
+    name: 'Women in Technology Zambia',
+    src: '/WITN.jpg',
+    alt: 'Women in Technology Zambia logo',
+    href: 'https://www.witn.org.zm/',
   },
 ] as const
 
@@ -44,7 +55,7 @@ export function SponsorsSection() {
 
       <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-14'>
         <h2 className='font-brand text-4xl font-bold leading-tight text-accent text-center sm:text-5xl 3xl:text-6xl 2xl:text-6xl'>
-          Our Sponsors & Partners
+          Our Partners and Sponsors
         </h2>
 
         <MotionReveal className='w-full max-w-5xl overflow-hidden'>
@@ -57,16 +68,36 @@ export function SponsorsSection() {
           >
             {partnerLogos.map((logo) => (
               <div
-                className='flex min-h-20 min-w-48 items-center justify-center px-8'
-                key={logo.src}
+                className='flex min-h-32 min-w-64 items-center justify-center px-4'
+                key={logo.name}
               >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={192}
-                  height={192}
-                  className='max-h-20 w-auto object-contain'
-                />
+                {'href' in logo ? (
+                  <a
+                    href={logo.href}
+                    target='_blank'
+                    rel='noreferrer'
+                    className='inline-flex h-28 w-56 items-center justify-center transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+                    aria-label={`Visit ${logo.name}`}
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={220}
+                      height={110}
+                      className='max-h-24 w-auto object-contain'
+                    />
+                  </a>
+                ) : (
+                  <div className='flex h-28 w-56 items-center justify-center'>
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={220}
+                      height={110}
+                      className='max-h-24 w-auto object-contain'
+                    />
+                  </div>
+                )}
               </div>
             ))}
           </Marquee>

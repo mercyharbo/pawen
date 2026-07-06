@@ -2,7 +2,7 @@
 @import 'tailwind-scrollbar-hide/v4';
 
 @theme {
-  --color-background: #050505;
+  --color-background: #1c062d;
   --color-foreground: #f5f1e8;
   --color-soft-black: #0b0b0b;
   --color-summit-dark: #0a0a0a;
