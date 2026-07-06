@@ -52,17 +52,11 @@ export function SummitHero({
               </p>
               <p className='flex flex-col items-center justify-center gap-3 text-primary lg:flex-row lg:flex-nowrap lg:gap-8'>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-accent'>
-                    Date:
-                  </span>{' '}
-                  <span className='font-semibold'>
-                    13-14 November 2026
-                  </span>
+                  <span className='font-semibold text-accent'>Date:</span>{' '}
+                  <span className='font-semibold'>13-14 November 2026</span>
                 </span>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-accent'>
-                    Location:
-                  </span>{' '}
+                  <span className='font-semibold text-accent'>Location:</span>{' '}
                   <span className='font-semibold'>
                     InterContinental Hotel, Lusaka, Zambia
                   </span>
@@ -100,25 +94,29 @@ export function SummitHero({
         </MotionReveal>
 
         <MotionReveal
-          className='max-w-4xl space-y-10 font-brand text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
+          className='max-w-2xl space-y-10 font-brand text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
           delay={0.1}
         >
           <p>
             Africa is entering a new era of transformation, powered by
             technology, capital, innovation, and shifting global influence. The
-            women who lead now will shape what comes next.
+            women who lead now will{' '}
+            <br className='hidden 3xl:block' />
+            shape what comes next.
           </p>
           <p>
             The PAWEN Summit 2026 brings together Africa&apos;s most influential
             women, leaders, founders, executives, investors, policymakers, and
             changemakers, in Zambia for one defining conversation about the
-            future of leadership, business, and opportunity on the continent.
+            future of leadership, business, and{' '}
+            <br className='hidden 3xl:block' />
+            opportunity on the continent.
           </p>
           <p>
-            This is where 1000+ ambitious women gather to build powerful connections,
-            access new opportunities, gain strategic insight, expand across
-            markets, and position themselves for Africa&apos;s next chapter of
-            growth.
+            This is where 1000+ ambitious women gather to build powerful
+            connections, access new opportunities, gain strategic insight,
+            expand across markets, and position themselves for Africa&apos;s
+            next chapter of growth.
           </p>
         </MotionReveal>
       </div>

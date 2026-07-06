@@ -1,12 +1,12 @@
 import { MotionReveal } from "@/components/motion-reveal";
 
 const exhibitionBenefits = [
-  ["high-level summit", "delegates from", "across Africa"],
-  ["potential customers", "and distribution", "partners"],
-  ["corporate", "procurement", "opportunities"],
-  ["investors and", "ecosystem", "leaders"],
-  ["media exposure", "and brand", "visibility"],
-  ["cross-border", "collaboration", "opportunities"],
+  ["High-level Summit", "Delegates from", "across Africa"],
+  ["Potential Customers", "and Distribution", "Partners"],
+  ["Corporate", "Procurement", "Opportunities"],
+  ["Investors and", "Ecosystem", "Leaders"],
+  ["Media Exposure", "and Brand", "Visibility"],
+  ["Cross-border", "Collaboration", "Opportunitie"],
 ] as const;
 
 export function ExhibitionWhySection() {

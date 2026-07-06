@@ -14,38 +14,15 @@ const galleryLinks = [
 ] as const
 
 const contactLinks = [
-  { label: '+00 1234567890', href: 'tel:+001234567890' },
-  { label: 'hello@thepawenaward.com', href: 'mailto:hello@thepawenaward.com' },
-  { label: 'Contact us', href: 'mailto:hello@thepawenaward.com' },
+  { label: '+2348032006717', href: 'tel:+2348032006717' },
+  { label: '+234 809 906 0001', href: 'tel:+2348099060001' },
+  { label: 'awards@pawen.org', href: 'mailto:awards@pawen.org' },
   { label: "FAQ's", href: '/gala#faq' },
 ] as const
 
 const policyLinks = [
-  {
-    label: 'Eligibility and integrity',
-    href: '/policies/eligibility-and-integrity',
-  },
-  {
-    label: 'Data privacy and safety',
-    href: '/policies/data-privacy-and-safety',
-  },
-  { label: 'Anti-harassment', href: '/policies/anti-harassment' },
-  {
-    label: 'Judging process and conflict of interest',
-    href: '/policies/judging-process-and-conflict-of-interest',
-  },
-  {
-    label: 'Nomination transparency and appeals',
-    href: '/policies/nomination-transparency-and-appeals',
-  },
-  {
-    label: 'Intellectual property and publicity rights',
-    href: '/policies/intellectual-property-and-publicity-rights',
-  },
-  {
-    label: 'Gender and inclusion',
-    href: '/policies/gender-and-inclusion',
-  },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms & Conditions', href: '/terms-and-conditions' },
 ] as const
 
 const socialLinks = [
@@ -162,11 +139,41 @@ function YouTubeIcon({ className }: { className?: string }) {
   )
 }
 
+function FooterSocialLinks() {
+  return (
+    <nav
+      className='flex flex-wrap items-center gap-3'
+      aria-label='Social media links'
+    >
+      {socialLinks.map((item) => {
+        const Icon = item.icon
+
+        return (
+          <Link
+            key={item.label}
+            href={item.href}
+            aria-label={item.label}
+            target='_blank'
+            rel='noreferrer'
+            className='group/social relative flex size-12 items-center justify-center overflow-hidden rounded-full border border-border bg-primary/8 text-primary transition-transform duration-500 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+          >
+            <span
+              className='absolute inset-0 origin-bottom-left scale-0 rounded-full bg-accent transition-transform duration-500 ease-out group-hover/social:scale-100 group-focus-visible/social:scale-100'
+              aria-hidden='true'
+            />
+            <Icon className='relative z-10 size-5 transition-colors duration-500 group-hover/social:text-accent-foreground group-focus-visible/social:text-accent-foreground' />
+          </Link>
+        )
+      })}
+    </nav>
+  )
+}
+
 export function Footer() {
   return (
-    <footer className='relative isolate overflow-hidden bg-background text-primary'>
+    <footer className='relative isolate overflow-hidden bg-background text-primary [--color-background:#050505]'>
       <div className='relative z-10 mx-auto flex w-full max-w-[1905px] flex-col gap-12 px-5 py-14 sm:px-8 lg:px-10 lg:py-20'>
-        <div className='grid gap-10 py-10 lg:grid-cols-5 lg:gap-10 xl:gap-14'>
+        <div className='grid gap-10 py-10 lg:grid-cols-4 lg:gap-10 xl:gap-14'>
           <nav className='flex flex-col gap-4' aria-labelledby='footer-sitemap'>
             <p
               id='footer-sitemap'
@@ -206,7 +213,7 @@ export function Footer() {
           </nav>
 
           <nav
-            className='flex flex-col gap-4 lg:col-span-2'
+            className='flex flex-col gap-4'
             aria-labelledby='footer-policies'
           >
             <p
@@ -247,58 +254,17 @@ export function Footer() {
                 />
               ))}
             </div>
-            <nav
-              className='flex flex-wrap items-center gap-3 pt-2'
-              aria-label='Social media links'
-            >
-              {socialLinks.map((item) => {
-                const Icon = item.icon
-
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    aria-label={item.label}
-                    target='_blank'
-                    rel='noreferrer'
-                    className='group/social relative flex size-12 items-center justify-center overflow-hidden rounded-full border border-border bg-primary/8 text-primary transition-transform duration-500 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
-                  >
-                    <span
-                      className='absolute inset-0 origin-bottom-left scale-0 rounded-full bg-accent transition-transform duration-500 ease-out group-hover/social:scale-100 group-focus-visible/social:scale-100'
-                      aria-hidden='true'
-                    />
-                    <Icon className='relative z-10 size-5 transition-colors duration-500 group-hover/social:text-accent-foreground group-focus-visible/social:text-accent-foreground' />
-                  </Link>
-                )
-              })}
-            </nav>
           </address>
         </div>
-
+        <hr className='text-muted-foreground bg-muted-foreground' />
         <div className='flex flex-col justify-between gap-5 text-sm font-medium leading-5 md:flex-row md:items-center'>
-          <nav
-            className='flex flex-wrap gap-8 text-sm'
-            aria-label='Legal navigation'
-          >
-            {[
-              { label: 'Privacy Policy', href: '/privacy-policy' },
-              { label: 'Terms & Conditions', href: '/terms-and-conditions' },
-            ].map((item) => (
-              <FooterTextLink
-                key={item.label}
-                href={item.href}
-                label={item.label}
-                className='text-sm font-medium leading-5'
-              />
-            ))}
-          </nav>
+          <FooterSocialLinks />
           <div className='flex flex-wrap items-center gap-1 text-sm font-normal'>
             <span>&copy; 2026 The PAWEN Award. Created by</span>
             <FooterTextLink href='#' label='Favour Princewill' />
           </div>
         </div>
       </div>
-
     </footer>
   )
 }

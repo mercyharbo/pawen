@@ -73,7 +73,7 @@ export function WhyPawenSection() {
             Our Impact in Numbers
           </h3>
 
-          <div className='grid w-full gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12 xl:gap-16'>
+          <div className='grid w-full gap-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 xl:gap-16'>
             {impactStats.map((stat) => (
               <div
                 className='flex min-h-28 flex-col items-center justify-center gap-3'

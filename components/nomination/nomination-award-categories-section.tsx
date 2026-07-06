@@ -1,57 +1,57 @@
-"use client";
+'use client'
 
-import { MotionReveal } from "@/components/motion-reveal";
-import { Button } from "@/components/ui/button";
-import { useNomination } from "@/lib/stores/nomination-dialog-store";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
+import { MotionReveal } from '@/components/motion-reveal'
+import { Button } from '@/components/ui/button'
+import { useNomination } from '@/lib/stores/nomination-dialog-store'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { useState } from 'react'
 
 const awardCategories = [
   {
-    title: "Entrepreneurship Excellence Awards",
+    title: 'Entrepreneurship Excellence Awards',
     description:
-      "Scaling African Businesses for Growth. African women entrepreneurs are building resilient, innovative, high-growth businesses across every industry. This category celebrates market access, scaling strategy, and the opportunities shaping the future of African enterprise.",
+      'Scaling African Businesses for Growth. African women entrepreneurs are building resilient, innovative, high-growth businesses across every industry. This category celebrates market access, scaling strategy, and the opportunities shaping the future of African enterprise.',
     image: {
-      src: "/images/entreprenuer.jpg",
-      alt: "Entrepreneurship Excellence Awards flyer",
+      src: '/images/entreprenuer.jpg',
+      alt: 'Entrepreneurship Excellence Awards flyer',
     },
   },
   {
-    title: "Leadership Excellence Awards",
+    title: 'Leadership Excellence Awards',
     description:
       "Recognising women leading institutions, teams, and industries with vision, courage, and measurable influence across Africa's business and professional landscape.",
     image: {
-      src: "/images/leadership.jpg",
-      alt: "Leadership Excellence Awards flyer",
+      src: '/images/leadership.jpg',
+      alt: 'Leadership Excellence Awards flyer',
     },
   },
   {
-    title: "Impact Leadership Awards",
+    title: 'Impact Leadership Awards',
     description:
-      "Celebrating women whose work creates lasting social, economic, policy, community, or environmental impact across the continent and diaspora.",
+      'Celebrating women whose work creates lasting social, economic, policy, community, or environmental impact across the continent and diaspora.',
     image: {
-      src: "/images/impact.jpg",
-      alt: "Impact Leadership Awards flyer",
+      src: '/images/impact.jpg',
+      alt: 'Impact Leadership Awards flyer',
     },
   },
   {
-    title: "Special Awards",
+    title: 'Special Awards',
     description:
-      "Honouring exceptional contributions, legacy achievements, and standout work that deserves dedicated recognition beyond the core award categories.",
+      'Honouring exceptional contributions, legacy achievements, and standout work that deserves dedicated recognition beyond the core award categories.',
     image: null,
   },
-] as const;
+] as const
 
 export function NominationAwardCategoriesSection() {
-  const [activeCategory, setActiveCategory] = useState(0);
-  const { openDialog } = useNomination();
-  const reduceMotion = useReducedMotion();
+  const [activeCategory, setActiveCategory] = useState(0)
+  const { openDialog } = useNomination()
+  const reduceMotion = useReducedMotion()
   const panelTransition = {
     duration: reduceMotion ? 0 : 0.36,
     ease: [0.22, 1, 0.36, 1],
-  } as const;
+  } as const
 
   return (
     <section
@@ -59,8 +59,8 @@ export function NominationAwardCategoriesSection() {
       aria-labelledby='nomination-award-categories-heading'
       className='bg-[linear-gradient(180deg,var(--color-pawen-brand-color)_0%,var(--color-pawen-brand-color)_42%,rgba(28,6,45,0.82)_58%,var(--color-pawen-brand-color)_74%,var(--color-pawen-brand-color)_100%)] px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
     >
-      <div className='mx-auto flex w-full max-w-6xl flex-col gap-10'>
-        <div className='flex flex-col items-center gap-5 text-center'>
+      <div className='mx-auto flex w-full max-w-6xl flex-col gap-10 lg:gap-20'>
+        <div className='flex flex-col text-left lg:items-center gap-5 lg:text-center'>
           <MotionReveal>
             <h2
               id='nomination-award-categories-heading'
@@ -70,15 +70,19 @@ export function NominationAwardCategoriesSection() {
             </h2>
           </MotionReveal>
 
-          <MotionReveal className='max-w-5xl' delay={0.12}>
+          <MotionReveal className='max-w-3xl' delay={0.12}>
             <p className='font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
               Explore the categories below and nominate that African woman whose
               contribution deserves to be recognized and celebrated. Every
               nomination undergoes a rigorous multi-stage evaluation process led
               by an independent judging panel comprising respected leaders from
               business, governance, academia and civil society. Self nominations
-              are accepted. NOMINATION is FREE!!! We will never ask you to pay
-              for any award.
+              are accepted.
+              <br />
+              We will never ask you to pay for any award. <br />{' '}
+              <span className='text-accent font-medium'>
+                NOMINATION is FREE!!!
+              </span>{' '}
             </p>
           </MotionReveal>
         </div>
@@ -139,17 +143,15 @@ export function NominationAwardCategoriesSection() {
                         transition={panelTransition}
                       >
                         <div
-                          className={`grid gap-8 pt-5 lg:items-center lg:gap-16 ${
+                          className={`grid gap-8 pt-3 lg:items-start lg:gap-16 ${
                             category.image
-                              ? "lg:grid-cols-[1fr_18rem] xl:grid-cols-[1fr_20rem]"
-                              : ""
+                              ? 'lg:grid-cols-[1fr_18rem] xl:grid-cols-[1fr_20rem]'
+                              : ''
                           }`}
                         >
-                          <div className='flex flex-col gap-5 pl-12 sm:pl-14'>
+                          <div className='flex flex-col gap-3 pl-10'>
                             <p
-                              className={`font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8 ${
-                                category.image ? "max-w-xl" : "max-w-3xl"
-                              }`}
+                              className={`font-brand text-base leading-6 md:text-lg md:leading-8 max-w-xl lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8 `}
                             >
                               {category.description}
                             </p>

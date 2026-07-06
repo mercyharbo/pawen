@@ -1,26 +1,26 @@
-"use client";
+'use client'
 
-import { Button } from "@/components/ui/button";
-import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { Button } from '@/components/ui/button'
+import { motion, useReducedMotion } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
 
 type HeroProps = {
-  nominationsUrl: string;
-  ticketsUrl: string;
-};
+  nominationsUrl: string
+  ticketsUrl: string
+}
 
 type HeroParticle = {
-  left: number;
-  top: number;
-  size: number;
-  opacity: number;
-  x: number;
-  y: number;
-  duration: number;
-  delay: number;
-  scale: number;
-};
+  left: number
+  top: number
+  size: number
+  opacity: number
+  x: number
+  y: number
+  duration: number
+  delay: number
+  scale: number
+}
 
 const heroParticles: HeroParticle[] = [
   [3, 44, 4, 0.58, 18, -18, 10, 0, 1.7],
@@ -48,26 +48,24 @@ const heroParticles: HeroParticle[] = [
   [90, 48, 3, 0.56, -18, 26, 12, 1.6, 1.8],
   [94, 20, 5, 0.7, 20, -22, 13, 0.9, 1.5],
   [96, 86, 4, 0.6, -24, -16, 15, 2.5, 1.65],
-].map(
-  ([left, top, size, opacity, x, y, duration, delay, scale]) => ({
-    left,
-    top,
-    size,
-    opacity,
-    x,
-    y,
-    duration,
-    delay,
-    scale,
-  }),
-);
+].map(([left, top, size, opacity, x, y, duration, delay, scale]) => ({
+  left,
+  top,
+  size,
+  opacity,
+  x,
+  y,
+  duration,
+  delay,
+  scale,
+}))
 
 export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion()
   const revealTransition = {
     duration: 1.15,
     ease: [0.22, 1, 0.36, 1],
-  } as const;
+  } as const
 
   return (
     <section className='relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden bg-pawen-brand-color text-foreground md:min-h-[calc(115svh-7.875rem)]'>
@@ -194,10 +192,11 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
           transition={revealTransition}
         >
           <div className='flex flex-col items-center gap-5'>
-            <h1 className='max-w-3xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-3xl xl:text-5xl 2xl:text-6xl 3xl:text-6xl'>
-              Africa&apos;s Premier Platform for Women&apos;s Economic Leadership
+            <h1 className='max-w-3xl font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl lg:text-3xl xl:text-6xl 2xl:text-6xl 3xl:text-6xl'>
+              Africa&apos;s Premier Platform for Women&apos;s Economic
+              Leadership
             </h1>
-            <p className='font-sans text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+            <p className='font-sans text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 lg:max-w-md 2xl:text-base 3xl:text-lg 3xl:leading-8'>
               A Summit, An Exhibition and a Gala celebration to honour the women
               building Africa&apos;s economic future
             </p>

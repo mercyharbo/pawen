@@ -34,11 +34,16 @@ export function NominationHero() {
             id="nominations-hero-heading"
             className="max-w-3xl font-melodrama text-5xl font-semibold leading-[0.98] text-primary sm:text-6xl lg:text-7xl"
           >
-            Nominate the African Women Shaping Our World
+            Nominate the African
+            <br />
+            Women Shaping
+            <br />
+            Our World
           </h1>
           <p className="max-w-2xl font-brand text-sm leading-6 text-white md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8">
-            Celebrate the founders, intrapreneurs, and leaders redefining
-            business and career across Africa and the diaspora.
+            Celebrate the founders, intrapreneurs, and leaders redefining business
+            <br className="hidden sm:block" />
+            and career across Africa and the diaspora.
           </p>
         </div>
 

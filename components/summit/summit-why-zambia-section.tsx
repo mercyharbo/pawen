@@ -14,7 +14,7 @@ const exploreItems = [
     alt: 'Safari wildlife experience in Zambia',
   },
   {
-    title: 'local culture, cuisine, and creativity',
+    title: 'Local culture, cuisine, and creativity',
     image: '/images/culture.jpg',
     alt: 'Local Zambian culture and cuisine',
   },

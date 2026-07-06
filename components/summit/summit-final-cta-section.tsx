@@ -24,10 +24,10 @@ export function SummitFinalCtaSection({
         alt=''
         fill
         sizes='100vw'
-        className='object-cover object-center'
+        className='object-cover object-center opacity-15'
         aria-hidden='true'
       />
-      <div className='absolute inset-0 bg-background/28' aria-hidden='true' />
+      <div className='absolute inset-0 bg-background/10' aria-hidden='true' />
 
       <MotionReveal className='relative z-10 mx-auto flex min-h-[28rem] w-full max-w-3xl flex-col items-center justify-center gap-8 text-center'>
         <div className='flex flex-col items-center gap-7'>

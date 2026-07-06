@@ -32,11 +32,13 @@ export function NominationWhySection() {
         >
           Why Nominate
         </h2>
-        <p className='max-w-3xl font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+        <p className='max-w-2xl font-brand text-base leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
           The women leading Africa forward are everywhere: in boardrooms and at
           decision-making tables, building startups and scaling enterprises,
           leading public institutions and reshaping entire industries. The
-          question has never been whether they exist. It&apos;s whether their
+          question has never been whether they exist.
+          <br />
+          It&apos;s whether their
           work is known, celebrated, and easy for the world to find.
         </p>
       </MotionReveal>

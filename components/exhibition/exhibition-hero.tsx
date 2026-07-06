@@ -45,7 +45,7 @@ export function ExhibitionHero() {
             </p>
           </div>
 
-          <div className='grid w-full max-w-3xl gap-4 text-background sm:grid-cols-[1.6fr_1fr] sm:gap-5'>
+          <div className='grid w-full max-w-3xl gap-4 text-center text-background sm:grid-cols-[1.6fr_1fr] sm:gap-5 sm:text-left'>
             <MotionReveal
               as='article'
               className='flex min-h-32 items-center justify-center rounded-md bg-accent px-6 py-5 sm:min-h-36 sm:px-8'

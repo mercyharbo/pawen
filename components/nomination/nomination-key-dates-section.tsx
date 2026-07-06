@@ -10,7 +10,7 @@ type NominationKeyDatesSectionProps = {
 const keyDates = [
   { label: 'Nominations open:', value: '7 July 2026' },
   { label: 'Nominations Close:', value: '7 September 2026' },
-  { label: 'Finalist Revail', value: '7 October 2026' },
+  { label: 'Finalist Reveal', value: '7 October 2026' },
   { label: 'Summit and Exhibition', value: '13-14 November 2026' },
   { label: 'Awards Gala', value: '14 November 2026' },
 ] as const
