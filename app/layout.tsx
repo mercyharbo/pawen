@@ -2,14 +2,11 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { rootMetadata } from "@/lib/seo";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "The PAWEN Awards & Summit 2026",
-  description:
-    "Africa's largest awards and leadership summit for women in business, leadership and impact.",
-};
+export const metadata: Metadata = rootMetadata;
 
 export default function RootLayout({
   children,

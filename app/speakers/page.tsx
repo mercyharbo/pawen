@@ -5,6 +5,7 @@ import {
   getSpeakers,
   type Speaker,
 } from '@/lib/contentful'
+import { createPageMetadata, siteConfig } from '@/lib/seo'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -33,11 +34,16 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getSpeakerPageContent()
+  const title = (page.seoTitle || page.heading).replace(
+    ` | ${siteConfig.name}`,
+    '',
+  )
 
-  return {
-    title: page.seoTitle || `${page.heading} | The PAWEN Awards & Summit 2026`,
+  return createPageMetadata({
+    path: '/speakers',
+    title,
     description: page.seoDescription || page.intro,
-  }
+  })
 }
 
 function SpeakerCard({ speaker }: { speaker: Speaker }) {

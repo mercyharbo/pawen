@@ -6,12 +6,14 @@ import { NominationHero } from "@/components/nomination/nomination-hero";
 import { NominationKeyDatesSection } from "@/components/nomination/nomination-key-dates-section";
 import { NominationWhySection } from "@/components/nomination/nomination-why-section";
 import { externalLinks } from "@/lib/external-links";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Nominations | The PAWEN Awards & Summit 2026",
+export const metadata: Metadata = createPageMetadata({
+  path: "/nominations",
+  title: "Nominations",
   description:
     "Submit a nomination for The PAWEN Awards & Summit 2026 without leaving the PAWEN website.",
-};
+});
 
 export default function NominationsPage() {
   return (

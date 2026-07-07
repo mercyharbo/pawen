@@ -7,14 +7,16 @@ import {
   type AwardWinner,
   type WinnerYear,
 } from '@/lib/contentful'
+import { createPageMetadata } from '@/lib/seo'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Award Winners | The PAWEN Awards & Summit 2026',
+export const metadata: Metadata = createPageMetadata({
+  path: '/winners',
+  title: 'Award Winners',
   description: 'Explore PAWEN Award winners by year and award category.',
-}
+})
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (

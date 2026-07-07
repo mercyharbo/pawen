@@ -8,13 +8,15 @@ import { GalaSponsorSection } from "@/components/gala/gala-sponsor-section";
 import { GalaTicketsSection } from "@/components/gala/gala-tickets-section";
 import { GalaVictoriaFallsSection } from "@/components/gala/gala-victoria-falls-section";
 import { externalLinks } from "@/lib/external-links";
+import { createPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Award Gala | The PAWEN Awards & Summit 2026",
+export const metadata: Metadata = createPageMetadata({
+  path: "/gala",
+  title: "Award Gala",
   description:
-    "The 2026 PAWEN Awards Gala in Lusaka, Zambia.",
-};
+    "Get details for the 2026 PAWEN Awards Gala in Lusaka, Zambia, including tickets, tables, dress code, and event FAQs.",
+});
 
 export default function GalaPage() {
   return (

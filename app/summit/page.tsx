@@ -5,13 +5,15 @@ import { SummitPillarsSection } from "@/components/summit/summit-pillars-section
 import { SummitWhyAttendSection } from "@/components/summit/summit-why-attend-section";
 import { SummitWhyZambiaSection } from "@/components/summit/summit-why-zambia-section";
 import { SummitWhoShouldAttendSection } from "@/components/summit/summit-who-should-attend-section";
+import { createPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Summit | The PAWEN Awards & Summit 2026",
+export const metadata: Metadata = createPageMetadata({
+  path: "/summit",
+  title: "Summit",
   description:
-    "The 2026 PAWEN Summit and Exhibition in Lusaka, Zambia.",
-};
+    "Register for the 2026 PAWEN Summit and Exhibition in Lusaka, Zambia.",
+});
 
 export default function SummitPage() {
   return (

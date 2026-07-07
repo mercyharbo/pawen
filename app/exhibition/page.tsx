@@ -5,13 +5,15 @@ import { ExhibitionHero } from "@/components/exhibition/exhibition-hero";
 import { ExhibitionPotentialSection } from "@/components/exhibition/exhibition-potential-section";
 import { ExhibitionWhoSection } from "@/components/exhibition/exhibition-who-section";
 import { ExhibitionWhySection } from "@/components/exhibition/exhibition-why-section";
+import { createPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Exhibition | The PAWEN Awards & Summit 2026",
+export const metadata: Metadata = createPageMetadata({
+  path: "/exhibition",
+  title: "Exhibition",
   description:
-    "The PAWEN Exhibition connects Africa's women-led businesses with people, partnerships, and opportunities.",
-};
+    "Book an exhibition booth and connect your brand with Africa's women-led businesses, leaders, and partners.",
+});
 
 export default function ExhibitionPage() {
   return (

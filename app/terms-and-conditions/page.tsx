@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import { createPageMetadata } from '@/lib/seo'
 
-export const metadata: Metadata = {
-  title: 'Terms & Conditions | The PAWEN Awards',
+export const metadata: Metadata = createPageMetadata({
+  path: '/terms-and-conditions',
+  title: 'Terms & Conditions',
   description:
     'Review The PAWEN Awards terms and conditions, including privacy, data handling, cookies, and contact information.',
-}
+})
 
 const policySections = [
   {
