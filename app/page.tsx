@@ -9,6 +9,15 @@ import { createPageMetadata } from '@/lib/seo'
 
 export const metadata = createPageMetadata({
   path: '/',
+  description:
+    'Join The PAWEN Awards & Summit 2026 in Lusaka, Zambia for awards, summit sessions, exhibitions, networking, and opportunities for women entrepreneurs and business leaders across Africa.',
+  keywords: [
+    'PAWEN 2026',
+    'women awards Africa',
+    'women business summit',
+    'African women entrepreneurs',
+    'Lusaka business event',
+  ],
 })
 
 export default function Home() {

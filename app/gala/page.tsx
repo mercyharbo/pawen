@@ -15,7 +15,14 @@ export const metadata: Metadata = createPageMetadata({
   path: "/gala",
   title: "Award Gala",
   description:
-    "Get details for the 2026 PAWEN Awards Gala in Lusaka, Zambia, including tickets, tables, dress code, and event FAQs.",
+    "Attend the PAWEN Awards Gala 2026 in Lusaka, Zambia for an evening celebrating women entrepreneurs, leaders, innovators, and award winners across Africa.",
+  keywords: [
+    "PAWEN Awards Gala",
+    "women awards gala",
+    "award gala Zambia",
+    "PAWEN tickets",
+    "African women awards",
+  ],
 });
 
 export default function GalaPage() {

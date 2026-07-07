@@ -15,7 +15,15 @@ import Link from 'next/link'
 export const metadata: Metadata = createPageMetadata({
   path: '/winners',
   title: 'Award Winners',
-  description: 'Explore PAWEN Award winners by year and award category.',
+  description:
+    'Explore PAWEN Award winners by year and award category, celebrating women entrepreneurs, leaders, founders, and changemakers across Africa.',
+  keywords: [
+    'PAWEN winners',
+    'PAWEN award winners',
+    'women award winners',
+    'African women leaders',
+    'award categories',
+  ],
 })
 
 function LinkedInIcon({ className }: { className?: string }) {

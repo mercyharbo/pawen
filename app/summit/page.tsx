@@ -12,7 +12,14 @@ export const metadata: Metadata = createPageMetadata({
   path: "/summit",
   title: "Summit",
   description:
-    "Register for the 2026 PAWEN Summit and Exhibition in Lusaka, Zambia.",
+    "Register for the PAWEN Summit 2026 in Lusaka, Zambia and connect with women entrepreneurs, business leaders, partners, speakers, and ecosystem builders across Africa.",
+  keywords: [
+    "PAWEN Summit 2026",
+    "women leadership summit",
+    "Africa business summit",
+    "Lusaka summit",
+    "women entrepreneurs networking",
+  ],
 });
 
 export default function SummitPage() {

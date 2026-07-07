@@ -12,7 +12,14 @@ export const metadata: Metadata = createPageMetadata({
   path: "/nominations",
   title: "Nominations",
   description:
-    "Submit a nomination for The PAWEN Awards & Summit 2026 without leaving the PAWEN website.",
+    "Nominate outstanding women entrepreneurs, leaders, founders, and changemakers for The PAWEN Awards & Summit 2026.",
+  keywords: [
+    "PAWEN nominations",
+    "nominate women leaders",
+    "women awards nomination",
+    "African women changemakers",
+    "women founders awards",
+  ],
 });
 
 export default function NominationsPage() {

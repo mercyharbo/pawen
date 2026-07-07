@@ -12,7 +12,14 @@ export const metadata: Metadata = createPageMetadata({
   path: "/exhibition",
   title: "Exhibition",
   description:
-    "Book an exhibition booth and connect your brand with Africa's women-led businesses, leaders, and partners.",
+    "Book an exhibition booth at PAWEN 2026 to showcase your brand to women-led businesses, investors, partners, leaders, and decision makers across Africa.",
+  keywords: [
+    "PAWEN exhibition",
+    "book exhibition booth",
+    "women business expo",
+    "Africa trade exhibition",
+    "brand showcase Zambia",
+  ],
 });
 
 export default function ExhibitionPage() {

@@ -43,6 +43,13 @@ export async function generateMetadata(): Promise<Metadata> {
     path: '/speakers',
     title,
     description: page.seoDescription || page.intro,
+    keywords: [
+      'PAWEN speakers',
+      'PAWEN Summit speakers',
+      'women speakers Africa',
+      'business speakers',
+      'leadership speakers',
+    ],
   })
 }
 

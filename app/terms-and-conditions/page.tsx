@@ -5,7 +5,14 @@ export const metadata: Metadata = createPageMetadata({
   path: '/terms-and-conditions',
   title: 'Terms & Conditions',
   description:
-    'Review The PAWEN Awards terms and conditions, including privacy, data handling, cookies, and contact information.',
+    'Review The PAWEN Awards terms and conditions for website use, event participation, nominations, registrations, tickets, communications, and related services.',
+  keywords: [
+    'PAWEN terms and conditions',
+    'PAWEN event terms',
+    'website terms',
+    'event participation terms',
+    'nomination terms',
+  ],
 })
 
 const policySections = [

@@ -5,7 +5,14 @@ export const metadata: Metadata = createPageMetadata({
   path: '/privacy-policy',
   title: 'Privacy Policy',
   description:
-    'Learn how The PAWEN Awards collects, uses, stores, discloses, and protects personal information.',
+    'Read The PAWEN Awards privacy policy to understand how personal information is collected, used, stored, protected, and handled across nominations, registrations, tickets, and events.',
+  keywords: [
+    'PAWEN privacy policy',
+    'PAWEN data protection',
+    'event privacy policy',
+    'personal information',
+    'privacy rights',
+  ],
 })
 
 const policySections = [
