@@ -1,7 +1,9 @@
+'use client'
+
 import { MotionReveal } from '@/components/motion-reveal'
 import { Button } from '@/components/ui/button'
+import { useNomination } from '@/lib/stores/nomination-dialog-store'
 import { Star } from 'lucide-react'
-import Link from 'next/link'
 
 const eligibilityItems = [
   'An African woman, on the continent or across the diaspora.',
@@ -11,6 +13,8 @@ const eligibilityItems = [
 ] as const
 
 export function NominationEligibilitySection() {
+  const { openDialog } = useNomination()
+
   return (
     <section
       aria-labelledby='nomination-eligibility-heading'
@@ -34,10 +38,11 @@ export function NominationEligibilitySection() {
           </div>
 
           <Button
-            asChild
             className='h-11 w-fit rounded-full bg-accent px-8 font-medium text-background hover:bg-accent/90'
+            onClick={openDialog}
+            type='button'
           >
-            <Link href='#nomination-form'>Submit Nomination</Link>
+            Submit Nomination
           </Button>
         </MotionReveal>
 
@@ -50,7 +55,7 @@ export function NominationEligibilitySection() {
             >
               <li className='flex items-start gap-4 py-5'>
                 <Star
-                  className='size-4 mt-2 shrink-0 fill-accent text-accent sm:size-4'
+                  className='size-4 shrink-0 fill-accent text-accent sm:size-4'
                   aria-hidden='true'
                 />
                 <span className='font-brand text-lg leading-8 text-primary sm:text-2xl sm:leading-9'>

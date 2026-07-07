@@ -26,7 +26,7 @@ function HeaderMotionLink({
   return (
     <Link
       href={href}
-      className={`group/header-link relative inline-flex overflow-hidden pb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${className}`}
+      className={`group/header-link relative inline-flex items-center overflow-hidden leading-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${className}`}
     >
       <span className='transition-transform duration-500 ease-out group-hover/header-link:-translate-y-0.5 group-focus-visible/header-link:-translate-y-0.5'>
         {children}
@@ -46,7 +46,7 @@ export function Header() {
         <div className='flex flex-wrap items-center justify-center gap-3 text-center font-medium'>
           <span>Nominations Open!</span>
           <HeaderMotionLink
-            href='#award-categories'
+            href='/nominations#award-categories'
             className='text-muted-foreground'
           >
             Dive In

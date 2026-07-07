@@ -62,8 +62,8 @@ export function SummitWhyAttendSection() {
           variant='image-reveal'
         >
           <Image
-            src='/images/submit-img.jpg'
-            alt='PAWEN speaker presenting at a summit event'
+            src='/images/What Attend.jpg'
+            alt='PAWEN summit attendees gathered at an event'
             fill
             sizes='(min-width: 1024px) 48vw, 100vw'
             className='object-cover object-center'

@@ -1,4 +1,3 @@
-import { CountUpNumber } from '@/components/count-up-number'
 import { MotionReveal } from '@/components/motion-reveal'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
@@ -9,12 +8,6 @@ type GalaHeroProps = {
   ticketsUrl: string
 }
 
-const galaStats = [
-  { label: 'Countries represented', suffix: '', target: 35 },
-  { label: 'Women in our community', suffix: '+', target: 10000 },
-  { label: 'Faculty & speakers', suffix: '+', target: 70 },
-] as const
-
 export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
   return (
     <section
@@ -23,7 +16,7 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
       className='relative isolate min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28'
     >
       <Image
-        src='/images/hero-bg.jpg'
+        src='/images/IMG-5.jpg'
         alt=''
         fill
         priority
@@ -57,17 +50,13 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
               <p>An evening of recognition, celebration, and connection.</p>
               <p className='flex flex-col items-center justify-center gap-3 text-primary lg:flex-row lg:flex-nowrap lg:gap-8'>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-accent'>
-                    Date:
-                  </span>{' '}
+                  <span className='font-semibold text-accent'>Date:</span>{' '}
                   <span className='font-semibold'>
                     Saturday, 14 November 2026
                   </span>
                 </span>
                 <span className='lg:whitespace-nowrap'>
-                  <span className='font-semibold text-accent'>
-                    Location:
-                  </span>{' '}
+                  <span className='font-semibold text-accent'>Location:</span>{' '}
                   <span className='font-semibold'>
                     InterContinental Hotel, Lusaka, Zambia
                   </span>
@@ -90,24 +79,6 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
               <Link href={brochureUrl}>Explore Our Brochure</Link>
             </Button>
           </div>
-
-          {/* <div className='grid w-full max-w-4xl gap-8 sm:grid-cols-3 sm:gap-0'>
-            {galaStats.map((stat) => (
-              <div
-                className='flex min-h-24 flex-col items-center justify-center gap-4 border-primary/10 sm:border-r sm:last:border-r-0'
-                key={stat.label}
-              >
-                <CountUpNumber
-                  className='font-brand text-4xl font-semibold leading-none text-accent sm:text-5xl'
-                  suffix={stat.suffix}
-                  target={stat.target}
-                />
-                <p className='font-brand text-xs font-medium uppercase leading-5 text-primary'>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div> */}
         </MotionReveal>
 
         <div className='grid w-full items-center gap-12 text-left lg:grid-cols-2 lg:gap-16'>
@@ -128,11 +99,21 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
           </MotionReveal>
 
           <MotionReveal
-            className='min-h-80 rounded-2xl bg-primary sm:min-h-96 lg:min-h-[28rem]'
+            className='group relative min-h-80 overflow-hidden rounded-2xl bg-primary sm:min-h-96 lg:min-h-[28rem]'
             delay={0.08}
             variant='scale-in'
           >
-            <div aria-hidden='true' />
+            <Image
+              src='/images/award-gala.jpg'
+              alt='PAWEN award recipient holding a trophy at the gala'
+              fill
+              sizes='(min-width: 1024px) 34rem, 100vw'
+              className='object-cover object-center grayscale transition duration-500 group-hover:grayscale-0'
+            />
+            <div
+              className='absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent'
+              aria-hidden='true'
+            />
           </MotionReveal>
         </div>
       </div>

@@ -22,38 +22,12 @@ export const nominationTargets = [
 
 export const categoryGroups: SelectGroup[] = [
   {
-    label: "Entrepreneurship Excellence Awards",
+    label: "Award Categories",
     options: [
-      "Technology Entrepreneur of the Year",
-      "Digital Entrepreneur of the Year",
-      "Real Estate Entrepreneur of the Year",
-      "Agribusiness Entrepreneur of the Year",
-      "Creative Entrepreneur of the Year",
-      "Social Impact Entrepreneur of the Year",
-      "Emerging Entrepreneur of the Year",
-    ],
-  },
-  {
-    label: "Leadership Excellence Awards",
-    options: [
-      "CEO of the Year",
-      "Boardroom Leader of the Year",
-      "Finance Leader of the Year",
-      "Technology Leader of the Year",
-      "People Leader of the Year",
-      "Product Leader of the Year",
-      "Brand Leader of the Year",
-    ],
-  },
-  {
-    label: "Impact Leadership Awards",
-    options: [
-      "Public Service Leader of the Year",
-      "Health Leader of the Year",
-      "Education Leader of the Year",
-      "Innovation Leader of the Year",
-      "Investor of the Year",
-      "Economic Empowerment Leader of the Year",
+      "Entrepreneurship Excellence Awards",
+      "Leadership Excellence Awards",
+      "Impact Leadership Awards",
+      "Special Awards",
     ],
   },
 ];

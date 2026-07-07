@@ -45,16 +45,16 @@ export function ExhibitionExpectSection() {
         </MotionReveal>
 
         <MotionReveal
-          className="relative aspect-[1.65] overflow-hidden rounded-xl bg-card"
+          className="group relative aspect-[1.18] w-full max-w-xl overflow-hidden rounded-xl bg-card lg:justify-self-end"
           delay={0.08}
           variant="image-reveal"
         >
           <Image
-            src="/images/submit-img.jpg"
-            alt="PAWEN speaker presenting at the summit"
+            src="/images/what_to_expect.jpg"
+            alt="PAWEN exhibition attendees networking at the summit"
             fill
             sizes="(min-width: 1024px) 44vw, 100vw"
-            className="object-cover object-center"
+            className="object-cover object-top grayscale transition duration-500 group-hover:grayscale-0"
           />
         </MotionReveal>
       </div>

@@ -14,7 +14,7 @@ const awardCategories = [
     description:
       'Scaling African Businesses for Growth. African women entrepreneurs are building resilient, innovative, high-growth businesses across every industry. This category celebrates market access, scaling strategy, and the opportunities shaping the future of African enterprise.',
     image: {
-      src: '/images/entreprenuer.jpg',
+      src: '/images/Enterpreneurship Excellence Awards copy.jpg',
       alt: 'Entrepreneurship Excellence Awards flyer',
     },
   },
@@ -23,7 +23,7 @@ const awardCategories = [
     description:
       "Recognising women leading institutions, teams, and industries with vision, courage, and measurable influence across Africa's business and professional landscape.",
     image: {
-      src: '/images/leadership.jpg',
+      src: '/images/Leadership Excellence Awards copy.jpg',
       alt: 'Leadership Excellence Awards flyer',
     },
   },
@@ -32,7 +32,7 @@ const awardCategories = [
     description:
       'Celebrating women whose work creates lasting social, economic, policy, community, or environmental impact across the continent and diaspora.',
     image: {
-      src: '/images/impact.jpg',
+      src: '/images/Impact Leadership awards Awards copy.jpg',
       alt: 'Impact Leadership Awards flyer',
     },
   },
@@ -40,7 +40,10 @@ const awardCategories = [
     title: 'Special Awards',
     description:
       'Honouring exceptional contributions, legacy achievements, and standout work that deserves dedicated recognition beyond the core award categories.',
-    image: null,
+    image: {
+      src: '/images/Special Awards copy.jpg',
+      alt: 'Special Awards flyer',
+    },
   },
 ] as const
 
@@ -145,7 +148,7 @@ export function NominationAwardCategoriesSection() {
                         <div
                           className={`grid gap-8 pt-3 lg:items-start lg:gap-16 ${
                             category.image
-                              ? 'lg:grid-cols-[1fr_18rem] xl:grid-cols-[1fr_20rem]'
+                              ? 'lg:grid-cols-[1fr_20rem] xl:grid-cols-[1fr_24rem]'
                               : ''
                           }`}
                         >

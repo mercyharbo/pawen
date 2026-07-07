@@ -1,5 +1,6 @@
 import { MotionReveal } from "@/components/motion-reveal";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 
 type GalaSponsorSectionProps = {
@@ -13,10 +14,15 @@ export function GalaSponsorSection({ sponsorUrl }: GalaSponsorSectionProps) {
       className="bg-[linear-gradient(180deg,var(--color-pawen-brand-color)_0%,var(--color-pawen-brand-color)_42%,rgba(28,6,45,0.82)_58%,var(--background)_74%,var(--background)_100%)] px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16"
     >
       <MotionReveal className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-        <div
-          className="min-h-80 rounded-xl bg-primary sm:min-h-96 lg:min-h-[22rem]"
-          aria-hidden="true"
-        />
+        <div className="relative min-h-80 overflow-hidden rounded-xl bg-primary sm:min-h-96 lg:min-h-[22rem]">
+          <Image
+            src="/images/Sponsor copy.jpg"
+            alt="PAWEN sponsor and partner moment at the awards gala"
+            fill
+            sizes="(min-width: 1024px) 32rem, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
 
         <div className="flex flex-col gap-8">
           <div className="flex max-w-xl flex-col gap-8">

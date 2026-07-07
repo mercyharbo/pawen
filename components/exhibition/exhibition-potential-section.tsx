@@ -13,7 +13,7 @@ export function ExhibitionPotentialSection() {
         variant="image-reveal"
       >
         <Image
-          src="/images/IMG (1).jpg"
+          src="/images/Zambia Skyline.png"
           alt=""
           fill
           sizes="100vw"
