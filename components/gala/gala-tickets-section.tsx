@@ -1,11 +1,6 @@
 import { MotionReveal } from '@/components/motion-reveal'
 import { Button } from '@/components/ui/button'
 import { Star, Ticket } from 'lucide-react'
-import Link from 'next/link'
-
-type GalaTicketsSectionProps = {
-  ticketsUrl: string
-}
 
 type TicketCard = {
   title: string
@@ -49,7 +44,7 @@ const ticketCards: TicketCard[] = [
   },
 ]
 
-export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
+export function GalaTicketsSection() {
   return (
     <section
       id='tickets-and-tables'
@@ -109,10 +104,10 @@ export function GalaTicketsSection({ ticketsUrl }: GalaTicketsSectionProps) {
                 </ul>
 
                 <Button
-                  asChild
+                  disabled
                   className='h-11 w-full rounded-full border border-primary/80 bg-transparent px-6 text-xs font-medium text-primary transition-colors duration-500 ease-out hover:bg-primary hover:text-background group-hover/ticket-card:border-background group-hover/ticket-card:bg-background group-hover/ticket-card:text-primary group-focus-within/ticket-card:border-background group-focus-within/ticket-card:bg-background group-focus-within/ticket-card:text-primary'
                 >
-                  <Link href={ticketsUrl}>{card.action}</Link>
+                  {card.action}
                 </Button>
               </div>
             </MotionReveal>

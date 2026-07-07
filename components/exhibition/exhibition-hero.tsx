@@ -14,7 +14,7 @@ export function ExhibitionHero() {
         variant='image-reveal'
       >
         <Image
-          src='/images/Exhibition page - hero section  (1).png'
+          src='/images/exhibition.jpg'
           alt=''
           fill
           priority

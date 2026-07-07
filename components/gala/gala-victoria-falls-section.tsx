@@ -1,22 +1,20 @@
-import { MotionReveal } from "@/components/motion-reveal";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
+import { MotionReveal } from '@/components/motion-reveal'
+import Image from 'next/image'
 
 const victoriaFallsDetails = [
   {
-    label: "Departing:",
-    value: "Sunday, 15 November 2026",
+    label: 'Departing:',
+    value: 'Sunday, 15 November 2026',
   },
   {
-    label: "Location:",
-    value: "Livingstone, Zambia",
+    label: 'Location:',
+    value: 'Livingstone, Zambia',
   },
   {
-    label: "Add-on package:",
-    value: "Organized by our travel partner",
+    label: 'Add-on package:',
+    value: 'Organized by our travel partner',
   },
-] as const;
+] as const
 
 export function GalaVictoriaFallsSection() {
   return (
@@ -90,14 +88,14 @@ export function GalaVictoriaFallsSection() {
             ))}
           </div>
 
-          <Button
+          {/* <Button
             asChild
             className='h-11 w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90 sm:w-fit'
           >
             <Link href='#tickets-and-tables'>
               Express Interest in the Victoria Falls Experience
             </Link>
-          </Button>
+          </Button> */}
         </div>
       </MotionReveal>
     </section>
