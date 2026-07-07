@@ -76,7 +76,9 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
               asChild
               className='h-11 sm:min-w-44 lg:w-auto w-full rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
             >
-              <Link href={brochureUrl}>Explore Our Brochure</Link>
+              <Link href={brochureUrl} target='_blank' rel='noreferrer'>
+                Explore Our Brochure
+              </Link>
             </Button>
           </div>
         </MotionReveal>
