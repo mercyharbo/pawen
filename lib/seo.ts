@@ -1,68 +1,67 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
 const sharedKeywords = [
-  "PAWEN",
-  "The PAWEN Awards & Summit 2026",
-  "PAWEN Awards",
-  "PAWEN Summit",
-  "women entrepreneurs",
-  "women in business",
-  "women leaders",
-  "African women",
-  "women economic leadership",
-  "Africa awards",
-  "business summit",
-  "business exhibition",
-  "award gala",
-  "Zambia",
-  "Lusaka",
-  "leadership",
-  "networking",
-  "business growth",
-];
+  'PAWEN',
+  'The PAWEN Awards & Summit 2026',
+  'PAWEN Awards',
+  'PAWEN Summit',
+  'women entrepreneurs',
+  'women in business',
+  'women leaders',
+  'African women',
+  'women economic leadership',
+  'Africa awards',
+  'business summit',
+  'business exhibition',
+  'award gala',
+  'Zambia',
+  'Lusaka',
+  'leadership',
+  'networking',
+  'business growth',
+]
 
 export const siteConfig = {
-  name: "The PAWEN Awards & Summit 2026",
+  name: 'The PAWEN Awards & Summit 2026',
   description:
-    "The PAWEN Awards & Summit 2026 brings together women entrepreneurs, business leaders, partners, and changemakers across Africa for awards, summit sessions, exhibitions, and gala experiences in Lusaka, Zambia.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://pawen.org").replace(
-    /\/$/,
-    "",
-  ),
-  ogImage: "/images/og-image.png",
-  twitterImage: "/images/og-image.png",
+    'The PAWEN Awards & Summit 2026 brings together women entrepreneurs, business leaders, partners, and changemakers across Africa for awards, summit sessions, exhibitions, and gala experiences in Lusaka, Zambia.',
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pawen.vercel.app/'
+  ).replace(/\/$/, ''),
+  ogImage: '/og-image.png',
+  twitterImage: '/og-image.png',
   keywords: sharedKeywords,
-};
+}
 
 type SeoMetadataInput = {
-  description?: string;
-  keywords?: string[];
-  path?: string;
-  title?: string;
-};
+  description?: string
+  keywords?: string[]
+  path?: string
+  title?: string
+}
 
 export function absoluteUrl(path: string) {
-  return `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+  return `${siteConfig.url}${path.startsWith('/') ? path : `/${path}`}`
 }
 
 export function titleWithTemplate(title?: string) {
   if (!title || title === siteConfig.name) {
-    return siteConfig.name;
+    return siteConfig.name
   }
 
-  return `${title} | ${siteConfig.name}`;
+  return `${title} | ${siteConfig.name}`
 }
 
 export function createPageMetadata({
   description = siteConfig.description,
   keywords = [],
-  path = "/",
+  path = '/',
   title,
 }: SeoMetadataInput = {}): Metadata {
-  const fullTitle = titleWithTemplate(title);
+  const fullTitle = titleWithTemplate(title)
   const pageKeywords = Array.from(
     new Set([...siteConfig.keywords, ...keywords]),
-  );
+  )
 
   return {
     title: title ?? siteConfig.name,
@@ -77,9 +76,9 @@ export function createPageMetadata({
       googleBot: {
         index: true,
         follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-        "max-video-preview": -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
       },
     },
     openGraph: {
@@ -95,16 +94,16 @@ export function createPageMetadata({
           alt: siteConfig.name,
         },
       ],
-      locale: "en_US",
-      type: "website",
+      locale: 'en_US',
+      type: 'website',
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: fullTitle,
       description,
       images: [siteConfig.twitterImage],
     },
-  };
+  }
 }
 
 export const rootMetadata: Metadata = {
@@ -116,18 +115,18 @@ export const rootMetadata: Metadata = {
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   applicationName: siteConfig.name,
-  creator: "PAWEN",
-  publisher: "PAWEN",
-  category: "Events",
+  creator: 'PAWEN',
+  publisher: 'PAWEN',
+  category: 'Events',
   icons: {
     icon: [
       {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: '/icon.svg',
+        type: 'image/svg+xml',
       },
     ],
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
   },
   robots: {
     index: true,
@@ -135,9 +134,9 @@ export const rootMetadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
   openGraph: {
@@ -153,13 +152,13 @@ export const rootMetadata: Metadata = {
         alt: siteConfig.name,
       },
     ],
-    locale: "en_US",
-    type: "website",
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.twitterImage],
   },
-};
+}
