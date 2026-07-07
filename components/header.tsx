@@ -1,18 +1,20 @@
 import { HeaderNavLinks } from '@/components/header-nav-links'
 import { MobileNavMenu } from '@/components/mobile-nav-menu'
+import { hasVisibleSpeakers } from '@/lib/contentful'
 import { externalLinks } from '@/lib/external-links'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 
-const navItems = [
+const baseNavItems = [
   { label: 'Home', href: '/' },
   { label: 'Nominations', href: externalLinks.nominations },
   { label: 'Summit', href: '/summit' },
-  { label: 'Speakers', href: '/speakers' },
   { label: 'Exhibition', href: '/exhibition' },
   { label: 'Award Gala', href: '/gala' },
 ] as const
+
+const speakersNavItem = { label: 'Speakers', href: '/speakers' } as const
 
 function HeaderMotionLink({
   children,
@@ -39,7 +41,16 @@ function HeaderMotionLink({
   )
 }
 
-export function Header() {
+export async function Header() {
+  const showSpeakers = await hasVisibleSpeakers()
+  const navItems = showSpeakers
+    ? [
+        ...baseNavItems.slice(0, 3),
+        speakersNavItem,
+        ...baseNavItems.slice(3),
+      ]
+    : baseNavItems
+
   return (
     <header className='sticky top-0 z-50 bg-pawen-brand-color text-foreground'>
       <div className='border-b border-border bg-pawen-brand-color h-10 flex justify-center items-center font-brand text-sm'>

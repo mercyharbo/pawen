@@ -261,6 +261,17 @@ export async function getSpeakers() {
   )
 }
 
+export async function hasVisibleSpeakers() {
+  const collection = await fetchContentfulEntries<SpeakerFields>('speaker', {
+    'fields.visible': 'true',
+    include: '0',
+    limit: '1',
+    select: 'sys.id',
+  })
+
+  return (collection?.items.length ?? 0) > 0
+}
+
 export async function getWinnerYears() {
   const collection = await fetchContentfulEntries<WinnerYearFields>(
     'winnerYear',
@@ -275,6 +286,20 @@ export async function getWinnerYears() {
       year: fields.year ?? '',
     })) ?? []
   )
+}
+
+export async function hasVisibleAwardWinners() {
+  const collection = await fetchContentfulEntries<AwardWinnerFields>(
+    'awardWinner',
+    {
+      'fields.visible': 'true',
+      include: '0',
+      limit: '1',
+      select: 'sys.id',
+    },
+  )
+
+  return (collection?.items.length ?? 0) > 0
 }
 
 export async function getAwardCategories() {

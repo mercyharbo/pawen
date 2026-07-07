@@ -101,6 +101,10 @@ export async function GalaPastWinnersSection() {
   ])
   const defaultYear = years[0]?.year ?? 'winners'
 
+  if (winners.length === 0) {
+    return null
+  }
+
   return (
     <section
       id='hall-of-fame'
