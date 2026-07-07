@@ -1,16 +1,12 @@
+"use client"
+
 import { MotionReveal } from '@/components/motion-reveal'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { useEventDialog } from '@/lib/stores/event-dialog-store'
 
-type ExhibitionFinalCtaSectionProps = {
-  exhibitUrl: string
-  registerUrl: string
-}
+export function ExhibitionFinalCtaSection() {
+  const openDialog = useEventDialog((store) => store.openDialog)
 
-export function ExhibitionFinalCtaSection({
-  exhibitUrl,
-  registerUrl,
-}: ExhibitionFinalCtaSectionProps) {
   return (
     <section
       aria-labelledby='exhibition-final-cta-heading'
@@ -33,20 +29,18 @@ export function ExhibitionFinalCtaSection({
 
         <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
           <Button
-            asChild
             className='h-11 min-w-36 rounded-full bg-primary px-8 text-primary-foreground hover:bg-primary/90'
+            onClick={() => openDialog('exhibition')}
+            type='button'
           >
-            <Link href={exhibitUrl} target='_blank' rel='noreferrer'>
-              Book Exhibition Booth
-            </Link>
+            Book Exhibition Booth
           </Button>
           <Button
-            asChild
             className='h-11 min-w-44 rounded-full bg-accent px-8 text-background hover:bg-accent/90'
+            onClick={() => openDialog('summit')}
+            type='button'
           >
-            <Link href={registerUrl} target='_blank' rel='noreferrer'>
-              Register for the Summit
-            </Link>
+            Register for the Summit
           </Button>
         </div>
       </MotionReveal>

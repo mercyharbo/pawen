@@ -1,10 +1,10 @@
+import { EventFormDialogs } from "@/components/event-forms/event-form-dialogs";
 import { ExhibitionExpectSection } from "@/components/exhibition/exhibition-expect-section";
 import { ExhibitionFinalCtaSection } from "@/components/exhibition/exhibition-final-cta-section";
 import { ExhibitionHero } from "@/components/exhibition/exhibition-hero";
 import { ExhibitionPotentialSection } from "@/components/exhibition/exhibition-potential-section";
 import { ExhibitionWhoSection } from "@/components/exhibition/exhibition-who-section";
 import { ExhibitionWhySection } from "@/components/exhibition/exhibition-why-section";
-import { externalLinks } from "@/lib/external-links";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,10 +23,8 @@ export default function ExhibitionPage() {
         <ExhibitionWhoSection />
         <ExhibitionExpectSection />
       </div>
-      <ExhibitionFinalCtaSection
-        exhibitUrl={externalLinks.bookExhibition}
-        registerUrl={externalLinks.summitRegistration}
-      />
+      <ExhibitionFinalCtaSection />
+      <EventFormDialogs />
     </>
   );
 }

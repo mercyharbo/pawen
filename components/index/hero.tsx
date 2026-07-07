@@ -7,7 +7,6 @@ import Link from 'next/link'
 
 type HeroProps = {
   nominationsUrl: string
-  ticketsUrl: string
 }
 
 type HeroParticle = {
@@ -60,7 +59,7 @@ const heroParticles: HeroParticle[] = [
   scale,
 }))
 
-export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
+export function Hero({ nominationsUrl }: HeroProps) {
   const reduceMotion = useReducedMotion()
   const revealTransition = {
     duration: 1.15,
@@ -213,7 +212,9 @@ export function Hero({ nominationsUrl, ticketsUrl }: HeroProps) {
               asChild
               className='h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90'
             >
-              <Link href={ticketsUrl}>Partner with Us</Link>
+              <Link href='/sponsor-pdf.pdf' target='_blank' rel='noreferrer'>
+                Partner with Us
+              </Link>
             </Button>
           </div>
         </motion.div>

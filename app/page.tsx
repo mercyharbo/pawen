@@ -9,10 +9,7 @@ import { externalLinks } from '@/lib/external-links'
 export default function Home() {
   return (
     <>
-      <Hero
-        nominationsUrl={externalLinks.nominations}
-        ticketsUrl={externalLinks.tickets}
-      />
+      <Hero nominationsUrl={externalLinks.nominations} />
       <StorySection supportUrl={externalLinks.supportOurWork} />
       <SponsorsSection />
       <WhyPawenSection />

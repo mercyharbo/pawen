@@ -8,9 +8,9 @@ const sitemapLinks = [
 ] as const
 
 const galleryLinks = [
-  { label: 'Summit', href: '#summit' },
-  { label: 'Exhibition', href: '#exhibition' },
-  { label: 'Award Gala', href: '#awards-gala' },
+  { label: 'Summit', href: '/summit' },
+  { label: 'Exhibition', href: '/exhibition' },
+  { label: 'Award Gala', href: '/gala' },
 ] as const
 
 const contactLinks = [

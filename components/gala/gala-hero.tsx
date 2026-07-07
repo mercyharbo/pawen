@@ -65,16 +65,16 @@ export function GalaHero({ brochureUrl, ticketsUrl }: GalaHeroProps) {
             </div>
           </div>
 
-          <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
+          <div className='flex flex-col items-center justify-center gap-3 sm:w-auto lg:w-auto w-full sm:flex-row'>
             <Button
               asChild
-              className='h-11 min-w-32 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
+              className='h-11 sm:min-w-32 lg:w-auto w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
             >
               <Link href={ticketsUrl}>Get Gala Tickets</Link>
             </Button>
             <Button
               asChild
-              className='h-11 min-w-44 rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
+              className='h-11 sm:min-w-44 lg:w-auto w-full rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
             >
               <Link href={brochureUrl}>Explore Our Brochure</Link>
             </Button>

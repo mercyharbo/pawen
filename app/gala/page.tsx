@@ -27,7 +27,7 @@ export default function GalaPage() {
         <GalaNightSection />
         <GalaPastWinnersSection />
         <GalaDressCodeSection />
-        <GalaTicketsSection ticketsUrl={externalLinks.tickets} />
+        <GalaTicketsSection />
         <GalaVictoriaFallsSection />
         <GalaSponsorSection sponsorUrl={externalLinks.tickets} />
       </div>

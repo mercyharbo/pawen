@@ -1,19 +1,13 @@
+"use client"
+
 import { MotionReveal } from '@/components/motion-reveal'
 import { Button } from '@/components/ui/button'
+import { useEventDialog } from '@/lib/stores/event-dialog-store'
 import Image from 'next/image'
-import Link from 'next/link'
 
-type SummitFinalCtaSectionProps = {
-  exhibitUrl: string
-  registerUrl: string
-  speakUrl: string
-}
+export function SummitFinalCtaSection() {
+  const openDialog = useEventDialog((store) => store.openDialog)
 
-export function SummitFinalCtaSection({
-  exhibitUrl,
-  registerUrl,
-  speakUrl,
-}: SummitFinalCtaSectionProps) {
   return (
     <section
       className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'
@@ -45,30 +39,27 @@ export function SummitFinalCtaSection({
           </p>
         </div>
 
-        <div className='flex flex-col items-center justify-center gap-3 sm:flex-row'>
+        <div className='flex flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto lg:w-auto w-full'>
           <Button
-            asChild
-            className='h-11 min-w-32 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
+            className='h-11 sm:min-w-32 lg:w-auto w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
+            onClick={() => openDialog('summit')}
+            type='button'
           >
-            <Link href={registerUrl} target='_blank' rel='noreferrer'>
-              Register
-            </Link>
+            Register
           </Button>
           <Button
-            asChild
-            className='h-11 min-w-36 rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
+            className='h-11 sm:min-w-36 lg:w-auto w-full rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
+            onClick={() => openDialog('exhibition')}
+            type='button'
           >
-            <Link href={exhibitUrl} target='_blank' rel='noreferrer'>
-              Book Exhibition Booth
-            </Link>
+            Book Exhibition Booth
           </Button>
           <Button
-            asChild
-            className='h-11 min-w-36 rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-accent hover:bg-accent hover:text-background'
+            className='h-11 sm:min-w-36 lg:w-auto w-full rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-accent hover:bg-accent hover:text-background'
+            onClick={() => openDialog('speaker')}
+            type='button'
           >
-            <Link href={speakUrl} target='_blank' rel='noreferrer'>
-              Apply to Speak
-            </Link>
+            Apply to Speak
           </Button>
         </div>
       </MotionReveal>
