@@ -37,7 +37,7 @@ export function StorySection({ supportUrl }: StorySectionProps) {
             variant='scale-in'
           >
             <Image
-              src='/Award-Plaquee.gif'
+              src='/USE-THIS-ONE.gif'
               alt='PAWEN Awards plaques'
               width={1373}
               height={4096}
