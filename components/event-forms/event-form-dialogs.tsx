@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  type WheelEvent,
   useActionState,
   useEffect,
   useId,
@@ -203,18 +202,6 @@ function EventSuccessDialog({
       </DialogContent>
     </Dialog>
   );
-}
-
-function handleFormWheel(event: WheelEvent<HTMLFormElement>) {
-  const form = event.currentTarget;
-
-  if (form.scrollHeight <= form.clientHeight) {
-    return;
-  }
-
-  event.preventDefault();
-  event.stopPropagation();
-  form.scrollTop += event.deltaY;
 }
 
 function StatusMessage({ state }: { state: EventFormState }) {
@@ -710,9 +697,9 @@ function SummitRegistrationDialog() {
       >
         <form
           className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          data-lenis-prevent
           key={state.resetKey ?? "summit-registration-form"}
           noValidate
-          onWheel={handleFormWheel}
           onSubmit={(event) => {
             event.preventDefault();
 
@@ -963,9 +950,9 @@ function ExhibitionBoothDialog() {
       >
         <form
           className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          data-lenis-prevent
           key={state.resetKey ?? "exhibition-booth-form"}
           noValidate
-          onWheel={handleFormWheel}
           onSubmit={(event) => {
             event.preventDefault();
 
@@ -1259,10 +1246,10 @@ function ApplyToSpeakDialog() {
       >
         <form
           className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          data-lenis-prevent
           encType="multipart/form-data"
           key={state.resetKey ?? "apply-to-speak-form"}
           noValidate
-          onWheel={handleFormWheel}
           ref={formRef}
           onSubmit={(event) => {
             event.preventDefault();

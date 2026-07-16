@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  type WheelEvent,
   useActionState,
   useEffect,
   useState,
@@ -123,18 +122,6 @@ export function NominationFormDialog() {
     }
   }, [closeDialog, resetDialog, state.message, state.status]);
 
-  function handleFormWheel(event: WheelEvent<HTMLFormElement>) {
-    const form = event.currentTarget;
-
-    if (form.scrollHeight <= form.clientHeight) {
-      return;
-    }
-
-    event.preventDefault();
-    event.stopPropagation();
-    form.scrollTop += event.deltaY;
-  }
-
   function validateCurrentStep() {
     const values = useNomination.getState();
     const nextErrors: Record<string, string> = {};
@@ -222,17 +209,21 @@ export function NominationFormDialog() {
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
+      <Dialog
+        disablePointerDismissal
+        open={isOpen}
+        onOpenChange={(open) => !open && closeDialog()}
+      >
         <DialogContent
           className="h-fit max-h-[70vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-2xl"
           showCloseButton
         >
           <form
             className="scrollbar-hide flex max-h-[calc(70vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            data-lenis-prevent
             encType="multipart/form-data"
             key={state.resetKey ?? "nomination-dialog-form"}
             noValidate
-            onWheel={handleFormWheel}
             onSubmit={(event) => {
               event.preventDefault();
 

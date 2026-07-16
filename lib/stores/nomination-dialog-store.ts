@@ -23,7 +23,6 @@ type NominationDialogValues = {
   whyDeserving: string;
   discoverySource: string;
   confirmations: string[];
-  supportingEvidenceName: string;
 };
 
 type NominationDialogStore = NominationDialogValues & {
@@ -65,7 +64,6 @@ const initialValues: NominationDialogValues = {
   whyDeserving: "",
   discoverySource: "",
   confirmations: [],
-  supportingEvidenceName: "No file chosen",
 };
 
 const orderedSteps: NominationDialogStep[] = [

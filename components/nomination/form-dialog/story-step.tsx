@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { confirmations, discoverySources } from "@/lib/nomination-form-data";
 import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export function StoryStep({
   isSubmitting,
@@ -26,13 +27,14 @@ export function StoryStep({
   isSubmitting: boolean;
   state: NominationFormState;
 }) {
+  const [supportingEvidenceName, setSupportingEvidenceName] =
+    useState("No file chosen");
   const {
     confirmations: confirmationsValue,
     discoverySource,
     previousStep,
     setConfirmation,
     setField,
-    supportingEvidenceName,
     whyDeserving,
   } = useNomination();
   const storyError = fieldError(state, "whyDeserving");
@@ -93,31 +95,31 @@ export function StoryStep({
             PDF, DOC, DOCX, JPG, PNG, or ZIP. Maximum 10MB.
           </span>
           <label
-            className="cursor-pointer rounded-full bg-accent px-7 py-3 text-xs font-bold text-background"
+            className="relative inline-flex h-11 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-accent px-7 text-xs font-bold text-background"
             htmlFor="supportingEvidence-dialog-field"
           >
-            Choose file
+            <span aria-hidden="true">Choose file</span>
+            <input
+              accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip"
+              aria-describedby={
+                fileError ? errorId("supportingEvidence") : undefined
+              }
+              aria-invalid={fileError ? "true" : "false"}
+              aria-label="Choose supporting evidence file"
+              className="absolute inset-0 cursor-pointer opacity-0"
+              id="supportingEvidence-dialog-field"
+              name="supportingEvidence"
+              onChange={(event) =>
+                setSupportingEvidenceName(
+                  event.currentTarget.files?.[0]?.name ?? "No file chosen",
+                )
+              }
+              type="file"
+            />
           </label>
-          <span className="max-w-full break-words text-xs text-gray-500">
+          <span className="max-w-full truncate break-words text-xs text-gray-500">
             {supportingEvidenceName}
           </span>
-          <input
-            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip"
-            aria-describedby={
-              fileError ? errorId("supportingEvidence") : undefined
-            }
-            aria-invalid={fileError ? "true" : "false"}
-            className="sr-only"
-            id="supportingEvidence-dialog-field"
-            name="supportingEvidence"
-            onChange={(event) =>
-              setField(
-                "supportingEvidenceName",
-                event.currentTarget.files?.[0]?.name ?? "No file chosen",
-              )
-            }
-            type="file"
-          />
         </div>
         {fileError ? (
           <span
