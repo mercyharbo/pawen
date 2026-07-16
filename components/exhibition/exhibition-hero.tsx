@@ -53,10 +53,10 @@ export function ExhibitionHero() {
               variant='scale-in'
             >
               <p className='max-w-lg font-brand text-sm leading-6 sm:text-base sm:leading-7'>
-                Taking place alongside the PAWEN Summit 2026 in Lusaka, the
-                exhibition brings together founders, executives, investors,
-                buyers, corporates, policymakers, media, and decision-makers
-                from across Africa.
+                Taking place alongside the PAWEN Summit 2026 at New Government
+                Complex, Lusaka, the exhibition brings together founders,
+                executives, investors, buyers, corporates, policymakers, media,
+                and decision-makers from across Africa.
               </p>
             </MotionReveal>
             <MotionReveal

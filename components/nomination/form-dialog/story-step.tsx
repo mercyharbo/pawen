@@ -33,6 +33,7 @@ export function StoryStep({
     setConfirmation,
     setField,
     supportingEvidenceName,
+    whyDeserving,
   } = useNomination();
   const storyError = fieldError(state, "whyDeserving");
   const fileError = fieldError(state, "supportingEvidence");
@@ -48,7 +49,7 @@ export function StoryStep({
 
       <label className="flex flex-col gap-2" htmlFor="whyDeserving-dialog-field">
         <span className="text-sm font-semibold text-primary">
-          Why does she deserve this award?
+          Why does she deserve this award? *
         </span>
         <Textarea
           aria-describedby={storyError ? errorId("whyDeserving") : "story-help"}
@@ -59,7 +60,11 @@ export function StoryStep({
           )}
           id="whyDeserving-dialog-field"
           name="whyDeserving"
+          onChange={(event) =>
+            setField("whyDeserving", event.currentTarget.value)
+          }
           placeholder="Tell us story with specific achievements, leadership, impact, and evidence."
+          value={whyDeserving}
         />
         {storyError ? (
           <span className="text-xs text-destructive" id={errorId("whyDeserving")}>

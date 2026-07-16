@@ -19,12 +19,26 @@ import { cn } from "@/lib/utils";
 
 export function NomineeStep({
   countries,
+  onNext,
   state,
 }: {
   countries: string[];
+  onNext: () => void;
   state: NominationFormState;
 }) {
-  const { country, nextStep, previousStep, setField } = useNomination();
+  const {
+    country,
+    linkedinUrl,
+    nomineeEmail,
+    nomineeFirstName,
+    nomineeLastName,
+    nomineePhone,
+    previousStep,
+    roleOrganisation,
+    setField,
+    socialUrl,
+    website,
+  } = useNomination();
   const firstNameError = fieldError(state, "nomineeFirstName");
   const lastNameError = fieldError(state, "nomineeLastName");
   const emailError = fieldError(state, "nomineeEmail");
@@ -43,7 +57,7 @@ export function NomineeStep({
       </DialogTitle>
       <div className="grid gap-4 md:grid-cols-2">
         <label className="flex flex-col gap-3" htmlFor="nomineeFirstName-dialog-field">
-          <span className="text-sm font-semibold text-primary">First Name</span>
+          <span className="text-sm font-semibold text-primary">First Name *</span>
           <Input
             aria-describedby={firstNameError ? errorId("nomineeFirstName") : undefined}
             aria-invalid={firstNameError ? "true" : "false"}
@@ -53,7 +67,11 @@ export function NomineeStep({
             )}
             id="nomineeFirstName-dialog-field"
             name="nomineeFirstName"
+            onChange={(event) =>
+              setField("nomineeFirstName", event.currentTarget.value)
+            }
             placeholder="Enter First Name"
+            value={nomineeFirstName}
           />
           {firstNameError ? (
             <span className="text-xs text-destructive" id={errorId("nomineeFirstName")}>
@@ -62,7 +80,7 @@ export function NomineeStep({
           ) : null}
         </label>
         <label className="flex flex-col gap-3" htmlFor="nomineeLastName-dialog-field">
-          <span className="text-sm font-semibold text-primary">Last Name</span>
+          <span className="text-sm font-semibold text-primary">Last Name *</span>
           <Input
             aria-describedby={lastNameError ? errorId("nomineeLastName") : undefined}
             aria-invalid={lastNameError ? "true" : "false"}
@@ -72,7 +90,11 @@ export function NomineeStep({
             )}
             id="nomineeLastName-dialog-field"
             name="nomineeLastName"
+            onChange={(event) =>
+              setField("nomineeLastName", event.currentTarget.value)
+            }
             placeholder="Enter Last Name"
+            value={nomineeLastName}
           />
           {lastNameError ? (
             <span className="text-xs text-destructive" id={errorId("nomineeLastName")}>
@@ -91,8 +113,12 @@ export function NomineeStep({
             )}
             id="nomineeEmail-dialog-field"
             name="nomineeEmail"
+            onChange={(event) =>
+              setField("nomineeEmail", event.currentTarget.value)
+            }
             placeholder="Enter Email"
             type="email"
+            value={nomineeEmail}
           />
           {emailError ? (
             <span className="text-xs text-destructive" id={errorId("nomineeEmail")}>
@@ -111,7 +137,11 @@ export function NomineeStep({
             )}
             id="nomineePhone-dialog-field"
             name="nomineePhone"
+            onChange={(event) =>
+              setField("nomineePhone", event.currentTarget.value)
+            }
             placeholder="Enter Phone"
+            value={nomineePhone}
           />
           {phoneError ? (
             <span className="text-xs text-destructive" id={errorId("nomineePhone")}>
@@ -121,7 +151,7 @@ export function NomineeStep({
         </label>
         <div className="flex flex-col gap-2">
           <label className="text-sm font-semibold text-primary" htmlFor="country-dialog-select">
-            Country of Residence
+            Country of Residence *
           </label>
           <Select
             name="country"
@@ -173,7 +203,11 @@ export function NomineeStep({
             )}
             id="roleOrganisation-dialog-field"
             name="roleOrganisation"
+            onChange={(event) =>
+              setField("roleOrganisation", event.currentTarget.value)
+            }
             placeholder="Enter Role"
+            value={roleOrganisation}
           />
           {roleError ? (
             <span className="text-xs text-destructive" id={errorId("roleOrganisation")}>
@@ -192,7 +226,11 @@ export function NomineeStep({
             )}
             id="linkedinUrl-dialog-field"
             name="linkedinUrl"
+            onChange={(event) =>
+              setField("linkedinUrl", event.currentTarget.value)
+            }
             placeholder="www.linkedin.com/in/name"
+            value={linkedinUrl}
           />
           {linkedinError ? (
             <span className="text-xs text-destructive" id={errorId("linkedinUrl")}>
@@ -211,7 +249,11 @@ export function NomineeStep({
             )}
             id="socialUrl-dialog-field"
             name="socialUrl"
+            onChange={(event) =>
+              setField("socialUrl", event.currentTarget.value)
+            }
             placeholder="www.instagram.com/name"
+            value={socialUrl}
           />
           {socialError ? (
             <span className="text-xs text-destructive" id={errorId("socialUrl")}>
@@ -231,7 +273,11 @@ export function NomineeStep({
               )}
               id="website-dialog-field"
               name="website"
+              onChange={(event) =>
+                setField("website", event.currentTarget.value)
+              }
               placeholder="www.example.com"
+              value={website}
             />
             {websiteError ? (
               <span className="text-xs text-destructive" id={errorId("website")}>
@@ -251,7 +297,7 @@ export function NomineeStep({
         </Button>
         <Button
           className="h-12 w-full rounded-full bg-accent px-10 text-background hover:!scale-100 hover:bg-accent/90 active:!translate-y-0 active:!scale-100 sm:w-36"
-          onClick={nextStep}
+          onClick={onNext}
           type="button"
         >
           Next

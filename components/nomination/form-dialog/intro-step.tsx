@@ -21,8 +21,14 @@ import { categoryGroups, nominationTargets } from '@/lib/nomination-form-data'
 import { useNomination } from '@/lib/stores/nomination-dialog-store'
 import { cn } from '@/lib/utils'
 
-export function IntroStep({ state }: { state: NominationFormState }) {
-  const { category, nextStep, nominatingFor, setField } = useNomination()
+export function IntroStep({
+  onNext,
+  state,
+}: {
+  onNext: () => void
+  state: NominationFormState
+}) {
+  const { category, nominatingFor, setField } = useNomination()
   const categoryError = fieldError(state, 'category')
   const targetError = fieldError(state, 'nominatingFor')
 
@@ -130,7 +136,7 @@ export function IntroStep({ state }: { state: NominationFormState }) {
       <div className='flex justify-end'>
         <Button
           className='h-12 w-full rounded-full bg-accent px-10 text-background hover:!scale-100 hover:bg-accent/90 active:!translate-y-0 active:!scale-100 sm:w-36'
-          onClick={nextStep}
+          onClick={onNext}
           type='button'
         >
           Next

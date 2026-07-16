@@ -18,8 +18,22 @@ import { relationships } from "@/lib/nomination-form-data";
 import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import { cn } from "@/lib/utils";
 
-export function NominatorStep({ state }: { state: NominationFormState }) {
-  const { nextStep, previousStep, relationship, setField } = useNomination();
+export function NominatorStep({
+  onNext,
+  state,
+}: {
+  onNext: () => void;
+  state: NominationFormState;
+}) {
+  const {
+    nominatorEmail,
+    nominatorFirstName,
+    nominatorLastName,
+    nominatorPhone,
+    previousStep,
+    relationship,
+    setField,
+  } = useNomination();
   const firstNameError = fieldError(state, "nominatorFirstName");
   const lastNameError = fieldError(state, "nominatorLastName");
   const emailError = fieldError(state, "nominatorEmail");
@@ -44,7 +58,11 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
             )}
             id="nominatorFirstName-dialog-field"
             name="nominatorFirstName"
+            onChange={(event) =>
+              setField("nominatorFirstName", event.currentTarget.value)
+            }
             placeholder="Enter First Name"
+            value={nominatorFirstName}
           />
           {firstNameError ? (
             <span className="text-xs text-destructive" id={errorId("nominatorFirstName")}>
@@ -63,7 +81,11 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
             )}
             id="nominatorLastName-dialog-field"
             name="nominatorLastName"
+            onChange={(event) =>
+              setField("nominatorLastName", event.currentTarget.value)
+            }
             placeholder="Enter Last Name"
+            value={nominatorLastName}
           />
           {lastNameError ? (
             <span className="text-xs text-destructive" id={errorId("nominatorLastName")}>
@@ -82,8 +104,12 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
             )}
             id="nominatorEmail-dialog-field"
             name="nominatorEmail"
+            onChange={(event) =>
+              setField("nominatorEmail", event.currentTarget.value)
+            }
             placeholder="Enter Email"
             type="email"
+            value={nominatorEmail}
           />
           {emailError ? (
             <span className="text-xs text-destructive" id={errorId("nominatorEmail")}>
@@ -102,7 +128,11 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
             )}
             id="nominatorPhone-dialog-field"
             name="nominatorPhone"
+            onChange={(event) =>
+              setField("nominatorPhone", event.currentTarget.value)
+            }
             placeholder="Enter Phone"
+            value={nominatorPhone}
           />
           {phoneError ? (
             <span className="text-xs text-destructive" id={errorId("nominatorPhone")}>
@@ -169,7 +199,7 @@ export function NominatorStep({ state }: { state: NominationFormState }) {
         </Button>
         <Button
           className="h-12 w-full rounded-full bg-accent px-10 text-background hover:!scale-100 hover:bg-accent/90 active:!translate-y-0 active:!scale-100 sm:w-36"
-          onClick={nextStep}
+          onClick={onNext}
           type="button"
         >
           Next

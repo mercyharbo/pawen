@@ -52,7 +52,7 @@ export function SummitHero() {
                 <span className='lg:whitespace-nowrap'>
                   <span className='font-semibold text-accent'>Location:</span>{' '}
                   <span className='font-semibold'>
-                    InterContinental Hotel, Lusaka, Zambia
+                    New Government Complex, Lusaka
                   </span>
                 </span>
               </p>

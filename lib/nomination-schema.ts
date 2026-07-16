@@ -3,24 +3,29 @@ import { confirmations } from "@/lib/nomination-form-data";
 
 const requiredText = z.string().trim().min(1, "This field is required.");
 const requiredEmail = requiredText.email("Enter a valid email address.");
+const optionalText = z.string().trim();
+const optionalEmail = optionalText.refine(
+  (value) => !value || requiredEmail.safeParse(value).success,
+  "Enter a valid email address.",
+);
 
 export const nominationSchema = z.object({
   category: requiredText,
   nominatingFor: requiredText,
-  nominatorFirstName: requiredText,
-  nominatorLastName: requiredText,
-  nominatorEmail: requiredEmail,
-  nominatorPhone: requiredText,
-  relationship: requiredText,
+  nominatorFirstName: optionalText,
+  nominatorLastName: optionalText,
+  nominatorEmail: optionalEmail,
+  nominatorPhone: optionalText,
+  relationship: optionalText,
   nomineeFirstName: requiredText,
   nomineeLastName: requiredText,
-  nomineeEmail: requiredEmail,
-  nomineePhone: requiredText,
+  nomineeEmail: optionalEmail,
+  nomineePhone: optionalText,
   country: requiredText,
-  roleOrganisation: requiredText,
-  linkedinUrl: requiredText,
-  socialUrl: requiredText,
-  website: z.string().trim(),
+  roleOrganisation: optionalText,
+  linkedinUrl: optionalText,
+  socialUrl: optionalText,
+  website: optionalText,
   whyDeserving: requiredText,
   discoverySource: requiredText,
   confirmations: z

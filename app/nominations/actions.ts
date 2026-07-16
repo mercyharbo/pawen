@@ -26,10 +26,11 @@ function flattenErrors(errors: ReturnType<typeof nominationSchema.safeParse>) {
   }
 
   return Object.fromEntries(
-    Object.entries(errors.error.flatten().fieldErrors).map(([key, value]) => [
-      key,
-      value?.[0] ?? "This field is invalid.",
-    ]),
+    Object.entries(errors.error.flatten().fieldErrors).map(([key, value]) => {
+      const field = key === "supportingEvidenceFile" ? "supportingEvidence" : key;
+
+      return [field, value?.[0] ?? "This field is invalid."];
+    }),
   );
 }
 

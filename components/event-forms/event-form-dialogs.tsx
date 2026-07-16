@@ -5,6 +5,7 @@ import {
   useActionState,
   useEffect,
   useId,
+  useRef,
   useState,
   useTransition,
 } from "react";
@@ -16,7 +17,13 @@ import {
 } from "@/app/events/actions";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -50,6 +57,11 @@ const initialState: EventFormState = {
   status: "idle",
   message: "",
 };
+
+type EventFormValues = Record<string, string>;
+type EventFormErrors = Record<string, string>;
+
+const requiredMessage = "This field is required.";
 
 const summitErrorStepMap: Record<string, EventDialogStep> = {
   firstName: "summit-personal",
@@ -112,6 +124,85 @@ function errorId(name: string) {
 
 function fieldError(state: EventFormState, name: string) {
   return state.fieldErrors?.[name];
+}
+
+function requiredField(value: string) {
+  return value.trim() ? "" : requiredMessage;
+}
+
+function omitFieldError(errors: EventFormErrors, name: string) {
+  return Object.fromEntries(
+    Object.entries(errors).filter(([field]) => field !== name),
+  );
+}
+
+function fileField(form: HTMLFormElement, name: string) {
+  const value = new FormData(form).get(name);
+
+  return value instanceof File && value.size > 0 ? "" : requiredMessage;
+}
+
+function getDisplayedState(
+  state: EventFormState,
+  fieldErrors: EventFormErrors,
+) {
+  if (state.status === "success") {
+    return initialState;
+  }
+
+  if (Object.keys(fieldErrors).length === 0) {
+    return state;
+  }
+
+  return {
+    status: "error" as const,
+    message: "Please review the highlighted fields.",
+    fieldErrors: {
+      ...state.fieldErrors,
+      ...fieldErrors,
+    },
+  };
+}
+
+function EventSuccessDialog({
+  message,
+  onDismiss,
+  open,
+  title,
+}: {
+  message: string;
+  onDismiss: () => void;
+  open: boolean;
+  title: string;
+}) {
+  return (
+    <Dialog
+      open={open}
+      onOpenChange={(nextOpen) => {
+        if (!nextOpen) {
+          onDismiss();
+        }
+      }}
+    >
+      <DialogContent className="max-w-md rounded-lg bg-[#21002f] p-8 text-primary ring-0">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <DialogTitle className="text-2xl font-semibold text-accent">
+              {title}
+            </DialogTitle>
+            <DialogDescription className="text-sm leading-6 text-primary">
+              {message}
+            </DialogDescription>
+          </div>
+          <div className="flex justify-end">
+            <DialogClose render={<Button className="rounded-full px-8" />}>
+              Close
+            </DialogClose>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
 }
 
 function handleFormWheel(event: WheelEvent<HTMLFormElement>) {
@@ -201,15 +292,19 @@ function TextField({
   className,
   label,
   name,
+  onValueChange,
   required = false,
   type = "text",
+  value,
 }: {
   state: EventFormState;
   className?: string;
   label: string;
   name: string;
+  onValueChange?: (name: string, value: string) => void;
   required?: boolean;
   type?: string;
+  value?: string;
 }) {
   const id = useId();
   const error = fieldError(state, name);
@@ -226,7 +321,9 @@ function TextField({
         className="h-12 rounded-full border-background bg-white px-5 text-base text-background placeholder:text-gray-400 focus-visible:ring-background/25 dark:bg-white"
         id={id}
         name={name}
+        onChange={(event) => onValueChange?.(name, event.currentTarget.value)}
         type={type}
+        value={value}
       />
       {error ? (
         <span className="text-xs text-destructive" id={errorId(name)}>
@@ -241,14 +338,18 @@ function TextareaField({
   state,
   label,
   name,
+  onValueChange,
   placeholder,
   required = false,
+  value,
 }: {
   state: EventFormState;
   label: string;
   name: string;
+  onValueChange?: (name: string, value: string) => void;
   placeholder?: string;
   required?: boolean;
+  value?: string;
 }) {
   const id = useId();
   const error = fieldError(state, name);
@@ -265,7 +366,9 @@ function TextareaField({
         className="h-28 min-h-28 resize-none rounded-[2rem] border-background bg-white px-5 py-4 text-base text-background placeholder:text-gray-400 focus-visible:ring-background/25 [field-sizing:fixed] dark:bg-white"
         id={id}
         name={name}
+        onChange={(event) => onValueChange?.(name, event.currentTarget.value)}
         placeholder={placeholder}
+        value={value}
       />
       {error ? (
         <span className="text-xs text-destructive" id={errorId(name)}>
@@ -280,20 +383,23 @@ function SelectField({
   state,
   label,
   name,
+  onValueChange,
   options,
   placeholder = "Select One",
   required = false,
+  value = "",
 }: {
   state: EventFormState;
   label: string;
   name: string;
+  onValueChange?: (name: string, value: string) => void;
   options: readonly string[];
   placeholder?: string;
   required?: boolean;
+  value?: string;
 }) {
   const id = useId();
   const error = fieldError(state, name);
-  const [value, setValue] = useState("");
 
   return (
     <div className="flex flex-col gap-2">
@@ -303,7 +409,7 @@ function SelectField({
       </label>
       <Select
         value={value || null}
-        onValueChange={(nextValue) => setValue(nextValue ?? "")}
+        onValueChange={(nextValue) => onValueChange?.(name, nextValue ?? "")}
       >
         <SelectTrigger
           aria-describedby={error ? errorId(name) : undefined}
@@ -341,10 +447,12 @@ function SelectField({
 }
 
 function FileField({
+  onFileChange,
   state,
   label,
   name,
 }: {
+  onFileChange?: (name: string) => void;
   state: EventFormState;
   label: string;
   name: string;
@@ -382,9 +490,12 @@ function FileField({
           className="sr-only"
           id={id}
           name={name}
-          onChange={(event) =>
-            setFileName(event.currentTarget.files?.[0]?.name ?? "No file chosen")
-          }
+          onChange={(event) => {
+            setFileName(
+              event.currentTarget.files?.[0]?.name ?? "No file chosen",
+            );
+            onFileChange?.(name);
+          }}
           type="file"
         />
       </div>
@@ -398,12 +509,15 @@ function FileField({
 }
 
 function ConfirmationGroup({
+  onValuesChange,
   state,
+  values,
 }: {
+  onValuesChange?: (values: string[]) => void;
   state: EventFormState;
+  values: string[];
 }) {
   const error = fieldError(state, "confirmations");
-  const [values, setValues] = useState<string[]>([]);
 
   return (
     <fieldset
@@ -425,13 +539,13 @@ function ConfirmationGroup({
               checked={checked}
               className="size-5 rounded-[4px] border-primary bg-white data-checked:bg-accent data-checked:text-background"
               id={id}
-              onCheckedChange={(nextChecked) =>
-                setValues((currentValues) =>
-                  nextChecked
-                    ? Array.from(new Set([...currentValues, confirmation]))
-                    : currentValues.filter((item) => item !== confirmation),
-                )
-              }
+              onCheckedChange={(nextChecked) => {
+                const nextValues = nextChecked
+                  ? Array.from(new Set([...values, confirmation]))
+                  : values.filter((item) => item !== confirmation);
+
+                onValuesChange?.(nextValues);
+              }}
             />
             <span>{confirmation}</span>
             {checked ? (
@@ -522,26 +636,77 @@ function SummitRegistrationDialog() {
     submitSummitRegistration,
     initialState,
   );
+  const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
+  const [fieldValues, setFieldValues] = useState<EventFormValues>({});
+  const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
+    string | undefined
+  >();
   const [isTransitionPending, startTransition] = useTransition();
   const { activeDialog, closeDialog, nextStep, previousStep, resetDialog, step } =
     useEventDialog();
   const steps = getEventDialogSteps("summit");
   const isSubmitting = pending || isTransitionPending;
   const isOpen = activeDialog === "summit";
+  const successKey =
+    state.status === "success" ? (state.resetKey ?? state.message) : undefined;
+  const isSuccessDialogOpen = Boolean(
+    successKey && dismissedSuccessKey !== successKey,
+  );
+  const displayedState = getDisplayedState(state, fieldErrors);
 
   useStepErrorRouting(state, summitErrorStepMap);
 
   useEffect(() => {
     if (state.status === "success") {
       resetDialog();
+      closeDialog();
     }
-  }, [resetDialog, state.status]);
+  }, [closeDialog, resetDialog, state.status]);
+
+  function handleValueChange(name: string, value: string) {
+    setFieldValues((currentValues) => ({
+      ...currentValues,
+      [name]: value,
+    }));
+    setFieldErrors((currentErrors) => {
+      return omitFieldError(currentErrors, name);
+    });
+  }
+
+  function validateStep(nextStepName: EventDialogStep) {
+    const requiredFields =
+      nextStepName === "summit-personal"
+        ? ["firstName", "lastName", "dateOfBirth", "email", "phone", "country"]
+        : ["visaRequirement"];
+    const nextErrors = Object.fromEntries(
+      requiredFields
+        .map((field) => [field, requiredField(fieldValues[field] ?? "")])
+        .filter(([, error]) => error),
+    );
+
+    setFieldErrors(nextErrors);
+
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function handleNextStep() {
+    if (validateStep(step)) {
+      nextStep();
+    }
+  }
+
+  function handleSuccessDismiss() {
+    setDismissedSuccessKey(successKey);
+    setFieldErrors({});
+    setFieldValues({});
+  }
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
-      <DialogContent
-        className="h-fit max-h-[76vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-2xl"
-        showCloseButton
+    <>
+      <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
+        <DialogContent
+          className="h-fit max-h-[76vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-2xl"
+          showCloseButton
       >
         <form
           className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -550,6 +715,11 @@ function SummitRegistrationDialog() {
           onWheel={handleFormWheel}
           onSubmit={(event) => {
             event.preventDefault();
+
+            if (!validateStep(step)) {
+              return;
+            }
+
             const formData = new FormData(event.currentTarget);
 
             startTransition(() => {
@@ -569,36 +739,63 @@ function SummitRegistrationDialog() {
             }}
             steps={steps}
           />
-          <StatusMessage state={state} />
+          <StatusMessage state={displayedState} />
           <div
             className={cn(
               "grid gap-4 sm:grid-cols-2",
               step === "summit-personal" ? "" : "hidden",
             )}
           >
-              <TextField label="First Name" name="firstName" required state={state} />
-              <TextField label="Last Name" name="lastName" required state={state} />
+              <TextField
+                label="First Name"
+                name="firstName"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.firstName ?? ""}
+              />
+              <TextField
+                label="Last Name"
+                name="lastName"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.lastName ?? ""}
+              />
               <TextField
                 label="Date of Birth"
                 name="dateOfBirth"
+                onValueChange={handleValueChange}
                 required
-                state={state}
+                state={displayedState}
                 type="date"
+                value={fieldValues.dateOfBirth ?? ""}
               />
               <TextField
                 label="Email Address"
                 name="email"
+                onValueChange={handleValueChange}
                 required
-                state={state}
+                state={displayedState}
                 type="email"
+                value={fieldValues.email ?? ""}
               />
-              <TextField label="Phone Number" name="phone" required state={state} />
+              <TextField
+                label="Phone Number"
+                name="phone"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.phone ?? ""}
+              />
               <SelectField
                 label="Country of Residence"
                 name="country"
+                onValueChange={handleValueChange}
                 options={eventCountryOptions}
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.country ?? ""}
               />
           </div>
           <div
@@ -610,44 +807,67 @@ function SummitRegistrationDialog() {
               <TextField
                 label="Organisation or Company Name"
                 name="organisation"
-                state={state}
+                onValueChange={handleValueChange}
+                state={displayedState}
+                value={fieldValues.organisation ?? ""}
               />
-              <TextField label="Job Title or Role" name="role" state={state} />
+              <TextField
+                label="Job Title or Role"
+                name="role"
+                onValueChange={handleValueChange}
+                state={displayedState}
+                value={fieldValues.role ?? ""}
+              />
               <SelectField
                 label="Do you require a visa to enter Zambia?"
                 name="visaRequirement"
+                onValueChange={handleValueChange}
                 options={visaOptions}
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.visaRequirement ?? ""}
               />
               <SelectField
                 label="How did you hear about the Summit?"
                 name="discoverySource"
+                onValueChange={handleValueChange}
                 options={discoveryOptions}
-                state={state}
+                state={displayedState}
+                value={fieldValues.discoverySource ?? ""}
               />
               <TextField
                 label="Dietary Restrictions or Allergies"
                 name="dietaryRestrictions"
-                state={state}
+                onValueChange={handleValueChange}
+                state={displayedState}
+                value={fieldValues.dietaryRestrictions ?? ""}
               />
               <TextField
                 label="Accessibility Requirements"
                 name="accessibilityRequirements"
-                state={state}
+                onValueChange={handleValueChange}
+                state={displayedState}
+                value={fieldValues.accessibilityRequirements ?? ""}
               />
           </div>
           <FormActions
             isFirstStep={step === steps[0]}
             isLastStep={step === steps[steps.length - 1]}
             isSubmitting={isSubmitting}
-            nextStep={nextStep}
+            nextStep={handleNextStep}
             previousStep={previousStep}
             submitLabel="Submit Registration"
           />
         </form>
-      </DialogContent>
-    </Dialog>
+        </DialogContent>
+      </Dialog>
+      <EventSuccessDialog
+        message={state.message}
+        onDismiss={handleSuccessDismiss}
+        open={isSuccessDialogOpen}
+        title="Registration submitted"
+      />
+    </>
   );
 }
 
@@ -656,26 +876,90 @@ function ExhibitionBoothDialog() {
     submitExhibitionBooth,
     initialState,
   );
+  const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
+  const [fieldValues, setFieldValues] = useState<EventFormValues>({});
+  const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
+    string | undefined
+  >();
   const [isTransitionPending, startTransition] = useTransition();
   const { activeDialog, closeDialog, nextStep, previousStep, resetDialog, step } =
     useEventDialog();
   const steps = getEventDialogSteps("exhibition");
   const isSubmitting = pending || isTransitionPending;
   const isOpen = activeDialog === "exhibition";
+  const successKey =
+    state.status === "success" ? (state.resetKey ?? state.message) : undefined;
+  const isSuccessDialogOpen = Boolean(
+    successKey && dismissedSuccessKey !== successKey,
+  );
+  const displayedState = getDisplayedState(state, fieldErrors);
 
   useStepErrorRouting(state, exhibitionErrorStepMap);
 
   useEffect(() => {
     if (state.status === "success") {
       resetDialog();
+      closeDialog();
     }
-  }, [resetDialog, state.status]);
+  }, [closeDialog, resetDialog, state.status]);
+
+  function handleValueChange(name: string, value: string) {
+    setFieldValues((currentValues) => ({
+      ...currentValues,
+      [name]: value,
+    }));
+    setFieldErrors((currentErrors) => {
+      return omitFieldError(currentErrors, name);
+    });
+  }
+
+  function validateStep(nextStepName: EventDialogStep) {
+    const requiredFields =
+      nextStepName === "exhibition-contact"
+        ? [
+            "firstName",
+            "lastName",
+            "email",
+            "phone",
+            "businessName",
+            "country",
+          ]
+        : [
+            "industry",
+            "boothType",
+            "exhibitedBefore",
+            "businessDescription",
+            "exhibitionGoal",
+          ];
+    const nextErrors = Object.fromEntries(
+      requiredFields
+        .map((field) => [field, requiredField(fieldValues[field] ?? "")])
+        .filter(([, error]) => error),
+    );
+
+    setFieldErrors(nextErrors);
+
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function handleNextStep() {
+    if (validateStep(step)) {
+      nextStep();
+    }
+  }
+
+  function handleSuccessDismiss() {
+    setDismissedSuccessKey(successKey);
+    setFieldErrors({});
+    setFieldValues({});
+  }
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
-      <DialogContent
-        className="h-fit max-h-[76vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-2xl"
-        showCloseButton
+    <>
+      <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
+        <DialogContent
+          className="h-fit max-h-[76vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-2xl"
+          showCloseButton
       >
         <form
           className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -684,6 +968,11 @@ function ExhibitionBoothDialog() {
           onWheel={handleFormWheel}
           onSubmit={(event) => {
             event.preventDefault();
+
+            if (!validateStep(step)) {
+              return;
+            }
+
             const formData = new FormData(event.currentTarget);
 
             startTransition(() => {
@@ -703,41 +992,70 @@ function ExhibitionBoothDialog() {
             }}
             steps={steps}
           />
-          <StatusMessage state={state} />
+          <StatusMessage state={displayedState} />
           <div
             className={cn(
               "grid gap-4 sm:grid-cols-2",
               step === "exhibition-contact" ? "" : "hidden",
             )}
           >
-              <TextField label="First Name" name="firstName" required state={state} />
-              <TextField label="Last Name" name="lastName" required state={state} />
+              <TextField
+                label="First Name"
+                name="firstName"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.firstName ?? ""}
+              />
+              <TextField
+                label="Last Name"
+                name="lastName"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.lastName ?? ""}
+              />
               <TextField
                 label="Email Address"
                 name="email"
+                onValueChange={handleValueChange}
                 required
-                state={state}
+                state={displayedState}
                 type="email"
+                value={fieldValues.email ?? ""}
               />
-              <TextField label="Phone Number" name="phone" required state={state} />
+              <TextField
+                label="Phone Number"
+                name="phone"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.phone ?? ""}
+              />
               <TextField
                 label="Business or Organisation Name"
                 name="businessName"
+                onValueChange={handleValueChange}
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.businessName ?? ""}
               />
               <SelectField
                 label="Country of Operation"
                 name="country"
+                onValueChange={handleValueChange}
                 options={eventCountryOptions}
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.country ?? ""}
               />
               <TextField
                 className="sm:col-span-2"
                 label="Website or Social Media Link"
                 name="websiteOrSocial"
-                state={state}
+                onValueChange={handleValueChange}
+                state={displayedState}
+                value={fieldValues.websiteOrSocial ?? ""}
               />
           </div>
           <div
@@ -750,57 +1068,76 @@ function ExhibitionBoothDialog() {
                 <SelectField
                   label="Industry or Sector"
                   name="industry"
+                  onValueChange={handleValueChange}
                   options={industryOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.industry ?? ""}
                 />
                 <SelectField
                   label="Booth Type"
                   name="boothType"
+                  onValueChange={handleValueChange}
                   options={boothTypeOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.boothType ?? ""}
                 />
                 <SelectField
                   label="Have you exhibited at a similar event before?"
                   name="exhibitedBefore"
+                  onValueChange={handleValueChange}
                   options={yesNoOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.exhibitedBefore ?? ""}
                 />
                 <SelectField
                   label="How did you hear about the PAWEN Exhibition?"
                   name="discoverySource"
+                  onValueChange={handleValueChange}
                   options={discoveryOptions}
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.discoverySource ?? ""}
                 />
               </div>
               <TextareaField
                 label="Brief Description of Your Business"
                 name="businessDescription"
+                onValueChange={handleValueChange}
                 placeholder="Tell us what your business does."
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.businessDescription ?? ""}
               />
               <TextareaField
                 label="What do you hope to achieve by exhibiting at PAWEN?"
                 name="exhibitionGoal"
+                onValueChange={handleValueChange}
                 placeholder="Share your goals for visibility, sales, partnerships, or networking."
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.exhibitionGoal ?? ""}
               />
           </div>
           <FormActions
             isFirstStep={step === steps[0]}
             isLastStep={step === steps[steps.length - 1]}
             isSubmitting={isSubmitting}
-            nextStep={nextStep}
+            nextStep={handleNextStep}
             previousStep={previousStep}
             submitLabel="Submit Booth Request"
           />
         </form>
-      </DialogContent>
-    </Dialog>
+        </DialogContent>
+      </Dialog>
+      <EventSuccessDialog
+        message={state.message}
+        onDismiss={handleSuccessDismiss}
+        open={isSuccessDialogOpen}
+        title="Booth request submitted"
+      />
+    </>
   );
 }
 
@@ -809,26 +1146,116 @@ function ApplyToSpeakDialog() {
     submitApplyToSpeak,
     initialState,
   );
+  const [confirmationValues, setConfirmationValues] = useState<string[]>([]);
+  const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
+  const [fieldValues, setFieldValues] = useState<EventFormValues>({});
+  const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
+    string | undefined
+  >();
+  const formRef = useRef<HTMLFormElement>(null);
   const [isTransitionPending, startTransition] = useTransition();
   const { activeDialog, closeDialog, nextStep, previousStep, resetDialog, step } =
     useEventDialog();
   const steps = getEventDialogSteps("speaker");
   const isSubmitting = pending || isTransitionPending;
   const isOpen = activeDialog === "speaker";
+  const successKey =
+    state.status === "success" ? (state.resetKey ?? state.message) : undefined;
+  const isSuccessDialogOpen = Boolean(
+    successKey && dismissedSuccessKey !== successKey,
+  );
+  const displayedState = getDisplayedState(state, fieldErrors);
 
   useStepErrorRouting(state, speakerErrorStepMap);
 
   useEffect(() => {
     if (state.status === "success") {
       resetDialog();
+      closeDialog();
     }
-  }, [resetDialog, state.status]);
+  }, [closeDialog, resetDialog, state.status]);
+
+  function clearFieldError(name: string) {
+    setFieldErrors((currentErrors) => {
+      return omitFieldError(currentErrors, name);
+    });
+  }
+
+  function handleValueChange(name: string, value: string) {
+    setFieldValues((currentValues) => ({
+      ...currentValues,
+      [name]: value,
+    }));
+    clearFieldError(name);
+  }
+
+  function handleConfirmationsChange(values: string[]) {
+    setConfirmationValues(values);
+    clearFieldError("confirmations");
+  }
+
+  function validateStep(nextStepName: EventDialogStep) {
+    const requiredFields =
+      nextStepName === "speaker-details"
+        ? ["firstName", "lastName", "email", "phone", "country", "nationality"]
+        : nextStepName === "speaker-profile"
+          ? ["organisation", "role", "linkedinUrl", "professionalBio"]
+          : nextStepName === "speaker-session"
+            ? [
+                "sessionTitle",
+                "sessionTopic",
+                "sessionFormat",
+                "sessionAbstract",
+                "speakerFit",
+              ]
+            : ["spokenBefore", "accommodationSupport", "visaRequirement"];
+    const nextErrors: EventFormErrors = Object.fromEntries(
+      requiredFields
+        .map((field) => [field, requiredField(fieldValues[field] ?? "")])
+        .filter(([, error]) => error),
+    );
+
+    if (nextStepName === "speaker-profile" && formRef.current) {
+      const headshotError = fileField(formRef.current, "headshotFile");
+
+      if (headshotError) {
+        nextErrors.headshotFile = "Upload your headshot photo.";
+      }
+    }
+
+    if (
+      nextStepName === "speaker-logistics" &&
+      !Object.values(speakerConfirmations).every((confirmation) =>
+        confirmationValues.includes(confirmation),
+      )
+    ) {
+      nextErrors.confirmations = "Please accept all confirmations.";
+    }
+
+    setFieldErrors(nextErrors);
+
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function handleNextStep() {
+    if (validateStep(step)) {
+      nextStep();
+    }
+  }
+
+  function handleSuccessDismiss() {
+    setDismissedSuccessKey(successKey);
+    setConfirmationValues([]);
+    setFieldErrors({});
+    setFieldValues({});
+  }
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
-      <DialogContent
-        className="h-fit max-h-[76vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-3xl"
-        showCloseButton
+    <>
+      <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
+        <DialogContent
+          className="h-fit max-h-[76vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-3xl"
+          showCloseButton
       >
         <form
           className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -836,8 +1263,14 @@ function ApplyToSpeakDialog() {
           key={state.resetKey ?? "apply-to-speak-form"}
           noValidate
           onWheel={handleFormWheel}
+          ref={formRef}
           onSubmit={(event) => {
             event.preventDefault();
+
+            if (!validateStep(step)) {
+              return;
+            }
+
             const formData = new FormData(event.currentTarget);
 
             startTransition(() => {
@@ -859,36 +1292,63 @@ function ApplyToSpeakDialog() {
             }}
             steps={steps}
           />
-          <StatusMessage state={state} />
+          <StatusMessage state={displayedState} />
           <div
             className={cn(
               "grid gap-4 sm:grid-cols-2",
               step === "speaker-details" ? "" : "hidden",
             )}
           >
-              <TextField label="First Name" name="firstName" required state={state} />
-              <TextField label="Last Name" name="lastName" required state={state} />
+              <TextField
+                label="First Name"
+                name="firstName"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.firstName ?? ""}
+              />
+              <TextField
+                label="Last Name"
+                name="lastName"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.lastName ?? ""}
+              />
               <TextField
                 label="Email Address"
                 name="email"
+                onValueChange={handleValueChange}
                 required
-                state={state}
+                state={displayedState}
                 type="email"
+                value={fieldValues.email ?? ""}
               />
-              <TextField label="Phone Number" name="phone" required state={state} />
+              <TextField
+                label="Phone Number"
+                name="phone"
+                onValueChange={handleValueChange}
+                required
+                state={displayedState}
+                value={fieldValues.phone ?? ""}
+              />
               <SelectField
                 label="Country of Residence"
                 name="country"
+                onValueChange={handleValueChange}
                 options={eventCountryOptions}
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.country ?? ""}
               />
               <SelectField
                 label="Nationality"
                 name="nationality"
+                onValueChange={handleValueChange}
                 options={nationalityOptions}
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.nationality ?? ""}
               />
           </div>
           <div
@@ -901,34 +1361,43 @@ function ApplyToSpeakDialog() {
                 <TextField
                   label="Organisation or Company Name"
                   name="organisation"
+                  onValueChange={handleValueChange}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.organisation ?? ""}
                 />
                 <TextField
                   label="Job Title or Role"
                   name="role"
+                  onValueChange={handleValueChange}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.role ?? ""}
                 />
                 <TextField
                   className="sm:col-span-2"
                   label="LinkedIn Profile URL"
                   name="linkedinUrl"
+                  onValueChange={handleValueChange}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.linkedinUrl ?? ""}
                 />
               </div>
               <TextareaField
                 label="Professional Bio"
                 name="professionalBio"
+                onValueChange={handleValueChange}
                 placeholder="Share your professional background and areas of expertise."
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.professionalBio ?? ""}
               />
               <FileField
                 label="Headshot Photo"
                 name="headshotFile"
-                state={state}
+                onFileChange={clearFieldError}
+                state={displayedState}
               />
           </div>
           <div
@@ -941,37 +1410,47 @@ function ApplyToSpeakDialog() {
                 <TextField
                   label="Proposed Session Title"
                   name="sessionTitle"
+                  onValueChange={handleValueChange}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.sessionTitle ?? ""}
                 />
                 <SelectField
                   label="Session Topic Area"
                   name="sessionTopic"
+                  onValueChange={handleValueChange}
                   options={sessionTopicOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.sessionTopic ?? ""}
                 />
                 <SelectField
                   label="Preferred Session Format"
                   name="sessionFormat"
+                  onValueChange={handleValueChange}
                   options={sessionFormatOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.sessionFormat ?? ""}
                 />
               </div>
               <TextareaField
                 label="Session Abstract or Description"
                 name="sessionAbstract"
+                onValueChange={handleValueChange}
                 placeholder="Describe the session focus, audience, and key takeaways."
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.sessionAbstract ?? ""}
               />
               <TextareaField
                 label="Why are you the right speaker for this topic?"
                 name="speakerFit"
+                onValueChange={handleValueChange}
                 placeholder="Share your relevant experience, perspective, or evidence."
                 required
-                state={state}
+                state={displayedState}
+                value={fieldValues.speakerFit ?? ""}
               />
           </div>
           <div
@@ -984,44 +1463,63 @@ function ApplyToSpeakDialog() {
                 <SelectField
                   label="Have you spoken at a similar summit or conference before?"
                   name="spokenBefore"
+                  onValueChange={handleValueChange}
                   options={yesNoOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.spokenBefore ?? ""}
                 />
                 <SelectField
                   label="Will you require accommodation support?"
                   name="accommodationSupport"
+                  onValueChange={handleValueChange}
                   options={yesNoOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.accommodationSupport ?? ""}
                 />
                 <SelectField
                   label="Do you require a visa to enter Zambia?"
                   name="visaRequirement"
+                  onValueChange={handleValueChange}
                   options={visaOptions}
                   required
-                  state={state}
+                  state={displayedState}
+                  value={fieldValues.visaRequirement ?? ""}
                 />
               </div>
               <TextareaField
                 label="If yes, share links or details of previous speaking engagements"
                 name="previousSpeakingDetails"
+                onValueChange={handleValueChange}
                 placeholder="Paste links or summarize relevant previous sessions."
-                state={state}
+                state={displayedState}
+                value={fieldValues.previousSpeakingDetails ?? ""}
               />
-              <ConfirmationGroup state={state} />
+              <ConfirmationGroup
+                onValuesChange={handleConfirmationsChange}
+                state={displayedState}
+                values={confirmationValues}
+              />
           </div>
           <FormActions
             isFirstStep={step === steps[0]}
             isLastStep={step === steps[steps.length - 1]}
             isSubmitting={isSubmitting}
-            nextStep={nextStep}
+            nextStep={handleNextStep}
             previousStep={previousStep}
             submitLabel="Submit Application"
           />
         </form>
-      </DialogContent>
-    </Dialog>
+        </DialogContent>
+      </Dialog>
+      <EventSuccessDialog
+        message={state.message}
+        onDismiss={handleSuccessDismiss}
+        open={isSuccessDialogOpen}
+        title="Speaker application submitted"
+      />
+    </>
   );
 }
 
