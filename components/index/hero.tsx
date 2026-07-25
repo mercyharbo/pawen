@@ -213,7 +213,7 @@ export function Hero({ nominationsUrl }: HeroProps) {
               className='h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90'
             >
               <Link
-                href='/PAWEN%20Summit%20%26%20Awards%20Brochure.pdf'
+                href='/The%20PAWEN%20Awards%20%26%20Summit%20Brochure.pdf'
                 target='_blank'
                 rel='noreferrer'
               >

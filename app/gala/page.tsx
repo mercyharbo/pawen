@@ -30,7 +30,7 @@ export default function GalaPage() {
     <main className="overflow-x-clip">
       <div className="bg-pawen-brand-color">
         <GalaHero
-          brochureUrl="/PAWEN%20Summit%20%26%20Awards%20Brochure.pdf"
+          brochureUrl="/The%20PAWEN%20Awards%20%26%20Summit%20Brochure.pdf"
           ticketsUrl={externalLinks.tickets}
         />
         <GalaNightSection />
