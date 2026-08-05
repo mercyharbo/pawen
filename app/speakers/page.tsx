@@ -141,7 +141,13 @@ export default async function SpeakersPage() {
               asChild
               className='h-11 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
             >
-              <Link href={page.ctaUrl}>{page.ctaLabel}</Link>
+              <Link
+                href={page.ctaUrl}
+                target={page.ctaUrl.startsWith('http') ? '_blank' : undefined}
+                rel={page.ctaUrl.startsWith('http') ? 'noreferrer' : undefined}
+              >
+                {page.ctaLabel}
+              </Link>
             </Button>
           ) : null}
         </div>

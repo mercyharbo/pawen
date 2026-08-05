@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { NominationFormDialog } from "@/components/nomination/nomination-form-dialog";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { rootMetadata } from "@/lib/seo";
 import "lenis/dist/lenis.css";
@@ -26,6 +27,7 @@ export default function RootLayout({
           <Header />
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
+          <NominationFormDialog />
         </SmoothScroll>
       </body>
     </html>

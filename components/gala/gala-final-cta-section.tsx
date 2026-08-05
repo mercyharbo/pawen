@@ -32,19 +32,25 @@ export function GalaFinalCtaSection({ ticketsUrl }: GalaFinalCtaSectionProps) {
             asChild
             className="h-11 w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90 sm:w-auto"
           >
-            <Link href={ticketsUrl}>Get Gala Ticket</Link>
+            <Link href={ticketsUrl} target="_blank" rel="noreferrer">
+              Get Gala Ticket
+            </Link>
           </Button>
           <Button
             asChild
             className="h-11 w-full rounded-full bg-primary px-8 text-xs font-medium text-background hover:bg-primary/90 sm:w-auto"
           >
-            <Link href={ticketsUrl}>Book a Table</Link>
+            <Link href={ticketsUrl} target="_blank" rel="noreferrer">
+              Book a Table
+            </Link>
           </Button>
           <Button
             asChild
             className="h-11 w-full rounded-full border border-primary/70 bg-transparent px-8 text-xs font-medium text-primary hover:bg-primary hover:text-background sm:w-auto"
           >
-            <Link href={ticketsUrl}>Become a Sponsor</Link>
+            <Link href={ticketsUrl} target="_blank" rel="noreferrer">
+              Become a Sponsor
+            </Link>
           </Button>
         </div>
       </MotionReveal>

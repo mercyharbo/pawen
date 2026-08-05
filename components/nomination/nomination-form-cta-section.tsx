@@ -1,7 +1,6 @@
 "use client";
 
 import { MotionReveal } from "@/components/motion-reveal";
-import { NominationFormDialog } from "@/components/nomination/nomination-form-dialog";
 import { Button } from "@/components/ui/button";
 import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import Image from "next/image";
@@ -39,8 +38,6 @@ export function NominationFormCtaSection() {
           Nomination form
         </Button>
       </MotionReveal>
-
-      <NominationFormDialog />
     </section>
   );
 }

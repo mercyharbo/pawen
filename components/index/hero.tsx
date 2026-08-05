@@ -1,12 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { useNomination } from '@/lib/stores/nomination-dialog-store'
 import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
 type HeroProps = {
-  nominationsUrl: string
+  nominationsUrl?: string
 }
 
 type HeroParticle = {
@@ -60,6 +61,7 @@ const heroParticles: HeroParticle[] = [
 }))
 
 export function Hero({ nominationsUrl }: HeroProps) {
+  const { openDialog } = useNomination()
   const reduceMotion = useReducedMotion()
   const revealTransition = {
     duration: 1.15,
@@ -203,10 +205,11 @@ export function Hero({ nominationsUrl }: HeroProps) {
 
           <div className='flex flex-wrap items-center justify-center gap-3'>
             <Button
-              asChild
               className='h-12 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90'
+              onClick={openDialog}
+              type='button'
             >
-              <Link href={nominationsUrl}>Nominate Now</Link>
+              Nominate Now
             </Button>
             <Button
               asChild

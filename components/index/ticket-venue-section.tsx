@@ -51,7 +51,9 @@ export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
             asChild
             className='h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90'
           >
-            <Link href={ticketsUrl}>Get Gala Tickets</Link>
+            <Link href={ticketsUrl} target='_blank' rel='noreferrer'>
+              Get Gala Tickets
+            </Link>
           </Button>
         </MotionReveal>
       </div>

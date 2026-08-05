@@ -1,9 +1,14 @@
+"use client";
+
 import { MotionReveal } from "@/components/motion-reveal";
 import { Button } from "@/components/ui/button";
+import { useNomination } from "@/lib/stores/nomination-dialog-store";
 import Image from "next/image";
 import Link from "next/link";
 
 export function NominationHero() {
+  const { openDialog } = useNomination();
+
   return (
     <section
       className="relative isolate flex min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-primary sm:px-8 lg:px-10 lg:py-28"
@@ -49,10 +54,11 @@ export function NominationHero() {
 
         <div className="flex flex-col items-center justify-center gap-3 w-full sm:w-auto lg:w-auto sm:flex-row">
           <Button
-            asChild
             className="h-11 sm:min-w-32 lg:w-auto w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90"
+            onClick={openDialog}
+            type="button"
           >
-            <Link href="#nomination-form">Nomination</Link>
+            Nomination
           </Button>
           <Button
             asChild
