@@ -69,7 +69,7 @@ export function IntroStep({
               placeholder='Select Category'
             />
           </SelectTrigger>
-          <SelectContent className='scrollbar-hide bg-white text-background'>
+          <SelectContent className='bg-white text-background'>
             {categoryGroups.map((group) => (
               <SelectGroup key={group.label}>
                 <SelectLabel className='text-background/60'>

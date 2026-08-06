@@ -113,3 +113,23 @@ body::before {
   background: var(--premium-gold);
   color: var(--background);
 }
+
+/* Custom scrollbar styling for modal dialogs & scrollable containers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(33, 0, 47, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-premium-gold);
+}

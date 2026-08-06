@@ -409,7 +409,7 @@ function SelectField({
             placeholder={placeholder}
           />
         </SelectTrigger>
-        <SelectContent className="scrollbar-hide bg-white text-background">
+        <SelectContent className="bg-white text-background">
           <SelectGroup>
             {options.map((option) => (
               <SelectItem
@@ -696,7 +696,7 @@ function SummitRegistrationDialog() {
           showCloseButton
       >
         <form
-          className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
           data-lenis-prevent
           key={state.resetKey ?? "summit-registration-form"}
           noValidate
@@ -949,7 +949,7 @@ function ExhibitionBoothDialog() {
           showCloseButton
       >
         <form
-          className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
           data-lenis-prevent
           key={state.resetKey ?? "exhibition-booth-form"}
           noValidate
@@ -1245,7 +1245,7 @@ function ApplyToSpeakDialog() {
           showCloseButton
       >
         <form
-          className="scrollbar-hide flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
           data-lenis-prevent
           encType="multipart/form-data"
           key={state.resetKey ?? "apply-to-speak-form"}

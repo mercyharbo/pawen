@@ -172,7 +172,7 @@ export function NomineeStep({
                 placeholder="Enter Country"
               />
             </SelectTrigger>
-            <SelectContent className="scrollbar-hide bg-white text-background">
+            <SelectContent className="bg-white text-background">
               <SelectGroup>
                 {countries.map((option) => (
                   <SelectItem

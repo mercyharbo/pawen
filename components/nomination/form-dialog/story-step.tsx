@@ -164,7 +164,7 @@ export function StoryStep({
               placeholder="Select One"
             />
           </SelectTrigger>
-          <SelectContent className="scrollbar-hide bg-white text-background">
+          <SelectContent className="bg-white text-background">
             <SelectGroup>
               {discoverySources.map((option) => (
                 <SelectItem

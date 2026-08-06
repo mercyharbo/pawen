@@ -219,7 +219,7 @@ export function NominationFormDialog() {
           showCloseButton
         >
           <form
-            className="scrollbar-hide flex max-h-[calc(70vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex max-h-[calc(70vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
             data-lenis-prevent
             encType="multipart/form-data"
             key={state.resetKey ?? "nomination-dialog-form"}

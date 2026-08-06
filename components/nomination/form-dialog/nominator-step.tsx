@@ -167,7 +167,7 @@ export function NominatorStep({
                   placeholder="Select Relationship"
                 />
               </SelectTrigger>
-              <SelectContent className="scrollbar-hide bg-white text-background">
+              <SelectContent className="bg-white text-background">
                 <SelectGroup>
                   {relationships.map((option) => (
                     <SelectItem
