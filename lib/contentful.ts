@@ -225,7 +225,7 @@ function resolveImage(
 
 export async function getSpeakerPageContent() {
   const collection = await fetchContentfulEntries<SpeakerPageFields>(
-    'speakers',
+    'speakersPage',
     { limit: '1' },
   )
   const fields = collection?.items[0]?.fields
@@ -241,7 +241,7 @@ export async function getSpeakerPageContent() {
 }
 
 export async function getSpeakers() {
-  const collection = await fetchContentfulEntries<SpeakerFields>('speaker', {
+  const collection = await fetchContentfulEntries<SpeakerFields>('speakers', {
     'fields.visible': 'true',
     order: 'fields.sortOrder',
   })
@@ -262,7 +262,7 @@ export async function getSpeakers() {
 }
 
 export async function hasVisibleSpeakers() {
-  const collection = await fetchContentfulEntries<SpeakerFields>('speaker', {
+  const collection = await fetchContentfulEntries<SpeakerFields>('speakers', {
     'fields.visible': 'true',
     include: '0',
     limit: '1',
