@@ -36,6 +36,7 @@ type ContentfulEntry<TFields> = {
 type ContentfulCollection<TFields> = {
   includes?: {
     Asset?: ContentfulAsset[]
+    Entry?: ContentfulEntry<Record<string, unknown>>[]
   }
   items: ContentfulEntry<TFields>[]
 }
@@ -59,8 +60,9 @@ type SpeakerFields = {
   professionalTitle?: string
   slug?: string
   sortOrder?: number
-  speakerCategory?: string
+  speakerCategory?: unknown
   visible?: boolean
+  year?: string | number | ContentfulLink
 }
 
 type WinnerYearFields = {
@@ -114,6 +116,7 @@ export type Speaker = {
   name: string
   professionalTitle: string
   slug: string
+  year: string
 }
 
 export type WinnerYear = {
@@ -223,6 +226,94 @@ function resolveImage(
   }
 }
 
+function entryMap<TFields>(collection?: ContentfulCollection<TFields> | null) {
+  return new Map(
+    collection?.includes?.Entry?.map((entry) => [entry.sys.id, entry]) ?? [],
+  )
+}
+
+function resolveSpeakerYear(
+  yearField: string | number | ContentfulLink | undefined,
+  entries: Map<string, ContentfulEntry<Record<string, unknown>>>,
+): string {
+  if (yearField === undefined || yearField === null) {
+    return ''
+  }
+
+  if (typeof yearField === 'string') {
+    return yearField.trim()
+  }
+
+  if (typeof yearField === 'number') {
+    return String(yearField)
+  }
+
+  if (typeof yearField === 'object' && 'sys' in yearField) {
+    const linked = entries.get(yearField.sys.id)
+    const val =
+      linked?.fields?.year ??
+      linked?.fields?.heading ??
+      linked?.fields?.title ??
+      linked?.fields?.name
+    if (val !== undefined && val !== null) {
+      return String(val).trim()
+    }
+    return yearField.sys.id
+  }
+
+  return ''
+}
+
+function resolveSpeakerCategory(
+  categoryField: unknown,
+  entries: Map<string, ContentfulEntry<Record<string, unknown>>>,
+): string {
+  if (!categoryField) {
+    return 'Keynote'
+  }
+
+  if (typeof categoryField === 'string') {
+    const trimmed = categoryField.trim()
+    return trimmed || 'Keynote'
+  }
+
+  if (Array.isArray(categoryField)) {
+    const first = categoryField[0]
+    return resolveSpeakerCategory(first, entries)
+  }
+
+  if (typeof categoryField === 'object' && categoryField !== null) {
+    if ('sys' in categoryField && (categoryField as ContentfulLink).sys?.id) {
+      const linked = entries.get((categoryField as ContentfulLink).sys.id)
+      const val =
+        linked?.fields?.name ??
+        linked?.fields?.title ??
+        linked?.fields?.category ??
+        linked?.fields?.label ??
+        linked?.fields?.slug
+      if (val && typeof val === 'string') {
+        return val.trim()
+      }
+    }
+
+    const rec = categoryField as Record<string, unknown>
+    if (rec.fields && typeof rec.fields === 'object') {
+      const f = rec.fields as Record<string, unknown>
+      const val = f.name ?? f.title ?? f.category ?? f.label ?? f.slug
+      if (val && typeof val === 'string') {
+        return val.trim()
+      }
+    }
+
+    if (typeof rec.name === 'string' && rec.name.trim()) return rec.name.trim()
+    if (typeof rec.title === 'string' && rec.title.trim()) return rec.title.trim()
+    if (typeof rec.category === 'string' && rec.category.trim()) return rec.category.trim()
+    if (typeof rec.label === 'string' && rec.label.trim()) return rec.label.trim()
+  }
+
+  return 'Keynote'
+}
+
 export async function getSpeakerPageContent() {
   const collection = await fetchContentfulEntries<SpeakerPageFields>(
     'speakersPage',
@@ -246,18 +337,28 @@ export async function getSpeakers() {
     order: 'fields.sortOrder',
   })
   const assets = assetMap(collection)
+  const entries = entryMap(collection)
 
   return (
-    collection?.items.map(({ fields, sys }) => ({
-      bio: fields.bio ?? '',
-      category: fields.speakerCategory ?? 'Keynote',
-      eventRoleLabel: fields.eventRoleLabel ?? fields.speakerCategory ?? '',
-      image: resolveImage(fields.image, assets),
-      linkedinUrl: fields.linkedinUrl ?? fields.linkedInUrl ?? '',
-      name: fields.name ?? 'Speaker',
-      professionalTitle: fields.professionalTitle ?? '',
-      slug: fields.slug ?? sys.id,
-    })) ?? []
+    collection?.items.map(({ fields, sys }) => {
+      const category = resolveSpeakerCategory(fields.speakerCategory, entries)
+      const eventRoleLabel =
+        typeof fields.eventRoleLabel === 'string' && fields.eventRoleLabel.trim()
+          ? fields.eventRoleLabel.trim()
+          : category
+
+      return {
+        bio: fields.bio ?? '',
+        category,
+        eventRoleLabel,
+        image: resolveImage(fields.image, assets),
+        linkedinUrl: fields.linkedinUrl ?? fields.linkedInUrl ?? '',
+        name: fields.name ?? 'Speaker',
+        professionalTitle: fields.professionalTitle ?? '',
+        slug: fields.slug ?? sys.id,
+        year: resolveSpeakerYear(fields.year, entries) || '2026',
+      }
+    }) ?? []
   )
 }
 

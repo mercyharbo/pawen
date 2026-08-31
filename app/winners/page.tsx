@@ -48,6 +48,7 @@ function WinnerCard({ winner }: { winner: AwardWinner }) {
             src={winner.image.url}
             alt={winner.image.alt || winner.name}
             fill
+            unoptimized
             sizes='(min-width: 1024px) 28vw, (min-width: 640px) 45vw, 100vw'
             className='object-cover object-center grayscale transition duration-500 ease-out group-hover/winner-card:grayscale-0 group-focus-within/winner-card:grayscale-0'
           />

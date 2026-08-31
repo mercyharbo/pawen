@@ -62,6 +62,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             src={speaker.image.url}
             alt={speaker.image.alt || speaker.name}
             fill
+            unoptimized
             sizes='(min-width: 1024px) 28vw, (min-width: 640px) 45vw, 100vw'
             className='object-cover object-center grayscale transition duration-500 ease-out group-hover/speaker-card:grayscale-0 group-focus-within/speaker-card:grayscale-0'
           />
@@ -70,7 +71,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
 
       <div className='flex flex-1 flex-col gap-3 p-5'>
         <div className='flex flex-col gap-2'>
-          <span className='w-fit rounded-full bg-background px-3 py-1 text-xs font-medium leading-none text-primary'>
+          <span className='w-fit bg-background px-3 py-1 text-xs font-medium leading-none text-primary'>
             {speaker.eventRoleLabel}
           </span>
           <h2 className='font-brand text-lg font-bold leading-6 text-background'>
@@ -120,11 +121,81 @@ function SpeakerGrid({ speakers }: { speakers: Speaker[] }) {
   )
 }
 
+function SpeakerCategoryTabs({ speakers }: { speakers: Speaker[] }) {
+  const presentCategories = Array.from(
+    new Set(
+      speakers
+        .map((s) => (typeof s.category === 'string' ? s.category.trim() : ''))
+        .filter(Boolean),
+    ),
+  )
+
+  const activeCategories = Array.from(
+    new Set([
+      'All Speakers',
+      ...speakerCategories.slice(1).filter((category) =>
+        presentCategories.includes(category),
+      ),
+      ...presentCategories.filter(
+        (cat) =>
+          !speakerCategories.includes(cat as (typeof speakerCategories)[number]),
+      ),
+    ]),
+  )
+
+  if (speakers.length === 0) {
+    return (
+      <div className='rounded-xl border border-accent px-6 py-10 text-center font-brand text-sm leading-6 text-primary'>
+        Speaker details will be announced soon.
+      </div>
+    )
+  }
+
+  return (
+    <Tabs defaultValue='All Speakers' className='w-full items-center gap-8'>
+      <TabsList
+        aria-label='Speaker categories'
+        className='h-auto flex-wrap gap-2 bg-transparent p-0'
+      >
+        {activeCategories.map((category) => (
+          <TabsTrigger
+            key={category}
+            value={category}
+            className='h-11 min-w-0 bg-primary/8 px-6 text-sm'
+          >
+            {category}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+
+      <TabsContent value='All Speakers' className='w-full'>
+        <SpeakerGrid speakers={speakers} />
+      </TabsContent>
+
+      {activeCategories.slice(1).map((category) => (
+        <TabsContent key={category} value={category} className='w-full'>
+          <SpeakerGrid
+            speakers={speakers.filter(
+              (speaker) => speaker.category === category,
+            )}
+          />
+        </TabsContent>
+      ))}
+    </Tabs>
+  )
+}
+
 export default async function SpeakersPage() {
   const [page, speakers] = await Promise.all([
     getSpeakerPageContent(),
     getSpeakers(),
   ])
+
+  const years = Array.from(
+    new Set(speakers.map((s) => s.year).filter(Boolean)),
+  ).sort((a, b) => b.localeCompare(a))
+
+  const defaultYear = years[0] ?? '2026'
 
   return (
     <main className='bg-pawen-brand-color px-5 py-10 text-primary sm:px-8 lg:px-10 lg:py-16'>
@@ -152,36 +223,36 @@ export default async function SpeakersPage() {
           ) : null}
         </div>
 
-        <Tabs defaultValue='All Speakers' className='w-full items-center gap-8'>
-          <TabsList
-            aria-label='Speaker categories'
-            className='h-auto flex-wrap gap-2 bg-transparent p-0'
-          >
-            {speakerCategories.map((category) => (
-              <TabsTrigger
-                key={category}
-                value={category}
-                className='h-11 min-w-0 bg-primary/8 px-6 text-sm'
-              >
-                {category}
-              </TabsTrigger>
+        {years.length === 0 ? (
+          <div className='rounded-xl border border-accent px-6 py-10 text-center font-brand text-sm leading-6 text-primary'>
+            Speaker details will be announced soon.
+          </div>
+        ) : (
+          <Tabs defaultValue={defaultYear} className='w-full items-center gap-8'>
+            <TabsList
+              aria-label='Speaker years'
+              className='h-auto flex-wrap gap-2 bg-transparent p-0'
+            >
+              {years.map((year) => (
+                <TabsTrigger
+                  key={year}
+                  value={year}
+                  className='h-11 min-w-0 bg-primary/8 px-6 text-sm'
+                >
+                  {year}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {years.map((year) => (
+              <TabsContent key={year} value={year} className='w-full'>
+                <SpeakerCategoryTabs
+                  speakers={speakers.filter((speaker) => speaker.year === year)}
+                />
+              </TabsContent>
             ))}
-          </TabsList>
-
-          <TabsContent value='All Speakers' className='w-full'>
-            <SpeakerGrid speakers={speakers} />
-          </TabsContent>
-
-          {speakerCategories.slice(1).map((category) => (
-            <TabsContent key={category} value={category} className='w-full'>
-              <SpeakerGrid
-                speakers={speakers.filter(
-                  (speaker) => speaker.category === category,
-                )}
-              />
-            </TabsContent>
-          ))}
-        </Tabs>
+          </Tabs>
+        )}
       </section>
     </main>
   )
