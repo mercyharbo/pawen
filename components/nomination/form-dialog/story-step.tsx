@@ -17,6 +17,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { confirmations, discoverySources } from "@/lib/nomination-form-data";
 import { useNomination } from "@/lib/stores/nomination-dialog-store";
+import { validateFileSize } from "@/lib/file-utils";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -29,6 +30,7 @@ export function StoryStep({
 }) {
   const [supportingEvidenceName, setSupportingEvidenceName] =
     useState("No file chosen");
+  const [localFileError, setLocalFileError] = useState<string | null>(null);
   const {
     confirmations: confirmationsValue,
     discoverySource,
@@ -38,7 +40,7 @@ export function StoryStep({
     whyDeserving,
   } = useNomination();
   const storyError = fieldError(state, "whyDeserving");
-  const fileError = fieldError(state, "supportingEvidence");
+  const fileError = localFileError || fieldError(state, "supportingEvidence");
   const discoverySourceError = fieldError(state, "discoverySource");
   const confirmationError = fieldError(state, "confirmations");
 
@@ -92,7 +94,7 @@ export function StoryStep({
         >
           <span className="font-bold text-background">Upload a file</span>
           <span className="text-sm text-gray-400">
-            PDF, DOC, DOCX, JPG, PNG, or ZIP. Maximum 10MB.
+            PDF, DOC, DOCX, JPG, PNG, or ZIP. Maximum 4.5MB.
           </span>
           <label
             className="relative inline-flex h-11 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-accent px-7 text-xs font-bold text-background"
@@ -109,11 +111,17 @@ export function StoryStep({
               className="absolute inset-0 cursor-pointer opacity-0"
               id="supportingEvidence-dialog-field"
               name="supportingEvidence"
-              onChange={(event) =>
-                setSupportingEvidenceName(
-                  event.currentTarget.files?.[0]?.name ?? "No file chosen",
-                )
-              }
+              onChange={(event) => {
+                const file = event.currentTarget.files?.[0];
+                if (!file) {
+                  setSupportingEvidenceName("No file chosen");
+                  setLocalFileError(null);
+                  return;
+                }
+                setSupportingEvidenceName(file.name);
+                const sizeErr = validateFileSize(file);
+                setLocalFileError(sizeErr);
+              }}
               type="file"
             />
           </label>

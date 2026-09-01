@@ -50,6 +50,7 @@ import {
   getEventDialogSteps,
   useEventDialog,
 } from "@/lib/stores/event-dialog-store";
+import { compressImageFile, validateFileSize } from "@/lib/file-utils";
 import { cn } from "@/lib/utils";
 
 const initialState: EventFormState = {
@@ -435,18 +436,73 @@ function SelectField({
 
 function FileField({
   onFileChange,
+  onFileProcessed,
   state,
   label,
   name,
 }: {
   onFileChange?: (name: string) => void;
+  onFileProcessed?: (file: File | null) => void;
   state: EventFormState;
   label: string;
   name: string;
 }) {
   const id = useId();
-  const error = fieldError(state, name);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [isCompressing, setIsCompressing] = useState(false);
+  const error = fileError || fieldError(state, name);
   const [fileName, setFileName] = useState("No file chosen");
+
+  async function handleFileSelect(event: React.ChangeEvent<HTMLInputElement>) {
+    const originalFile = event.currentTarget.files?.[0];
+    if (!originalFile) {
+      setFileName("No file chosen");
+      setFileError(null);
+      onFileProcessed?.(null);
+      onFileChange?.(name);
+      return;
+    }
+
+    setFileName(originalFile.name);
+    setFileError(null);
+
+    // If it's an image, attempt compression
+    if (originalFile.type.startsWith("image/")) {
+      try {
+        setIsCompressing(true);
+        const processedFile = await compressImageFile(originalFile);
+        const sizeError = validateFileSize(processedFile);
+        if (sizeError) {
+          setFileError(sizeError);
+          onFileProcessed?.(null);
+        } else {
+          setFileError(null);
+          onFileProcessed?.(processedFile);
+        }
+      } catch (err) {
+        console.error("Image compression error", err);
+        const sizeError = validateFileSize(originalFile);
+        if (sizeError) {
+          setFileError(sizeError);
+          onFileProcessed?.(null);
+        } else {
+          onFileProcessed?.(originalFile);
+        }
+      } finally {
+        setIsCompressing(false);
+      }
+    } else {
+      const sizeError = validateFileSize(originalFile);
+      if (sizeError) {
+        setFileError(sizeError);
+        onFileProcessed?.(null);
+      } else {
+        onFileProcessed?.(originalFile);
+      }
+    }
+
+    onFileChange?.(name);
+  }
 
   return (
     <div className="flex flex-col gap-2">
@@ -459,7 +515,7 @@ function FileField({
       >
         <span className="font-bold text-background">Upload a photo</span>
         <span className="text-sm text-gray-500">
-          JPG, PNG, or WEBP. Maximum 10MB.
+          JPG, PNG, or WEBP. Photos are automatically optimized.
         </span>
         <label
           className="cursor-pointer rounded-full bg-accent px-7 py-3 text-xs font-bold text-background"
@@ -468,7 +524,7 @@ function FileField({
           Choose file
         </label>
         <span className="max-w-full break-words text-xs text-gray-500">
-          {fileName}
+          {isCompressing ? "Optimizing photo..." : fileName}
         </span>
         <input
           accept=".jpg,.jpeg,.png,.webp"
@@ -477,12 +533,7 @@ function FileField({
           className="sr-only"
           id={id}
           name={name}
-          onChange={(event) => {
-            setFileName(
-              event.currentTarget.files?.[0]?.name ?? "No file chosen",
-            );
-            onFileChange?.(name);
-          }}
+          onChange={handleFileSelect}
           type="file"
         />
       </div>
@@ -924,6 +975,24 @@ function ExhibitionBoothDialog() {
         .filter(([, error]) => error),
     );
 
+    if (
+      nextStepName === "exhibition-interest" &&
+      fieldValues.businessDescription &&
+      fieldValues.businessDescription.length > 1500
+    ) {
+      nextErrors.businessDescription =
+        "Keep the business description concise (under 1500 characters).";
+    }
+
+    if (
+      nextStepName === "exhibition-interest" &&
+      fieldValues.exhibitionGoal &&
+      fieldValues.exhibitionGoal.length > 1200
+    ) {
+      nextErrors.exhibitionGoal =
+        "Keep the exhibition goal concise (under 1200 characters).";
+    }
+
     setFieldErrors(nextErrors);
 
     return Object.keys(nextErrors).length === 0;
@@ -1136,6 +1205,7 @@ function ApplyToSpeakDialog() {
   const [confirmationValues, setConfirmationValues] = useState<string[]>([]);
   const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
   const [fieldValues, setFieldValues] = useState<EventFormValues>({});
+  const [processedHeadshot, setProcessedHeadshot] = useState<File | null>(null);
   const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
     string | undefined
   >();
@@ -1205,7 +1275,7 @@ function ApplyToSpeakDialog() {
     if (nextStepName === "speaker-profile" && formRef.current) {
       const headshotError = fileField(formRef.current, "headshotFile");
 
-      if (headshotError) {
+      if (headshotError && !processedHeadshot) {
         nextErrors.headshotFile = "Upload your headshot photo.";
       }
     }
@@ -1233,6 +1303,7 @@ function ApplyToSpeakDialog() {
   function handleSuccessDismiss() {
     setDismissedSuccessKey(successKey);
     setConfirmationValues([]);
+    setProcessedHeadshot(null);
     setFieldErrors({});
     setFieldValues({});
   }
@@ -1259,6 +1330,13 @@ function ApplyToSpeakDialog() {
             }
 
             const formData = new FormData(event.currentTarget);
+            if (processedHeadshot) {
+              formData.set(
+                "headshotFile",
+                processedHeadshot,
+                processedHeadshot.name,
+              );
+            }
 
             startTransition(() => {
               formAction(formData);
@@ -1384,6 +1462,7 @@ function ApplyToSpeakDialog() {
                 label="Headshot Photo"
                 name="headshotFile"
                 onFileChange={clearFieldError}
+                onFileProcessed={setProcessedHeadshot}
                 state={displayedState}
               />
           </div>

@@ -62,8 +62,8 @@ export const applyToSpeakSchema = z.object({
     )
     .refine((file) => file && file.size > 0, "Upload your headshot photo.")
     .refine(
-      (file) => !file || file.size <= 10 * 1024 * 1024,
-      "Headshot photo must be 10MB or smaller.",
+      (file) => !file || file.size <= 4.5 * 1024 * 1024,
+      "Headshot photo must be 4.5MB or smaller.",
     ),
   sessionTitle: requiredText,
   sessionTopic: requiredText,

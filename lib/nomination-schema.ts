@@ -37,8 +37,8 @@ export const nominationSchema = z.object({
       "Upload a valid file.",
     )
     .refine(
-      (file) => !file || file.size <= 10 * 1024 * 1024,
-      "Supporting evidence must be 10MB or smaller.",
+      (file) => !file || file.size <= 4.5 * 1024 * 1024,
+      "Supporting evidence must be 4.5MB or smaller.",
     ),
 });
 
