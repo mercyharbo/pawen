@@ -58,15 +58,14 @@ const partnerLogos = [
     alt: 'Alliance Media logo',
     href: 'https://www.alliancemedia.com/zambia/',
   },
-  /*
-  // Excluded until logos are provided:
   {
     name: 'GrandPalace Hotel',
     src: '/grandpalace.png',
     alt: 'GrandPalace Hotel logo',
     href: 'https://grandpalace.co.zm/',
-    // Hotel booking link: https://www.ideaform.app/f/iKriLY (Code: PAWEN2026)
   },
+  /*
+  // Excluded until logo is provided:
   {
     name: 'Rideve Media Solutions',
     src: '/rideve.png',
