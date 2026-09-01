@@ -40,6 +40,41 @@ const partnerLogos = [
     alt: 'Women in Technology Zambia logo',
     href: 'https://www.witn.org.zm/',
   },
+  {
+    name: 'ProdAfrica',
+    src: '/prodafrica.png',
+    alt: 'ProdAfrica logo',
+    href: 'https://maps.prodafrica.com/',
+  },
+  {
+    name: 'EventPadi Technology',
+    src: '/eventpadi.png',
+    alt: 'EventPadi Technology logo',
+    href: 'http://www.eventpadi.com/',
+  },
+  {
+    name: 'Alliance Media',
+    src: '/alliance-media.jpg',
+    alt: 'Alliance Media logo',
+    href: 'https://www.alliancemedia.com/zambia/',
+  },
+  /*
+  // Excluded until logos are provided:
+  {
+    name: 'GrandPalace Hotel',
+    src: '/grandpalace.png',
+    alt: 'GrandPalace Hotel logo',
+    href: 'https://grandpalace.co.zm/',
+    // Hotel booking link: https://www.ideaform.app/f/iKriLY (Code: PAWEN2026)
+  },
+  {
+    name: 'Rideve Media Solutions',
+    src: '/rideve.png',
+    alt: 'Rideve Media Solutions logo',
+    href: 'https://ridevemedia.com/?fbclid=IwVERDUAT-N5VwZG9mBWV4dG4DYWVtAjEwAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHvNKCnIYhiZcy8mKKV3y86uGK0sqG-iir0_WcDvrc3zI9npUp3G7KOOFfL3M_aem_9J4tbeo_yzPdpGRMaupUBQ',
+    // Official Event Management Partner
+  },
+  */
 ] as const
 
 export function SponsorsSection() {
