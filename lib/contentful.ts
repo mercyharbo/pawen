@@ -179,16 +179,31 @@ async function fetchContentfulEntries<TFields>(
     ...params,
   })
 
-  const response = await fetch(
-    `https://cdn.contentful.com/spaces/${config.spaceId}/environments/${config.environment}/entries?${searchParams}`,
-    { cache: 'no-store' },
-  )
+  try {
+    const response = await fetch(
+      `https://cdn.contentful.com/spaces/${config.spaceId}/environments/${config.environment}/entries?${searchParams}`,
+      { cache: 'no-store' },
+    )
 
-  if (!response.ok) {
+    if (!response.ok) {
+      return null
+    }
+
+    return (await response.json()) as ContentfulCollection<TFields>
+  } catch (error: unknown) {
+    if (
+      error &&
+      typeof error === 'object' &&
+      (('digest' in error && error.digest === 'DYNAMIC_SERVER_USAGE') ||
+        ('message' in error &&
+          typeof error.message === 'string' &&
+          error.message.includes('Dynamic server usage')))
+    ) {
+      throw error
+    }
+    console.error(`Error fetching Contentful entries for ${contentType}:`, error)
     return null
   }
-
-  return (await response.json()) as ContentfulCollection<TFields>
 }
 
 function assetMap<TFields>(collection?: ContentfulCollection<TFields> | null) {

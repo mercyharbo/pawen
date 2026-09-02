@@ -1,4 +1,4 @@
-import { HeaderNavLinks } from '@/components/header-nav-links'
+import { HeaderNavLinks, type HeaderNavItem } from '@/components/header-nav-links'
 import { MobileNavMenu } from '@/components/mobile-nav-menu'
 import { hasVisibleSpeakers } from '@/lib/contentful'
 import { externalLinks } from '@/lib/external-links'
@@ -6,15 +6,28 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 
-const baseNavItems = [
+const baseNavItems: readonly HeaderNavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Nominations', href: externalLinks.nominations },
+  {
+    label: 'Book Hotel',
+    items: [
+      {
+        label: 'Grandpalace Hotel',
+        href: externalLinks.hotelBooking,
+        isExternal: true,
+      },
+      {
+        label: 'Holiday Inn',
+      },
+    ],
+  },
   { label: 'Summit', href: '/summit' },
   { label: 'Exhibition', href: '/exhibition' },
   { label: 'Award Gala', href: '/gala' },
-] as const
+]
 
-const speakersNavItem = { label: 'Speakers', href: '/speakers' } as const
+const speakersNavItem: HeaderNavItem = { label: 'Speakers', href: '/speakers' }
 
 function HeaderMotionLink({
   children,
@@ -42,12 +55,28 @@ function HeaderMotionLink({
 }
 
 export async function Header() {
-  const showSpeakers = await hasVisibleSpeakers()
+  let showSpeakers = false
+  try {
+    showSpeakers = await hasVisibleSpeakers()
+  } catch (error: unknown) {
+    if (
+      error &&
+      typeof error === 'object' &&
+      (('digest' in error && error.digest === 'DYNAMIC_SERVER_USAGE') ||
+        ('message' in error &&
+          typeof error.message === 'string' &&
+          error.message.includes('Dynamic server usage')))
+    ) {
+      throw error
+    }
+    console.error('Failed to check visible speakers:', error)
+  }
+
   const navItems = showSpeakers
     ? [
-        ...baseNavItems.slice(0, 3),
+        ...baseNavItems.slice(0, 4),
         speakersNavItem,
-        ...baseNavItems.slice(3),
+        ...baseNavItems.slice(4),
       ]
     : baseNavItems
 

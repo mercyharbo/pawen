@@ -16,4 +16,5 @@ export const externalLinks = {
   hotelBooking: "https://www.ideaform.app/f/iKriLY",
   hotelBookingCode: "PAWEN2026",
   hotelWebsite: "https://grandpalace.co.zm/",
+  holidayInnBooking: "https://www.ihg.com/holidayinn/hotels/gb/en/lusaka/lunha/hoteldetail",
 } as const;

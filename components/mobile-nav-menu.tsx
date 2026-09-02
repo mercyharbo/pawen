@@ -1,17 +1,14 @@
 "use client";
 
+import type { HeaderNavItem } from "@/components/header-nav-links";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
-type MobileNavItem = {
-  label: string;
-  href: string;
-};
-
 type MobileNavMenuProps = {
-  navItems: readonly MobileNavItem[];
+  navItems: readonly HeaderNavItem[];
 };
 
 function MobileMenuLink({
@@ -55,7 +52,8 @@ function MobileMenuLink({
   );
 }
 
-function isActiveRoute(pathname: string, href: string) {
+function isActiveRoute(pathname: string, href?: string) {
+  if (!href) return false;
   if (href === "/") {
     return pathname === "/";
   }
@@ -80,8 +78,16 @@ function StatefulMobileNavMenu({
   pathname,
 }: MobileNavMenuProps & { pathname: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const menuId = "mobile-navigation-menu";
+
+  function toggleDropdown(label: string) {
+    setOpenDropdowns((prev) => ({
+      ...prev,
+      [label]: !prev[label],
+    }));
+  }
 
   useEffect(() => {
     if (!isOpen) {
@@ -141,24 +147,65 @@ function StatefulMobileNavMenu({
           className="absolute right-0 top-14 flex w-[min(18rem,calc(100vw-2.5rem))] flex-col gap-1 rounded-2xl border border-border bg-popover p-3 font-brand text-sm font-semibold shadow-2xl shadow-background/50"
           aria-label="Mobile navigation"
         >
-          {navItems.map((item) => (
-            <MobileMenuLink
-              key={item.label}
-              href={item.href}
-              isActive={isActiveRoute(pathname, item.href)}
-              onClick={closeMenu}
-            >
-              {item.label}
-            </MobileMenuLink>
-          ))}
-          {/* <MobileMenuLink
-            href={loginHref}
-            className="md:hidden"
-            muted
-            onClick={closeMenu}
-          >
-            Login or Register
-          </MobileMenuLink> */}
+          {navItems.map((item) => {
+            if (item.items && item.items.length > 0) {
+              const isDropdownOpen = !!openDropdowns[item.label];
+
+              return (
+                <div key={item.label} className="flex flex-col">
+                  <button
+                    type="button"
+                    onClick={() => toggleDropdown(item.label)}
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-popover-foreground transition-colors hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    <span>{item.label}</span>
+                    <ChevronDown
+                      className={`size-4 transition-transform duration-300 ${
+                        isDropdownOpen ? "rotate-180 text-accent" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {isDropdownOpen && (
+                    <div className="ml-3 flex flex-col gap-1 border-l border-border/60 pl-3 py-1">
+                      {item.items.map((subItem) =>
+                        subItem.href ? (
+                          <a
+                            key={subItem.label}
+                            href={subItem.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={closeMenu}
+                            className="rounded-md px-3 py-2 text-xs font-medium text-popover-foreground/80 transition-colors hover:bg-accent hover:text-accent-foreground"
+                          >
+                            {subItem.label}
+                          </a>
+                        ) : (
+                          <span
+                            key={subItem.label}
+                            className="rounded-md px-3 py-2 text-xs font-medium text-popover-foreground/60 transition-colors hover:bg-white/5 cursor-default"
+                          >
+                            {subItem.label}
+                          </span>
+                        ),
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <MobileMenuLink
+                key={item.label}
+                href={item.href ?? "/"}
+                isActive={isActiveRoute(pathname, item.href)}
+                onClick={closeMenu}
+              >
+                {item.label}
+              </MobileMenuLink>
+            );
+          })}
         </nav>
       ) : null}
     </div>
