@@ -19,8 +19,24 @@ const faqs = [
   },
   {
     question: "Is travel to Lusaka straightforward?",
-    answer:
-      "Yes. Guests can travel into Lusaka for the PAWEN Awards & Summit, with the event hosted at InterContinental Hotel, Lusaka.",
+    answer: (
+      <span>
+        Yes. Guests can travel into Lusaka for the PAWEN Awards &amp; Summit,
+        with the event hosted at InterContinental Hotel, Lusaka. Our official
+        accommodation partner is GrandPalace Hotel, offering special discounted
+        room rates for attendees using code{" "}
+        <strong className="text-accent font-semibold">PAWEN2026</strong>. You can{" "}
+        <a
+          href="https://www.ideaform.app/f/iKriLY"
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent underline underline-offset-2 hover:opacity-80"
+        >
+          book your accommodation directly here
+        </a>
+        .
+      </span>
+    ),
   },
   {
     question: "Will the Gala be live-streamed?",

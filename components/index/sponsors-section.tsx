@@ -4,7 +4,16 @@ import { MotionReveal } from '@/components/motion-reveal'
 import Image from 'next/image'
 import Marquee from 'react-fast-marquee'
 
-const partnerLogos = [
+type PartnerLogo = {
+  name: string
+  src: string
+  alt: string
+  href?: string
+  bgWhite?: boolean
+  imageClassName?: string
+}
+
+const partnerLogos: readonly PartnerLogo[] = [
   {
     name: 'Zanaco',
     src: '/zanaco.png',
@@ -48,9 +57,11 @@ const partnerLogos = [
   },
   {
     name: 'EventPadi Technology',
-    src: '/eventpadi.png',
+    src: '/eventpadi-logo.png',
     alt: 'EventPadi Technology logo',
     href: 'http://www.eventpadi.com/',
+    bgWhite: true,
+    imageClassName: 'w-48 max-h-16 object-contain',
   },
   {
     name: 'Alliance Media',
@@ -60,9 +71,11 @@ const partnerLogos = [
   },
   {
     name: 'GrandPalace Hotel',
-    src: '/grandpalace.png',
+    src: '/grandpalace-logo.png',
     alt: 'GrandPalace Hotel logo',
     href: 'https://grandpalace.co.zm/',
+    bgWhite: true,
+    imageClassName: 'max-h-20 w-auto object-contain',
   },
   /*
   // Excluded until logo is provided:
@@ -74,7 +87,7 @@ const partnerLogos = [
     // Official Event Management Partner
   },
   */
-] as const
+]
 
 export function SponsorsSection() {
   return (
@@ -100,40 +113,51 @@ export function SponsorsSection() {
             speed={34}
             className='overflow-hidden'
           >
-            {partnerLogos.map((logo) => (
-              <div
-                className='flex min-h-32 min-w-64 items-center justify-center px-4'
-                key={logo.name}
-              >
-                {'href' in logo ? (
-                  <a
-                    href={logo.href}
-                    target='_blank'
-                    rel='noreferrer'
-                    className='inline-flex h-28 w-56 items-center justify-center transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
-                    aria-label={`Visit ${logo.name}`}
-                  >
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={220}
-                      height={110}
-                      className='max-h-24 w-auto object-contain'
-                    />
-                  </a>
-                ) : (
-                  <div className='flex h-28 w-56 items-center justify-center'>
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={220}
-                      height={110}
-                      className='max-h-24 w-auto object-contain'
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
+            {partnerLogos.map((logo) => {
+              const cardClass = logo.bgWhite
+                ? 'bg-white rounded-2xl p-4 shadow-sm'
+                : ''
+              const imgClass =
+                logo.imageClassName ||
+                'max-h-24 w-auto rounded-md object-contain'
+
+              return (
+                <div
+                  className='flex min-h-32 min-w-64 items-center justify-center px-4'
+                  key={logo.name}
+                >
+                  {logo.href ? (
+                    <a
+                      href={logo.href}
+                      target='_blank'
+                      rel='noreferrer'
+                      className={`inline-flex h-28 w-56 items-center justify-center transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${cardClass}`}
+                      aria-label={`Visit ${logo.name}`}
+                    >
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={220}
+                        height={110}
+                        className={imgClass}
+                      />
+                    </a>
+                  ) : (
+                    <div
+                      className={`flex h-28 w-56 items-center justify-center ${cardClass}`}
+                    >
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={220}
+                        height={110}
+                        className={imgClass}
+                      />
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </Marquee>
         </MotionReveal>
       </div>

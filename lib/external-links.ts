@@ -13,4 +13,7 @@ export const externalLinks = {
   documentaryVideo: "https://youtu.be/pHUizhvB_s0",
   documentaryEmbed: "https://www.youtube.com/embed/pHUizhvB_s0",
   communitySubscribe: "https://pawencommunity.substack.com/subscribe",
+  hotelBooking: "https://www.ideaform.app/f/iKriLY",
+  hotelBookingCode: "PAWEN2026",
+  hotelWebsite: "https://grandpalace.co.zm/",
 } as const;

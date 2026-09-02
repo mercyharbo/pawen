@@ -1,3 +1,4 @@
+import { AccommodationSection } from '@/components/index/accommodation-section'
 import { Hero } from '@/components/index/hero'
 import { NewsletterSection } from '@/components/index/newsletter-section'
 import { SponsorsSection } from '@/components/index/sponsors-section'
@@ -28,6 +29,10 @@ export default function Home() {
       <SponsorsSection />
       <WhyPawenSection />
       <TicketVenueSection ticketsUrl={externalLinks.tickets} />
+      <AccommodationSection
+        hotelBookingUrl={externalLinks.hotelBooking}
+        hotelBookingCode={externalLinks.hotelBookingCode}
+      />
       <NewsletterSection />
     </>
   )

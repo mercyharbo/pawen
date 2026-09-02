@@ -65,6 +65,27 @@ export function GalaTicketsSection() {
             Finalists and their nominators receive complimentary tickets to the
             Gala and discounted hotel room rate.
           </p>
+          <div className='flex flex-col items-center gap-3 rounded-xl border border-accent/30 bg-accent/10 px-5 py-3 text-center sm:flex-row sm:gap-4'>
+            <p className='font-brand text-xs leading-5 text-white font-medium sm:text-sm'>
+              GrandPalace Hotel &bull; Booking Code:{' '}
+              <span className='rounded bg-accent/20 px-1.5 py-0.5 font-mono font-bold text-accent'>
+                PAWEN2026
+              </span>
+            </p>
+            <Button
+              asChild
+              size='sm'
+              className='h-8 shrink-0 rounded-full bg-accent px-4 text-xs font-semibold text-accent-foreground hover:bg-accent/90'
+            >
+              <a
+                href='https://www.ideaform.app/f/iKriLY'
+                target='_blank'
+                rel='noreferrer'
+              >
+                Book a Hotel
+              </a>
+            </Button>
+          </div>
         </MotionReveal>
 
         <div className='grid w-full gap-4 lg:grid-cols-3'>
