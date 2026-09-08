@@ -26,18 +26,24 @@ const orderedSteps: Record<EventDialogType, EventDialogStep[]> = {
 type EventDialogStore = {
   activeDialog: EventDialogType | null;
   step: EventDialogStep;
+  selectedBoothType: string | null;
   closeDialog: () => void;
   nextStep: () => void;
-  openDialog: (dialog: EventDialogType) => void;
+  openDialog: (
+    dialog: EventDialogType,
+    options?: { boothType?: string },
+  ) => void;
   previousStep: () => void;
   resetDialog: () => void;
+  setSelectedBoothType: (boothType: string | null) => void;
   setStep: (step: EventDialogStep) => void;
 };
 
 export const useEventDialog = create<EventDialogStore>((set, get) => ({
   activeDialog: null,
   step: "summit-personal",
-  closeDialog: () => set({ activeDialog: null }),
+  selectedBoothType: null,
+  closeDialog: () => set({ activeDialog: null, selectedBoothType: null }),
   nextStep: () => {
     const { activeDialog, step } = get();
 
@@ -50,10 +56,11 @@ export const useEventDialog = create<EventDialogStore>((set, get) => ({
 
     set({ step: steps[Math.min(currentIndex + 1, steps.length - 1)] });
   },
-  openDialog: (dialog) =>
+  openDialog: (dialog, options) =>
     set({
       activeDialog: dialog,
       step: orderedSteps[dialog][0],
+      selectedBoothType: options?.boothType ?? null,
     }),
   previousStep: () => {
     const { activeDialog, step } = get();
@@ -76,6 +83,7 @@ export const useEventDialog = create<EventDialogStore>((set, get) => ({
 
     set({ step: orderedSteps[activeDialog][0] });
   },
+  setSelectedBoothType: (selectedBoothType) => set({ selectedBoothType }),
   setStep: (step) => set({ step }),
 }));
 

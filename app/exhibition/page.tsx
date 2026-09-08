@@ -2,6 +2,7 @@ import { EventFormDialogs } from "@/components/event-forms/event-form-dialogs";
 import { ExhibitionExpectSection } from "@/components/exhibition/exhibition-expect-section";
 import { ExhibitionFinalCtaSection } from "@/components/exhibition/exhibition-final-cta-section";
 import { ExhibitionHero } from "@/components/exhibition/exhibition-hero";
+import { ExhibitionPackagesSection } from "@/components/exhibition/exhibition-packages-section";
 import { ExhibitionPotentialSection } from "@/components/exhibition/exhibition-potential-section";
 import { ExhibitionWhoSection } from "@/components/exhibition/exhibition-who-section";
 import { ExhibitionWhySection } from "@/components/exhibition/exhibition-why-section";
@@ -31,6 +32,7 @@ export default function ExhibitionPage() {
         <ExhibitionPotentialSection />
         <ExhibitionWhoSection />
         <ExhibitionExpectSection />
+        <ExhibitionPackagesSection />
       </div>
       <ExhibitionFinalCtaSection />
       <EventFormDialogs />

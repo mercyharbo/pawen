@@ -77,6 +77,21 @@ const partnerLogos: readonly PartnerLogo[] = [
     bgWhite: true,
     imageClassName: 'max-h-20 w-auto object-contain',
   },
+  {
+    name: 'Hair Wonder',
+    src: '/hair-wonder.webp',
+    alt: 'Hair Wonder logo',
+    href: 'https://myhairwonder.com/about-us/',
+    imageClassName: 'max-h-20 w-auto rounded-md object-contain',
+  },
+  {
+    name: 'BellaNaija',
+    src: '/bellanaija.webp',
+    alt: 'BellaNaija logo',
+    href: 'http://www.bellanaija.com/',
+    bgWhite: true,
+    imageClassName: 'max-h-14 w-auto object-contain',
+  },
   /*
   // Excluded until logo is provided:
   {

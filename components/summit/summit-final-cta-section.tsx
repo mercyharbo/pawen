@@ -54,13 +54,6 @@ export function SummitFinalCtaSection() {
           >
             Book Exhibition Booth
           </Button>
-          <Button
-            className='h-11 sm:min-w-36 lg:w-auto w-full rounded-full border-primary/80 bg-transparent px-8 text-xs font-medium text-primary hover:border-accent hover:bg-accent hover:text-background'
-            onClick={() => openDialog('speaker')}
-            type='button'
-          >
-            Apply to Speak
-          </Button>
         </div>
       </MotionReveal>
     </section>

@@ -920,8 +920,15 @@ function ExhibitionBoothDialog() {
     string | undefined
   >();
   const [isTransitionPending, startTransition] = useTransition();
-  const { activeDialog, closeDialog, nextStep, previousStep, resetDialog, step } =
-    useEventDialog();
+  const {
+    activeDialog,
+    closeDialog,
+    nextStep,
+    previousStep,
+    resetDialog,
+    selectedBoothType,
+    step,
+  } = useEventDialog();
   const steps = getEventDialogSteps("exhibition");
   const isSubmitting = pending || isTransitionPending;
   const isOpen = activeDialog === "exhibition";
@@ -931,6 +938,7 @@ function ExhibitionBoothDialog() {
     successKey && dismissedSuccessKey !== successKey,
   );
   const displayedState = getDisplayedState(state, fieldErrors);
+  const effectiveBoothType = fieldValues.boothType ?? selectedBoothType ?? "";
 
   useStepErrorRouting(state, exhibitionErrorStepMap);
 
@@ -971,7 +979,13 @@ function ExhibitionBoothDialog() {
           ];
     const nextErrors = Object.fromEntries(
       requiredFields
-        .map((field) => [field, requiredField(fieldValues[field] ?? "")])
+        .map((field) => {
+          const val =
+            field === "boothType"
+              ? effectiveBoothType
+              : (fieldValues[field] ?? "");
+          return [field, requiredField(val)];
+        })
         .filter(([, error]) => error),
     );
 
@@ -1137,7 +1151,7 @@ function ExhibitionBoothDialog() {
                   options={boothTypeOptions}
                   required
                   state={displayedState}
-                  value={fieldValues.boothType ?? ""}
+                  value={effectiveBoothType}
                 />
                 <SelectField
                   label="Have you exhibited at a similar event before?"

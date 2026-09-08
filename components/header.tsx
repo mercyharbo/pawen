@@ -19,6 +19,8 @@ const baseNavItems: readonly HeaderNavItem[] = [
       },
       {
         label: 'Holiday Inn',
+        href: externalLinks.holidayInnBooking,
+        isExternal: true,
       },
     ],
   },
