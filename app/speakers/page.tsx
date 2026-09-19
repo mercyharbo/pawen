@@ -55,8 +55,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   return (
-    <article className='group/speaker-card flex min-h-full flex-col overflow-hidden rounded-xl border border-accent bg-accent text-background'>
-      <div className='relative aspect-[0.86] overflow-hidden bg-gray-200'>
+    <article className='group/speaker-card flex min-h-full flex-col overflow-hidden rounded-xl border border-accent bg-transparent text-primary transition-transform duration-300 ease-out hover:scale-105'>
+      <div className='relative aspect-[0.86] overflow-hidden bg-primary/5'>
         {speaker.image ? (
           <Image
             src={speaker.image.url}
@@ -67,22 +67,26 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             className='object-cover object-center grayscale transition duration-500 ease-out group-hover/speaker-card:grayscale-0 group-focus-within/speaker-card:grayscale-0'
           />
         ) : null}
-      </div>
-
-      <div className='flex flex-1 flex-col gap-3 p-5'>
-        <div className='flex flex-col gap-2'>
-          <span className='w-fit bg-background px-3 py-1 text-xs font-medium leading-none text-primary'>
+        {speaker.eventRoleLabel ? (
+          <span className='absolute top-0 right-0 z-10 border-b border-l border-accent bg-background/90 px-3 py-1.5 text-xs font-medium text-accent backdrop-blur-sm'>
             {speaker.eventRoleLabel}
           </span>
-          <h2 className='font-brand text-lg font-bold leading-6 text-background'>
+        ) : null}
+      </div>
+
+      <div className='flex flex-1 flex-col justify-between gap-4 p-5'>
+        <div className='flex flex-col gap-1.5'>
+          <h2 className='font-brand text-lg font-bold leading-6 text-primary'>
             {speaker.name}
           </h2>
-          <p className='font-brand text-sm leading-5 text-background/80'>
-            {speaker.professionalTitle}
-          </p>
-          {speaker.bio ? (
-            <p className='font-brand text-sm leading-5 text-background/70'>
-              {speaker.bio}
+          {speaker.professionalTitle ? (
+            <p className='font-brand text-sm leading-5 text-primary/80'>
+              {speaker.professionalTitle}
+            </p>
+          ) : null}
+          {speaker.company ? (
+            <p className='font-brand text-sm font-medium leading-5 text-accent'>
+              {speaker.company}
             </p>
           ) : null}
         </div>
@@ -93,9 +97,9 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             aria-label={`${speaker.name} on LinkedIn`}
             target='_blank'
             rel='noreferrer'
-            className='flex size-9 items-center justify-center rounded bg-background text-primary transition-colors hover:bg-background/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+            className='flex size-8 items-center justify-center rounded bg-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
           >
-            <LinkedInIcon className='size-6' />
+            <LinkedInIcon className='size-8 text-[#0A66C2]' />
           </Link>
         ) : null}
       </div>

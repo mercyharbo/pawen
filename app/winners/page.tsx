@@ -41,8 +41,8 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 function WinnerCard({ winner }: { winner: AwardWinner }) {
   return (
-    <article className='group/winner-card flex min-h-full flex-col overflow-hidden rounded-xl border border-accent bg-accent text-background'>
-      <div className='relative aspect-[0.86] overflow-hidden bg-gray-200'>
+    <article className='group/winner-card flex min-h-full flex-col overflow-hidden rounded-xl border border-accent bg-transparent text-primary transition-transform duration-300 ease-out hover:scale-105'>
+      <div className='relative aspect-[0.86] overflow-hidden bg-primary/5'>
         {winner.image ? (
           <Image
             src={winner.image.url}
@@ -53,16 +53,28 @@ function WinnerCard({ winner }: { winner: AwardWinner }) {
             className='object-cover object-center grayscale transition duration-500 ease-out group-hover/winner-card:grayscale-0 group-focus-within/winner-card:grayscale-0'
           />
         ) : null}
+        {winner.role ? (
+          <span className='absolute top-0 right-0 z-10 border-b border-l border-accent bg-background/90 px-3 py-1.5 text-xs font-medium text-accent backdrop-blur-sm'>
+            {winner.role}
+          </span>
+        ) : null}
       </div>
 
-      <div className='flex flex-1 flex-col gap-5 p-5'>
-        <div className='flex flex-col gap-2'>
-          <h2 className='font-brand text-lg font-bold leading-6 text-background'>
+      <div className='flex flex-1 flex-col justify-between gap-4 p-5'>
+        <div className='flex flex-col gap-1.5'>
+          <h2 className='font-brand text-lg font-bold leading-6 text-primary'>
             {winner.name}
           </h2>
-          <p className='font-brand text-sm leading-5 text-background/80'>
-            {winner.winnerTitle}
-          </p>
+          {winner.winnerTitle ? (
+            <p className='font-brand text-sm leading-5 text-primary/80'>
+              {winner.winnerTitle}
+            </p>
+          ) : null}
+          {winner.company ? (
+            <p className='font-brand text-sm font-medium leading-5 text-accent'>
+              {winner.company}
+            </p>
+          ) : null}
         </div>
 
         {winner.linkedinUrl ? (
@@ -71,9 +83,9 @@ function WinnerCard({ winner }: { winner: AwardWinner }) {
             aria-label={`${winner.name} on LinkedIn`}
             target='_blank'
             rel='noreferrer'
-            className='flex size-9 items-center justify-center rounded bg-background text-primary transition-colors hover:bg-background/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
+            className='flex size-8 items-center justify-center rounded bg-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent'
           >
-            <LinkedInIcon className='size-6' />
+            <LinkedInIcon className='size-8 text-[#0A66C2]' />
           </Link>
         ) : null}
       </div>

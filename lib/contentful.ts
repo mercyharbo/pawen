@@ -52,12 +52,20 @@ type SpeakerPageFields = {
 
 type SpeakerFields = {
   bio?: string
+  company?: string
+  companyName?: string
   eventRoleLabel?: string
   image?: ContentfulLink
+  jobTitle?: string
   linkedInUrl?: string
   linkedinUrl?: string
   name?: string
+  organization?: string
+  organizationName?: string
+  organisation?: string
+  organisationName?: string
   professionalTitle?: string
+  role?: string
   slug?: string
   sortOrder?: number
   speakerCategory?: unknown
@@ -82,10 +90,20 @@ type AwardCategoryFields = {
 
 type AwardWinnerFields = {
   awardCategory?: ContentfulLink
+  company?: string
+  companyName?: string
+  eventRoleLabel?: string
   image?: ContentfulLink
+  jobTitle?: string
   linkedInUrl?: string
   linkedinUrl?: string
   name?: string
+  organization?: string
+  organizationName?: string
+  organisation?: string
+  organisationName?: string
+  professionalTitle?: string
+  role?: string
   slug?: string
   sortOrder?: number
   visible?: boolean
@@ -110,6 +128,7 @@ export type SpeakerPageContent = {
 export type Speaker = {
   bio: string
   category: string
+  company: string
   eventRoleLabel: string
   image: ContentImage | null
   linkedinUrl: string
@@ -134,9 +153,12 @@ export type AwardCategory = {
 
 export type AwardWinner = {
   categoryId: string
+  categoryName?: string
+  company: string
   image: ContentImage | null
   linkedinUrl: string
   name: string
+  role: string
   slug: string
   winnerTitle: string
   yearId: string
@@ -360,16 +382,32 @@ export async function getSpeakers() {
       const eventRoleLabel =
         typeof fields.eventRoleLabel === 'string' && fields.eventRoleLabel.trim()
           ? fields.eventRoleLabel.trim()
-          : category
+          : (typeof fields.role === 'string' && fields.role.trim()
+            ? fields.role.trim()
+            : category)
+
+      const company =
+        (typeof fields.company === 'string' && fields.company.trim()) ||
+        (typeof fields.organization === 'string' && fields.organization.trim()) ||
+        (typeof fields.organisation === 'string' && fields.organisation.trim()) ||
+        (typeof fields.companyName === 'string' && fields.companyName.trim()) ||
+        (typeof fields.organizationName === 'string' && fields.organizationName.trim()) ||
+        (typeof fields.organisationName === 'string' && fields.organisationName.trim()) ||
+        ''
+      const professionalTitle =
+        (typeof fields.professionalTitle === 'string' && fields.professionalTitle.trim()) ||
+        (typeof fields.jobTitle === 'string' && fields.jobTitle.trim()) ||
+        ''
 
       return {
         bio: fields.bio ?? '',
         category,
+        company,
         eventRoleLabel,
         image: resolveImage(fields.image, assets),
         linkedinUrl: fields.linkedinUrl ?? fields.linkedInUrl ?? '',
         name: fields.name ?? 'Speaker',
-        professionalTitle: fields.professionalTitle ?? '',
+        professionalTitle,
         slug: fields.slug ?? sys.id,
         year: resolveSpeakerYear(fields.year, entries) || '2026',
       }
@@ -439,16 +477,48 @@ export async function getAwardWinners() {
     { 'fields.visible': 'true', order: 'fields.sortOrder' },
   )
   const assets = assetMap(collection)
+  const entries = entryMap(collection)
 
   return (
-    collection?.items.map(({ fields, sys }) => ({
-      categoryId: fields.awardCategory?.sys.id ?? '',
-      image: resolveImage(fields.image, assets),
-      linkedinUrl: fields.linkedinUrl ?? fields.linkedInUrl ?? '',
-      name: fields.name ?? 'Award Winner',
-      slug: fields.slug ?? sys.id,
-      winnerTitle: fields.winnerTitle ?? '',
-      yearId: fields.year?.sys.id ?? '',
-    })) ?? []
+    collection?.items.map(({ fields, sys }) => {
+      const categoryEntry = fields.awardCategory?.sys?.id
+        ? entries.get(fields.awardCategory.sys.id)
+        : undefined
+      const categoryName =
+        typeof categoryEntry?.fields?.name === 'string'
+          ? categoryEntry.fields.name.trim()
+          : ''
+      const role =
+        (typeof fields.role === 'string' && fields.role.trim()) ||
+        (typeof fields.eventRoleLabel === 'string' && fields.eventRoleLabel.trim()) ||
+        categoryName ||
+        'Award Winner'
+      const company =
+        (typeof fields.company === 'string' && fields.company.trim()) ||
+        (typeof fields.organization === 'string' && fields.organization.trim()) ||
+        (typeof fields.organisation === 'string' && fields.organisation.trim()) ||
+        (typeof fields.companyName === 'string' && fields.companyName.trim()) ||
+        (typeof fields.organizationName === 'string' && fields.organizationName.trim()) ||
+        (typeof fields.organisationName === 'string' && fields.organisationName.trim()) ||
+        ''
+      const winnerTitle =
+        (typeof fields.winnerTitle === 'string' && fields.winnerTitle.trim()) ||
+        (typeof fields.jobTitle === 'string' && fields.jobTitle.trim()) ||
+        (typeof fields.professionalTitle === 'string' && fields.professionalTitle.trim()) ||
+        ''
+
+      return {
+        categoryId: fields.awardCategory?.sys.id ?? '',
+        categoryName,
+        company,
+        image: resolveImage(fields.image, assets),
+        linkedinUrl: fields.linkedinUrl ?? fields.linkedInUrl ?? '',
+        name: fields.name ?? 'Award Winner',
+        role,
+        slug: fields.slug ?? sys.id,
+        winnerTitle,
+        yearId: fields.year?.sys.id ?? '',
+      }
+    }) ?? []
   )
 }
