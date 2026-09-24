@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   return (
-    <article className='group/speaker-card flex min-h-full flex-col overflow-hidden rounded-xl border border-accent bg-accent text-background transition-transform duration-300 ease-out hover:scale-105'>
+    <article className='group/speaker-card flex min-h-full flex-col overflow-hidden rounded-none border border-accent bg-accent text-background transition-transform duration-300 ease-out hover:scale-105'>
       <div className='relative aspect-[0.86] overflow-hidden bg-background/20'>
         {speaker.image ? (
           <Image
@@ -67,9 +67,9 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             className='object-cover object-center grayscale transition duration-500 ease-out group-hover/speaker-card:grayscale-0 group-focus-within/speaker-card:grayscale-0'
           />
         ) : null}
-        {speaker.eventRoleLabel ? (
+        {speaker.country ? (
           <span className='absolute top-0 right-0 z-10 border-b border-l border-accent bg-background px-3 py-1.5 text-xs font-medium text-primary'>
-            {speaker.eventRoleLabel}
+            {speaker.country}
           </span>
         ) : null}
       </div>

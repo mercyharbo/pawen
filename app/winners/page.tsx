@@ -41,7 +41,7 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 function WinnerCard({ winner }: { winner: AwardWinner }) {
   return (
-    <article className='group/winner-card flex min-h-full flex-col overflow-hidden rounded-xl border border-accent bg-accent text-background transition-transform duration-300 ease-out hover:scale-105'>
+    <article className='group/winner-card flex min-h-full flex-col overflow-hidden rounded-none border border-accent bg-accent text-background transition-transform duration-300 ease-out hover:scale-105'>
       <div className='relative aspect-[0.86] overflow-hidden bg-background/20'>
         {winner.image ? (
           <Image
@@ -53,9 +53,9 @@ function WinnerCard({ winner }: { winner: AwardWinner }) {
             className='object-cover object-center grayscale transition duration-500 ease-out group-hover/winner-card:grayscale-0 group-focus-within/winner-card:grayscale-0'
           />
         ) : null}
-        {winner.role ? (
+        {winner.country ? (
           <span className='absolute top-0 right-0 z-10 border-b border-l border-accent bg-background px-3 py-1.5 text-xs font-medium text-primary'>
-            {winner.role}
+            {winner.country}
           </span>
         ) : null}
       </div>

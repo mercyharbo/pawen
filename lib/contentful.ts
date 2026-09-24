@@ -54,12 +54,16 @@ type SpeakerFields = {
   bio?: string
   company?: string
   companyName?: string
+  country?: unknown
+  countryName?: string
   eventRoleLabel?: string
   image?: ContentfulLink
   jobTitle?: string
   linkedInUrl?: string
   linkedinUrl?: string
+  location?: string
   name?: string
+  nationality?: string
   organization?: string
   organizationName?: string
   organisation?: string
@@ -92,12 +96,16 @@ type AwardWinnerFields = {
   awardCategory?: ContentfulLink
   company?: string
   companyName?: string
+  country?: unknown
+  countryName?: string
   eventRoleLabel?: string
   image?: ContentfulLink
   jobTitle?: string
   linkedInUrl?: string
   linkedinUrl?: string
+  location?: string
   name?: string
+  nationality?: string
   organization?: string
   organizationName?: string
   organisation?: string
@@ -129,6 +137,7 @@ export type Speaker = {
   bio: string
   category: string
   company: string
+  country: string
   eventRoleLabel: string
   image: ContentImage | null
   linkedinUrl: string
@@ -155,6 +164,7 @@ export type AwardWinner = {
   categoryId: string
   categoryName?: string
   company: string
+  country: string
   image: ContentImage | null
   linkedinUrl: string
   name: string
@@ -351,6 +361,48 @@ function resolveSpeakerCategory(
   return 'Keynote'
 }
 
+function resolveCountry(
+  val: unknown,
+  entries?: Map<string, ContentfulEntry<Record<string, unknown>>>,
+): string {
+  if (!val) {
+    return ''
+  }
+
+  if (typeof val === 'string') {
+    return val.trim()
+  }
+
+  if (typeof val === 'object') {
+    if ('sys' in val && (val as ContentfulLink).sys?.id && entries) {
+      const linked = entries.get((val as ContentfulLink).sys.id)
+      const name =
+        linked?.fields?.name ??
+        linked?.fields?.title ??
+        linked?.fields?.country ??
+        linked?.fields?.label
+      if (typeof name === 'string') {
+        return name.trim()
+      }
+    }
+
+    const rec = val as Record<string, unknown>
+    if (rec.fields && typeof rec.fields === 'object') {
+      const f = rec.fields as Record<string, unknown>
+      const name = f.name ?? f.title ?? f.country ?? f.label
+      if (typeof name === 'string') {
+        return name.trim()
+      }
+    }
+
+    if (typeof rec.name === 'string' && rec.name.trim()) return rec.name.trim()
+    if (typeof rec.title === 'string' && rec.title.trim()) return rec.title.trim()
+    if (typeof rec.country === 'string' && rec.country.trim()) return rec.country.trim()
+  }
+
+  return ''
+}
+
 export async function getSpeakerPageContent() {
   const collection = await fetchContentfulEntries<SpeakerPageFields>(
     'speakersPage',
@@ -386,6 +438,12 @@ export async function getSpeakers() {
             ? fields.role.trim()
             : category)
 
+      const country =
+        resolveCountry(fields.country, entries) ||
+        resolveCountry(fields.countryName, entries) ||
+        resolveCountry(fields.nationality, entries) ||
+        resolveCountry(fields.location, entries)
+
       const company =
         (typeof fields.company === 'string' && fields.company.trim()) ||
         (typeof fields.organization === 'string' && fields.organization.trim()) ||
@@ -403,6 +461,7 @@ export async function getSpeakers() {
         bio: fields.bio ?? '',
         category,
         company,
+        country,
         eventRoleLabel,
         image: resolveImage(fields.image, assets),
         linkedinUrl: fields.linkedinUrl ?? fields.linkedInUrl ?? '',
@@ -493,6 +552,11 @@ export async function getAwardWinners() {
         (typeof fields.eventRoleLabel === 'string' && fields.eventRoleLabel.trim()) ||
         categoryName ||
         'Award Winner'
+      const country =
+        resolveCountry(fields.country, entries) ||
+        resolveCountry(fields.countryName, entries) ||
+        resolveCountry(fields.nationality, entries) ||
+        resolveCountry(fields.location, entries)
       const company =
         (typeof fields.company === 'string' && fields.company.trim()) ||
         (typeof fields.organization === 'string' && fields.organization.trim()) ||
@@ -511,6 +575,7 @@ export async function getAwardWinners() {
         categoryId: fields.awardCategory?.sys.id ?? '',
         categoryName,
         company,
+        country,
         image: resolveImage(fields.image, assets),
         linkedinUrl: fields.linkedinUrl ?? fields.linkedInUrl ?? '',
         name: fields.name ?? 'Award Winner',
