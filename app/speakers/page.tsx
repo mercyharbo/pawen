@@ -76,6 +76,11 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
 
       <div className='flex flex-1 flex-col justify-between gap-4 p-5'>
         <div className='flex flex-col gap-1.5'>
+          {speaker.eventRoleLabel ? (
+            <span className='w-fit bg-background px-2.5 py-0.5 text-xs font-medium text-primary'>
+              {speaker.eventRoleLabel}
+            </span>
+          ) : null}
           <h2 className='font-brand text-lg font-bold leading-6 text-background'>
             {speaker.name}
           </h2>

@@ -52,28 +52,31 @@ type SpeakerPageFields = {
 
 type SpeakerFields = {
   bio?: string
-  company?: string
+  company?: unknown
   companyName?: string
   country?: unknown
   countryName?: string
   eventRoleLabel?: string
   image?: ContentfulLink
+  institution?: string
   jobTitle?: string
   linkedInUrl?: string
   linkedinUrl?: string
   location?: string
   name?: string
   nationality?: string
-  organization?: string
+  organization?: unknown
   organizationName?: string
-  organisation?: string
+  organisation?: unknown
   organisationName?: string
   professionalTitle?: string
   role?: string
   slug?: string
   sortOrder?: number
   speakerCategory?: unknown
+  title?: string
   visible?: boolean
+  workplace?: string
   year?: string | number | ContentfulLink
 }
 
@@ -403,6 +406,50 @@ function resolveCountry(
   return ''
 }
 
+function resolveCompany(
+  val: unknown,
+  entries?: Map<string, ContentfulEntry<Record<string, unknown>>>,
+): string {
+  if (!val) {
+    return ''
+  }
+
+  if (typeof val === 'string') {
+    return val.trim()
+  }
+
+  if (typeof val === 'object') {
+    if ('sys' in val && (val as ContentfulLink).sys?.id && entries) {
+      const linked = entries.get((val as ContentfulLink).sys.id)
+      const name =
+        linked?.fields?.name ??
+        linked?.fields?.title ??
+        linked?.fields?.company ??
+        linked?.fields?.organization ??
+        linked?.fields?.organisation
+      if (typeof name === 'string') {
+        return name.trim()
+      }
+    }
+
+    const rec = val as Record<string, unknown>
+    if (rec.fields && typeof rec.fields === 'object') {
+      const f = rec.fields as Record<string, unknown>
+      const name =
+        f.name ?? f.title ?? f.company ?? f.organization ?? f.organisation
+      if (typeof name === 'string') {
+        return name.trim()
+      }
+    }
+
+    if (typeof rec.name === 'string' && rec.name.trim()) return rec.name.trim()
+    if (typeof rec.title === 'string' && rec.title.trim()) return rec.title.trim()
+    if (typeof rec.company === 'string' && rec.company.trim()) return rec.company.trim()
+  }
+
+  return ''
+}
+
 export async function getSpeakerPageContent() {
   const collection = await fetchContentfulEntries<SpeakerPageFields>(
     'speakersPage',
@@ -445,16 +492,19 @@ export async function getSpeakers() {
         resolveCountry(fields.location, entries)
 
       const company =
-        (typeof fields.company === 'string' && fields.company.trim()) ||
-        (typeof fields.organization === 'string' && fields.organization.trim()) ||
-        (typeof fields.organisation === 'string' && fields.organisation.trim()) ||
-        (typeof fields.companyName === 'string' && fields.companyName.trim()) ||
-        (typeof fields.organizationName === 'string' && fields.organizationName.trim()) ||
-        (typeof fields.organisationName === 'string' && fields.organisationName.trim()) ||
+        resolveCompany(fields.company, entries) ||
+        resolveCompany(fields.organization, entries) ||
+        resolveCompany(fields.organisation, entries) ||
+        resolveCompany(fields.companyName, entries) ||
+        resolveCompany(fields.organizationName, entries) ||
+        resolveCompany(fields.organisationName, entries) ||
+        resolveCompany(fields.workplace, entries) ||
+        resolveCompany(fields.institution, entries) ||
         ''
       const professionalTitle =
         (typeof fields.professionalTitle === 'string' && fields.professionalTitle.trim()) ||
         (typeof fields.jobTitle === 'string' && fields.jobTitle.trim()) ||
+        (typeof fields.title === 'string' && fields.title.trim()) ||
         ''
 
       return {
@@ -558,12 +608,12 @@ export async function getAwardWinners() {
         resolveCountry(fields.nationality, entries) ||
         resolveCountry(fields.location, entries)
       const company =
-        (typeof fields.company === 'string' && fields.company.trim()) ||
-        (typeof fields.organization === 'string' && fields.organization.trim()) ||
-        (typeof fields.organisation === 'string' && fields.organisation.trim()) ||
-        (typeof fields.companyName === 'string' && fields.companyName.trim()) ||
-        (typeof fields.organizationName === 'string' && fields.organizationName.trim()) ||
-        (typeof fields.organisationName === 'string' && fields.organisationName.trim()) ||
+        resolveCompany(fields.company, entries) ||
+        resolveCompany(fields.organization, entries) ||
+        resolveCompany(fields.organisation, entries) ||
+        resolveCompany(fields.companyName, entries) ||
+        resolveCompany(fields.organizationName, entries) ||
+        resolveCompany(fields.organisationName, entries) ||
         ''
       const winnerTitle =
         (typeof fields.winnerTitle === 'string' && fields.winnerTitle.trim()) ||
