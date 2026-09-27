@@ -76,11 +76,11 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
 
       <div className='flex flex-1 flex-col justify-between gap-4 p-5'>
         <div className='flex flex-col gap-1.5'>
-          {speaker.eventRoleLabel ? (
+          {/* {speaker.eventRoleLabel ? (
             <span className='w-fit bg-background px-2.5 py-0.5 text-xs font-medium text-primary'>
               {speaker.eventRoleLabel}
             </span>
-          ) : null}
+          ) : null} */}
           <h2 className='font-brand text-lg font-bold leading-6 text-background'>
             {speaker.name}
           </h2>
@@ -142,12 +142,14 @@ function SpeakerCategoryTabs({ speakers }: { speakers: Speaker[] }) {
   const activeCategories = Array.from(
     new Set([
       'All Speakers',
-      ...speakerCategories.slice(1).filter((category) =>
-        presentCategories.includes(category),
-      ),
+      ...speakerCategories
+        .slice(1)
+        .filter((category) => presentCategories.includes(category)),
       ...presentCategories.filter(
         (cat) =>
-          !speakerCategories.includes(cat as (typeof speakerCategories)[number]),
+          !speakerCategories.includes(
+            cat as (typeof speakerCategories)[number],
+          ),
       ),
     ]),
   )
@@ -237,7 +239,10 @@ export default async function SpeakersPage() {
             Speaker details will be announced soon.
           </div>
         ) : (
-          <Tabs defaultValue={defaultYear} className='w-full items-center gap-8'>
+          <Tabs
+            defaultValue={defaultYear}
+            className='w-full items-center gap-8'
+          >
             <TabsList
               aria-label='Speaker years'
               className='h-auto flex-wrap gap-2 bg-transparent p-0'
