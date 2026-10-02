@@ -353,6 +353,106 @@ export const boothPackages: readonly BoothPackage[] = [
   },
 ];
 
+export type FloorSpacePackage = {
+  id: string;
+  name: string;
+  dimensions: string;
+  priceZmw: string;
+  priceUsd: string;
+  fullBoothPriceZmw: string;
+  fullBoothPriceUsd: string;
+  featured?: boolean;
+  tag?: string;
+  formValue: (typeof boothTypeOptions)[number];
+  description: string;
+  inclusions: readonly string[];
+};
+
+export const floorSpacePackages: readonly FloorSpacePackage[] = [
+  {
+    id: "floor-space-2x2",
+    name: "2mx2m floor space",
+    dimensions: "2m × 2m",
+    priceZmw: "3,500 ZMW",
+    priceUsd: "$180 USD",
+    fullBoothPriceZmw: "7,000 ZMW",
+    fullBoothPriceUsd: "$360 USD",
+    tag: "Emerging Enterprises",
+    formValue:
+      "2m x 2m Micro SME Booth (Floor Space Only) — 3,500 ZMW / $180 USD",
+    description:
+      "Tailored for early-stage and micro-enterprises ready to showcase products and connect with partners.",
+    inclusions: [
+      "2m × 2m Allocated exhibition floor space only",
+      "1 exhibitor badge",
+      "Listing in official summit directory",
+      "Exhibitor responsible for own booth setup & furniture",
+    ],
+  },
+  {
+    id: "floor-space-3x3",
+    name: "3mx3m floor space",
+    dimensions: "3m × 3m",
+    priceZmw: "5,500 ZMW",
+    priceUsd: "$282 USD",
+    fullBoothPriceZmw: "11,000 ZMW",
+    fullBoothPriceUsd: "$565 USD",
+    tag: "Most Popular",
+    featured: true,
+    formValue:
+      "3m x 3m Standard Booth (Floor Space Only) — 5,500 ZMW / $282 USD",
+    description:
+      "Our most popular option for established businesses looking for prime brand exposure and foot traffic.",
+    inclusions: [
+      "3m × 3m Allocated exhibition floor space only",
+      "2 exhibitor badges",
+      "Listing in official summit directory",
+      "Exhibitor responsible for own booth setup & furniture",
+    ],
+  },
+  {
+    id: "floor-space-6x3",
+    name: "6mx3m floor space",
+    dimensions: "6m × 3m",
+    priceZmw: "8,000 ZMW",
+    priceUsd: "$410 USD",
+    fullBoothPriceZmw: "20,000 ZMW",
+    fullBoothPriceUsd: "$1,025 USD",
+    tag: "High Visibility",
+    formValue:
+      "6m x 3m Corporate Booth (Floor Space Only) — 8,000 ZMW / $410 USD",
+    description:
+      "Double-width space designed for growth-stage companies and corporations presenting multiple products or services.",
+    inclusions: [
+      "6m × 3m Allocated exhibition floor space only",
+      "3 exhibitor badges",
+      "Enhanced directory listing & brand mention",
+      "Exhibitor responsible for own booth setup & furniture",
+    ],
+  },
+  {
+    id: "floor-space-6x6",
+    name: "6mx6m floor space",
+    dimensions: "6m × 6m",
+    priceZmw: "15,000 ZMW",
+    priceUsd: "$770 USD",
+    fullBoothPriceZmw: "35,000 ZMW",
+    fullBoothPriceUsd: "$1,795 USD",
+    tag: "Flagship Presence",
+    featured: true,
+    formValue:
+      "6m x 6m Premium Booth (Floor Space Only) — 15,000 ZMW / $770 USD",
+    description:
+      "Expansive 36m² flagship presence for industry leaders, headline exhibitors, and major institutions.",
+    inclusions: [
+      "6m × 6m Expansive floor space only (island/prominent position)",
+      "6 exhibitor badges",
+      "Dedicated summit social media feature & VIP networking access",
+      "Exhibitor responsible for own booth setup & furniture",
+    ],
+  },
+];
+
 export const sessionTopicOptions = [
   "Leadership & Governance",
   "Entrepreneurship & Business Growth",
