@@ -59,47 +59,41 @@ export function SummitHero() {
             </div>
           </div>
 
-          <div className='flex flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto lg:w-auto w-full'>
+          <div className='flex items-center justify-center sm:w-auto lg:w-auto w-full'>
             <Button
-              className='h-11 sm:min-w-32 lg:w-auto w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
+              className='h-12 rounded-full bg-accent px-8 text-sm font-semibold text-background hover:bg-accent/90'
               onClick={() => openDialog('summit')}
               type='button'
             >
-              Register
-            </Button>
-            <Button
-              className='h-11 sm:min-w-36 lg:w-auto w-full rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
-              onClick={() => openDialog('exhibition')}
-              type='button'
-            >
-              Book Exhibition Booth
+              Register to Attend the Summit
             </Button>
           </div>
         </MotionReveal>
 
         <MotionReveal
-          className='max-w-2xl space-y-10 font-brand text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
+          className='max-w-3xl space-y-8 font-brand text-base font-normal leading-relaxed md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'
           delay={0.1}
         >
           <p>
-            Africa is entering a new era of transformation, powered by
-            technology, capital, innovation, and shifting global influence. The
-            women who lead now will <br className='hidden 3xl:block' />
-            shape what comes next.
+            Africa is changing. New markets are emerging, technology is reshaping
+            how we work and build, capital is moving, and new centres of influence
+            are taking shape. The question is not whether women will participate
+            in Africa&apos;s next chapter, but how boldly we will lead, build and
+            shape it.
           </p>
           <p>
-            The PAWEN Summit 2026 brings together Africa&apos;s most influential
-            women, leaders, founders, executives, investors, policymakers, and
-            changemakers, in Zambia for one defining conversation about the
-            future of leadership, business, and{' '}
-            <br className='hidden 3xl:block' />
-            opportunity on the continent.
+            The PAWEN Summit 2026 brings 2,000+ women and 50+ speakers from across
+            Africa and the diaspora to Lusaka, Zambia for two days of ideas,
+            insight, business and meaningful connection.
           </p>
           <p>
-            This is where 1000+ ambitious women gather to build powerful
-            connections, access new opportunities, gain strategic insight,
-            expand across markets, and position themselves for Africa&apos;s
-            next chapter of growth.
+            Here, founders meet investors. Executives meet peers and potential
+            partners. Women building businesses discover new markets. Emerging
+            leaders learn from women who have already navigated the path ahead.
+          </p>
+          <p>
+            It is a place to learn, build powerful relationships, access markets,
+            expand your influence and position yourself for what comes next.
           </p>
         </MotionReveal>
       </div>

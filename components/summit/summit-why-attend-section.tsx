@@ -45,16 +45,17 @@ export function SummitWhyAttendSection() {
           delay={0.08}
         >
           <p>
-            There is a different kind of power in being in a room full of women
-            who understand the weight of leadership, the pressure to perform,
-            and the ambition that keeps you building, leading, and showing up at
-            the highest level.
+            There is a different kind of value in being in a room filled with women
+            who are building businesses, leading organisations, shaping industries
+            and navigating many of the same ambitions and challenges you are.
           </p>
           <p>
-            With 20+ Pan-African board and executive search firms in the room,
-            Exhibitors, Entrepreneurs, Women in leadership and Board executives
-            from across 35 countries in Africa, you will leave with:
+            At the PAWEN Summit, you will be surrounded by 2,000+ women from across
+            Africa and the diaspora, including entrepreneurs, executives, board
+            leaders, investors, policymakers, exhibitors and organisations actively
+            looking for talent, businesses and partnerships.
           </p>
+          <p className='font-semibold text-white'>You will leave with:</p>
         </MotionReveal>
 
         <MotionReveal

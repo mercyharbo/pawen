@@ -44,31 +44,29 @@ export function GalaVictoriaFallsSection() {
             id='gala-victoria-falls-heading'
             className='max-w-4xl text-4xl font-semibold leading-tight text-accent sm:text-5xl lg:text-6xl'
           >
-            Extend Your Stay: The PAWEN Victoria Falls Experience
+            Extend Your Stay: Experience Zambia
           </h2>
 
-          <div className='flex max-w-3xl flex-col gap-3 text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
-            <p>
-              One of the Seven Natural Wonders of the World. Curated for the
-              PAWEN community. After the celebration in Lusaka, join us on a
-              journey to Victoria Falls, the breathtaking natural wonder shared
-              between Zambia and Zimbabwe.
+          <div className='flex max-w-3xl flex-col gap-4 text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+            <p className='font-medium text-white text-base sm:text-lg'>
+              Your PAWEN experience does not have to end when the Summit does.
             </p>
             <p>
-              This optional group trip is curated exclusively for the PAWEN
-              community by a trusted travel partner, with a thoughtfully
-              designed itinerary that includes guided tours of the Falls, sunset
-              experiences, and time to connect with the women you have just
-              spent the week celebrating. It is the perfect way to extend your
-              time in Zambia, deepen the friendships made at the Awards, and
-              step into one of Africa&apos;s most spectacular landscapes
-              alongside fellow leaders, founders, and changemakers.
+              In partnership with the Zambia Tourism Agency, a selection of
+              post-Summit experiences is being curated for delegates who want to
+              discover more of Zambia. Choose from a range of experiences
+              designed through Zambia&apos;s tourism network, from unforgettable
+              landscapes and wildlife to culture, adventure and some of the
+              country&apos;s most iconic destinations.
             </p>
             <p>
-              With 20+ Pan-African board and executive search firms in the room,
-              Exhibitors, Entrepreneurs, Women in leadership and Board
-              executives from across 35 countries in Africa, you will leave
-              with:
+              Whether that means standing before the magnificent Victoria Falls,
+              experiencing Zambia&apos;s natural beauty or simply spending more
+              time exploring with women you have met at PAWEN, there will be
+              options to suit different interests and schedules.
+            </p>
+            <p className='font-semibold text-white text-base sm:text-lg pt-1'>
+              Come for PAWEN. Stay to experience Zambia.
             </p>
           </div>
 

@@ -2,11 +2,10 @@
 
 import { MotionReveal } from '@/components/motion-reveal'
 import { Button } from '@/components/ui/button'
-import { useEventDialog } from '@/lib/stores/event-dialog-store'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function SummitFinalCtaSection() {
-  const openDialog = useEventDialog((store) => store.openDialog)
 
   return (
     <section
@@ -34,25 +33,17 @@ export function SummitFinalCtaSection() {
           <p className='max-w-lg text-sm leading-6 text-accent md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
             PAWEN&apos;s stages feature some of Africa&apos;s most respected
             leaders in business, innovation, finance, policy, and enterprise.
-            Explore the 2025 speaker line-up for a sense of the calibre of
+            Explore the 2026 speaker line-up for a sense of the calibre of
             conversation coming to Zambia in 2026.
           </p>
         </div>
 
-        <div className='flex flex-col items-center justify-center gap-3 sm:flex-row sm:w-auto lg:w-auto w-full'>
+        <div className='flex items-center justify-center sm:w-auto lg:w-auto w-full'>
           <Button
-            className='h-11 sm:min-w-32 lg:w-auto w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
-            onClick={() => openDialog('summit')}
-            type='button'
+            asChild
+            className='h-12 rounded-full bg-accent px-8 text-sm font-semibold text-background hover:bg-accent/90'
           >
-            Register
-          </Button>
-          <Button
-            className='h-11 sm:min-w-36 lg:w-auto w-full rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90'
-            onClick={() => openDialog('exhibition')}
-            type='button'
-          >
-            Book Exhibition Booth
+            <Link href='/speakers'>2026 Summit Speakers</Link>
           </Button>
         </div>
       </MotionReveal>
