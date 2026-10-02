@@ -2,8 +2,8 @@ import { Hero } from '@/components/index/hero'
 import { NewsletterSection } from '@/components/index/newsletter-section'
 import { SponsorsSection } from '@/components/index/sponsors-section'
 import { StorySection } from '@/components/index/story-section'
+import { SummitSpeakersSection } from '@/components/index/summit-speakers-section'
 import { TicketVenueSection } from '@/components/index/ticket-venue-section'
-import { WhyPawenSection } from '@/components/index/why-pawen-section'
 import { externalLinks } from '@/lib/external-links'
 import { createPageMetadata } from '@/lib/seo'
 
@@ -26,7 +26,7 @@ export default function Home() {
       <Hero nominationsUrl={externalLinks.nominations} />
       <StorySection supportUrl={externalLinks.supportOurWork} />
       <SponsorsSection />
-      <WhyPawenSection />
+      <SummitSpeakersSection />
       <TicketVenueSection ticketsUrl={externalLinks.tickets} />
       <NewsletterSection />
     </>

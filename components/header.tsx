@@ -8,25 +8,23 @@ import type { ReactNode } from 'react'
 
 const baseNavItems: readonly HeaderNavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Nominations', href: externalLinks.nominations },
+  { label: 'Summit', href: '/summit' },
+  { label: 'Exhibition', href: '/exhibition' },
+  { label: 'Awards Gala', href: '/gala' },
   {
-    label: 'Book Hotel',
+    label: 'Plan your Trip',
     items: [
       {
-        label: 'Grandpalace Hotel',
-        href: externalLinks.hotelBooking,
-        isExternal: true,
+        label: 'Flights',
+        href: '#flights',
       },
       {
-        label: 'Holiday Inn',
-        href: externalLinks.holidayInnBooking,
+        label: 'Hotels',
+        href: externalLinks.hotelBooking,
         isExternal: true,
       },
     ],
   },
-  { label: 'Summit', href: '/summit' },
-  { label: 'Exhibition', href: '/exhibition' },
-  { label: 'Award Gala', href: '/gala' },
 ]
 
 const speakersNavItem: HeaderNavItem = { label: 'Speakers', href: '/speakers' }

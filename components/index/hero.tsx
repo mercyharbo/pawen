@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { useNomination } from '@/lib/stores/nomination-dialog-store'
 import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -61,7 +60,6 @@ const heroParticles: HeroParticle[] = [
 }))
 
 export function Hero({ nominationsUrl }: HeroProps) {
-  const { openDialog } = useNomination()
   const reduceMotion = useReducedMotion()
   const revealTransition = {
     duration: 1.15,
@@ -197,31 +195,33 @@ export function Hero({ nominationsUrl }: HeroProps) {
               Africa&apos;s Premier Platform for Women&apos;s Economic
               Leadership
             </h1>
-            <p className='font-sans text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 lg:max-w-md 2xl:text-base 3xl:text-lg 3xl:leading-8'>
-              A Summit, An Exhibition and a Gala celebration to honour the women
-              building Africa&apos;s economic future
+            <p className='max-w-2xl font-sans text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
+              Three distinct experiences bringing Africa&apos;s women together to
+              learn, lead, build businesses, access markets and celebrate excellence.
+              <span className='mt-2 block font-semibold text-accent'>
+                13–14 November 2026 | Lusaka, Zambia
+              </span>
             </p>
           </div>
 
-          <div className='flex flex-wrap items-center justify-center gap-3'>
+          <div className='flex flex-wrap items-center justify-center gap-3 sm:gap-4'>
             <Button
-              className='h-12 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary/90'
-              onClick={openDialog}
-              type='button'
+              asChild
+              className='h-12 rounded-full bg-accent px-7 text-sm font-semibold text-background hover:bg-accent/90'
             >
-              Nominate Now
+              <Link href='/summit'>Summit</Link>
             </Button>
             <Button
               asChild
-              className='h-12 rounded-full bg-accent px-8 text-sm font-medium text-accent-foreground hover:bg-accent/90'
+              className='h-12 rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground hover:bg-primary/90'
             >
-              <Link
-                href='/The%20PAWEN%20Awards%20%26%20Summit%20Brochure.pdf'
-                target='_blank'
-                rel='noreferrer'
-              >
-                Partner with Us
-              </Link>
+              <Link href='/exhibition'>Exhibition</Link>
+            </Button>
+            <Button
+              asChild
+              className='h-12 rounded-full border border-accent/60 bg-accent/15 px-7 text-sm font-semibold text-accent hover:bg-accent hover:text-background'
+            >
+              <Link href='/gala'>Awards Gala</Link>
             </Button>
           </div>
         </motion.div>

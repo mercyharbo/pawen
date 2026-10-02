@@ -1,7 +1,9 @@
 'use client'
 
 import { MotionReveal } from '@/components/motion-reveal'
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 import Marquee from 'react-fast-marquee'
 
 type PartnerLogo = {
@@ -115,10 +117,16 @@ export function SponsorsSection() {
         aria-hidden='true'
       />
 
-      <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-14'>
-        <h2 className='font-brand text-4xl font-bold leading-tight text-accent text-center sm:text-5xl 3xl:text-6xl 2xl:text-6xl'>
-          Our Partners and Sponsors
-        </h2>
+      <div className='relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-10 sm:gap-14'>
+        <div className='flex flex-col items-center gap-4 text-center'>
+          <h2 className='font-brand text-4xl font-bold leading-tight text-accent sm:text-5xl 3xl:text-6xl 2xl:text-6xl'>
+            Our Sponsors and Partners
+          </h2>
+          <p className='max-w-2xl font-brand text-sm leading-6 text-primary/85 sm:text-base sm:leading-7'>
+            PAWEN 2026 brings together institutions committed to advancing women&apos;s
+            leadership, enterprise and economic participation across Africa.
+          </p>
+        </div>
 
         <MotionReveal className='w-full max-w-5xl overflow-hidden'>
           <Marquee
@@ -175,6 +183,22 @@ export function SponsorsSection() {
             })}
           </Marquee>
         </MotionReveal>
+
+        <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-2'>
+          <Button
+            asChild
+            variant='outline'
+            className='h-11 rounded-full border-accent/60 bg-transparent px-7 text-sm font-semibold text-accent hover:border-accent hover:bg-accent/15 hover:text-accent'
+          >
+            <Link href='/sponsors'>2026 Sponsors and Partners →</Link>
+          </Button>
+          <Button
+            asChild
+            className='h-11 rounded-full bg-accent px-7 text-sm font-semibold text-background hover:bg-accent/90'
+          >
+            <a href='mailto:awards@pawen.org'>Become a Partner</a>
+          </Button>
+        </div>
       </div>
     </section>
   )
