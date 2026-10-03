@@ -467,6 +467,21 @@ export async function getSpeakerPageContent() {
   }
 }
 
+function getSpeakerPriority(name: string): number {
+  const clean = name.toLowerCase().replace(/[^a-z]/g, '')
+  if (clean.includes('oluwaseyi') && clean.includes('kehinde')) return 0
+  if (clean.includes('yande') && clean.includes('mwenye')) return 1
+  if (clean.includes('kadijatu') && clean.includes('kamara')) return 2
+  if (clean.includes('mukwandi') && clean.includes('chibesakunda')) return 3
+  if (clean.includes('sola') && clean.includes('adesakin')) return 4
+  if (clean.includes('naomi') && clean.includes('thompson')) return 5
+  if (clean.includes('atim') && clean.includes('caroline')) return 6
+  if ((clean.includes('pamela') || clean.includes('pam')) && clean.includes('mutemb')) return 7
+  if (clean.includes('mame') && clean.includes('fatou')) return 8
+  if (clean.includes('thembe') && clean.includes('khumalo')) return 9
+  return -1
+}
+
 export async function getSpeakers() {
   const collection = await fetchContentfulEntries<SpeakerFields>('speakers', {
     'fields.visible': 'true',
@@ -475,7 +490,7 @@ export async function getSpeakers() {
   const assets = assetMap(collection)
   const entries = entryMap(collection)
 
-  return (
+  const mapped =
     collection?.items.map(({ fields, sys }) => {
       const category = resolveSpeakerCategory(fields.speakerCategory, entries)
       const eventRoleLabel =
@@ -521,7 +536,15 @@ export async function getSpeakers() {
         year: resolveSpeakerYear(fields.year, entries) || '2026',
       }
     }) ?? []
-  )
+
+  return mapped.sort((a, b) => {
+    const pA = getSpeakerPriority(a.name)
+    const pB = getSpeakerPriority(b.name)
+    if (pA !== -1 && pB !== -1) return pA - pB
+    if (pA !== -1) return -1
+    if (pB !== -1) return 1
+    return 0
+  })
 }
 
 export async function hasVisibleSpeakers() {

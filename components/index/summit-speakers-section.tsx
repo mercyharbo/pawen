@@ -4,6 +4,19 @@ import { getSpeakers, type Speaker } from '@/lib/contentful'
 import Image from 'next/image'
 import Link from 'next/link'
 
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox='0 0 24 24'
+      fill='currentColor'
+      aria-hidden='true'
+    >
+      <path d='M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19ZM8.34 17.67V9.75H5.88V17.67H8.34ZM7.11 8.67C7.9 8.67 8.43 8.14 8.43 7.45C8.42 6.74 7.9 6.23 7.13 6.23C6.36 6.23 5.82 6.74 5.82 7.45C5.82 8.14 6.34 8.67 7.1 8.67H7.11ZM18.18 17.67V13.13C18.18 10.7 16.88 9.57 15.15 9.57C13.75 9.57 13.13 10.34 12.78 10.88V9.75H10.33C10.36 10.49 10.33 17.67 10.33 17.67H12.78V13.25C12.78 13.01 12.8 12.78 12.87 12.61C13.04 12.14 13.44 11.65 14.1 11.65C14.97 11.65 15.32 12.31 15.32 13.28V17.67H18.18Z' />
+    </svg>
+  )
+}
+
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   return (
     <article className='group/speaker-card flex min-h-full flex-col overflow-hidden rounded-none border border-accent bg-accent text-background transition-transform duration-300 ease-out hover:scale-105'>
@@ -41,6 +54,18 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             </p>
           ) : null}
         </div>
+
+        {speaker.linkedinUrl ? (
+          <Link
+            href={speaker.linkedinUrl}
+            aria-label={`${speaker.name} on LinkedIn`}
+            target='_blank'
+            rel='noreferrer'
+            className='flex size-8 items-center justify-center rounded bg-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-background'
+          >
+            <LinkedInIcon className='size-8 text-[#0A66C2]' />
+          </Link>
+        ) : null}
       </div>
     </article>
   )
@@ -65,8 +90,13 @@ export async function SummitSpeakersSection() {
     console.error('Failed to load summit speakers:', error)
   }
 
-  // Display curated list of speakers on the homepage (up to 10)
-  const displayedSpeakers = speakers.slice(0, 10)
+  // Display curated list of 2026 speakers on the homepage (up to 10)
+  const summit2026Speakers = speakers.filter(
+    (speaker) => speaker.year === '2026' || !speaker.year,
+  )
+  const displayedSpeakers = (
+    summit2026Speakers.length > 0 ? summit2026Speakers : speakers
+  ).slice(0, 10)
 
   return (
     <section
