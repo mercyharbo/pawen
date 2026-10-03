@@ -70,9 +70,24 @@ export function StorySection({ supportUrl }: StorySectionProps) {
                 celebration.
               </p>
 
-              <p className='text-sm font-semibold tracking-wide text-accent sm:text-base'>
-                2,000+ attendees | 35+ countries | 50+ speakers | 3 flagship experiences
-              </p>
+              <ul className='flex flex-col gap-2.5 text-sm font-medium text-white sm:text-base pt-1'>
+                <li className='flex items-center gap-2.5'>
+                  <span className='size-1.5 rounded-full bg-accent shrink-0' aria-hidden='true' />
+                  <span>2,000+ attendees</span>
+                </li>
+                <li className='flex items-center gap-2.5'>
+                  <span className='size-1.5 rounded-full bg-accent shrink-0' aria-hidden='true' />
+                  <span>35+ countries</span>
+                </li>
+                <li className='flex items-center gap-2.5'>
+                  <span className='size-1.5 rounded-full bg-accent shrink-0' aria-hidden='true' />
+                  <span>50+ speakers</span>
+                </li>
+                <li className='flex items-center gap-2.5'>
+                  <span className='size-1.5 rounded-full bg-accent shrink-0' aria-hidden='true' />
+                  <span>3 flagship experiences</span>
+                </li>
+              </ul>
             </div>
           </MotionReveal>
         </div>

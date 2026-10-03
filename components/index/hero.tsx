@@ -198,7 +198,7 @@ export function Hero({ nominationsUrl }: HeroProps) {
             <p className='max-w-2xl font-sans text-base font-normal leading-6 md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
               Three distinct experiences bringing Africa&apos;s women together to
               learn, lead, build businesses, access markets and celebrate excellence.
-              <span className='mt-2 block font-semibold text-accent'>
+              <span className='mt-2 block font-semibold text-white'>
                 13–14 November 2026 | Lusaka, Zambia
               </span>
             </p>

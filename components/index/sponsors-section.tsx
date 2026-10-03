@@ -185,13 +185,13 @@ export function SponsorsSection() {
         </MotionReveal>
 
         <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-2'>
-          <Button
+          {/* <Button
             asChild
             variant='outline'
             className='h-11 rounded-full border-accent/60 bg-transparent px-7 text-sm font-semibold text-accent hover:border-accent hover:bg-accent/15 hover:text-accent'
           >
             <Link href='/sponsors'>2026 Sponsors and Partners →</Link>
-          </Button>
+          </Button> */}
           <Button
             asChild
             className='h-11 rounded-full bg-accent px-7 text-sm font-semibold text-background hover:bg-accent/90'
