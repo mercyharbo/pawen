@@ -84,7 +84,7 @@ export async function SummitSpeakersSection() {
           <div className='grid w-full gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 text-left'>
             {displayedSpeakers.map((speaker, index) => (
               <MotionReveal
-                key={speaker.id}
+                key={speaker.slug || `${speaker.name}-${index}`}
                 delay={index * 0.05}
                 className='flex flex-col'
               >
