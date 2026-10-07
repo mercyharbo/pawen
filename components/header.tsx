@@ -15,12 +15,13 @@ const baseNavItems: readonly HeaderNavItem[] = [
     label: 'Plan your Trip',
     items: [
       {
-        label: 'Flights',
-        href: '#flights',
+        label: 'Grandpalace Hotel',
+        href: externalLinks.hotelBooking,
+        isExternal: true,
       },
       {
-        label: 'Hotels',
-        href: externalLinks.hotelBooking,
+        label: 'Holiday Inn',
+        href: externalLinks.holidayInnBooking,
         isExternal: true,
       },
     ],
