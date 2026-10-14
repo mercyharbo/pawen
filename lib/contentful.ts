@@ -75,6 +75,7 @@ type SpeakerFields = {
   sortOrder?: number
   speakerCategory?: unknown
   title?: string
+  type?: string
   visible?: boolean
   workplace?: string
   year?: string | number | ContentfulLink
@@ -147,6 +148,7 @@ export type Speaker = {
   name: string
   professionalTitle: string
   slug: string
+  type: string
   year: string
 }
 
@@ -533,6 +535,7 @@ export async function getSpeakers() {
         name: fields.name ?? 'Speaker',
         professionalTitle,
         slug: fields.slug ?? sys.id,
+        type: typeof fields.type === 'string' ? fields.type.trim() : '',
         year: resolveSpeakerYear(fields.year, entries) || '2026',
       }
     }) ?? []
