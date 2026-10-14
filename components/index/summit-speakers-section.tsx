@@ -43,14 +43,14 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
           <h3 className='font-brand text-lg font-bold leading-6 text-background'>
             {speaker.name}
           </h3>
-          {speaker.type ? (
-            <p className='font-brand text-xs font-medium leading-5 text-background/80'>
-              {speaker.type}
-            </p>
-          ) : null}
           {speaker.professionalTitle ? (
             <p className='font-brand text-sm leading-5 text-background/80'>
               {speaker.professionalTitle}
+            </p>
+          ) : null}
+          {speaker.type ? (
+            <p className='font-brand text-sm font-medium leading-5 text-background/80'>
+              {speaker.type}
             </p>
           ) : null}
           {speaker.company ? (
