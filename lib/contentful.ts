@@ -70,12 +70,12 @@ type SpeakerFields = {
   organisation?: unknown
   organisationName?: string
   professionalTitle?: string
+  random?: string
   role?: string
   slug?: string
   sortOrder?: number
   speakerCategory?: unknown
   title?: string
-  type?: string
   visible?: boolean
   workplace?: string
   year?: string | number | ContentfulLink
@@ -535,7 +535,7 @@ export async function getSpeakers() {
         name: fields.name ?? 'Speaker',
         professionalTitle,
         slug: fields.slug ?? sys.id,
-        type: typeof fields.type === 'string' ? fields.type.trim() : '',
+        type: typeof fields.random === 'string' ? fields.random.trim() : '',
         year: resolveSpeakerYear(fields.year, entries) || '2026',
       }
     }) ?? []
