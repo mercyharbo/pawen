@@ -42,19 +42,15 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
         <div className='flex flex-col gap-1.5'>
           <h3 className='font-brand text-lg font-bold leading-6 text-background'>
             {speaker.name}
+            {speaker.type ? ` - ${speaker.type}` : null}
           </h3>
           {speaker.professionalTitle ? (
             <p className='font-brand text-sm leading-5 text-background/80'>
               {speaker.professionalTitle}
             </p>
           ) : null}
-          {speaker.type ? (
-            <p className='font-brand text-sm font-medium leading-5 text-background/80'>
-              {speaker.type}
-            </p>
-          ) : null}
           {speaker.company ? (
-            <p className='font-brand text-sm font-semibold leading-5 text-background/90'>
+            <p className='font-brand text-sm font-bold leading-5 text-background/90'>
               {speaker.company}
             </p>
           ) : null}
