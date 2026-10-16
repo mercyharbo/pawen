@@ -93,18 +93,18 @@ export const industryOptions = [
 ] as const;
 
 export const boothTypeOptions = [
-  "2m x 2m Micro SME Booth (Full Booth + Branding) — 7,000 ZMW / $360 USD",
-  "2m x 2m Micro SME Booth (Floor Space Only) — 3,500 ZMW / $180 USD",
-  "3m x 3m Standard Booth (Full Booth + Branding) — 11,000 ZMW / $565 USD",
-  "3m x 3m Standard Booth (Floor Space Only) — 5,500 ZMW / $282 USD",
-  "3m x 3m Standard Corner Booth (Full Booth + Branding) — 13,000 ZMW / $670 USD",
+  "2m x 2m Micro SME Booth (Full Booth + Branding) — 7,000 ZMW / $400 USD",
+  "2m x 2m Micro SME Booth (Floor Space Only) — 3,500 ZMW / $200 USD",
+  "3m x 3m Standard Booth (Full Booth + Branding) — 11,000 ZMW / $600 USD",
+  "3m x 3m Standard Booth (Floor Space Only) — 5,500 ZMW / $300 USD",
+  "3m x 3m Standard Corner Booth (Full Booth + Branding) — 13,000 ZMW / $700 USD",
   "3m x 3m Standard Corner Booth (Floor Space Only) — 6,500 ZMW / $334 USD",
-  "6m x 3m Corporate Booth (Full Booth + Branding) — 20,000 ZMW / $1,025 USD",
-  "6m x 3m Corporate Booth (Floor Space Only) — 8,000 ZMW / $410 USD",
-  "6m x 3m Corporate Corner Booth (Full Booth + Branding) — 25,000 ZMW / $1,285 USD",
+  "6m x 3m Corporate Booth (Full Booth + Branding) — 20,000 ZMW / $1,050 USD",
+  "6m x 3m Corporate Booth (Floor Space Only) — 8,000 ZMW / $450 USD",
+  "6m x 3m Corporate Corner Booth (Full Booth + Branding) — 25,000 ZMW / $1,300 USD",
   "6m x 3m Corporate Corner Booth (Floor Space Only) — 11,000 ZMW / $564 USD",
-  "6m x 6m Premium Booth (Full Booth + Branding) — 35,000 ZMW / $1,795 USD",
-  "6m x 6m Premium Booth (Floor Space Only) — 15,000 ZMW / $770 USD",
+  "6m x 6m Premium Booth (Full Booth + Branding) — 35,000 ZMW / $1,800 USD",
+  "6m x 6m Premium Booth (Floor Space Only) — 15,000 ZMW / $800 USD",
 ] as const;
 
 export const exhibitionRatesFootnote =
@@ -139,18 +139,18 @@ export const boothPackages: readonly BoothPackage[] = [
     dimensions: "2m × 2m",
     category: "Micro SME",
     fullBoothPriceZmw: "7,000 ZMW",
-    fullBoothPriceUsd: "$360 USD",
+    fullBoothPriceUsd: "$400 USD",
     floorSpacePriceZmw: "3,500 ZMW",
-    floorSpacePriceUsd: "$180 USD",
+    floorSpacePriceUsd: "$200 USD",
     priceZmw: "7,000 ZMW",
-    priceUsd: "$360 USD",
+    priceUsd: "$400 USD",
     tag: "Emerging Enterprises",
     formValue:
-      "2m x 2m Micro SME Booth (Full Booth + Branding) — 7,000 ZMW / $360 USD",
+      "2m x 2m Micro SME Booth (Full Booth + Branding) — 7,000 ZMW / $400 USD",
     fullBoothFormValue:
-      "2m x 2m Micro SME Booth (Full Booth + Branding) — 7,000 ZMW / $360 USD",
+      "2m x 2m Micro SME Booth (Full Booth + Branding) — 7,000 ZMW / $400 USD",
     floorSpaceFormValue:
-      "2m x 2m Micro SME Booth (Floor Space Only) — 3,500 ZMW / $180 USD",
+      "2m x 2m Micro SME Booth (Floor Space Only) — 3,500 ZMW / $200 USD",
     description:
       "Tailored for early-stage and micro-enterprises ready to showcase products and connect with partners.",
     inclusions: [
@@ -174,19 +174,19 @@ export const boothPackages: readonly BoothPackage[] = [
     dimensions: "3m × 3m",
     category: "Standard",
     fullBoothPriceZmw: "11,000 ZMW",
-    fullBoothPriceUsd: "$565 USD",
+    fullBoothPriceUsd: "$600 USD",
     floorSpacePriceZmw: "5,500 ZMW",
-    floorSpacePriceUsd: "$282 USD",
+    floorSpacePriceUsd: "$300 USD",
     priceZmw: "11,000 ZMW",
-    priceUsd: "$565 USD",
+    priceUsd: "$600 USD",
     tag: "Most Popular",
     featured: true,
     formValue:
-      "3m x 3m Standard Booth (Full Booth + Branding) — 11,000 ZMW / $565 USD",
+      "3m x 3m Standard Booth (Full Booth + Branding) — 11,000 ZMW / $600 USD",
     fullBoothFormValue:
-      "3m x 3m Standard Booth (Full Booth + Branding) — 11,000 ZMW / $565 USD",
+      "3m x 3m Standard Booth (Full Booth + Branding) — 11,000 ZMW / $600 USD",
     floorSpaceFormValue:
-      "3m x 3m Standard Booth (Floor Space Only) — 5,500 ZMW / $282 USD",
+      "3m x 3m Standard Booth (Floor Space Only) — 5,500 ZMW / $300 USD",
     description:
       "Our most popular option for established businesses looking for prime brand exposure and foot traffic.",
     inclusions: [
@@ -210,17 +210,17 @@ export const boothPackages: readonly BoothPackage[] = [
     dimensions: "3m × 3m",
     category: "Standard Corner",
     fullBoothPriceZmw: "13,000 ZMW",
-    fullBoothPriceUsd: "$670 USD",
+    fullBoothPriceUsd: "$700 USD",
     floorSpacePriceZmw: "6,500 ZMW",
     floorSpacePriceUsd: "$334 USD",
     priceZmw: "13,000 ZMW",
-    priceUsd: "$670 USD",
+    priceUsd: "$700 USD",
     corner: true,
     tag: "Dual Frontage",
     formValue:
-      "3m x 3m Standard Corner Booth (Full Booth + Branding) — 13,000 ZMW / $670 USD",
+      "3m x 3m Standard Corner Booth (Full Booth + Branding) — 13,000 ZMW / $700 USD",
     fullBoothFormValue:
-      "3m x 3m Standard Corner Booth (Full Booth + Branding) — 13,000 ZMW / $670 USD",
+      "3m x 3m Standard Corner Booth (Full Booth + Branding) — 13,000 ZMW / $700 USD",
     floorSpaceFormValue:
       "3m x 3m Standard Corner Booth (Floor Space Only) — 6,500 ZMW / $334 USD",
     description:
@@ -248,18 +248,18 @@ export const boothPackages: readonly BoothPackage[] = [
     dimensions: "6m × 3m",
     category: "Corporate",
     fullBoothPriceZmw: "20,000 ZMW",
-    fullBoothPriceUsd: "$1,025 USD",
+    fullBoothPriceUsd: "$1,050 USD",
     floorSpacePriceZmw: "8,000 ZMW",
-    floorSpacePriceUsd: "$410 USD",
+    floorSpacePriceUsd: "$450 USD",
     priceZmw: "20,000 ZMW",
-    priceUsd: "$1,025 USD",
+    priceUsd: "$1,050 USD",
     tag: "High Visibility",
     formValue:
-      "6m x 3m Corporate Booth (Full Booth + Branding) — 20,000 ZMW / $1,025 USD",
+      "6m x 3m Corporate Booth (Full Booth + Branding) — 20,000 ZMW / $1,050 USD",
     fullBoothFormValue:
-      "6m x 3m Corporate Booth (Full Booth + Branding) — 20,000 ZMW / $1,025 USD",
+      "6m x 3m Corporate Booth (Full Booth + Branding) — 20,000 ZMW / $1,050 USD",
     floorSpaceFormValue:
-      "6m x 3m Corporate Booth (Floor Space Only) — 8,000 ZMW / $410 USD",
+      "6m x 3m Corporate Booth (Floor Space Only) — 8,000 ZMW / $450 USD",
     description:
       "Double-width space designed for growth-stage companies and corporations presenting multiple products or services.",
     inclusions: [
@@ -283,17 +283,17 @@ export const boothPackages: readonly BoothPackage[] = [
     dimensions: "6m × 3m",
     category: "Corporate Corner",
     fullBoothPriceZmw: "25,000 ZMW",
-    fullBoothPriceUsd: "$1,285 USD",
+    fullBoothPriceUsd: "$1,300 USD",
     floorSpacePriceZmw: "11,000 ZMW",
     floorSpacePriceUsd: "$564 USD",
     priceZmw: "25,000 ZMW",
-    priceUsd: "$1,285 USD",
+    priceUsd: "$1,300 USD",
     corner: true,
     tag: "Prime Corporate",
     formValue:
-      "6m x 3m Corporate Corner Booth (Full Booth + Branding) — 25,000 ZMW / $1,285 USD",
+      "6m x 3m Corporate Corner Booth (Full Booth + Branding) — 25,000 ZMW / $1,300 USD",
     fullBoothFormValue:
-      "6m x 3m Corporate Corner Booth (Full Booth + Branding) — 25,000 ZMW / $1,285 USD",
+      "6m x 3m Corporate Corner Booth (Full Booth + Branding) — 25,000 ZMW / $1,300 USD",
     floorSpaceFormValue:
       "6m x 3m Corporate Corner Booth (Floor Space Only) — 11,000 ZMW / $564 USD",
     description:
@@ -321,19 +321,19 @@ export const boothPackages: readonly BoothPackage[] = [
     dimensions: "6m × 6m",
     category: "Premium",
     fullBoothPriceZmw: "35,000 ZMW",
-    fullBoothPriceUsd: "$1,795 USD",
+    fullBoothPriceUsd: "$1,800 USD",
     floorSpacePriceZmw: "15,000 ZMW",
-    floorSpacePriceUsd: "$770 USD",
+    floorSpacePriceUsd: "$800 USD",
     priceZmw: "35,000 ZMW",
-    priceUsd: "$1,795 USD",
+    priceUsd: "$1,800 USD",
     tag: "Flagship Presence",
     featured: true,
     formValue:
-      "6m x 6m Premium Booth (Full Booth + Branding) — 35,000 ZMW / $1,795 USD",
+      "6m x 6m Premium Booth (Full Booth + Branding) — 35,000 ZMW / $1,800 USD",
     fullBoothFormValue:
-      "6m x 6m Premium Booth (Full Booth + Branding) — 35,000 ZMW / $1,795 USD",
+      "6m x 6m Premium Booth (Full Booth + Branding) — 35,000 ZMW / $1,800 USD",
     floorSpaceFormValue:
-      "6m x 6m Premium Booth (Floor Space Only) — 15,000 ZMW / $770 USD",
+      "6m x 6m Premium Booth (Floor Space Only) — 15,000 ZMW / $800 USD",
     description:
       "Expansive 36m² flagship presence for industry leaders, headline exhibitors, and major institutions.",
     inclusions: [
@@ -374,12 +374,12 @@ export const floorSpacePackages: readonly FloorSpacePackage[] = [
     name: "2mx2m floor space",
     dimensions: "2m × 2m",
     priceZmw: "3,500 ZMW",
-    priceUsd: "$180 USD",
+    priceUsd: "$200 USD",
     fullBoothPriceZmw: "7,000 ZMW",
-    fullBoothPriceUsd: "$360 USD",
+    fullBoothPriceUsd: "$400 USD",
     tag: "Emerging Enterprises",
     formValue:
-      "2m x 2m Micro SME Booth (Floor Space Only) — 3,500 ZMW / $180 USD",
+      "2m x 2m Micro SME Booth (Floor Space Only) — 3,500 ZMW / $200 USD",
     description:
       "Tailored for early-stage and micro-enterprises ready to showcase products and connect with partners.",
     inclusions: [
@@ -394,13 +394,13 @@ export const floorSpacePackages: readonly FloorSpacePackage[] = [
     name: "3mx3m floor space",
     dimensions: "3m × 3m",
     priceZmw: "5,500 ZMW",
-    priceUsd: "$282 USD",
+    priceUsd: "$300 USD",
     fullBoothPriceZmw: "11,000 ZMW",
-    fullBoothPriceUsd: "$565 USD",
+    fullBoothPriceUsd: "$600 USD",
     tag: "Most Popular",
     featured: true,
     formValue:
-      "3m x 3m Standard Booth (Floor Space Only) — 5,500 ZMW / $282 USD",
+      "3m x 3m Standard Booth (Floor Space Only) — 5,500 ZMW / $300 USD",
     description:
       "Our most popular option for established businesses looking for prime brand exposure and foot traffic.",
     inclusions: [
@@ -415,12 +415,12 @@ export const floorSpacePackages: readonly FloorSpacePackage[] = [
     name: "6mx3m floor space",
     dimensions: "6m × 3m",
     priceZmw: "8,000 ZMW",
-    priceUsd: "$410 USD",
+    priceUsd: "$450 USD",
     fullBoothPriceZmw: "20,000 ZMW",
-    fullBoothPriceUsd: "$1,025 USD",
+    fullBoothPriceUsd: "$1,050 USD",
     tag: "High Visibility",
     formValue:
-      "6m x 3m Corporate Booth (Floor Space Only) — 8,000 ZMW / $410 USD",
+      "6m x 3m Corporate Booth (Floor Space Only) — 8,000 ZMW / $450 USD",
     description:
       "Double-width space designed for growth-stage companies and corporations presenting multiple products or services.",
     inclusions: [
@@ -435,13 +435,13 @@ export const floorSpacePackages: readonly FloorSpacePackage[] = [
     name: "6mx6m floor space",
     dimensions: "6m × 6m",
     priceZmw: "15,000 ZMW",
-    priceUsd: "$770 USD",
+    priceUsd: "$800 USD",
     fullBoothPriceZmw: "35,000 ZMW",
-    fullBoothPriceUsd: "$1,795 USD",
+    fullBoothPriceUsd: "$1,800 USD",
     tag: "Flagship Presence",
     featured: true,
     formValue:
-      "6m x 6m Premium Booth (Floor Space Only) — 15,000 ZMW / $770 USD",
+      "6m x 6m Premium Booth (Floor Space Only) — 15,000 ZMW / $800 USD",
     description:
       "Expansive 36m² flagship presence for industry leaders, headline exhibitors, and major institutions.",
     inclusions: [
