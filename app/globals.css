@@ -155,8 +155,7 @@ body::before {
 }
 
 #nviti-chat-container .nviti-home-brand-mark,
-#nviti-chat-container #nviti-chat-header-agent-avatar,
-#nviti-chat-container .nviti-message-avatar {
+#nviti-chat-container #nviti-chat-header-agent-avatar {
   background-color: var(--color-background) !important;
   background-image: url('/logo.png') !important;
   background-position: center !important;
@@ -164,6 +163,24 @@ body::before {
   background-size: 76% auto !important;
   color: transparent !important;
   font-size: 0 !important;
+}
+
+#nviti-chat-container .nviti-agent-message .nviti-message-avatar {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: var(--color-background) !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+#nviti-chat-container .nviti-agent-message .nviti-message-avatar::before {
+  position: absolute;
+  inset: 0;
+  background-image: url('/logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 76% auto;
+  content: '';
 }
 
 #nviti-chat-container #nviti-quick-actions {

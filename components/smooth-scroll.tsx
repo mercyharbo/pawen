@@ -16,6 +16,7 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
         autoRaf: true,
         duration: 1.35,
         lerp: 0.08,
+        prevent: (node) => node.id === "nviti-chat-container",
         smoothWheel: true,
         wheelMultiplier: 0.9,
       }}
