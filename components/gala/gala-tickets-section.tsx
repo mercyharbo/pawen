@@ -60,10 +60,7 @@ export function GalaTicketsSection() {
             Tickets &amp; Tables
           </h2>
           <p className='font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
-            Get discounted tickets.
-            <br />
-            Finalists and their nominators receive complimentary tickets to the
-            Gala and discounted hotel room rate.
+            Finalists and their nominaties get complimentary tickets to gala
           </p>
         </MotionReveal>
 

@@ -183,6 +183,11 @@ body::before {
   content: '';
 }
 
+#nviti-chat-container #nviti-welcome-bubble,
+#nviti-chat-container #nviti-welcome-bubble .nviti-welcome-action {
+  color: #111827 !important;
+}
+
 #nviti-chat-container #nviti-quick-actions {
   -ms-overflow-style: none;
   scrollbar-width: none;
