@@ -18,4 +18,6 @@ export const externalLinks = {
   hotelWebsite: "https://grandpalace.co.zm/",
   holidayInnBooking:
     "https://www.ihg.com/holidayinn/hotels/us/en/find-hotels/select-roomrate?fromRedirect=true&qSrt=sBR&qErm=false&qSlH=LUNLU&qRms=1&qAdlt=1&qChld=0&qCiD=12&qCiMy=102026&qCoD=15&qCoMy=102026&qGrpCd=PAN&setPMCookies=true&qSHBrC=HI&qDest=Cnr%20Birdcage%20Walk%20and%20Haile%20Selassie%20Avenue,%20Lusaka,%20ZM&qpMbw=0&qpMn=1&srb_u=1&qRmFltr=",
+  southernSunRidgeway:
+    "https://www.southernsun.com/southern-sun-ridgeway-lusaka",
 } as const;

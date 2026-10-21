@@ -1,7 +1,6 @@
 import { HeaderNavLinks, type HeaderNavItem } from '@/components/header-nav-links'
 import { MobileNavMenu } from '@/components/mobile-nav-menu'
 import { hasVisibleSpeakers } from '@/lib/contentful'
-import { externalLinks } from '@/lib/external-links'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
@@ -11,21 +10,7 @@ const baseNavItems: readonly HeaderNavItem[] = [
   { label: 'Summit', href: '/summit' },
   { label: 'Exhibition', href: '/exhibition' },
   { label: 'Awards Gala', href: '/gala' },
-  {
-    label: 'Plan your Trip',
-    items: [
-      {
-        label: 'Grandpalace Hotel',
-        href: externalLinks.hotelBooking,
-        isExternal: true,
-      },
-      {
-        label: 'Holiday Inn',
-        href: externalLinks.holidayInnBooking,
-        isExternal: true,
-      },
-    ],
-  },
+  { label: 'Plan your Trip', href: '/plan-your-trip' },
 ]
 
 const speakersNavItem: HeaderNavItem = { label: 'Speakers', href: '/speakers' }
