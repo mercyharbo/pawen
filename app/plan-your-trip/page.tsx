@@ -47,7 +47,7 @@ const hotels = [
     imageAlt: 'Southern Sun Ridgeway logo',
     imageWidth: 528,
     imageHeight: 113,
-    note: 'Booking code: 1211PA',
+    note: 'Discount code: 1211PA',
   },
 ] as const
 
