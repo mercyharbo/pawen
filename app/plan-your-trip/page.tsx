@@ -39,6 +39,16 @@ const hotels = [
     imageHeight: 654,
   },
   {
+    name: 'Protea Hotel by Marriott',
+    description:
+      'Book delegate accommodation for the PAWEN Regional Summit from 12 to 15 November 2026.',
+    href: externalLinks.proteaHotelBooking,
+    imageSrc: '/protea-hotel-by-marriott-logo.webp',
+    imageAlt: 'Protea Hotel by Marriott logo',
+    imageWidth: 1181,
+    imageHeight: 593,
+  },
+  {
     name: 'Southern Sun Ridgeway',
     description:
       'Explore rooms and availability at Southern Sun Ridgeway in central Lusaka.',
