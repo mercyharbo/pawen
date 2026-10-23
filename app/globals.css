@@ -218,3 +218,38 @@ body::before {
     width: calc(100vw - 24px) !important;
   }
 }
+
+/* Full-screen Nviti experience for the dedicated Helpdesk route */
+body:has([data-helpdesk-page]) {
+  overflow: hidden;
+}
+
+body:has([data-helpdesk-page]) [data-site-chrome] {
+  display: none;
+}
+
+body:has([data-helpdesk-page]) #nviti-chat-container {
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100svh !important;
+}
+
+body:has([data-helpdesk-page]) #nviti-chat-button,
+body:has([data-helpdesk-page]) #nviti-welcome-bubble {
+  display: none !important;
+}
+
+body:has([data-helpdesk-page]) #nviti-chat-window {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  min-width: 100vw !important;
+  max-width: none !important;
+  height: 100svh !important;
+  min-height: 100svh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}

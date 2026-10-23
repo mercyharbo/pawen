@@ -15,7 +15,7 @@ export function SummitHero() {
       className='relative isolate min-h-[calc(100svh-7.875rem)] overflow-hidden px-5 py-20 text-foreground sm:px-8 lg:px-10 lg:py-28'
     >
       <Image
-        src='/images/hero-bg.jpg'
+        src='/images/What Attend.jpg'
         alt=''
         fill
         priority

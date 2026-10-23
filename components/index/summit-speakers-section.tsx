@@ -72,7 +72,13 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
   )
 }
 
-export async function SummitSpeakersSection() {
+type SummitSpeakersSectionProps = {
+  speakerSlugs?: readonly string[]
+}
+
+export async function SummitSpeakersSection({
+  speakerSlugs,
+}: SummitSpeakersSectionProps = {}) {
   let speakers: Speaker[] = []
 
   try {
@@ -91,13 +97,21 @@ export async function SummitSpeakersSection() {
     console.error('Failed to load summit speakers:', error)
   }
 
-  // Display curated list of 2026 speakers on the homepage (up to 10)
+  // Display the curated selection when supplied; otherwise keep the homepage list.
   const summit2026Speakers = speakers.filter(
     (speaker) => speaker.year === '2026' || !speaker.year,
   )
-  const displayedSpeakers = (
-    summit2026Speakers.length > 0 ? summit2026Speakers : speakers
-  ).slice(0, 10)
+  const speakerBySlug = new Map(
+    speakers.map((speaker) => [speaker.slug, speaker]),
+  )
+  const displayedSpeakers = speakerSlugs?.length
+    ? speakerSlugs.flatMap((slug) => {
+        const speaker = speakerBySlug.get(slug)
+        return speaker ? [speaker] : []
+      })
+    : (
+        summit2026Speakers.length > 0 ? summit2026Speakers : speakers
+      ).slice(0, 10)
 
   return (
     <section

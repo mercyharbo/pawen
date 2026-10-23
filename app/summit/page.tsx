@@ -1,4 +1,5 @@
 import { EventFormDialogs } from "@/components/event-forms/event-form-dialogs";
+import { SummitSpeakersSection } from "@/components/index/summit-speakers-section";
 import { SummitFinalCtaSection } from "@/components/summit/summit-final-cta-section";
 import { SummitHero } from "@/components/summit/summit-hero";
 import { SummitPillarsSection } from "@/components/summit/summit-pillars-section";
@@ -7,6 +8,15 @@ import { SummitWhyZambiaSection } from "@/components/summit/summit-why-zambia-se
 import { SummitWhoShouldAttendSection } from "@/components/summit/summit-who-should-attend-section";
 import { createPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
+
+const featuredSpeakerSlugs = [
+  "nicholas-kabaso",
+  "sola-adesakin",
+  "mukwandi-chibesakunda",
+  "oluwaseyi-kehinde-peters",
+  "yande-mwenye",
+  "dr-kadijatu-grace-kamara",
+] as const;
 
 export const metadata: Metadata = createPageMetadata({
   path: "/summit",
@@ -27,9 +37,10 @@ export default function SummitPage() {
     <>
       <div className="bg-pawen-brand-color">
         <SummitHero />
+        <SummitSpeakersSection speakerSlugs={featuredSpeakerSlugs} />
         <SummitPillarsSection />
-        <SummitWhyZambiaSection />
         <SummitWhyAttendSection />
+        <SummitWhyZambiaSection />
         <SummitWhoShouldAttendSection />
       </div>
       <SummitFinalCtaSection />

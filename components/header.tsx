@@ -67,7 +67,10 @@ export async function Header() {
     : baseNavItems
 
   return (
-    <header className='sticky top-0 z-50 bg-pawen-brand-color text-foreground'>
+    <header
+      data-site-chrome
+      className='sticky top-0 z-50 bg-pawen-brand-color text-foreground'
+    >
       <div className='border-b border-border bg-pawen-brand-color h-10 flex justify-center items-center font-brand text-sm'>
         <div className='flex flex-wrap items-center justify-center gap-3 text-center font-medium'>
           <span>Nominations Open!</span>

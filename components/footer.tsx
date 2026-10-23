@@ -171,7 +171,10 @@ function FooterSocialLinks() {
 
 export function Footer() {
   return (
-    <footer className='relative isolate overflow-hidden bg-background text-primary [--color-background:#050505]'>
+    <footer
+      data-site-chrome
+      className='relative isolate overflow-hidden bg-background text-primary [--color-background:#050505]'
+    >
       <div className='relative z-10 mx-auto flex w-full max-w-[1905px] flex-col gap-12 px-5 py-14 sm:px-8 lg:px-10 lg:py-20'>
         <div className='grid gap-10 py-10 lg:grid-cols-4 lg:gap-10 xl:gap-14'>
           <nav className='flex flex-col gap-4' aria-labelledby='footer-sitemap'>

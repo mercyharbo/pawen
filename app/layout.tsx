@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { NominationFormDialog } from "@/components/nomination/nomination-form-dialog";
+import { NvitiChatScript } from "@/components/nviti-chat-script";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { rootMetadata } from "@/lib/seo";
 import "lenis/dist/lenis.css";
@@ -30,10 +30,7 @@ export default function RootLayout({
           <Footer />
           <NominationFormDialog />
         </SmoothScroll>
-        <Script
-          src="https://api.nviti.ng/api/chat-widget/widget_5f9fd3248cbe239496205f2f1bf93615/js"
-          strategy="afterInteractive"
-        />
+        <NvitiChatScript />
       </body>
     </html>
   );
