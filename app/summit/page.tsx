@@ -10,12 +10,12 @@ import { createPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 const featuredSpeakerSlugs = [
-  "nicholas-kabaso",
-  "sola-adesakin",
-  "mukwandi-chibesakunda",
-  "oluwaseyi-kehinde-peters",
-  "yande-mwenye",
   "dr-kadijatu-grace-kamara",
+  "mukwandi-chibesakunda",
+  "lowani-chibesakunda",
+  "sola-adesakin",
+  "yande-mwenye",
+  "oluwaseyi-kehinde-peters",
 ] as const;
 
 export const metadata: Metadata = createPageMetadata({
