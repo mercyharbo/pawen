@@ -3,7 +3,6 @@
 import { MotionReveal } from '@/components/motion-reveal'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import Link from 'next/link'
 import Marquee from 'react-fast-marquee'
 
 type PartnerLogo = {
@@ -85,6 +84,21 @@ const partnerLogos: readonly PartnerLogo[] = [
     alt: 'Hair Wonder logo',
     href: 'https://myhairwonder.com/about-us/',
     imageClassName: 'max-h-20 w-auto rounded-md object-contain',
+  },
+  {
+    name: 'YSM Chartered Accountants',
+    src: '/ysm-chartered-accountants.webp',
+    alt: 'YSM Chartered Accountants logo',
+    bgWhite: true,
+    imageClassName: 'max-h-24 w-auto object-contain',
+  },
+  {
+    name: 'Aluvión',
+    src: '/aluvion.png',
+    alt: 'Aluvión logo',
+    href: 'http://aluvion.com/',
+    bgWhite: true,
+    imageClassName: 'max-h-16 w-auto object-contain',
   },
   {
     name: 'BellaNaija',

@@ -1,12 +1,5 @@
 import { MotionReveal } from '@/components/motion-reveal'
 
-const dressCodeLinks = [
-  'Aso Oke',
-  'Hand-beaded Maasai-inspired Gown',
-  'Embroidered Kaftan',
-  'Zambian Chitenge Couture',
-] as const
-
 export function GalaDressCodeSection() {
   return (
     <section
@@ -29,13 +22,13 @@ export function GalaDressCodeSection() {
           </h2>
 
           <p className='max-w-2xl font-brand text-sm leading-6 text-primary md:text-lg md:leading-8 lg:text-base lg:leading-7 2xl:text-base 3xl:text-lg 3xl:leading-8'>
-            The dress code for the 2026 PAWEN Awards Gala is African Glam: a
-            deliberate invitation to step onto the stage of the night dressed in
-            the elegance, colour, and craftsmanship of the continent. Whether
-            that is a tailored Aso Oke, a hand-beaded Maasai-inspired gown, an
-            embroidered kaftan, a Zambian chitenge couture piece, or any
-            reimagined statement of African heritage, this is your moment to
-            wear what makes you feel powerful.
+            The dress code for the 2026 PAWEN Awards Gala is African Inspired
+            Black Tie: a deliberate invitation to step onto the stage of the
+            night dressed in the elegance, colour, and craftsmanship of the
+            continent. Whether that is a tailored Aso Oke, a hand-beaded
+            Maasai-inspired gown, an embroidered kaftan, a Zambian chitenge
+            couture piece, or any reimagined statement of African heritage, this
+            is your moment to wear what makes you feel powerful.
           </p>
         </div>
       </MotionReveal>

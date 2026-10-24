@@ -5,7 +5,7 @@ const faqs = [
   {
     question: "What is the dress code?",
     answer:
-      "The dress code is African Glam: elegant, expressive, and rooted in African heritage.",
+      "The dress code is African Inspired Black Tie: elegant, expressive, and rooted in African heritage.",
   },
   {
     question: "Can anyone attend the Gala, or is it only for finalists?",
