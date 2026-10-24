@@ -14,6 +14,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/delegates',
+        destination: '/PAWEN%202026%20Delegate%20Information%20Pack.pdf',
+      },
+    ]
+  },
   async redirects() {
     const FORM_URL =
       'https://docs.google.com/forms/d/e/1FAIpQLSeXj1rBizXExksssfE4GRf4BXpYNIIWmYAq9jz-v7I283v-Dg/viewform?usp=header'
