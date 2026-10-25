@@ -32,7 +32,7 @@ function getSpeakerCategoryTab(category: string): SpeakerCategoryTab {
   }
 
   if (key.startsWith('fireside chat')) {
-    return { key: 'fireside-chat', label: 'Fireside Chat', priority: 1 }
+    return { key: 'fireside-chat', label, priority: 1 }
   }
 
   return { key, label, priority: 2 }
