@@ -7,16 +7,8 @@ import { SummitWhyAttendSection } from "@/components/summit/summit-why-attend-se
 import { SummitWhyZambiaSection } from "@/components/summit/summit-why-zambia-section";
 import { SummitWhoShouldAttendSection } from "@/components/summit/summit-who-should-attend-section";
 import { createPageMetadata } from "@/lib/seo";
+import { summitFeaturedSpeakerSlugs } from "@/lib/speaker-order";
 import type { Metadata } from "next";
-
-const featuredSpeakerSlugs = [
-  "dr-kadijatu-grace-kamara",
-  "mukwandi-chibesakunda",
-  "lowani-chibesakunda",
-  "sola-adesakin",
-  "yande-mwenye",
-  "oluwaseyi-kehinde-peters",
-] as const;
 
 export const metadata: Metadata = createPageMetadata({
   path: "/summit",
@@ -37,7 +29,7 @@ export default function SummitPage() {
     <>
       <div className="bg-pawen-brand-color">
         <SummitHero />
-        <SummitSpeakersSection speakerSlugs={featuredSpeakerSlugs} />
+        <SummitSpeakersSection speakerSlugs={summitFeaturedSpeakerSlugs} />
         <SummitPillarsSection />
         <SummitWhyAttendSection />
         <SummitWhyZambiaSection />

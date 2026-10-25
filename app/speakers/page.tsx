@@ -6,18 +6,56 @@ import {
   type Speaker,
 } from '@/lib/contentful'
 import { createPageMetadata, siteConfig } from '@/lib/seo'
+import { summitFeaturedSpeakerSlugs } from '@/lib/speaker-order'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const speakerCategories = [
-  'All Speakers',
-  'Keynote',
-  'Hosts',
-  'Panels',
-  'Fireside',
-  'Moderators',
-] as const
+const allSpeakersTab = 'all-speakers'
+
+const keynoteSpeakerOrder = new Map<string, number>(
+  summitFeaturedSpeakerSlugs.map((slug, index) => [slug, index]),
+)
+
+type SpeakerCategoryTab = {
+  key: string
+  label: string
+  priority: number
+}
+
+function getSpeakerCategoryTab(category: string): SpeakerCategoryTab {
+  const label = category.trim()
+  const key = label.toLowerCase()
+
+  if (key === 'keynote') {
+    return { key: 'keynote', label: 'Keynote', priority: 0 }
+  }
+
+  if (key.startsWith('fireside chat')) {
+    return { key: 'fireside-chat', label: 'Fireside Chat', priority: 1 }
+  }
+
+  return { key, label, priority: 2 }
+}
+
+function sortSpeakersForCategory(
+  speakers: Speaker[],
+  categoryKey: string,
+) {
+  if (categoryKey !== 'keynote') {
+    return speakers
+  }
+
+  return [...speakers].sort((a, b) => {
+    const aPriority = keynoteSpeakerOrder.get(a.slug)
+    const bPriority = keynoteSpeakerOrder.get(b.slug)
+
+    if (aPriority === undefined && bPriority === undefined) return 0
+    if (aPriority === undefined) return 1
+    if (bPriority === undefined) return -1
+    return aPriority - bPriority
+  })
+}
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -132,29 +170,6 @@ function SpeakerGrid({ speakers }: { speakers: Speaker[] }) {
 }
 
 function SpeakerCategoryTabs({ speakers }: { speakers: Speaker[] }) {
-  const presentCategories = Array.from(
-    new Set(
-      speakers
-        .map((s) => (typeof s.category === 'string' ? s.category.trim() : ''))
-        .filter(Boolean),
-    ),
-  )
-
-  const activeCategories = Array.from(
-    new Set([
-      'All Speakers',
-      ...speakerCategories
-        .slice(1)
-        .filter((category) => presentCategories.includes(category)),
-      ...presentCategories.filter(
-        (cat) =>
-          !speakerCategories.includes(
-            cat as (typeof speakerCategories)[number],
-          ),
-      ),
-    ]),
-  )
-
   if (speakers.length === 0) {
     return (
       <div className='rounded-xl border border-accent px-6 py-10 text-center font-brand text-sm leading-6 text-primary'>
@@ -163,32 +178,59 @@ function SpeakerCategoryTabs({ speakers }: { speakers: Speaker[] }) {
     )
   }
 
+  const categoryTabsByKey = new Map<string, SpeakerCategoryTab>()
+
+  speakers.forEach((speaker) => {
+    const categoryTab = getSpeakerCategoryTab(speaker.category)
+    if (categoryTab.label && !categoryTabsByKey.has(categoryTab.key)) {
+      categoryTabsByKey.set(categoryTab.key, categoryTab)
+    }
+  })
+
+  const categoryTabs = Array.from(categoryTabsByKey.values()).sort(
+    (a, b) => a.priority - b.priority || a.label.localeCompare(b.label),
+  )
+
   return (
-    <Tabs defaultValue='All Speakers' className='w-full items-center gap-8'>
+    <Tabs defaultValue={allSpeakersTab} className='w-full items-center gap-8'>
       <TabsList
         aria-label='Speaker categories'
         className='h-auto flex-wrap gap-2 bg-transparent p-0'
       >
-        {activeCategories.map((category) => (
+        <TabsTrigger
+          value={allSpeakersTab}
+          className='h-11 min-w-0 bg-primary/8 px-6 text-sm'
+        >
+          All Speakers
+        </TabsTrigger>
+        {categoryTabs.map((category) => (
           <TabsTrigger
-            key={category}
-            value={category}
+            key={category.key}
+            value={category.key}
             className='h-11 min-w-0 bg-primary/8 px-6 text-sm'
           >
-            {category}
+            {category.label}
           </TabsTrigger>
         ))}
       </TabsList>
 
-      <TabsContent value='All Speakers' className='w-full'>
+      <TabsContent value={allSpeakersTab} className='w-full'>
         <SpeakerGrid speakers={speakers} />
       </TabsContent>
 
-      {activeCategories.slice(1).map((category) => (
-        <TabsContent key={category} value={category} className='w-full'>
+      {categoryTabs.map((category) => (
+        <TabsContent
+          key={category.key}
+          value={category.key}
+          className='w-full'
+        >
           <SpeakerGrid
-            speakers={speakers.filter(
-              (speaker) => speaker.category === category,
+            speakers={sortSpeakersForCategory(
+              speakers.filter(
+                (speaker) =>
+                  getSpeakerCategoryTab(speaker.category).key === category.key,
+              ),
+              category.key,
             )}
           />
         </TabsContent>
