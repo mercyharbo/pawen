@@ -64,7 +64,7 @@ export function NominationHero() {
             asChild
             className="h-11 sm:min-w-40 lg:w-auto w-full rounded-full bg-primary px-8 text-xs font-medium text-primary-foreground hover:bg-primary/90"
           >
-            <Link href="#award-categories">Award Categories</Link>
+            <Link prefetch={false} href="#award-categories">Award Categories</Link>
           </Button>
         </div>
       </MotionReveal>

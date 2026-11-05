@@ -2,10 +2,6 @@ import { MotionReveal } from '@/components/motion-reveal'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type StorySectionProps = {
-  supportUrl: string
-}
-
 const experiences = [
   {
     title: 'The PAWEN Summit',
@@ -33,7 +29,7 @@ const experiences = [
   },
 ] as const
 
-export function StorySection({ supportUrl }: StorySectionProps) {
+export function StorySection() {
   return (
     <section
       className='relative isolate overflow-hidden bg-pawen-brand-color px-5 py-10 text-foreground sm:px-8 lg:px-10 lg:py-16'
@@ -142,7 +138,7 @@ export function StorySection({ supportUrl }: StorySectionProps) {
                 </div>
 
                 <div className='pt-2'>
-                  <Link
+                  <Link prefetch={false}
                     href={experience.ctaHref}
                     className='inline-flex items-center text-sm font-semibold text-accent transition-colors hover:text-accent/80 hover:underline'
                   >

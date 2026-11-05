@@ -154,7 +154,7 @@ export function HeaderNavLinks({ navItems }: HeaderNavLinksProps) {
         const isActive = isActiveRoute(pathname, item.href)
 
         return (
-          <Link
+          <Link prefetch={false}
             key={item.label}
             href={item.href ?? '/'}
             className='group/header-link relative inline-flex overflow-hidden pb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'

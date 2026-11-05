@@ -72,7 +72,7 @@ export function NominationKeyDatesSection({
             asChild
             className='h-11 w-fit rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
           >
-            <Link href={ticketsUrl} target='_blank' rel='noreferrer'>
+            <Link prefetch={false} href={ticketsUrl} target='_blank' rel='noreferrer'>
               Get Gala Tickets
             </Link>
           </Button>

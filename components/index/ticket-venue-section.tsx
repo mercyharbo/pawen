@@ -64,7 +64,7 @@ export function TicketVenueSection({ ticketsUrl }: TicketVenueSectionProps) {
             asChild
             className='h-12 rounded-full bg-accent px-8 text-sm font-semibold text-background hover:bg-accent/90'
           >
-            <Link href={ticketsUrl} target='_blank' rel='noreferrer'>
+            <Link prefetch={false} href={ticketsUrl} target='_blank' rel='noreferrer'>
               Get Gala Tickets
             </Link>
           </Button>

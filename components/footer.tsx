@@ -81,7 +81,7 @@ function FooterTextLink({
   className?: string
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={href}
       className={`group/footer-text relative w-fit overflow-hidden pb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${className}`}
     >
@@ -149,7 +149,7 @@ function FooterSocialLinks() {
         const Icon = item.icon
 
         return (
-          <Link
+          <Link prefetch={false}
             key={item.label}
             href={item.href}
             aria-label={item.label}

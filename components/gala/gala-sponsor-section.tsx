@@ -48,7 +48,7 @@ export function GalaSponsorSection({ sponsorUrl }: GalaSponsorSectionProps) {
             asChild
             className="h-11 w-full rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90 sm:w-fit"
           >
-            <Link href={sponsorUrl} target="_blank" rel="noreferrer">
+            <Link prefetch={false} href={sponsorUrl} target="_blank" rel="noreferrer">
               Become a 2026 Sponsor
             </Link>
           </Button>

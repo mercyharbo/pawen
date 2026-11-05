@@ -78,7 +78,7 @@ function WinnerCard({ winner }: { winner: AwardWinner }) {
         </div>
 
         {winner.linkedinUrl ? (
-          <Link
+          <Link prefetch={false}
             href={winner.linkedinUrl}
             aria-label={`${winner.name} on LinkedIn`}
             target='_blank'

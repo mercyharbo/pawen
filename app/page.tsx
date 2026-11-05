@@ -23,8 +23,8 @@ export const metadata = createPageMetadata({
 export default function Home() {
   return (
     <>
-      <Hero nominationsUrl={externalLinks.nominations} />
-      <StorySection supportUrl={externalLinks.supportOurWork} />
+      <Hero />
+      <StorySection />
       <SponsorsSection />
       <SummitSpeakersSection />
       <TicketVenueSection ticketsUrl={externalLinks.tickets} />

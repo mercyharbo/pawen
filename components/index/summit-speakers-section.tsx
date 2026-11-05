@@ -57,7 +57,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
         </div>
 
         {speaker.linkedinUrl ? (
-          <Link
+          <Link prefetch={false}
             href={speaker.linkedinUrl}
             aria-label={`${speaker.name} on LinkedIn`}
             target='_blank'
@@ -144,7 +144,7 @@ export async function SummitSpeakersSection({
             asChild
             className='h-12 rounded-full bg-accent px-8 text-sm font-semibold text-background hover:bg-accent/90'
           >
-            <Link href='/speakers'>View full 2026 Speaker list</Link>
+            <Link prefetch={false} href='/speakers'>View full 2026 Speaker list</Link>
           </Button>
         </MotionReveal>
       </div>

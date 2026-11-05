@@ -213,7 +213,7 @@ export default function SponsorsPage() {
               variant='outline'
               className='h-12 rounded-full border-primary/30 px-8 text-sm font-semibold text-primary hover:bg-primary/10'
             >
-              <Link
+              <Link prefetch={false}
                 href='/The%20PAWEN%20Awards%20%26%20Summit%20Brochure.pdf'
                 target='_blank'
                 rel='noreferrer'

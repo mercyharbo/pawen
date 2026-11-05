@@ -2,12 +2,33 @@
 
 import { Button } from '@/components/ui/button'
 import { motion, useReducedMotion } from 'framer-motion'
-import Image from 'next/image'
+import { getImageProps } from 'next/image'
 import Link from 'next/link'
 
-type HeroProps = {
-  nominationsUrl?: string
-}
+const { props: mobileBackground } = getImageProps({
+  src: '/images/IMG-6.png',
+  alt: '',
+  fill: true,
+  sizes: '100vw',
+  loading: 'eager',
+  fetchPriority: 'high',
+  className: 'object-cover object-center md:object-[center_42%]',
+})
+const { props: desktopBackground } = getImageProps({
+  src: '/images/hero-bg.jpg',
+  alt: '',
+  fill: true,
+  sizes: '100vw',
+})
+const { props: desktopOverlay } = getImageProps({
+  src: '/images/hero-overlay.png',
+  alt: '',
+  fill: true,
+  sizes: '100vw',
+})
+// The mobile overlay is inline so it never requests the desktop-only asset.
+const transparentImage =
+  'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/%3E'
 
 type HeroParticle = {
   left: number
@@ -59,7 +80,7 @@ const heroParticles: HeroParticle[] = [
   scale,
 }))
 
-export function Hero({ nominationsUrl }: HeroProps) {
+export function Hero() {
   const reduceMotion = useReducedMotion()
   const revealTransition = {
     duration: 1.15,
@@ -75,22 +96,14 @@ export function Hero({ nominationsUrl }: HeroProps) {
         transition={revealTransition}
         aria-hidden='true'
       >
-        <Image
-          src='/images/IMG-6.png'
-          alt=''
-          fill
-          priority
-          sizes='100vw'
-          className='object-cover object-center md:hidden'
-        />
-        <Image
-          src='/images/hero-bg.jpg'
-          alt=''
-          fill
-          priority
-          sizes='100vw'
-          className='hidden object-cover object-[center_42%] md:block'
-        />
+        <picture>
+          <source
+            media='(min-width: 768px)'
+            srcSet={desktopBackground.srcSet}
+            sizes={desktopBackground.sizes}
+          />
+          <img {...mobileBackground} alt='' />
+        </picture>
       </motion.div>
 
       <motion.div
@@ -100,14 +113,20 @@ export function Hero({ nominationsUrl }: HeroProps) {
         transition={revealTransition}
         aria-hidden='true'
       >
-        <Image
-          src='/images/hero-overlay.png'
-          alt=''
-          fill
-          priority
-          sizes='100vw'
-          className='hidden object-cover object-center md:block'
-        />
+        <picture>
+          <source
+            media='(min-width: 768px)'
+            srcSet={desktopOverlay.srcSet}
+            sizes={desktopOverlay.sizes}
+          />
+          <img
+            src={transparentImage}
+            alt=''
+            style={desktopOverlay.style}
+            className='hidden object-cover object-center md:block'
+            decoding='async'
+          />
+        </picture>
       </motion.div>
 
       <motion.div
@@ -209,19 +228,19 @@ export function Hero({ nominationsUrl }: HeroProps) {
               asChild
               className='h-12 rounded-full bg-accent px-7 text-sm font-semibold text-background hover:bg-accent/90'
             >
-              <Link href='/summit'>Summit</Link>
+              <Link prefetch={false} href='/summit'>Summit</Link>
             </Button>
             <Button
               asChild
               className='h-12 rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground hover:bg-primary/90'
             >
-              <Link href='/exhibition'>Exhibition</Link>
+              <Link prefetch={false} href='/exhibition'>Exhibition</Link>
             </Button>
             <Button
               asChild
               className='h-12 rounded-full border border-accent/60 bg-accent/15 px-7 text-sm font-semibold text-accent hover:bg-accent hover:text-background'
             >
-              <Link href='/gala'>Awards Gala</Link>
+              <Link prefetch={false} href='/gala'>Awards Gala</Link>
             </Button>
           </div>
         </motion.div>

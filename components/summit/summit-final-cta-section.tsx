@@ -43,7 +43,7 @@ export function SummitFinalCtaSection() {
             asChild
             className='h-12 rounded-full bg-accent px-8 text-sm font-semibold text-background hover:bg-accent/90'
           >
-            <Link href='/speakers'>2026 Summit Speakers</Link>
+            <Link prefetch={false} href='/speakers'>2026 Summit Speakers</Link>
           </Button>
         </div>
       </MotionReveal>

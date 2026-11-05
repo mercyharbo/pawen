@@ -139,7 +139,7 @@ function GalaNightStackCard({
           asChild
           className={`h-11 w-full max-w-xs rounded-full px-8 font-medium ${card.buttonClassName}`}
         >
-          <Link href={card.href}>{card.cta}</Link>
+          <Link prefetch={false} href={card.href}>{card.cta}</Link>
         </Button>
       </div>
     </motion.article>
@@ -229,7 +229,7 @@ export function GalaNightSection() {
                     asChild
                     className={`h-11 w-full max-w-xs rounded-full px-8 text-xs font-medium ${card.buttonClassName}`}
                   >
-                    <Link href={card.href}>{card.cta}</Link>
+                    <Link prefetch={false} href={card.href}>{card.cta}</Link>
                   </Button>
                 </div>
               </article>

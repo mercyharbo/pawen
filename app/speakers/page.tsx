@@ -136,7 +136,7 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
         </div>
 
         {speaker.linkedinUrl ? (
-          <Link
+          <Link prefetch={false}
             href={speaker.linkedinUrl}
             aria-label={`${speaker.name} on LinkedIn`}
             target='_blank'
@@ -266,7 +266,7 @@ export default async function SpeakersPage() {
               asChild
               className='h-11 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
             >
-              <Link
+              <Link prefetch={false}
                 href={page.ctaUrl}
                 target={page.ctaUrl.startsWith('http') ? '_blank' : undefined}
                 rel={page.ctaUrl.startsWith('http') ? 'noreferrer' : undefined}

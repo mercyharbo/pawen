@@ -219,7 +219,7 @@ async function fetchContentfulEntries<TFields>(
   try {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${config.spaceId}/environments/${config.environment}/entries?${searchParams}`,
-      { cache: 'no-store' },
+      { next: { revalidate: 900 } },
     )
 
     if (!response.ok) {

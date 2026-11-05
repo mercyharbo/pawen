@@ -25,7 +25,7 @@ function HeaderMotionLink({
   href: string
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={href}
       className={`group/header-link relative inline-flex items-center overflow-hidden leading-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${className}`}
     >
@@ -85,7 +85,7 @@ export async function Header() {
 
       <div className='border-b border-border bg-pawen-brand-color'>
         <div className='mx-auto flex min-h-[4.875rem] w-full max-w-[1905px] items-center justify-between gap-6 px-5 py-3 sm:px-8 lg:px-10'>
-          <Link
+          <Link prefetch={false}
             href='/'
             className='group flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent'
             aria-label='PAWEN home'

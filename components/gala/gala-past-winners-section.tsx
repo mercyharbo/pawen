@@ -153,7 +153,7 @@ export async function GalaPastWinnersSection() {
           asChild
           className='h-11 rounded-full bg-accent px-8 text-xs font-medium text-background hover:bg-accent/90'
         >
-          <Link href='/winners'>See All Gallery</Link>
+          <Link prefetch={false} href='/winners'>See All Gallery</Link>
         </Button>
       </div>
     </section>

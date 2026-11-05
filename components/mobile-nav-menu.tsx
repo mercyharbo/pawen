@@ -27,7 +27,7 @@ function MobileMenuLink({
   onClick: () => void;
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={href}
       className={`group/mobile-link relative overflow-hidden rounded-xl px-4 py-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
         muted ? "text-muted-foreground" : "text-popover-foreground"

@@ -6,7 +6,7 @@ import {
   useState,
   useTransition,
 } from "react";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { submitNomination } from "@/app/nominations/actions";
 import {
   errorStepMap,
@@ -72,10 +72,6 @@ export function NominationFormDialog() {
   const isSuccessDialogOpen = Boolean(
     successKey && dismissedSuccessKey !== successKey,
   );
-  const { data } = useSWR("/api/countries", fetcher, {
-    fallbackData: { countries: fallbackAfricanCountries },
-  });
-  const countries = data?.countries ?? fallbackAfricanCountries;
   const {
     applySelfNominationDefaults,
     closeDialog,
@@ -87,6 +83,11 @@ export function NominationFormDialog() {
     setStep,
     step,
   } = useNomination();
+  const { data } = useSWRImmutable(isOpen ? "/api/countries" : null, fetcher, {
+    refreshInterval: 0,
+    shouldRetryOnError: false,
+  });
+  const countries = data?.countries ?? fallbackAfricanCountries;
   const displayedState: typeof state =
     state.status === "success"
       ? initialState

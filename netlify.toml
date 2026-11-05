@@ -1,0 +1,15 @@
+[build]
+  command = "pnpm build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "10.29.3"
+
+# Netlify automatically installs its supported Next.js adapter.
+# Preview metadata must point to the preview, not the production Vercel site.
+[context.deploy-preview]
+  command = 'NEXT_PUBLIC_SITE_URL="$DEPLOY_PRIME_URL" pnpm build'
+
+[context.branch-deploy]
+  command = 'NEXT_PUBLIC_SITE_URL="$DEPLOY_PRIME_URL" pnpm build'
