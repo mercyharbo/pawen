@@ -7,10 +7,14 @@
   PNPM_VERSION = "10.29.3"
   # Public links, identifiers, and environment names are not credentials.
   # Keep access tokens and API keys covered by secret scanning.
-  SECRETS_SCAN_OMIT_KEYS = "CONTENTFUL_ENVIRONMENT,SELAR_TICKETS_URL,JOTFORM_FORM_ID,JOTFORM_NOMINATIONS_URL,NEXT_PUBLIC_SITE_URL"
+  SECRETS_SCAN_OMIT_KEYS = "CONTENTFUL_ENVIRONMENT,SELAR_TICKETS_URL,JOTFORM_FORM_ID,JOTFORM_NOMINATIONS_URL,NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_GA_MEASUREMENT_ID"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Measurement IDs are public. Only production builds receive this setting.
+[context.production.environment]
+  NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-2Y1E9N1EC4"
 
 # Preview metadata must point to the preview, not the production Vercel site.
 [context.deploy-preview]

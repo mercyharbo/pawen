@@ -7,6 +7,8 @@ import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { ArrowUpRight } from 'lucide-react'
 import { useActionState } from 'react'
+import { useFormAnalytics } from '@/components/analytics/use-form-analytics'
+import { trackFormStart } from '@/lib/analytics'
 
 const initialNewsletterState: NewsletterFormState = {
   status: 'idle',
@@ -27,11 +29,14 @@ export function FooterNewsletterForm() {
     initialNewsletterState,
   )
   const firstNameError = fieldError(state, 'firstName')
+  useFormAnalytics('newsletter', state)
   const lastNameError = fieldError(state, 'lastName')
   const emailError = fieldError(state, 'email')
 
   return (
     <form
+      onFocusCapture={() => trackFormStart('newsletter')}
+      onChangeCapture={() => trackFormStart('newsletter')}
       action={formAction}
       className='flex flex-col gap-3'
       key={state.resetKey ?? 'footer-newsletter-form'}

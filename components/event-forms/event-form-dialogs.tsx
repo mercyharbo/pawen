@@ -52,6 +52,8 @@ import {
 } from "@/lib/stores/event-dialog-store";
 import { compressImageFile, validateFileSize } from "@/lib/file-utils";
 import { cn } from "@/lib/utils";
+import { useFormAnalytics } from "@/components/analytics/use-form-analytics";
+import { trackFormStart } from "@/lib/analytics";
 
 const initialState: EventFormState = {
   status: "idle",
@@ -674,6 +676,7 @@ function SummitRegistrationDialog() {
     submitSummitRegistration,
     initialState,
   );
+  useFormAnalytics("summit", state);
   const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
   const [fieldValues, setFieldValues] = useState<EventFormValues>({});
   const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
@@ -750,6 +753,8 @@ function SummitRegistrationDialog() {
           className="flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
           data-lenis-prevent
           key={state.resetKey ?? "summit-registration-form"}
+          onFocusCapture={() => trackFormStart("summit")}
+          onChangeCapture={() => trackFormStart("summit")}
           noValidate
           onSubmit={(event) => {
             event.preventDefault();
@@ -914,6 +919,7 @@ function ExhibitionBoothDialog() {
     submitExhibitionBooth,
     initialState,
   );
+  useFormAnalytics("exhibition", state);
   const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
   const [fieldValues, setFieldValues] = useState<EventFormValues>({});
   const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
@@ -1035,6 +1041,8 @@ function ExhibitionBoothDialog() {
           className="flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
           data-lenis-prevent
           key={state.resetKey ?? "exhibition-booth-form"}
+          onFocusCapture={() => trackFormStart("exhibition")}
+          onChangeCapture={() => trackFormStart("exhibition")}
           noValidate
           onSubmit={(event) => {
             event.preventDefault();
@@ -1216,6 +1224,7 @@ function ApplyToSpeakDialog() {
     submitApplyToSpeak,
     initialState,
   );
+  useFormAnalytics("speaker", state);
   const [confirmationValues, setConfirmationValues] = useState<string[]>([]);
   const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
   const [fieldValues, setFieldValues] = useState<EventFormValues>({});
@@ -1334,6 +1343,8 @@ function ApplyToSpeakDialog() {
           data-lenis-prevent
           encType="multipart/form-data"
           key={state.resetKey ?? "apply-to-speak-form"}
+          onFocusCapture={() => trackFormStart("speaker")}
+          onChangeCapture={() => trackFormStart("speaker")}
           noValidate
           ref={formRef}
           onSubmit={(event) => {

@@ -31,6 +31,8 @@ import {
   fallbackAfricanCountries,
 } from "@/lib/nomination-form-data";
 import { useNomination } from "@/lib/stores/nomination-dialog-store";
+import { useFormAnalytics } from "@/components/analytics/use-form-analytics";
+import { trackFormStart } from "@/lib/analytics";
 
 const storedFormFields = [
   "category",
@@ -62,6 +64,7 @@ export function NominationFormDialog() {
     submitNomination,
     initialState,
   );
+  useFormAnalytics("nomination", state);
   const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
     string | undefined
   >();
@@ -220,6 +223,8 @@ export function NominationFormDialog() {
           showCloseButton
         >
           <form
+            onFocusCapture={() => trackFormStart("nomination")}
+            onChangeCapture={() => trackFormStart("nomination")}
             className="flex max-h-[calc(70vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
             data-lenis-prevent
             encType="multipart/form-data"

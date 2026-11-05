@@ -70,7 +70,12 @@ const policySections = [
   },
   {
     title: '7. Cookies',
-    body: 'Our website uses cookies and similar technologies to improve website functionality, analyze traffic, and enhance user experience. You may adjust your browser settings to refuse cookies, although some features of the website may not function properly.',
+    body: 'With your permission, we use Google Analytics 4 to understand website visits and interest in our events. Analytics stays off until you choose Accept analytics. You can reject it and still use the website, or change your choice through Analytics preferences in the footer. Your preference is stored in your browser for six months. Withdrawing consent stops further analytics collection and removes accessible Google Analytics cookies; it does not automatically delete data already collected.',
+    items: [
+      'Google Analytics measures page visits, approximate geography, device information, traffic sources, engagement, partner and ticket-link clicks, and confirmed form completions. We do not send form contents, names, email addresses, phone numbers, nomination stories, or uploaded files to Google Analytics.',
+      'Google processes analytics data on our behalf. We disable Google Signals and advertising personalization. Known bot traffic is automatically excluded; consent choices, browser blockers, and other limits mean Analytics does not count every visitor.',
+      'User-level and event-level analytics data is retained for 14 months. Standard aggregated reports and exported event-planning summaries may be retained longer. Monthly summaries help us compare event interest over time.',
+    ],
   },
   {
     title: '8. Your Rights',
@@ -118,7 +123,7 @@ export default function PrivacyPolicyPage() {
       <article className='mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 py-10 sm:px-8 lg:px-10 lg:py-16'>
         <header className='flex flex-col gap-4'>
           <p className='text-sm font-medium text-muted-foreground'>
-            Effective Date: 20th October 2025
+            Effective date: 5 November 2026
           </p>
           <h1 className='text-4xl font-bold leading-tight sm:text-5xl'>
             PAWEN Awards Privacy Policy

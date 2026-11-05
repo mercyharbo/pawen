@@ -22,4 +22,6 @@ export const externalLinks = {
     "https://www.marriott.com/offers/pawen-regional-summit-conference-delegate-accommodation-12-15-november-2026-off-258625",
   southernSunRidgeway:
     "https://www.southernsun.com/southern-sun-ridgeway-lusaka",
+  dotsCarHire: "https://www.dotsbookings.com/",
+  terratreksTour: "https://terratrekstravel.com/gallery",
 } as const;

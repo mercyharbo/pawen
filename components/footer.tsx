@@ -1,5 +1,6 @@
 import { externalLinks } from '@/lib/external-links'
 import Link from 'next/link'
+import { AnalyticsPreferencesButton } from '@/components/analytics/analytics-consent'
 
 const sitemapLinks = [
   { label: 'Home', href: '/' },
@@ -234,6 +235,7 @@ export function Footer() {
                   className='text-sm font-medium leading-5 2xl:text-base 2xl:leading-6'
                 />
               ))}
+              <AnalyticsPreferencesButton />
             </div>
           </nav>
 

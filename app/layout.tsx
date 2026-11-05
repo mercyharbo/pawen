@@ -5,6 +5,7 @@ import { NominationFormDialog } from "@/components/nomination/nomination-form-di
 import { NvitiChatScript } from "@/components/nviti-chat-script";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { rootMetadata } from "@/lib/seo";
+import { AnalyticsConsent } from "@/components/analytics/analytics-consent";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           <NominationFormDialog />
         </SmoothScroll>
         <NvitiChatScript />
+        <AnalyticsConsent />
       </body>
     </html>
   );
