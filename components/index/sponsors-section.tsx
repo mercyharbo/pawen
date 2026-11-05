@@ -79,6 +79,44 @@ const partnerLogos: readonly PartnerLogo[] = [
     imageClassName: 'max-h-20 w-auto object-contain',
   },
   {
+    name: 'Holiday Inn Lusaka',
+    src: '/holiday-inn-lusaka-logo.png',
+    alt: 'Holiday Inn Lusaka logo',
+    href: 'https://www.ihg.com/holidayinn/hotels/us/en/find-hotels/select-roomrate?fromRedirect=true&qSrt=sBR&qErm=false&qSlH=LUNLU&qRms=1&qAdlt=1&qChld=0&qCiD=12&qCiMy=102026&qCoD=15&qCoMy=102026&qGrpCd=PAN&setPMCookies=true&qSHBrC=HI&qDest=Cnr%20Birdcage%20Walk%20and%20Haile%20Selassie%20Avenue,%20Lusaka,%20ZM&qpMbw=0&qpMn=1&srb_u=1&qRmFltr=',
+    bgWhite: true,
+    imageClassName: 'max-h-20 w-auto object-contain',
+  },
+  {
+    name: 'Protea Hotel by Marriott',
+    src: '/protea-hotel-by-marriott-logo.webp',
+    alt: 'Protea Hotel by Marriott logo',
+    href: 'https://www.marriott.com/offers/pawen-regional-summit-conference-delegate-accommodation-12-15-november-2026-off-258625',
+    bgWhite: true,
+    imageClassName: 'max-h-20 w-full object-contain',
+  },
+  {
+    name: 'Southern Sun Ridgeway',
+    src: '/southern-sun-ridgeway-logo.png',
+    alt: 'Southern Sun Ridgeway logo',
+    href: 'https://www.southernsun.com/southern-sun-ridgeway-lusaka',
+    bgWhite: true,
+    imageClassName: 'max-h-20 w-full object-contain',
+  },
+  {
+    name: 'DOTS Mobility',
+    src: '/dots-mobility.webp',
+    alt: 'DOTS Mobility logo',
+    href: 'https://www.facebook.com/share/19tcxzbuyX/?mibexitid=wwXlfr',
+    imageClassName: 'max-h-24 w-full object-contain',
+  },
+  {
+    name: 'Terratreks Travel',
+    src: '/terratreks-travel.png',
+    alt: 'Terratreks Travel Victoria Falls tour flyer',
+    href: 'https://terratrekstravel.com/gallery',
+    imageClassName: 'max-h-28 w-auto object-contain',
+  },
+  {
     name: 'Hair Wonder',
     src: '/hair-wonder.webp',
     alt: 'Hair Wonder logo',
@@ -89,8 +127,32 @@ const partnerLogos: readonly PartnerLogo[] = [
     name: 'YSM Chartered Accountants',
     src: '/ysm-chartered-accountants.webp',
     alt: 'YSM Chartered Accountants logo',
+    href: 'https://www.facebook.com/share/1CN2gum6ab/',
     bgWhite: true,
     imageClassName: 'max-h-24 w-auto object-contain',
+  },
+  {
+    name: 'YamieReels',
+    src: '/yamie-reels.webp',
+    alt: 'YamieReels logo',
+    href: 'https://www.facebook.com/share/19cHTEhzRs/?mibextid=wwXIfr',
+    imageClassName: 'max-h-24 w-auto object-contain',
+  },
+  {
+    name: 'A.R.T Studios',
+    src: '/art-studios.webp',
+    alt: 'A.R.T Studios logo',
+    href: 'https://www.facebook.com/share/1FUcgyKNv1/?mibextid=wwXIfr',
+    bgWhite: true,
+    imageClassName: 'max-h-24 w-auto object-contain',
+  },
+  {
+    name: 'wCAP Ltd',
+    src: '/wcap-ltd.webp',
+    alt: 'wCAP Ltd logo',
+    href: 'https://wcapltd.com/',
+    bgWhite: true,
+    imageClassName: 'max-h-20 w-full object-contain',
   },
   {
     name: 'Aluvión',
@@ -167,9 +229,9 @@ export function SponsorsSection() {
                     <a
                       href={logo.href}
                       target='_blank'
-                      rel='noreferrer'
+                      rel='noopener noreferrer'
                       className={`inline-flex h-28 w-56 items-center justify-center transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${cardClass}`}
-                      aria-label={`Visit ${logo.name}`}
+                      aria-label={`Visit ${logo.name} (opens in a new tab)`}
                     >
                       <Image
                         src={logo.src}
@@ -198,7 +260,7 @@ export function SponsorsSection() {
           </Marquee>
         </MotionReveal>
 
-        <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-2'>
+        <div className='flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6'>
           {/* <Button
             asChild
             variant='outline'

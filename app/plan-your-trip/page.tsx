@@ -4,6 +4,7 @@ import { externalLinks } from '@/lib/external-links'
 import { createPageMetadata } from '@/lib/seo'
 import { ArrowUpRight, CarFront, Compass } from 'lucide-react'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = createPageMetadata({
   path: '/plan-your-trip',
@@ -70,6 +71,12 @@ const travelServices = [
     href: externalLinks.dotsCarHire,
     linkLabel: 'Visit DOTS',
     icon: CarFront,
+    imageSrc: '/dots-mobility.webp',
+    imageAlt: 'DOTS Mobility logo',
+    imageWidth: 1600,
+    imageHeight: 731,
+    imageClassName: 'h-auto w-full object-contain',
+    mediaClassName: 'flex min-h-48 items-center justify-center rounded-xl bg-pawen-brand-color p-6 sm:p-8',
   },
   {
     heading: 'Post-Summit Tour',
@@ -78,6 +85,12 @@ const travelServices = [
     href: externalLinks.terratreksTour,
     linkLabel: 'Explore Terratreks Travel',
     icon: Compass,
+    imageSrc: '/terratreks-travel.png',
+    imageAlt: 'Terratreks Travel Victoria Falls waterfront tour package flyer, with accommodation and optional activities. Visit Terratreks Travel for package details.',
+    imageWidth: 763,
+    imageHeight: 1080,
+    imageClassName: 'h-auto max-h-96 w-full object-contain',
+    mediaClassName: 'flex items-center justify-center overflow-hidden rounded-xl bg-gray-950',
   },
 ] as const
 
@@ -158,6 +171,22 @@ export default function PlanYourTripPage() {
                       {service.heading}
                     </h3>
                   </div>
+                  <a
+                    href={service.href}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label={`View ${service.partner} details (opens in a new tab)`}
+                    className={`${service.mediaClassName} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-dark-gold`}
+                  >
+                    <Image
+                      src={service.imageSrc}
+                      alt={service.imageAlt}
+                      width={service.imageWidth}
+                      height={service.imageHeight}
+                      sizes='(max-width: 767px) 90vw, (max-width: 1280px) 45vw, 560px'
+                      className={service.imageClassName}
+                    />
+                  </a>
                   <div className='flex flex-1 flex-col gap-3'>
                     <p className='font-semibold text-background'>
                       {service.partner}
