@@ -3,7 +3,6 @@ import { MobileNavMenu } from '@/components/mobile-nav-menu'
 import { hasVisibleSpeakers } from '@/lib/contentful'
 import Image from 'next/image'
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 
 const baseNavItems: readonly HeaderNavItem[] = [
   { label: 'Home', href: '/' },
@@ -14,31 +13,6 @@ const baseNavItems: readonly HeaderNavItem[] = [
 ]
 
 const speakersNavItem: HeaderNavItem = { label: 'Speakers', href: '/speakers' }
-
-function HeaderMotionLink({
-  children,
-  className = '',
-  href,
-}: {
-  children: ReactNode
-  className?: string
-  href: string
-}) {
-  return (
-    <Link prefetch={false}
-      href={href}
-      className={`group/header-link relative inline-flex items-center overflow-hidden leading-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${className}`}
-    >
-      <span className='transition-transform duration-500 ease-out group-hover/header-link:-translate-y-0.5 group-focus-visible/header-link:-translate-y-0.5'>
-        {children}
-      </span>
-      <span
-        className='absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover/header-link:scale-x-100 group-focus-visible/header-link:scale-x-100'
-        aria-hidden='true'
-      />
-    </Link>
-  )
-}
 
 export async function Header() {
   let showSpeakers = false
@@ -71,18 +45,6 @@ export async function Header() {
       data-site-chrome
       className='sticky top-0 z-50 bg-pawen-brand-color text-foreground'
     >
-      <div className='border-b border-border bg-pawen-brand-color h-10 flex justify-center items-center font-brand text-sm'>
-        <div className='flex flex-wrap items-center justify-center gap-3 text-center font-medium'>
-          <span>Nominations Open!</span>
-          <HeaderMotionLink
-            href='/nominations#award-categories'
-            className='text-muted-foreground'
-          >
-            Dive In
-          </HeaderMotionLink>
-        </div>
-      </div>
-
       <div className='border-b border-border bg-pawen-brand-color'>
         <div className='mx-auto flex min-h-[4.875rem] w-full max-w-[1905px] items-center justify-between gap-6 px-5 py-3 sm:px-8 lg:px-10'>
           <Link prefetch={false}
