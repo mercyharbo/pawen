@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/delegates',
-        destination: '/PAWEN%202026%20Delegate%20Information%20Pack.pdf',
+        destination: '/delegates-information-pack.pdf',
       },
     ]
   },
