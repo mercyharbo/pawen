@@ -12,6 +12,13 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Serve the delegates PDF at the CDN before the Next.js adapter handles the URL.
+[[redirects]]
+  from = "/delegates"
+  to = "/delegates-information-pack.pdf"
+  status = 200
+  force = true
+
 # Measurement IDs are public. Only production builds receive this setting.
 [context.production.environment]
   NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-2Y1E9N1EC4"
