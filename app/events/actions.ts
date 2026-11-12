@@ -3,9 +3,9 @@
 import {
   applyToSpeakSchema,
   exhibitionBoothSchema,
-  summitRegistrationSchema,
 } from "@/lib/event-form-schema";
 import { speakerConfirmations } from "@/lib/event-form-data";
+import { summitRegistrationClosedMessage } from "@/lib/summit-registration";
 
 export type EventFormState = {
   status: "idle" | "success" | "error";
@@ -52,23 +52,6 @@ type zodFlattenable = {
     fieldErrors: Record<string, string[] | undefined>;
   };
 };
-
-function splitDate(value: string) {
-  if (!value) return { day: "", month: "", year: "" };
-  if (value.includes("-")) {
-    const [year = "", month = "", day = ""] = value.split("-");
-    return { day, month, year };
-  }
-  const d = new Date(value);
-  if (!Number.isNaN(d.getTime())) {
-    return {
-      day: String(d.getDate()).padStart(2, "0"),
-      month: String(d.getMonth() + 1).padStart(2, "0"),
-      year: String(d.getFullYear()),
-    };
-  }
-  return { day: "", month: "", year: "" };
-}
 
 async function readJotformError(response: Response) {
   const text = await response.text();
@@ -165,61 +148,15 @@ async function submitJotform({
 
 export async function submitSummitRegistration(
   _previousState: EventFormState,
-  formData: FormData,
+  _formData: FormData,
 ): Promise<EventFormState> {
-  try {
-    const parsed = summitRegistrationSchema.safeParse({
-      firstName: getString(formData, "firstName"),
-      lastName: getString(formData, "lastName"),
-      dateOfBirth: getString(formData, "dateOfBirth"),
-      email: getString(formData, "email"),
-      phone: getString(formData, "phone"),
-      country: getString(formData, "country"),
-      organisation: getString(formData, "organisation"),
-      role: getString(formData, "role"),
-      visaRequirement: getString(formData, "visaRequirement"),
-      dietaryRestrictions: getString(formData, "dietaryRestrictions"),
-      accessibilityRequirements: getString(formData, "accessibilityRequirements"),
-      discoverySource: getString(formData, "discoverySource"),
-    });
-
-    if (!parsed.success) {
-      return {
-        status: "error",
-        message: "Please review the highlighted fields.",
-        fieldErrors: flattenErrors(parsed.error),
-      };
-    }
-
-    const birthDate = splitDate(parsed.data.dateOfBirth);
-
-    return await submitJotform({
-      formId: "261856147280057",
-      successMessage: "Registration received. Thank you for joining the summit.",
-      fieldValues: {
-        "submission[2_first]": parsed.data.firstName,
-        "submission[2_last]": parsed.data.lastName,
-        "submission[3_month]": birthDate.month,
-        "submission[3_day]": birthDate.day,
-        "submission[3_year]": birthDate.year,
-        "submission[4]": parsed.data.email,
-        "submission[5_full]": parsed.data.phone,
-        "submission[6]": parsed.data.country,
-        "submission[7]": parsed.data.organisation,
-        "submission[8]": parsed.data.role,
-        "submission[9]": parsed.data.visaRequirement,
-        "submission[10]": parsed.data.dietaryRestrictions,
-        "submission[11]": parsed.data.accessibilityRequirements,
-        "submission[12]": parsed.data.discoverySource,
-      },
-    });
-  } catch (error) {
-    console.error("submitSummitRegistration unexpected error", error);
-    return {
-      status: "error",
-      message: "We could not submit the registration right now. Please try again.",
-    };
-  }
+  // Ignore submissions from pages opened before registration closed.
+  void _previousState;
+  void _formData;
+  return {
+    status: "error",
+    message: summitRegistrationClosedMessage,
+  };
 }
 
 export async function submitExhibitionBooth(

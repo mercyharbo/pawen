@@ -11,7 +11,6 @@ import {
 import {
   submitApplyToSpeak,
   submitExhibitionBooth,
-  submitSummitRegistration,
   type EventFormState,
 } from "@/app/events/actions";
 import { Button } from "@/components/ui/button";
@@ -52,6 +51,10 @@ import {
 } from "@/lib/stores/event-dialog-store";
 import { compressImageFile, validateFileSize } from "@/lib/file-utils";
 import { cn } from "@/lib/utils";
+import {
+  summitRegistrationClosedMessage,
+  summitRegistrationClosedTitle,
+} from "@/lib/summit-registration";
 import { useFormAnalytics } from "@/components/analytics/use-form-analytics";
 import { trackFormStart } from "@/lib/analytics";
 
@@ -64,21 +67,6 @@ type EventFormValues = Record<string, string>;
 type EventFormErrors = Record<string, string>;
 
 const requiredMessage = "This field is required.";
-
-const summitErrorStepMap: Record<string, EventDialogStep> = {
-  firstName: "summit-personal",
-  lastName: "summit-personal",
-  dateOfBirth: "summit-personal",
-  email: "summit-personal",
-  phone: "summit-personal",
-  country: "summit-personal",
-  organisation: "summit-attendance",
-  role: "summit-attendance",
-  visaRequirement: "summit-attendance",
-  dietaryRestrictions: "summit-attendance",
-  accessibilityRequirements: "summit-attendance",
-  discoverySource: "summit-attendance",
-};
 
 const exhibitionErrorStepMap: Record<string, EventDialogStep> = {
   firstName: "exhibition-contact",
@@ -672,245 +660,34 @@ function useStepErrorRouting(
 }
 
 function SummitRegistrationDialog() {
-  const [state, formAction, pending] = useActionState(
-    submitSummitRegistration,
-    initialState,
-  );
-  useFormAnalytics("summit", state);
-  const [fieldErrors, setFieldErrors] = useState<EventFormErrors>({});
-  const [fieldValues, setFieldValues] = useState<EventFormValues>({});
-  const [dismissedSuccessKey, setDismissedSuccessKey] = useState<
-    string | undefined
-  >();
-  const [isTransitionPending, startTransition] = useTransition();
-  const { activeDialog, closeDialog, nextStep, previousStep, resetDialog, step } =
-    useEventDialog();
-  const steps = getEventDialogSteps("summit");
-  const isSubmitting = pending || isTransitionPending;
-  const isOpen = activeDialog === "summit";
-  const successKey =
-    state.status === "success" ? (state.resetKey ?? state.message) : undefined;
-  const isSuccessDialogOpen = Boolean(
-    successKey && dismissedSuccessKey !== successKey,
-  );
-  const displayedState = getDisplayedState(state, fieldErrors);
-
-  useStepErrorRouting(state, summitErrorStepMap);
-
-  useEffect(() => {
-    if (state.status === "success") {
-      resetDialog();
-      closeDialog();
-    }
-  }, [closeDialog, resetDialog, state.status]);
-
-  function handleValueChange(name: string, value: string) {
-    setFieldValues((currentValues) => ({
-      ...currentValues,
-      [name]: value,
-    }));
-    setFieldErrors((currentErrors) => {
-      return omitFieldError(currentErrors, name);
-    });
-  }
-
-  function validateStep(nextStepName: EventDialogStep) {
-    const requiredFields =
-      nextStepName === "summit-personal"
-        ? ["firstName", "lastName", "dateOfBirth", "email", "phone", "country"]
-        : ["visaRequirement"];
-    const nextErrors = Object.fromEntries(
-      requiredFields
-        .map((field) => [field, requiredField(fieldValues[field] ?? "")])
-        .filter(([, error]) => error),
-    );
-
-    setFieldErrors(nextErrors);
-
-    return Object.keys(nextErrors).length === 0;
-  }
-
-  function handleNextStep() {
-    if (validateStep(step)) {
-      nextStep();
-    }
-  }
-
-  function handleSuccessDismiss() {
-    setDismissedSuccessKey(successKey);
-    setFieldErrors({});
-    setFieldValues({});
-  }
+  const { activeDialog, closeDialog } = useEventDialog();
 
   return (
-    <>
-      <Dialog open={isOpen} onOpenChange={(open) => !open && closeDialog()}>
-        <DialogContent
-          className="h-fit max-h-[76vh] overflow-hidden rounded-lg bg-[#21002f] text-primary ring-0 sm:max-w-2xl"
-          showCloseButton
-      >
-        <form
-          className="flex max-h-[calc(76vh-2rem)] flex-col gap-5 overflow-x-hidden overflow-y-auto overscroll-contain p-5"
-          data-lenis-prevent
-          key={state.resetKey ?? "summit-registration-form"}
-          onFocusCapture={() => trackFormStart("summit")}
-          onChangeCapture={() => trackFormStart("summit")}
-          noValidate
-          onSubmit={(event) => {
-            event.preventDefault();
-
-            if (!validateStep(step)) {
-              return;
-            }
-
-            const formData = new FormData(event.currentTarget);
-
-            startTransition(() => {
-              formAction(formData);
-            });
-          }}
+    <Dialog
+      open={activeDialog === "summit"}
+      onOpenChange={(open) => !open && closeDialog()}
+    >
+      <DialogContent className="gap-6 rounded-lg bg-[#21002f] p-6 text-primary ring-0 sm:max-w-lg">
+        <div className="flex flex-col gap-3">
+          <DialogTitle className="pr-6 text-xl font-semibold leading-snug text-accent">
+            {summitRegistrationClosedTitle}
+          </DialogTitle>
+          <DialogDescription className="text-base leading-relaxed text-primary">
+            {summitRegistrationClosedMessage}
+          </DialogDescription>
+        </div>
+        <DialogClose
+          render={
+            <Button
+              className="w-full bg-accent text-background hover:bg-accent/90 sm:w-auto sm:justify-self-end"
+              type="button"
+            />
+          }
         >
-          <FormIntro
-            title="Summit Registration"
-            description="Complete your registration for the 2026 PAWEN Summit."
-          />
-          <StepProgress
-            currentStep={step}
-            labels={{
-              "summit-personal": "Personal Details",
-              "summit-attendance": "Attendance Details",
-            }}
-            steps={steps}
-          />
-          <StatusMessage state={displayedState} />
-          <div
-            className={cn(
-              "grid gap-4 sm:grid-cols-2",
-              step === "summit-personal" ? "" : "hidden",
-            )}
-          >
-              <TextField
-                label="First Name"
-                name="firstName"
-                onValueChange={handleValueChange}
-                required
-                state={displayedState}
-                value={fieldValues.firstName ?? ""}
-              />
-              <TextField
-                label="Last Name"
-                name="lastName"
-                onValueChange={handleValueChange}
-                required
-                state={displayedState}
-                value={fieldValues.lastName ?? ""}
-              />
-              <TextField
-                label="Date of Birth"
-                name="dateOfBirth"
-                onValueChange={handleValueChange}
-                required
-                state={displayedState}
-                type="date"
-                value={fieldValues.dateOfBirth ?? ""}
-              />
-              <TextField
-                label="Email Address"
-                name="email"
-                onValueChange={handleValueChange}
-                required
-                state={displayedState}
-                type="email"
-                value={fieldValues.email ?? ""}
-              />
-              <TextField
-                label="Phone Number"
-                name="phone"
-                onValueChange={handleValueChange}
-                required
-                state={displayedState}
-                value={fieldValues.phone ?? ""}
-              />
-              <SelectField
-                label="Country of Residence"
-                name="country"
-                onValueChange={handleValueChange}
-                options={eventCountryOptions}
-                required
-                state={displayedState}
-                value={fieldValues.country ?? ""}
-              />
-          </div>
-          <div
-            className={cn(
-              "grid gap-4 sm:grid-cols-2",
-              step === "summit-attendance" ? "" : "hidden",
-            )}
-          >
-              <TextField
-                label="Organisation or Company Name"
-                name="organisation"
-                onValueChange={handleValueChange}
-                state={displayedState}
-                value={fieldValues.organisation ?? ""}
-              />
-              <TextField
-                label="Job Title or Role"
-                name="role"
-                onValueChange={handleValueChange}
-                state={displayedState}
-                value={fieldValues.role ?? ""}
-              />
-              <SelectField
-                label="Do you require a visa to enter Zambia?"
-                name="visaRequirement"
-                onValueChange={handleValueChange}
-                options={visaOptions}
-                required
-                state={displayedState}
-                value={fieldValues.visaRequirement ?? ""}
-              />
-              <SelectField
-                label="How did you hear about the Summit?"
-                name="discoverySource"
-                onValueChange={handleValueChange}
-                options={discoveryOptions}
-                state={displayedState}
-                value={fieldValues.discoverySource ?? ""}
-              />
-              <TextField
-                label="Dietary Restrictions or Allergies"
-                name="dietaryRestrictions"
-                onValueChange={handleValueChange}
-                state={displayedState}
-                value={fieldValues.dietaryRestrictions ?? ""}
-              />
-              <TextField
-                label="Accessibility Requirements"
-                name="accessibilityRequirements"
-                onValueChange={handleValueChange}
-                state={displayedState}
-                value={fieldValues.accessibilityRequirements ?? ""}
-              />
-          </div>
-          <FormActions
-            isFirstStep={step === steps[0]}
-            isLastStep={step === steps[steps.length - 1]}
-            isSubmitting={isSubmitting}
-            nextStep={handleNextStep}
-            previousStep={previousStep}
-            submitLabel="Submit Registration"
-          />
-        </form>
-        </DialogContent>
-      </Dialog>
-      <EventSuccessDialog
-        message={state.message}
-        onDismiss={handleSuccessDismiss}
-        open={isSuccessDialogOpen}
-        title="Registration submitted"
-      />
-    </>
+          Got it
+        </DialogClose>
+      </DialogContent>
+    </Dialog>
   );
 }
 
