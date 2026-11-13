@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
       'https://docs.google.com/forms/d/e/1FAIpQLScjCkOVzEahAn2ht-LTDGOpQPkwuJWL7oM_jTZ_rIJyzeWTyQ/viewform?usp=dialog'
     return [
       {
+        source: '/summitbrochure',
+        destination:
+          'https://drive.google.com/file/d/1zuUGVdxG00oRhbSDaGLqokDXb7U27XPv/view?usp=sharing',
+        permanent: false,
+      },
+      {
         source: '/volunteers',
         destination: VOLUNTEERS_FORM_URL,
         permanent: false,

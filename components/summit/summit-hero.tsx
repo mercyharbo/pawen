@@ -59,7 +59,7 @@ export function SummitHero() {
             </div>
           </div>
 
-          <div className='flex items-center justify-center sm:w-auto lg:w-auto w-full'>
+          <div className='flex w-full items-center justify-center sm:w-auto'>
             <Button
               className='h-12 rounded-full bg-accent px-8 text-sm font-semibold text-background hover:bg-accent/90'
               onClick={() => openDialog('summit')}
